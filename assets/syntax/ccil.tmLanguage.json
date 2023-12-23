@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Ціль",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#constants"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#variables"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.ccil",
+          "match": "\\b(дія|ціль|мета|структура|перебрати|якщо|чекати|взяти|вернути|інакше|кінець|поки)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.ccil",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.ccil",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.numeric.ccil",
+          "match": "\\b\\d+(\\.\\d+)?\\b"
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.ccil",
+          "match": ";;.*$"
+        },
+        {
+          "name": "comment.block.ccil",
+          "begin": ";\\-\\-.*",
+          "end": "\\-\\-;"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "support.type.primitive.ccil",
+          "match": "\\b(текст|логічне|ц32|ц64|д32|д64|список|щось|ніщо|так|ні|пусто)\\b"
+        },
+        {
+          "comment": "назва структури",
+          "name": "support.type.struct.ccil",
+          "match": "(?<=структура\\s)\\b(\\w+'?\\w+)\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "comment": "виклик функції",
+          "begin": "(\\w+)\\(",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.function.ccil"
+            }
+          },
+          "end": "\\)"
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "comment": "змінна",
+          "name": "variable.other.ccil",
+          "match": "\\b(\\w+'?\\w+)\\b"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.ціль"
+}

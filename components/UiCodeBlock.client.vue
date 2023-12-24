@@ -65,20 +65,6 @@ onMounted(() => {
           #0000 210deg 300deg,
           #9B503A 330deg
   );
-  -webkit-mask: linear-gradient(#1D1315 0 0) content-box, linear-gradient(#1D1315 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: intersect;
-}
-
-.UiCodeBlock:after {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  inset: -2rem;
-  background: radial-gradient(200px at left 400px top 150px, #9B503A 100%, #0000), radial-gradient(200px at right 400px bottom 150px, #FFE173 100%, #0000);
-  filter: blur(2rem);
-  opacity: .25;
-  pointer-events: none;
 }
 
 .UiCodeBlock:before {

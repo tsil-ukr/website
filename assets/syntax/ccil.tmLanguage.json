@@ -21,6 +21,9 @@
       "include": "#functions"
     },
     {
+      "include": "#construct"
+    },
+    {
       "include": "#variables"
     }
   ],
@@ -89,6 +92,20 @@
             }
           },
           "end": "\\)"
+        }
+      ]
+    },
+    "construct": {
+      "patterns": [
+        {
+          "comment": "створення структури",
+          "begin": "(\\w+){",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.class.ccil"
+            }
+          },
+          "end": "}"
         }
       ]
     },

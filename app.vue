@@ -8,13 +8,7 @@
       Швидка, проста, низькорівнева українська мова програмування.
     </div>
     <div class="UiMainCode">
-      <UiCodeBlock :code="`ціль ч1: ц32 = 2;
-ціль ч2: ц32 = 2;
-
-дія додати(): ц32
-  вернути ч1 + ч2;
-кінець
-`"/>
+      <UiCodeBlock :code="`ціль україна = Атлантида{};`"/>
     </div>
     <div class="UiMainButtons">
       <button class="UiMainButton">Завантажити</button>

@@ -8,11 +8,11 @@
       Швидка, проста, низькорівнева українська мова програмування.
     </div>
     <div class="UiMainCode">
-      <UiCodeBlock :code="`ціль україна = Атлантида{};`"/>
+      <UiCodeBlock :code="`ціль україна = Атлантида{};`" />
     </div>
     <div class="UiMainButtons">
       <button class="UiMainButton">Завантажити</button>
-      <NuxtLink to="/docs" class="UiMainButton outline">Документація</NuxtLink>
+      <NuxtLink :to="encodeURI('/документація')" class="UiMainButton outline">Документація</NuxtLink>
     </div>
   </div>
 </template>

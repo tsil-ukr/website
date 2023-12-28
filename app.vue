@@ -1,5 +1,7 @@
 <template>
-  <RouterView/>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <style lang="sass">

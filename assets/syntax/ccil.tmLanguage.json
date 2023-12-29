@@ -91,6 +91,29 @@
               "name": "entity.name.function.ccil"
             }
           },
+          "patterns": [
+            {
+              "include": "#keywords"
+            },
+            {
+              "include": "#strings"
+            },
+            {
+              "include": "#constants"
+            },
+            {
+              "include": "#comments"
+            },
+            {
+              "include": "#types"
+            },
+            {
+              "include": "#functions"
+            },
+            {
+              "include": "#variables"
+            }
+          ],
           "end": "\\)"
         }
       ]

@@ -13,5 +13,8 @@ definePageMeta({
 <template>
   <UiDocsWrapper>
     <h1 class="UiDocsLayoutTitle">Встановлення</h1>
+    <p>
+      Ціль можна завантажити звідси: <a class="UiLink" href="/завантажити">ціль.укр/завантажити</a>
+    </p>
   </UiDocsWrapper>
 </template>

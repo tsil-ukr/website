@@ -176,4 +176,8 @@ addRouteMiddleware(() => {
     text-align: center;
   }
 }
+
+.UiLink {
+  color: #9B503A;
+}
 </style>

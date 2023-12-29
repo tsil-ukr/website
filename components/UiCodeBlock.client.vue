@@ -1,11 +1,10 @@
 <script setup>
 import ccilLanguageGrammar from "@/assets/syntax/ccil.tmLanguage.json";
 import * as shiki from "shiki";
-import { useState } from "#app";
 
 const props = defineProps({
   code: String,
-  noBorder: Boolean
+  borderless: Boolean
 });
 
 const ccilLanguage = {
@@ -14,7 +13,7 @@ const ccilLanguage = {
   grammar: ccilLanguageGrammar
 };
 
-const el = useState("el", () => null);
+const id = ref(`UiCodeBlock_${Math.random()}`);
 
 onMounted(() => {
   shiki
@@ -28,13 +27,13 @@ onMounted(() => {
       }
     })
     .then((highlighter) => {
-      el.value.innerHTML = highlighter.codeToHtml(props.code, { lang: "ціль" });
+      document.getElementById(id.value).innerHTML = highlighter.codeToHtml(props.code, { lang: "ціль" });
     });
 });
 </script>
 
 <template>
-  <div ref="el" class="UiCodeBlock" :class="{ noBorder }"></div>
+  <div :id="id" class="UiCodeBlock" :class="{ borderless }"></div>
 </template>
 
 <style lang="scss">
@@ -68,6 +67,16 @@ onMounted(() => {
     background-color: #1D1315 !important;
     font-size: 1rem;
     font-family: "Fira Code", monospace;
+  }
+
+  &.borderless {
+    &:before {
+      display: none;
+    }
+
+    .shiki {
+      padding: 1.25rem 1.5rem;
+    }
   }
 }
 </style>

@@ -1,6 +1,5 @@
 <script setup>
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
-import UiCodeBlock from "~/components/UiCodeBlock.client.vue";
 
 useHead({
   title: "Вступ | Документація | Ціль"
@@ -21,7 +20,6 @@ definePageMeta({
     <p>
       Ціль компілюється відразу в машинний код.
     </p>
-    <br>
     <UiCodeBlock :code="`ціль україна = Атлантида{};`" />
   </UiDocsWrapper>
 </template>

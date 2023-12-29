@@ -115,7 +115,10 @@ addRouteMiddleware(() => {
   height: 100%;
 
   .UiDocsLayoutNavigation {
-    border-right: 1px solid #9B503A;
+    //border-right: 1px solid #9B503A;
+
+    padding: 1rem;
+    padding-top: 0;
 
     .UiDocsLayoutNavigationHeader {
       height: 6.5rem;
@@ -134,6 +137,10 @@ addRouteMiddleware(() => {
       display: flex;
       flex-direction: column;
 
+      .UiDocsLayoutNavigationLink + .UiDocsLayoutNavigationLink {
+        margin-top: 0.125rem;
+      }
+
       .UiDocsLayoutNavigationLink {
         display: flex;
         align-items: center;
@@ -142,10 +149,10 @@ addRouteMiddleware(() => {
         color: #1D1315;
         text-decoration: none;
         font-size: 1rem;
-        border-bottom: 1px solid #9B503A;
+        border-radius: 1rem;
 
-        &:first-child {
-          border-top: 1px solid #9B503A;
+        &:hover {
+          background: #eae1ca;
         }
 
         &.active {
@@ -155,6 +162,18 @@ addRouteMiddleware(() => {
         }
       }
     }
+  }
+
+  .UiDocsLayoutMain {
+    margin: 2rem auto;
+    width: 640px;
+  }
+
+  .UiDocsLayoutTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
   }
 }
 </style>

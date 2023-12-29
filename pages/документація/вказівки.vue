@@ -12,6 +12,6 @@ definePageMeta({
 
 <template>
   <UiDocsWrapper>
-    //
+    <h1 class="UiDocsLayoutTitle">Вказівки</h1>
   </UiDocsWrapper>
 </template>

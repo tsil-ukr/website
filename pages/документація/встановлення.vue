@@ -12,6 +12,6 @@ definePageMeta({
 
 <template>
   <UiDocsWrapper>
-    <h1 class="docs-content-title">Вступ</h1>
+    <h1 class="UiDocsLayoutTitle">Встановлення</h1>
   </UiDocsWrapper>
 </template>

@@ -1,5 +1,6 @@
 <script setup>
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
+import UiCodeBlock from "~/components/UiCodeBlock.client.vue";
 
 useHead({
   title: "Вступ | Документація | Ціль"
@@ -12,35 +13,15 @@ definePageMeta({
 
 <template>
   <UiDocsWrapper next="/документація/встановлення">
-    <h1 class="docs-content-title">Вступ</h1>
+    <h1 class="UiDocsLayoutTitle">Вступ</h1>
 
     <p>
-      <span class="diia-word">Мавка</span>
-      <span style="font-weight: 500" class="hljs-keyword"> є</span> простою,
-      зручною
-      <span style="font-weight: 500" class="hljs-keyword"> та</span> динамічною
-      мовою програмування на основі кириличної абетки, української мови та моєї
-      свідомості.
+      Ціль є простою, швидкою та системною мовою програмування.
     </p>
     <p>
-      Причиною створення <span class="diia-word">Мавки</span>
-      <span style="font-weight: 500" class="hljs-keyword"> є </span>
-      моє бажання до написання компʼютерних команд українською мовою.
+      Ціль компілюється відразу в машинний код.
     </p>
-    <p>
-      <span class="diia-word">Мавка</span> цілком та повністю присвячується
-      <span class="diia-word">Лесі Українці</span>.
-    </p>
-    <p>
-      <span style="font-weight: 500" class="hljs-keyword"> Я</span> вірю, що
-      кожен українець має право використовувати звичні йому інструменти в
-      щоденному житті.
-    </p>
-
-    <div class="code-window code-window-full">
-      <ClientOnly>
-        <highlightjs language="diia" :autodetect="false" :code="life" />
-      </ClientOnly>
-    </div>
+    <br>
+    <UiCodeBlock :code="`ціль україна = Атлантида{};`" />
   </UiDocsWrapper>
 </template>

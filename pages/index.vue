@@ -1,3 +1,9 @@
+<script setup>
+useHead({
+  title: "Ціль"
+});
+</script>
+
 <template>
   <div class="UiMain">
     <div class="UiMainLogo">

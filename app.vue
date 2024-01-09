@@ -1,16 +1,10 @@
 <script setup>
-const route = useRoute();
-const visible = ref(route.hash === "#перегляд");
 </script>
 
 <template>
-  <ClientOnly>
-    <template v-if="visible">
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
-    </template>
-  </ClientOnly>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <style lang="sass">

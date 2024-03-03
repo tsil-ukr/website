@@ -38,5 +38,9 @@ definePageMeta({
     </p>
     <UiCodeBlock :code="`ціль сплавити привіт.ц lib.cpp`" borderless />
     <UiCodeBlock :code="`ціль збудувати`" borderless />
+    <p>
+      Та зрештою запустіть програму:
+    </p>
+    <UiCodeBlock :code="`./сплав/привіт`" borderless />
   </UiDocsWrapper>
 </template>

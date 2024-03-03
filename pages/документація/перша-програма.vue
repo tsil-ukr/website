@@ -2,10 +2,18 @@
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 const code = `
-взяти вв;
+екстерн дія друк(памʼять<ц8> значення);
 
 дія старт() {
-  вв::друк("Хай живе Ціль!");
+  друк("Вперед до Цілі!");
+}
+`.trim();
+
+const codeCpp = `
+#include <iostream>
+
+extern "C" void друк(char* value) {
+  std::cout << value << std::endl;
 }
 `.trim();
 
@@ -21,11 +29,14 @@ definePageMeta({
 <template>
   <UiDocsWrapper>
     <h1 class="UiDocsLayoutTitle">Перша програма</h1>
-    <p>Створіть файл <code>привіт.ц</code> та заповніть його кодом:</p>
+    <p>Створіть файл <code class="code">привіт.ц</code> та заповніть його кодом:</p>
     <UiCodeBlock :code="code" borderless />
+    <p>Створіть файл <code class="code">lib.cpp</code> та заповніть його кодом:</p>
+    <UiCodeBlock :code="codeCpp" lang="cpp" borderless />
     <p>
-      Після цього скомпілюйте програму цією командою:
+      Після цього скомпілюйте програму цими командами:
     </p>
-    <UiCodeBlock :code="`ціль сплавити привіт.ц`" borderless />
+    <UiCodeBlock :code="`ціль сплавити привіт.ц lib.cpp`" borderless />
+    <UiCodeBlock :code="`ціль збудувати`" borderless />
   </UiDocsWrapper>
 </template>

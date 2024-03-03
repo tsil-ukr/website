@@ -1,9 +1,14 @@
 <script setup>
 import ccilLanguageGrammar from "@/assets/syntax/ccil.tmLanguage.json";
 import * as shiki from "shiki";
+import cppLanguageGrammar from "shiki/languages/cpp.tmLanguage.json";
 
 const props = defineProps({
   code: String,
+  lang: {
+    type: String,
+    default: "ціль"
+  },
   borderless: Boolean
 });
 
@@ -12,6 +17,11 @@ const ccilLanguage = {
   scopeName: "source.ціль",
   grammar: ccilLanguageGrammar
 };
+const cppLanguage = {
+  id: "cpp",
+  scopeName: "source.cpp",
+  grammar: cppLanguageGrammar
+};
 
 const id = ref(`UiCodeBlock_${Math.random()}`);
 
@@ -19,7 +29,7 @@ onMounted(() => {
   shiki
     .getHighlighter({
       theme: "github-dark",
-      langs: [ccilLanguage],
+      langs: [ccilLanguage, cppLanguage],
       paths: {
         themes: "/shiki/themes",
         grammars: "/shiki/languages",
@@ -27,7 +37,7 @@ onMounted(() => {
       }
     })
     .then((highlighter) => {
-      document.getElementById(id.value).innerHTML = highlighter.codeToHtml(props.code, { lang: "ціль" });
+      document.getElementById(id.value).innerHTML = highlighter.codeToHtml(props.code, { lang: props.lang });
     });
 });
 </script>
@@ -75,7 +85,7 @@ onMounted(() => {
     }
 
     .shiki {
-      padding: 1.25rem 1.5rem;
+      padding: 1rem 1.25rem;
     }
   }
 }

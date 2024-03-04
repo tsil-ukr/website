@@ -18,29 +18,29 @@ extern "C" void друк(char* value) {
 `.trim();
 
 useHead({
-  title: "Перша програма | Документація | Ціль"
+  title: "Перша програма | Документація | Ціль",
 });
 
 definePageMeta({
-  layout: "docs"
+  layout: "docs",
 });
 </script>
 
 <template>
   <UiDocsWrapper>
     <h1 class="UiDocsLayoutTitle">Перша програма</h1>
-    <p>Створіть файл <code class="code">привіт.ц</code> та заповніть його кодом:</p>
+    <p>
+      Створіть файл <code class="code">привіт.ц</code> та заповніть його кодом:
+    </p>
     <UiCodeBlock :code="code" borderless />
-    <p>Створіть файл <code class="code">ext.cpp</code> та заповніть його кодом:</p>
+    <p>
+      Створіть файл <code class="code">ext.cpp</code> та заповніть його кодом:
+    </p>
     <UiCodeBlock :code="codeCpp" lang="cpp" borderless />
-    <p>
-      Після цього скомпілюйте програму цими командами:
-    </p>
-    <UiCodeBlock :code="`ціль сплавити привіт.ц --вихід привіт.сплав`" borderless />
-    <UiCodeBlock :code="`clang -o привіт привіт.сплав ext.cpp`" borderless />
-    <p>
-      Та зрештою запустіть програму:
-    </p>
+    <p>Після цього скомпілюйте програму цими командами:</p>
+    <UiCodeBlock :code="`ціль сплавити привіт.ц`" borderless />
+    <UiCodeBlock :code="`clang -o привіт привіт.o ext.cpp`" borderless />
+    <p>Та зрештою запустіть програму:</p>
     <UiCodeBlock :code="`./привіт`" borderless />
   </UiDocsWrapper>
 </template>

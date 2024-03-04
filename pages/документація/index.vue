@@ -2,11 +2,11 @@
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 useHead({
-  title: "Вступ | Документація | Ціль"
+  title: "Вступ | Документація | Ціль",
 });
 
 definePageMeta({
-  layout: "docs"
+  layout: "docs",
 });
 </script>
 
@@ -15,11 +15,15 @@ definePageMeta({
     <h1 class="UiDocsLayoutTitle">Вступ</h1>
 
     <p>
-      Ціль є простою, швидкою та системною мовою програмування.
+      <strong>Ціль</strong> є простою, швидкою та компільованою мовою
+      програмування.
     </p>
+    <p><strong>Ціль</strong> має строгу та статичну типизацію.</p>
+    <p>Керування памʼятю в <strong>Цілі</strong> ручне.</p>
     <p>
-      Ціль компілюється відразу в машинний код.
+      Завдяки тому, що <strong>Ціль</strong> компілюється в object-файли, ви
+      можете легко інтегрувати проекти з C та C++ в <strong>Ціль</strong> та
+      навпаки.
     </p>
-    <UiCodeBlock :code="`ціль україна = Атлантида{};`" />
   </UiDocsWrapper>
 </template>

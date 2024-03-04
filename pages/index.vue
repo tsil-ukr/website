@@ -1,13 +1,13 @@
 <script setup>
 useHead({
-  title: "Ціль"
+  title: "Ціль",
 });
 </script>
 
 <template>
   <div class="UiMain">
     <div class="UiMainLogo">
-      <img src="@/assets/logo.png" alt="">
+      <img src="@/assets/logo.png" alt="" />
       Ціль
     </div>
     <div class="UiMainTitle">
@@ -17,9 +17,17 @@ useHead({
       <UiCodeBlock :code="`ціль україна = Атлантида{};`" />
     </div>
     <div class="UiMainButtons">
-      <button class="UiMainButton">Завантажити</button>
-      <NuxtLink :to="encodeURI('/документація')" class="UiMainButton outline">Документація</NuxtLink>
+      <NuxtLink
+        :to="encodeURI('/документація/встановлення')"
+        class="UiMainButton"
+      >
+        Завантажити
+      </NuxtLink>
+      <NuxtLink :to="encodeURI('/документація')" class="UiMainButton outline">
+        Документація
+      </NuxtLink>
     </div>
+    <div class="UiMainFooter">Когут Давид Богданович, 2024</div>
   </div>
 </template>
 
@@ -83,17 +91,17 @@ useHead({
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #9B503A;
+      background: #9b503a;
       color: white;
-      border: 4px solid #9B503A;
+      border: 4px solid #9b503a;
       font-size: 1rem;
       font-weight: 500;
       text-decoration: none;
 
       &:hover {
-        background: #1D1315;
+        background: #1d1315;
         color: white;
-        border: 4px solid #1D1315;
+        border: 4px solid #1d1315;
         cursor: pointer;
       }
 
@@ -105,13 +113,13 @@ useHead({
 
       &.outline {
         background: transparent;
-        border: 4px solid #9B503A;
-        color: #9B503A;
+        border: 4px solid #9b503a;
+        color: #9b503a;
 
         &:hover {
-          background: #1D1315;
+          background: #1d1315;
           color: white;
-          border: 4px solid #1D1315;
+          border: 4px solid #1d1315;
           cursor: pointer;
         }
 
@@ -122,6 +130,12 @@ useHead({
         }
       }
     }
+  }
+
+  .UiMainFooter {
+    margin: 0 auto;
+    margin-top: 4rem;
+    color: #9b503a;
   }
 }
 

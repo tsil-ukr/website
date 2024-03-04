@@ -69,7 +69,7 @@ useHead({
 
   .UiMainButtons {
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 1rem;
     max-width: calc(500px + 1rem);
     width: 100%;
     display: flex;

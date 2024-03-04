@@ -127,8 +127,8 @@ addRouteMiddleware(() => {
       align-items: center;
 
       img {
-        width: 3.5rem;
-        height: 3.5rem;
+        width: 3rem;
+        height: 3rem;
         object-fit: cover;
       }
     }
@@ -172,7 +172,7 @@ addRouteMiddleware(() => {
   .UiDocsLayoutTitle {
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     text-align: center;
   }
 }

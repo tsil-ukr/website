@@ -36,11 +36,11 @@ definePageMeta({
     <p>
       Після цього скомпілюйте програму цими командами:
     </p>
-    <UiCodeBlock :code="`ціль сплавити привіт.ц -е ext.cpp`" borderless />
-    <UiCodeBlock :code="`ціль збудувати`" borderless />
+    <UiCodeBlock :code="`ціль сплавити привіт.ц --вихід привіт.сплав`" borderless />
+    <UiCodeBlock :code="`clang -o привіт привіт.сплав ext.cpp`" borderless />
     <p>
       Та зрештою запустіть програму:
     </p>
-    <UiCodeBlock :code="`./сплав/привіт`" borderless />
+    <UiCodeBlock :code="`./привіт`" borderless />
   </UiDocsWrapper>
 </template>

@@ -51,6 +51,8 @@ onMounted(() => {
   position: relative;
   z-index: 0;
   border-radius: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 
   &:before {
     z-index: -1;
@@ -80,6 +82,9 @@ onMounted(() => {
   }
 
   &.borderless {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    
     &:before {
       display: none;
     }

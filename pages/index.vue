@@ -40,9 +40,9 @@ useHead({
     text-align: center;
 
     img {
-      margin-bottom: 1rem;
-      width: 5rem;
-      height: 5rem;
+      margin-bottom: 2rem;
+      width: 4rem;
+      height: 4rem;
       object-fit: contain;
     }
   }
@@ -62,7 +62,7 @@ useHead({
 
   .UiMainCode {
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 1rem;
     max-width: 500px;
     width: 100%;
   }

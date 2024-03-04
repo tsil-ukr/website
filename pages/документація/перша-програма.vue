@@ -31,12 +31,12 @@ definePageMeta({
     <h1 class="UiDocsLayoutTitle">Перша програма</h1>
     <p>Створіть файл <code class="code">привіт.ц</code> та заповніть його кодом:</p>
     <UiCodeBlock :code="code" borderless />
-    <p>Створіть файл <code class="code">lib.cpp</code> та заповніть його кодом:</p>
+    <p>Створіть файл <code class="code">ext.cpp</code> та заповніть його кодом:</p>
     <UiCodeBlock :code="codeCpp" lang="cpp" borderless />
     <p>
       Після цього скомпілюйте програму цими командами:
     </p>
-    <UiCodeBlock :code="`ціль сплавити привіт.ц lib.cpp`" borderless />
+    <UiCodeBlock :code="`ціль сплавити привіт.ц -е ext.cpp`" borderless />
     <UiCodeBlock :code="`ціль збудувати`" borderless />
     <p>
       Та зрештою запустіть програму:

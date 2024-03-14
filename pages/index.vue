@@ -14,7 +14,7 @@ useHead({
       Швидка, проста, компільована українська мова програмування.
     </div>
     <div class="UiMainCode">
-      <UiCodeBlock :code="`ціль україна = Атлантида{};`" />
+      <UiCodeBlock :code="`ціль україна = створити(Рай);`" />
     </div>
     <div class="UiMainButtons">
       <NuxtLink

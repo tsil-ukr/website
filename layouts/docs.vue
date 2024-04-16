@@ -79,12 +79,16 @@ watch(
   },
 );
 
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
 onMounted(() => {
-  sidebarShown.value = window.innerWidth > 768;
+  sidebarShown.value = !isMobile();
 });
 
 addRouteMiddleware(() => {
-  sidebarShown.value = false;
+  sidebarShown.value = !isMobile();
 
   window.scrollTo({
     top: 0,
@@ -219,8 +223,8 @@ addRouteMiddleware(() => {
 
     @media (max-width: 768px) {
       padding-top: 4rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 

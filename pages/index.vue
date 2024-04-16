@@ -40,8 +40,8 @@ useHead({
   flex-direction: column;
 
   @media (max-width: 768px) {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .UiMainLogo {

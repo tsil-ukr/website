@@ -50,6 +50,11 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
+code {
+  font-family: "Fira Code", monospace;
+  font-weight: 500;
+}
+
 .UiCodeBlock {
   position: relative;
   z-index: 0;
@@ -82,6 +87,7 @@ onMounted(() => {
     background-color: #1d1315 !important;
     font-size: 1rem;
     font-family: "Fira Code", monospace;
+    font-weight: 500;
     overflow-x: auto;
   }
 

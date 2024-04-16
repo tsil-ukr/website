@@ -169,8 +169,6 @@ addRouteMiddleware(() => {
       justify-content: center;
       align-items: center;
 
-      // ok
-
       img {
         width: 3rem;
         height: 3rem;

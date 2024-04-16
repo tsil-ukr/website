@@ -33,10 +33,16 @@ useHead({
 
 <style lang="scss">
 .UiMain {
-  height: 100%;
+  min-height: 100%;
   padding-top: 5rem;
+  padding-bottom: 5rem;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 
   .UiMainLogo {
     display: flex;
@@ -84,6 +90,12 @@ useHead({
     align-items: center;
     justify-content: center;
     gap: 1rem;
+
+    @media (max-width: 768px) {
+      margin-top: 0.5rem;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
 
     .UiMainButton {
       height: 3rem;

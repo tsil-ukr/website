@@ -7,20 +7,20 @@ const props = defineProps({
   code: String,
   lang: {
     type: String,
-    default: "ціль"
+    default: "ціль",
   },
-  borderless: Boolean
+  borderless: Boolean,
 });
 
 const ccilLanguage = {
   id: "ціль",
   scopeName: "source.ціль",
-  grammar: ccilLanguageGrammar
+  grammar: ccilLanguageGrammar,
 };
 const cppLanguage = {
   id: "cpp",
   scopeName: "source.cpp",
-  grammar: cppLanguageGrammar
+  grammar: cppLanguageGrammar,
 };
 
 const id = ref(`UiCodeBlock_${Math.random()}`);
@@ -33,11 +33,14 @@ onMounted(() => {
       paths: {
         themes: "/shiki/themes",
         grammars: "/shiki/languages",
-        wasm: "/shiki/wasm"
-      }
+        wasm: "/shiki/wasm",
+      },
     })
     .then((highlighter) => {
-      document.getElementById(id.value).innerHTML = highlighter.codeToHtml(props.code, { lang: props.lang });
+      document.getElementById(id.value).innerHTML = highlighter.codeToHtml(
+        props.code,
+        { lang: props.lang },
+      );
     });
 });
 </script>
@@ -62,29 +65,30 @@ onMounted(() => {
     padding: 0.5rem;
     border-radius: 1rem;
     background: conic-gradient(
-        #9B503A,
-        #0000 30deg 120deg,
-        #FFE173 150deg 180deg,
-        #0000 210deg 300deg,
-        #9B503A 330deg
+      #9b503a,
+      #0000 30deg 120deg,
+      #ffe173 150deg 180deg,
+      #0000 210deg 300deg,
+      #9b503a 330deg
     );
-    background-color: #1D1315;
-    border: 2px solid #1D1315;
+    background-color: #1d1315;
+    border: 2px solid #1d1315;
   }
 
   .shiki {
     padding: 1.5rem;
     border-radius: inherit;
     font-weight: 500;
-    background-color: #1D1315 !important;
+    background-color: #1d1315 !important;
     font-size: 1rem;
     font-family: "Fira Code", monospace;
+    overflow-x: auto;
   }
 
   &.borderless {
     margin-top: 1rem;
     margin-bottom: 1rem;
-    
+
     &:before {
       display: none;
     }

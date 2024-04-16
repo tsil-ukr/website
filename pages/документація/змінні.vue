@@ -2,13 +2,11 @@
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 const example1 = `
-ціль а = 2;
-ціль б: ц32 = 2332;
-ціль в: д64 = 3.14;
+змінна а = 2;
 `.trim();
 
 useHead({
-  title: "Цілі | Документація | Ціль",
+  title: "Змінні | Документація | Ціль",
 });
 
 definePageMeta({
@@ -18,7 +16,7 @@ definePageMeta({
 
 <template>
   <UiDocsWrapper>
-    <h1 class="UiDocsLayoutTitle">Цілі</h1>
+    <h1 class="UiDocsLayoutTitle">Змінні</h1>
     <UiCodeBlock :code="example1" borderless />
   </UiDocsWrapper>
 </template>

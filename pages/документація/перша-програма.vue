@@ -2,7 +2,7 @@
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 const code = `
-екстерн дія друк(ц8* значення);
+екстерн дія друк(значення: памʼять<ц8>);
 
 дія старт() {
   друк("Вперед до Цілі!");

@@ -5,48 +5,60 @@ defineProps({
   prev: String,
   next: String,
   title: String,
-  loading: Boolean
+  loading: Boolean,
 });
 
 const route = useRoute();
-const sidebarShown = useState("sidebarShown", () => false);
+const sidebarShown = useState("sidebarShown", () => true);
 const practiceLinks = useState("practiceLinks", () => [
   {
     name: "Вступ",
-    encodedLink: encodeURI("/документація")
+    encodedLink: encodeURI("/документація"),
   },
   {
     name: "Встановлення",
-    encodedLink: encodeURI("/документація/встановлення")
+    encodedLink: encodeURI("/документація/встановлення"),
   },
   {
     name: "Перша програма",
-    encodedLink: encodeURI("/документація/перша-програма")
+    encodedLink: encodeURI("/документація/перша-програма"),
   },
   {
     name: "Приклади",
-    encodedLink: encodeURI("/документація/приклади")
+    encodedLink: encodeURI("/документація/приклади"),
   },
   {
     name: "Вказівки",
-    encodedLink: encodeURI("/документація/вказівки")
+    encodedLink: encodeURI("/документація/вказівки"),
+  },
+  {
+    name: "Субʼєкти",
+    encodedLink: encodeURI("/документація/субʼєкти"),
   },
   {
     name: "Цілі",
-    encodedLink: encodeURI("/документація/цілі")
+    encodedLink: encodeURI("/документація/цілі"),
+  },
+  {
+    name: "Змінні",
+    encodedLink: encodeURI("/документація/змінні"),
   },
   {
     name: "Дії",
-    encodedLink: encodeURI("/документація/дії")
+    encodedLink: encodeURI("/документація/дії"),
   },
   {
     name: "Структури",
-    encodedLink: encodeURI("/документація/структури")
+    encodedLink: encodeURI("/документація/структури"),
+  },
+  {
+    name: "Композиції",
+    encodedLink: encodeURI("/документація/композиції"),
   },
   {
     name: "Модулі",
-    encodedLink: encodeURI("/документація/модулі")
-  }
+    encodedLink: encodeURI("/документація/модулі"),
+  },
 ]);
 
 const isPracticeExpanded = useState("isPracticeExpanded", () => true);
@@ -63,23 +75,28 @@ watch(
     }
   },
   {
-    immediate: true
-  }
+    immediate: true,
+  },
 );
+
+onMounted(() => {
+  sidebarShown.value = window.innerWidth > 768;
+});
 
 addRouteMiddleware(() => {
   sidebarShown.value = false;
+
   window.scrollTo({
-    top: 0
+    top: 0,
   });
 });
 </script>
 
 <template>
   <div class="UiDocsLayout">
-    <div class="UiDocsLayoutNavigation">
+    <div class="UiDocsLayoutNavigation" v-if="sidebarShown">
       <div class="UiDocsLayoutNavigationHeader">
-        <NuxtLink to="/"><img src="@/assets/logo.png" alt=""></NuxtLink>
+        <NuxtLink to="/"><img src="@/assets/logo.png" alt="" /></NuxtLink>
       </div>
       <div class="UiDocsLayoutNavigationLinks">
         <template v-if="isPracticeExpanded">
@@ -92,9 +109,9 @@ addRouteMiddleware(() => {
               class="UiDocsLayoutNavigationLink"
               active-class="active"
               :class="{
-              withTopShadow: i === 0,
-              withBottomShadow: i === practiceLinks.length - 1,
-            }"
+                withTopShadow: i === 0,
+                withBottomShadow: i === practiceLinks.length - 1,
+              }"
             >
               {{ practiceLink.name }}
             </NuxtLink>
@@ -105,20 +122,46 @@ addRouteMiddleware(() => {
     <main class="UiDocsLayoutMain">
       <slot />
     </main>
+    <button
+      @click="sidebarShown = !sidebarShown"
+      class="UiDocsLayoutNavigationToggle"
+    >
+      {{ sidebarShown ? "×" : "☰" }}
+    </button>
   </div>
 </template>
 
 <style lang="scss">
 .UiDocsLayout {
-  display: grid;
-  grid-template-columns: 325px 1fr;
-  height: 100%;
+  position: relative;
+  min-height: 100%;
+  padding-left: 350px;
+  background: lighten(#fff6e0, 2);
+
+  @media (max-width: 768px) {
+    padding-left: 0;
+  }
 
   .UiDocsLayoutNavigation {
-    //border-right: 1px solid #9B503A;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    width: 350px;
+    z-index: 100;
 
     padding: 1rem;
     padding-top: 0;
+    background: #fff6e0;
+    border-right: 1px solid #eae1ca;
+
+    @media (max-width: 768px) {
+      right: 0;
+      width: 100%;
+      border-right: none;
+      padding-bottom: 3rem;
+    }
 
     .UiDocsLayoutNavigationHeader {
       height: 6.5rem;
@@ -146,17 +189,20 @@ addRouteMiddleware(() => {
         align-items: center;
         text-align: left;
         padding: 0.75rem 1.5rem;
-        color: #1D1315;
+        color: #1d1315;
         text-decoration: none;
         font-size: 1rem;
         border-radius: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         &:hover {
           background: #eae1ca;
         }
 
         &.active {
-          background: #9B503A;
+          background: #9b503a;
           color: white;
           font-weight: 500;
         }
@@ -165,8 +211,17 @@ addRouteMiddleware(() => {
   }
 
   .UiDocsLayoutMain {
-    margin: 2rem auto;
-    width: 640px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    padding-bottom: 5rem;
+    max-width: 640px;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      padding-top: 4rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
   }
 
   .UiDocsLayoutTitle {
@@ -175,9 +230,31 @@ addRouteMiddleware(() => {
     margin-bottom: 2rem;
     text-align: center;
   }
+
+  .UiDocsLayoutNavigationToggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+    background: #9b503a;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
 }
 
 .UiLink {
-  color: #9B503A;
+  color: #9b503a;
 }
 </style>

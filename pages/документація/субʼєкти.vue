@@ -32,7 +32,7 @@ definePageMeta({
 </script>
 
 <template>
-  <UiDocsWrapper>
+  <UiDocsWrapper prev="/документація/вказівки" next="/документація/цілі">
     <h1 class="UiDocsLayoutTitle">Субʼєкти</h1>
     <p>
       <strong>Ціль</strong> має такі ключові слова для визначення субʼєктів:

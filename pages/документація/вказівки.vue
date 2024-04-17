@@ -2,16 +2,16 @@
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 useHead({
-  title: "Вказівки | Документація | Ціль"
+  title: "Вказівки | Документація | Ціль",
 });
 
 definePageMeta({
-  layout: "docs"
+  layout: "docs",
 });
 </script>
 
 <template>
-  <UiDocsWrapper>
+  <UiDocsWrapper prev="/документація/приклади" next="/документація/субʼєкти">
     <h1 class="UiDocsLayoutTitle">Вказівки</h1>
     <p>Додати</p>
     <UiCodeBlock :code="`а + б`" borderless />

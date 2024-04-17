@@ -11,7 +11,10 @@ definePageMeta({
 </script>
 
 <template>
-  <UiDocsWrapper>
+  <UiDocsWrapper
+    prev="/документація/перша-програма"
+    next="/документація/вказівки"
+  >
     <h1 class="UiDocsLayoutTitle">Приклади</h1>
     <p>
       Ви можете знайти безліч прикладів на

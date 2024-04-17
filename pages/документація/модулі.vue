@@ -2,16 +2,16 @@
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 useHead({
-  title: "Модулі | Документація | Ціль"
+  title: "Модулі | Документація | Ціль",
 });
 
 definePageMeta({
-  layout: "docs"
+  layout: "docs",
 });
 </script>
 
 <template>
-  <UiDocsWrapper>
+  <UiDocsWrapper prev="/документація/композиції">
     <h1 class="UiDocsLayoutTitle">Модулі</h1>
   </UiDocsWrapper>
 </template>

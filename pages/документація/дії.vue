@@ -2,7 +2,7 @@
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 const example1 = `
-дія додати(а: ц32, б: ц32): ц64 {
+дія додати(а: ціле, б: ціле): ціле {
   вернути а + б;
 }
 
@@ -19,7 +19,7 @@ definePageMeta({
 </script>
 
 <template>
-  <UiDocsWrapper>
+  <UiDocsWrapper prev="/документація/змінні" next="/документація/структури">
     <h1 class="UiDocsLayoutTitle">Дії</h1>
     <UiCodeBlock :code="example1" borderless />
   </UiDocsWrapper>

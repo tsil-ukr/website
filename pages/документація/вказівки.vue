@@ -1,6 +1,18 @@
 <script setup lang="ts">
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
+const ifExample = `
+якщо 2 > 3 {
+  друк(сі"2 більше за 3");
+}
+`.trim();
+
+const whileExample = `
+поки 2 > 3 {
+  друк(сі"2 все ще більше за 3...");
+}
+`.trim();
+
 useHead({
   title: "Вказівки | Документація | Ціль",
 });
@@ -13,29 +25,33 @@ definePageMeta({
 <template>
   <UiDocsWrapper prev="/документація/приклади" next="/документація/субʼєкти">
     <h1 class="UiDocsLayoutTitle">Вказівки</h1>
-    <p>Додати</p>
+    <p>Якщо:</p>
+    <UiCodeBlock :code="ifExample" borderless />
+    <p>Поки:</p>
+    <UiCodeBlock :code="whileExample" borderless />
+    <p>Додати:</p>
     <UiCodeBlock :code="`а + б`" borderless />
-    <p>Відняти</p>
+    <p>Відняти:</p>
     <UiCodeBlock :code="`а - б`" borderless />
-    <p>Помножити</p>
+    <p>Помножити:</p>
     <UiCodeBlock :code="`а * б`" borderless />
-    <p>Поділити</p>
+    <p>Поділити:</p>
     <UiCodeBlock :code="`а / б`" borderless />
-    <p>Остача</p>
+    <p>Остача:</p>
     <UiCodeBlock :code="`а % б`" borderless />
-    <p>Степінь</p>
+    <p>Степінь:</p>
     <UiCodeBlock :code="`а ** б`" borderless />
-    <p>Чи рівно</p>
+    <p>Чи рівно:</p>
     <UiCodeBlock :code="`а == б`" borderless />
-    <p>Чи не рівно</p>
+    <p>Чи не рівно:</p>
     <UiCodeBlock :code="`а != б`" borderless />
-    <p>Чи більше</p>
+    <p>Чи більше:</p>
     <UiCodeBlock :code="`а > б`" borderless />
-    <p>Чи менше</p>
+    <p>Чи менше:</p>
     <UiCodeBlock :code="`а < б`" borderless />
-    <p>Чи більше або рівно</p>
+    <p>Чи більше або рівно:</p>
     <UiCodeBlock :code="`а >= б`" borderless />
-    <p>Чи менше або рівно</p>
+    <p>Чи менше або рівно:</p>
     <UiCodeBlock :code="`а <= б`" borderless />
   </UiDocsWrapper>
 </template>

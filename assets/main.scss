@@ -36,3 +36,15 @@ button {
 strong {
   color: #9B503A;
 }
+
+blockquote {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #1D1315;
+  border-left: 0.25rem solid #9B503A;
+  padding-left: 1rem;
+  padding-bottom: 0.25rem;
+  padding-top: 0.25rem;
+}

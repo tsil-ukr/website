@@ -56,8 +56,8 @@ const practiceLinks = useState("practiceLinks", () => [
     encodedLink: encodeURI("/документація/композиції"),
   },
   {
-    name: "Модулі",
-    encodedLink: encodeURI("/документація/модулі"),
+    name: "Секції",
+    encodedLink: encodeURI("/документація/секції"),
   },
 ]);
 
@@ -122,6 +122,10 @@ addRouteMiddleware(() => {
           </template>
         </template>
       </div>
+      <div class="UiDocsLayoutNavigationFooter">
+        <img src="@/assets/organization.svg" alt="" />
+        Організація Мавки
+      </div>
     </div>
     <main class="UiDocsLayoutMain">
       <slot />
@@ -157,6 +161,7 @@ addRouteMiddleware(() => {
 
     padding: 1rem;
     padding-top: 0;
+    padding-bottom: 6rem;
     background: #fff6e0;
     border-right: 1px solid #eae1ca;
 
@@ -164,7 +169,6 @@ addRouteMiddleware(() => {
       right: 0;
       width: 100%;
       border-right: none;
-      padding-bottom: 3rem;
     }
 
     .UiDocsLayoutNavigationHeader {
@@ -176,7 +180,35 @@ addRouteMiddleware(() => {
       img {
         width: 3rem;
         height: 3rem;
-        object-fit: cover;
+        object-fit: contain;
+      }
+    }
+
+    .UiDocsLayoutNavigationFooter {
+      position: fixed;
+      height: 2.5rem;
+      bottom: 0;
+      left: 0;
+      width: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid #eae1ca;
+      border-right: 1px solid #eae1ca;
+      font-size: 1rem;
+      color: rgba(#1d1315, 0.5);
+      background: #fff6e0;
+
+      @media (max-width: 768px) {
+        right: 0;
+        width: 100%;
+        border-right: none;
+      }
+
+      img {
+        margin-top: -0.5rem;
+        height: 1.125rem;
+        margin-right: 0.5rem;
       }
     }
 

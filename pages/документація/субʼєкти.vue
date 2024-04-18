@@ -10,15 +10,37 @@ const example2 = `
 `.trim();
 
 const example3 = `
-дія додати(а: ц32, б: ц32): ц64 {
+дія додати(а: ціле, б: ціле): ціле {
   вернути а + б;
 }
 `.trim();
 
 const example4 = `
 структура Вектор2 {
-  а: ц64;
-  б: ц64;
+  а: ціле;
+  б: ціле;
+}
+`.trim();
+
+const example5 = `
+композиція Людина {
+  властивість імʼя: текст;
+  
+  дія привітатись() {
+    друк(я.імʼя + " каже привіт!");
+  }
+}
+`.trim();
+
+const example6 = `
+секція Двигуни {
+  структура РеактивнийДвигун {
+    потужність: ціле;
+  }
+  
+  структура ІоннийДвигун {
+    потужність: ціле;
+  }
 }
 `.trim();
 
@@ -34,11 +56,6 @@ definePageMeta({
 <template>
   <UiDocsWrapper prev="/документація/вказівки" next="/документація/цілі">
     <h1 class="UiDocsLayoutTitle">Субʼєкти</h1>
-    <p>
-      <strong>Ціль</strong> має такі ключові слова для визначення субʼєктів:
-      <strong>ціль</strong>, <strong>змінна</strong>, <strong>дія</strong>,
-      <strong>структура</strong>.
-    </p>
     <p>Ціль:</p>
     <UiCodeBlock :code="example1" borderless />
     <p>Змінна:</p>
@@ -47,5 +64,9 @@ definePageMeta({
     <UiCodeBlock :code="example3" borderless />
     <p>Структура:</p>
     <UiCodeBlock :code="example4" borderless />
+    <p>Композиція:</p>
+    <UiCodeBlock :code="example5" borderless />
+    <p>Секція:</p>
+    <UiCodeBlock :code="example6" borderless />
   </UiDocsWrapper>
 </template>

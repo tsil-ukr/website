@@ -6,7 +6,7 @@ const example1 = `
   вернути а + б;
 }
 
-змінна сума = додати(2, 3);
+ціль сума = додати(2, 3);
 `.trim();
 
 useHead({
@@ -21,6 +21,10 @@ definePageMeta({
 <template>
   <UiDocsWrapper prev="/документація/змінні" next="/документація/структури">
     <h1 class="UiDocsLayoutTitle">Дії</h1>
+    <p>
+      Дія це субʼєкт, що володіє певним значенням під час виконання програми.
+    </p>
+    <p>Дія не може змінюватись після визначення.</p>
     <UiCodeBlock :code="example1" borderless />
   </UiDocsWrapper>
 </template>

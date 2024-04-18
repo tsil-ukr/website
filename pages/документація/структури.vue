@@ -3,13 +3,13 @@ import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 const example1 = `
 структура Координати {
-  а: ціле,
-  б: ціле,
+  в: дійсне,
+  ш: дійсне,
 }
 
 ціль точка = Координати {
-  а = 2,
-  б = 2,
+  в = 2.0,
+  ш = 2.0,
 };
 `.trim();
 

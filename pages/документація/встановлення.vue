@@ -18,6 +18,9 @@ definePageMeta({
       має бути попередньо встановлено CLang.
     </p>
     <p><strong>Ціль</strong> можна завантажити з таблиці нижче:</p>
+    <select name="version" id="selectVersion">
+      <option value="0.1.0">0.1.0</option>
+    </select>
     <table>
       <thead>
         <tr>

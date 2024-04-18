@@ -2,17 +2,17 @@
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 const code = `
-екстерн дія друк(значення: комірка<ц8>);
+екстерн дія друк_сі(значення: комірка<ц8>);
 
 дія старт() {
-  друк(сі"Вперед до Цілі!");
+  друк_сі(сі"Вперед до Цілі!");
 }
 `.trim();
 
 const codeCpp = `
 #include <iostream>
 
-extern "C" void друк(char* value) {
+extern "C" void друк_сі(char* value) {
   std::cout << value << std::endl;
 }
 `.trim();

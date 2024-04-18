@@ -48,3 +48,56 @@ blockquote {
   padding-bottom: 0.25rem;
   padding-top: 0.25rem;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border: 1px solid #eae1ca;
+
+  th,
+  td {
+    border: 1px solid #eae1ca;
+    padding: 0.5rem;
+  }
+
+  th {
+    background: #fff6e0;
+  }
+
+  td {
+    background: #fff6e0;
+  }
+
+  a {
+    color: #9b503a;
+  }
+
+  a:hover {
+    color: #1d1315;
+  }
+
+  a:active {
+    color: black;
+  }
+
+  a:visited {
+    color: #9b503a;
+  }
+
+  a:visited:hover {
+    color: #1d1315;
+  }
+
+  a:visited:active {
+    color: black;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  td {
+    text-align: center;
+  }
+}

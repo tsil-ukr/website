@@ -63,6 +63,10 @@ const practiceLinks = useState("practiceLinks", () => [
     name: "Секції",
     encodedLink: encodeURI("/документація/секції"),
   },
+  {
+    name: "Памʼять",
+    encodedLink: encodeURI("/документація/памʼять"),
+  },
 ]);
 
 const isPracticeExpanded = useState("isPracticeExpanded", () => true);

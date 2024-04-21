@@ -29,7 +29,7 @@ definePageMeta({
 </script>
 
 <template>
-  <UiDocsWrapper prev="/документація/композиції">
+  <UiDocsWrapper prev="/документація/композиції" next="/документація/памʼять">
     <h1 class="UiDocsLayoutTitle">Секції</h1>
     <p>
       Секція це субʼєкт, що володіє певним значенням під час компіляції

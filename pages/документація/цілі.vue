@@ -25,7 +25,7 @@ definePageMeta({
 </script>
 
 <template>
-  <UiDocsWrapper prev="/документація/субʼєкти" next="/документація/змінні">
+  <UiDocsWrapper prev="/документація/типи" next="/документація/змінні">
     <h1 class="UiDocsLayoutTitle">Цілі</h1>
     <p>
       Ціль це субʼєкт, що володіє певним значенням під час виконання програми.

@@ -54,7 +54,7 @@ definePageMeta({
 </script>
 
 <template>
-  <UiDocsWrapper prev="/документація/вказівки" next="/документація/цілі">
+  <UiDocsWrapper prev="/документація/вказівки" next="/документація/типи">
     <h1 class="UiDocsLayoutTitle">Субʼєкти</h1>
     <p>Ціль:</p>
     <UiCodeBlock :code="example1" borderless />

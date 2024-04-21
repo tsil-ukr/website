@@ -22,7 +22,14 @@ definePageMeta({
     <p>Керування памʼятю в <strong>Цілі</strong> ручне.</p>
     <p>
       <strong>Ціль</strong> створена спеціально з можливістю легко інтегруватись
-      з C та C++.
+      з C та C++. <strong>Ціль</strong> також можна компілювати в WASM.
+    </p>
+    <hr />
+    <p>
+      Група <strong>Цілі</strong> в Масці:
+      <a class="UiLink" target="_blank" href="https://maska.me/tsil"
+        >maska.me/tsil</a
+      >
     </p>
   </UiDocsWrapper>
 </template>

@@ -173,6 +173,10 @@ addRouteMiddleware(() => {
     background: #fff6e0;
     border-right: 1px solid #eae1ca;
 
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     @media (max-width: 768px) {
       right: 0;
       width: 100%;

@@ -53,5 +53,6 @@ definePageMeta({
         />
       </li>
     </ul>
+    <blockquote><b>Хід ще в розробці.</b></blockquote>
   </UiDocsWrapper>
 </template>

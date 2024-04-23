@@ -37,5 +37,6 @@ definePageMeta({
     </p>
     <p>Секція може доповнюватись після визначення.</p>
     <UiCodeBlock :code="example1" borderless />
+    <blockquote><b>Секції ще в розробці.</b></blockquote>
   </UiDocsWrapper>
 </template>

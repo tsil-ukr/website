@@ -2,7 +2,7 @@
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 const code = `
-екстерн дія друк_сі(значення: сі);
+зовнішня дія друк_сі(значення: комірка<п8>);
 
 дія старт() {
   друк_сі(сі"Вперед до Цілі!");

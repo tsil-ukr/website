@@ -16,13 +16,13 @@ definePageMeta({
     <p>Цілі для роботи з ходом:</p>
     <ul>
       <li>
-        <UiCodeBlock code="ціль вхід: хід;" borderless />
+        <UiCodeBlock code="ціль вхід: комірка<хід>;" borderless />
       </li>
       <li>
-        <UiCodeBlock code="ціль вихід: хід;" borderless />
+        <UiCodeBlock code="ціль вихід: комірка<хід>;" borderless />
       </li>
       <li>
-        <UiCodeBlock code="ціль похід: хід;" borderless />
+        <UiCodeBlock code="ціль похід: комірка<хід>;" borderless />
       </li>
     </ul>
     <p>Дії для роботи з ходом:</p>

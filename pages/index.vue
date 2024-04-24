@@ -10,9 +10,7 @@ useHead({
       <img src="@/assets/logo.png" alt="" />
       Ціль
     </div>
-    <div class="UiMainTitle">
-      Швидка, проста, компільована українська мова програмування.
-    </div>
+    <div class="UiMainTitle">Звичайна мова для надзвичайних завдань.</div>
     <div class="UiMainCode">
       <UiCodeBlock :code="`ціль україна = створити(Рай);`" />
     </div>
@@ -21,7 +19,7 @@ useHead({
         :to="encodeURI('/документація/встановлення')"
         class="UiMainButton"
       >
-        Завантажити
+        Завантажити (0.1.0)
       </NuxtLink>
       <NuxtLink :to="encodeURI('/документація')" class="UiMainButton outline">
         Документація

@@ -134,10 +134,14 @@ addRouteMiddleware(() => {
           </template>
         </template>
       </div>
-      <div class="UiDocsLayoutNavigationFooter">
+      <a
+        target="_blank"
+        href="https://мавка.укр"
+        class="UiDocsLayoutNavigationFooter"
+      >
         <img src="@/assets/organization.svg" alt="" />
         Організація Мавки
-      </div>
+      </a>
     </div>
     <main class="UiDocsLayoutMain">
       <slot />
@@ -145,6 +149,7 @@ addRouteMiddleware(() => {
     <button
       @click="sidebarShown = !sidebarShown"
       class="UiDocsLayoutNavigationToggle"
+      :class="{ shown: sidebarShown }"
     >
       {{ sidebarShown ? "×" : "☰" }}
     </button>
@@ -214,6 +219,12 @@ addRouteMiddleware(() => {
       font-size: 1rem;
       color: rgba(#1d1315, 0.5);
       background: #fff6e0;
+      text-decoration: none;
+
+      &:hover {
+        background: #eae1ca;
+        color: #1d1315;
+      }
 
       @media (max-width: 768px) {
         right: 0;
@@ -288,8 +299,8 @@ addRouteMiddleware(() => {
     top: 1rem;
     left: 1rem;
     z-index: 1000;
-    background: #9b503a;
-    color: white;
+    background: lighten(#fff6e0, 2);
+    color: #9b503a;
     border: none;
     border-radius: 0.5rem;
     height: 3rem;
@@ -299,6 +310,10 @@ addRouteMiddleware(() => {
     justify-content: center;
     font-size: 1.5rem;
     cursor: pointer;
+
+    &.shown {
+      background: #fff6e0;
+    }
 
     @media (min-width: 768px) {
       display: none;

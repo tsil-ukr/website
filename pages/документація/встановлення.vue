@@ -15,7 +15,10 @@ definePageMeta({
     <h1 class="UiDocsLayoutTitle">Встановлення</h1>
     <p>
       Щоб використовувати <strong>Ціль</strong>, на вашій операційній системи
-      має бути попередньо встановлено CLang.
+      має бути попередньо встановлено
+      <a target="_blank" class="UiLink" href="https://clang.llvm.org/">CLang</a
+      >. Він не включається в архів випусків (як в інших мовах), щоб не
+      завантажувати ще 150МБ одних і тих ж бібліотек.
     </p>
     <p><strong>Ціль</strong> можна завантажити з таблиці нижче:</p>
     <select name="version" id="selectVersion">
@@ -26,7 +29,7 @@ definePageMeta({
         <tr>
           <th>ОС</th>
           <th>Архітектура</th>
-          <th>Файл</th>
+          <th>Архіви</th>
         </tr>
       </thead>
       <tbody>

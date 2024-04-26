@@ -2,7 +2,7 @@
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 const example1 = `
-дія додати(а: ціле, б: ціле) -> ціле {
+дія додати(а: ціле, б: ціле): ціле {
   вернути а + б;
 }
 

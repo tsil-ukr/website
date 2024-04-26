@@ -26,12 +26,12 @@ definePageMeta({
       з C та C++. <strong>Ціль</strong> також можна компілювати в WASM.
     </p>
     <hr />
-    <p>
-      Група <strong>Цілі</strong> в Масці:
-      <a class="UiLink" target="_blank" href="https://maska.me/tsil"
-        >maska.me/tsil</a
-      >
-    </p>
+    <!--    <p>-->
+    <!--      Група <strong>Цілі</strong> в Масці:-->
+    <!--      <a class="UiLink" target="_blank" href="https://maska.me/tsil"-->
+    <!--        >maska.me/tsil</a-->
+    <!--      >-->
+    <!--    </p>-->
     <p>
       GitHub <strong>Цілі</strong>:
       <a class="UiLink" target="_blank" href="https://github.com/tsil-ukr/tsil"

@@ -1,6 +1,35 @@
 <script setup lang="ts">
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
+const selectedVersion = ref();
+const releases = ref([]);
+const isLoadingReleases = ref(true);
+
+const selectedVersionObject = computed(() => {
+  return releases.value.find(
+    (release) => release.tag_name === selectedVersion.value,
+  );
+});
+
+onMounted(() => {
+  isLoadingReleases.value = true;
+  fetch("https://api.github.com/repos/tsil-ukr/tsil/releases/latest")
+    .then((res) => res.json())
+    .then((latestRelease) => {
+      fetch("https://api.github.com/repos/tsil-ukr/tsil/releases")
+        .then((res) => res.json())
+        .then((data) => {
+          releases.value = data;
+          if (data[0] && data[0].id === latestRelease.id) {
+            releases.value = data.slice(1);
+          }
+          releases.value = [latestRelease, ...releases.value];
+          isLoadingReleases.value = false;
+          selectedVersion.value = latestRelease.tag_name;
+        });
+    });
+});
+
 useHead({
   title: "Встановлення | Документація | Ціль",
 });
@@ -21,28 +50,44 @@ definePageMeta({
       завантажувати ще 150МБ одних і тих ж бібліотек.
     </p>
     <p><strong>Ціль</strong> можна завантажити з таблиці нижче:</p>
-    <select name="version" id="selectVersion">
-      <option value="0.1.0">0.1.0</option>
-    </select>
-    <table>
-      <thead>
-        <tr>
-          <th>ОС</th>
-          <th>Архітектура</th>
-          <th>Архіви</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Linux</td>
-          <td>x64</td>
-          <td>
-            <a href="https://ціль.укр/" download="ціль-0.1.0-x64-linux.zip">
-              ціль-0.1.0-x64-linux.zip
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <template v-if="selectedVersion">
+      <select v-model="selectedVersion" name="version" id="selectVersion">
+        <template v-for="release in releases">
+          <option
+            :value="release.tag_name"
+            :selected="release.tag_name === selectedVersion"
+          >
+            {{ release.tag_name }}
+          </option>
+        </template>
+      </select>
+      <table>
+        <thead>
+          <tr>
+            <th>Файли</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template v-for="(asset, i) in selectedVersionObject.assets">
+            <tr>
+              <td>
+                <a :href="asset.browser_download_url" class="link external">
+                  <span class="material-symbols-rounded bold">download</span>
+                  {{ asset.name }}
+                </a>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </template>
+    <template v-else>
+      <template v-if="isLoadingReleases">
+        <blockquote class="loading">Завантаження...</blockquote>
+      </template>
+      <template v-else>
+        <blockquote class="error">Немає випусків</blockquote>
+      </template>
+    </template>
   </UiDocsWrapper>
 </template>

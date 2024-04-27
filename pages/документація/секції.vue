@@ -4,7 +4,7 @@ import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 const example1 = `
 секція двигуни {
   структура ІоннийДвигун {
-    потужність: ціле,
+    потужність: ціле;
   }
   
   дія запустити(двигун: ІоннийДвигун) {

@@ -3,8 +3,8 @@ import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 const example1 = `
 структура Координати {
-  в: дійсне,
-  ш: дійсне,
+  в: дійсне;
+  ш: дійсне;
 }
 
 ціль точка = Координати {

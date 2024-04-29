@@ -19,12 +19,6 @@ const whileExample = `
 }
 `.trim();
 
-const eachExample = `
-перебрати 0..10 як значення {
-  друк_ціле(значення);
-}
-`.trim();
-
 useHead({
   title: "Вказівки | Документація | Ціль",
 });
@@ -41,8 +35,6 @@ definePageMeta({
     <UiCodeBlock :code="ifExample" borderless />
     <p>Поки:</p>
     <UiCodeBlock :code="whileExample" borderless />
-    <p>Перебрати:</p>
-    <UiCodeBlock :code="eachExample" borderless />
     <p>Додати:</p>
     <UiCodeBlock :code="`а + б`" borderless />
     <p>Відняти:</p>

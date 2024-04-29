@@ -71,8 +71,7 @@ definePageMeta({
           <template v-for="(asset, i) in selectedVersionObject.assets">
             <tr>
               <td>
-                <a :href="asset.browser_download_url" class="link external">
-                  <span class="material-symbols-rounded bold">download</span>
+                <a :href="asset.browser_download_url" class="UiLink">
                   {{ asset.name }}
                 </a>
               </td>

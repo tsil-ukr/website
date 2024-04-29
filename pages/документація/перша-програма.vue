@@ -43,11 +43,11 @@ definePageMeta({
     <UiCodeBlock :code="codeCpp" lang="cpp" borderless />
     <p>Після цього скомпілюйте програму цією командою:</p>
     <UiCodeBlock
-      :code="`ціль привіт.сплав сплавити привіт.ц extension.cpp`"
+      :code="`ціль привіт сплавити привіт.ц extension.cpp`"
       lang="text"
       borderless
     />
     <p>Та зрештою запустіть програму:</p>
-    <UiCodeBlock :code="`./привіт.сплав`" borderless />
+    <UiCodeBlock :code="`./привіт`" borderless />
   </UiDocsWrapper>
 </template>

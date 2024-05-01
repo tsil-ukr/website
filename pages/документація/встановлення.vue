@@ -43,7 +43,7 @@ definePageMeta({
   <UiDocsWrapper prev="/документація" next="/документація/перша-програма">
     <h1 class="UiDocsLayoutTitle">Встановлення</h1>
     <p>
-      Щоб використовувати <strong>Ціль</strong>, на вашій операційній системи
+      Щоб використовувати <strong>Ціль</strong>, на вашій операційній системі
       має бути попередньо встановлено
       <a target="_blank" class="UiLink" href="https://clang.llvm.org/">CLang</a
       >. Він не включається в архів випусків (як в інших мовах), щоб не

@@ -13,21 +13,37 @@ const selectedVersionObject = computed(() => {
 
 onMounted(() => {
   isLoadingReleases.value = true;
-  fetch("https://api.github.com/repos/tsil-ukr/tsil/releases/latest")
-    .then((res) => res.json())
-    .then((latestRelease) => {
+  const resolveLatest = (latestRelease) => {
+    if (window.__tsil_releases__) {
+      resolveAll(latestRelease, window.__tsil_releases__);
+    } else {
       fetch("https://api.github.com/repos/tsil-ukr/tsil/releases")
         .then((res) => res.json())
         .then((data) => {
-          releases.value = data;
-          if (data[0] && data[0].id === latestRelease.id) {
-            releases.value = data.slice(1);
-          }
-          releases.value = [latestRelease, ...releases.value];
-          isLoadingReleases.value = false;
-          selectedVersion.value = latestRelease.tag_name;
+          window.__tsil_releases__ = data;
+          resolveAll(latestRelease, data);
         });
-    });
+    }
+  };
+  const resolveAll = (latestRelease, data) => {
+    releases.value = data;
+    if (data[0] && data[0].id === latestRelease.id) {
+      releases.value = data.slice(1);
+    }
+    releases.value = [latestRelease, ...releases.value];
+    isLoadingReleases.value = false;
+    selectedVersion.value = latestRelease.tag_name;
+  };
+  if (window.__tsil_latest_release__) {
+    resolveLatest(window.__tsil_latest_release__);
+  } else {
+    fetch("https://api.github.com/repos/tsil-ukr/tsil/releases/latest")
+      .then((res) => res.json())
+      .then((latestRelease) => {
+        window.__tsil_latest_release__ = latestRelease;
+        resolveLatest(latestRelease);
+      });
+  }
 });
 
 useHead({
@@ -79,6 +95,16 @@ definePageMeta({
           </template>
         </tbody>
       </table>
+      <template v-if="selectedVersionObject.body">
+        <p>Зміни:</p>
+        <blockquote class="normal">
+          <template v-for="line in selectedVersionObject.body.split('\n')">
+            <template v-if="line.trim()">
+              <div>{{ line }}</div>
+            </template>
+          </template>
+        </blockquote>
+      </template>
     </template>
     <template v-else>
       <template v-if="isLoadingReleases">

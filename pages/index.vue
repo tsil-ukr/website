@@ -2,11 +2,16 @@
 const latestVersion = ref("а.б.в");
 
 onMounted(() => {
-  fetch("https://api.github.com/repos/tsil-ukr/tsil/releases/latest")
-    .then((res) => res.json())
-    .then((latestRelease) => {
-      latestVersion.value = latestRelease.tag_name;
-    });
+  if (window.__tsil_latest_release__) {
+    latestVersion.value = window.__tsil_latest_release__.tag_name;
+  } else {
+    fetch("https://api.github.com/repos/tsil-ukr/tsil/releases/latest")
+      .then((res) => res.json())
+      .then((latestRelease) => {
+        window.__tsil_latest_release__ = latestRelease;
+        latestVersion.value = latestRelease.tag_name;
+      });
+  }
 });
 
 useHead({

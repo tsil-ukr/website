@@ -44,6 +44,10 @@ const example6 = `
 }
 `.trim();
 
+const example7 = `
+синонім РД = двигуни::РеактивнийДвигун;
+`.trim();
+
 useHead({
   title: "Субʼєкти | Документація | Ціль",
 });
@@ -68,5 +72,7 @@ definePageMeta({
     <UiCodeBlock :code="example5" borderless />
     <p>Секція:</p>
     <UiCodeBlock :code="example6" borderless />
+    <p>Синонім:</p>
+    <UiCodeBlock :code="example7" borderless />
   </UiDocsWrapper>
 </template>

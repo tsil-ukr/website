@@ -67,10 +67,10 @@ const practiceLinks = useState("practiceLinks", () => [
     name: "Памʼять",
     encodedLink: encodeURI("/документація/памʼять"),
   },
-  {
-    name: "Хід",
-    encodedLink: encodeURI("/документація/хід"),
-  },
+  // {
+  //   name: "Хід",
+  //   encodedLink: encodeURI("/документація/хід"),
+  // },
 ]);
 
 const isPracticeExpanded = useState("isPracticeExpanded", () => true);

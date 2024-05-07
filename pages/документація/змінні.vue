@@ -2,9 +2,21 @@
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 const example1 = `
-змінна а = 2;
+дія старт() {
+  змінна а = 2;
 
-а = 3; // ок
+  а = 3; // ок
+}
+`.trim();
+
+const example3 = `
+дія старт() {
+  ціль іван = Людина {
+    імʼя = "Іван",
+  };
+  
+  іван.імʼя = "Іванко"; // ок
+}
 `.trim();
 
 useHead({

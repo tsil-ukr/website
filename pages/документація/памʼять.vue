@@ -11,13 +11,17 @@ definePageMeta({
 </script>
 
 <template>
-  <UiDocsWrapper prev="/документація/секції" next="/документація/хід">
+  <UiDocsWrapper prev="/документація/секції">
     <h1 class="UiDocsLayoutTitle">Памʼять</h1>
     <p>
       Робота з памʼятю в <strong>Цілі</strong> відбувається в ручному режимі.
     </p>
     <p>Дії для роботи з памʼятю:</p>
     <ul>
+      <li>
+        Отримання розміру типу в байтах:
+        <UiCodeBlock code="дія розмір<Т>(): позитивне;" borderless />
+      </li>
       <li>
         Отримання комірки для значення на стеку:
         <UiCodeBlock
@@ -27,10 +31,7 @@ definePageMeta({
       </li>
       <li>
         Копіювання значення з комірки на стек:
-        <UiCodeBlock
-          code="дія вміст<Т>(значення: комірка<Т>): Т;"
-          borderless
-        />
+        <UiCodeBlock code="дія вміст<Т>(значення: комірка<Т>): Т;" borderless />
       </li>
       <li>
         Виділення памʼяті для вказаної кількості елементів вказаного типу:

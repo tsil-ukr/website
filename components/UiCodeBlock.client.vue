@@ -172,6 +172,18 @@ code {
     font-family: "Fira Code", monospace;
     font-weight: 500;
     overflow-x: auto;
+
+    > * {
+      animation: opacity 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+      @keyframes opacity {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    }
   }
 
   &.borderless {
@@ -185,6 +197,10 @@ code {
     .shiki {
       min-height: revert;
       padding: 1rem 1.25rem;
+
+      > * {
+        animation: none;
+      }
     }
   }
 }

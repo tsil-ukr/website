@@ -236,6 +236,7 @@ useHead({
     margin-top: 1rem;
     max-width: 500px;
     width: 100%;
+    min-height: 117px !important;
   }
 
   .UiMainButtons {

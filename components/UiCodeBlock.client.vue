@@ -173,6 +173,10 @@ code {
     font-weight: 500;
     overflow-x: auto;
 
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     > * {
       animation: opacity 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
       @keyframes opacity {
@@ -195,7 +199,7 @@ code {
     }
 
     .shiki {
-      min-height: revert;
+      min-height: 0;
       padding: 1rem 1.25rem;
 
       > * {

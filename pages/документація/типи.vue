@@ -107,14 +107,6 @@ definePageMeta({
         <UiCodeBlock code='ціль п = "привіт";' borderless />
       </li>
       <li>
-        <b>сі</b>
-        <p>
-          сі це тип комірки, що містить частину памʼяті, яка закінчується
-          нульовим байтом.
-        </p>
-        <UiCodeBlock code='ціль с = сі"привіт";' borderless />
-      </li>
-      <li>
         <b>[]</b>
         <p>[] це тип ...</p>
         <UiCodeBlock

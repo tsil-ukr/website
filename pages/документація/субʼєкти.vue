@@ -48,6 +48,18 @@ const example7 = `
 синонім РД = двигуни::РеактивнийДвигун;
 `.trim();
 
+const example8 = `
+варіація ДаніЗначення {
+  число: дійсне;
+  обʼєкт: невідома_комірка;
+}
+
+структура Значення {
+  тип: п8;
+  дані: ДаніЗначення;
+}
+`.trim();
+
 useHead({
   title: "Субʼєкти | Документація | Ціль",
 });
@@ -74,5 +86,7 @@ definePageMeta({
     <UiCodeBlock :code="example6" borderless />
     <p>Синонім:</p>
     <UiCodeBlock :code="example7" borderless />
+    <p>Варіація:</p>
+    <UiCodeBlock :code="example8" borderless />
   </UiDocsWrapper>
 </template>

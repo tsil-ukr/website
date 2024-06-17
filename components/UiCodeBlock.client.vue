@@ -126,6 +126,15 @@ code {
   --f: 300deg;
   --g: 330deg;
   --x: 0deg;
+  animation: opacity 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+  @keyframes opacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
   &:before {
     z-index: -1;
@@ -191,6 +200,7 @@ code {
   }
 
   &.borderless {
+    animation: none;
     margin-top: 1rem;
     margin-bottom: 1rem;
 

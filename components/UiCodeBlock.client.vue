@@ -25,6 +25,8 @@ const cppLanguage = {
 
 const id = ref(`UiCodeBlock_${Math.random()}`);
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 onMounted(() => {
   shiki
     .getHighlighter({
@@ -41,12 +43,18 @@ onMounted(() => {
         props.code,
         { lang: props.lang },
       );
+      setTimeout(() => {
+        document.getElementById(id.value).style.animation =
+          "spin 2s cubic-bezier(0.4, 0.2, 0.2, 1)";
+      }, 100);
     });
 });
 </script>
 
 <template>
-  <div :id="id" class="UiCodeBlock" :class="{ borderless }"></div>
+  <div :id="id" class="UiCodeBlock" :class="{ borderless }">
+    <div class="shiki"></div>
+  </div>
 </template>
 
 <style lang="scss">
@@ -55,32 +63,96 @@ code {
   font-weight: 500;
 }
 
+@property --a {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 30deg;
+}
+
+@property --b {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 120deg;
+}
+
+@property --c {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 150deg;
+}
+
+@property --d {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 180deg;
+}
+
+@property --e {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 210deg;
+}
+
+@property --f {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 300deg;
+}
+
+@property --g {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 330deg;
+}
+
+@property --x {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
 .UiCodeBlock {
   position: relative;
   z-index: 0;
   border-radius: 1rem;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  min-height: 69px;
 
   &:before {
     z-index: -1;
-    content: "";
+    content: " ";
     position: absolute;
     inset: -0.5rem;
     padding: 0.5rem;
     border-radius: 1rem;
     background: conic-gradient(
+      from var(--x),
       #9b503a,
-      #0000 30deg 120deg,
-      #ffe173 150deg 180deg,
-      #0000 210deg 300deg,
-      #9b503a 330deg
+      #0000 var(--a) var(--b),
+      #ffe173 var(--c) var(--d),
+      #0000 var(--e) var(--f),
+      #9b503a var(--g)
     );
     background-color: #1d1315;
     border: 2px solid #1d1315;
   }
 
+  @keyframes spin {
+    0% {
+      --x: 0deg;
+    }
+    50% {
+      --x: -180deg;
+    }
+    100% {
+      --x: -360deg;
+    }
+  }
+
   .shiki {
+    min-height: 69px;
+    z-index: -1;
     padding: 1.5rem;
     border-radius: inherit;
     font-weight: 500;

@@ -183,6 +183,7 @@ code {
     }
 
     .shiki {
+      min-height: revert;
       padding: 1rem 1.25rem;
     }
   }

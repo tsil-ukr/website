@@ -118,12 +118,23 @@ code {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   min-height: 69px;
+  --a: 30deg;
+  --b: 120deg;
+  --c: 150deg;
+  --d: 180deg;
+  --e: 210deg;
+  --f: 300deg;
+  --g: 330deg;
+  --x: 0deg;
 
   &:before {
     z-index: -1;
-    content: " ";
+    content: "";
     position: absolute;
-    inset: -0.5rem;
+    top: -0.5rem;
+    left: -0.5rem;
+    right: -0.5rem;
+    bottom: -0.5rem;
     padding: 0.5rem;
     border-radius: 1rem;
     background: conic-gradient(

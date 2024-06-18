@@ -11,7 +11,7 @@ definePageMeta({
 </script>
 
 <template>
-  <UiDocsWrapper prev="/документація/синоніми">
+  <UiDocsWrapper prev="/документація/варіації">
     <h1 class="UiDocsLayoutTitle">Памʼять</h1>
     <p>
       Робота з памʼятю в <strong>Цілі</strong> відбувається в ручному режимі.

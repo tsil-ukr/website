@@ -23,7 +23,7 @@ definePageMeta({
 </script>
 
 <template>
-  <UiDocsWrapper prev="/документація/дії" next="/документація/композиції">
+  <UiDocsWrapper prev="/документація/синоніми" next="/документація/памʼять">
     <h1 class="UiDocsLayoutTitle">Варіації</h1>
     <p>
       Варіація це субʼєкт, що володіє певним значенням під час компіляції

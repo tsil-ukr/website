@@ -21,7 +21,7 @@ definePageMeta({
 </script>
 
 <template>
-  <UiDocsWrapper prev="/документація/секції" next="/документація/памʼять">
+  <UiDocsWrapper prev="/документація/секції" next="/документація/варіації">
     <h1 class="UiDocsLayoutTitle">Синоніми</h1>
     <p>Синонім можна створити на інший субʼєкт, число або ю8-текст.</p>
     <UiCodeBlock :code="example1" borderless />

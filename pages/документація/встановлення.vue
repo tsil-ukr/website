@@ -59,11 +59,11 @@ definePageMeta({
   <UiDocsWrapper prev="/документація" next="/документація/перша-програма">
     <h1 class="UiDocsLayoutTitle">Встановлення</h1>
     <p>
-      Щоб використовувати <strong>Ціль</strong>, на вашій операційній системі
-      має бути попередньо встановлено
-      <a target="_blank" class="UiLink" href="https://clang.llvm.org/">CLang</a
-      >. Він не включається в архів випусків (як в інших мовах), щоб не
-      завантажувати ще 150МБ одних і тих ж бібліотек.
+      Наразі, щоб компілювати <strong>Ціль</strong> в машинний код, у вашій
+      операційній системі також має бути попередньо встановлено
+      <a target="_blank" class="UiLink" href="https://clang.llvm.org/"
+        >LLVM/Clang</a
+      >.
     </p>
     <p><strong>Ціль</strong> можна завантажити з таблиці нижче:</p>
     <template v-if="selectedVersion">

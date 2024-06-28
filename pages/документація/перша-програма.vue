@@ -2,7 +2,7 @@
 import UiDocsWrapper from "~/components/UiDocsWrapper.vue";
 
 const code = `
-зовнішня дія друк_ю8(значення: памʼять<ц8>);
+зовнішня дія друк_ю8(значення: памʼять<п8>);
 
 дія старт() {
   друк_ю8(ю8"Вперед до Цілі!");
@@ -12,7 +12,7 @@ const code = `
 const codeCpp = `
 #include <iostream>
 
-extern "C" void друк_ю8(char* value) {
+extern "C" void друк_ю8(unsigned char* value) {
   std::cout << value << std::endl;
 }
 `.trim();

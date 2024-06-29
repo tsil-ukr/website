@@ -21,22 +21,5 @@ definePageMeta({
     </p>
     <p><strong>Ціль</strong> має статичну типизацію.</p>
     <p>Керування памʼятю в <strong>Цілі</strong> ручне.</p>
-    <p>
-      <strong>Ціль</strong> створена спеціально з можливістю легко інтегруватись
-      з C та C++.
-    </p>
-    <hr />
-    <!--    <p>-->
-    <!--      Група <strong>Цілі</strong> в Масці:-->
-    <!--      <a class="UiLink" target="_blank" href="https://maska.me/tsil"-->
-    <!--        >maska.me/tsil</a-->
-    <!--      >-->
-    <!--    </p>-->
-    <p>
-      GitHub <strong>Цілі</strong>:
-      <a class="UiLink" target="_blank" href="https://github.com/tsil-ukr/tsil"
-        >github.com/tsil-ukr/tsil</a
-      >
-    </p>
   </UiDocsWrapper>
 </template>

@@ -114,5 +114,12 @@ definePageMeta({
         <blockquote class="error">Немає випусків</blockquote>
       </template>
     </template>
+    <hr />
+    <p>
+      GitHub <strong>Цілі</strong>:
+      <a class="UiLink" target="_blank" href="https://github.com/tsil-ukr/tsil"
+        >github.com/tsil-ukr/tsil</a
+      >
+    </p>
   </UiDocsWrapper>
 </template>

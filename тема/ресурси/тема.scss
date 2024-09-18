@@ -487,7 +487,24 @@ code:not(.shikicode) {
     border: 1px solid rgb(var(--border-rgb));
 
     &::-webkit-scrollbar {
-      display: none;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 0.25rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgb(var(--code-bg-rgb));
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgb(var(--border-rgb));
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 0.25rem;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgb(var(--hover-rgb));
     }
   }
 }

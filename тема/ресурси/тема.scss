@@ -489,22 +489,18 @@ code:not(.shikicode) {
     &::-webkit-scrollbar {
       width: 0.5rem;
       height: 0.5rem;
-      border-radius: 0.25rem;
     }
 
     &::-webkit-scrollbar-track {
       background: rgb(var(--code-bg-rgb));
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: rgb(var(--border-rgb));
-      width: 0.5rem;
-      height: 0.5rem;
       border-radius: 0.25rem;
     }
 
-    &::-webkit-scrollbar-thumb:hover {
-      background: rgb(var(--hover-rgb));
+    &::-webkit-scrollbar-thumb {
+      background: rgb(var(--muted-rgb));
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 0.25rem;
     }
   }
 }

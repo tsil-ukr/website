@@ -744,3 +744,42 @@ hr {
 .XDocsTableWrapper {
   overflow-x: auto;
 }
+
+ul + h1,
+ul + h2,
+ul + h3,
+ul + h4,
+ul + h5,
+ul + h6,
+p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6,
+pre + h1,
+pre + h2,
+pre + h3,
+pre + h4,
+pre + h5,
+pre + h6 {
+  margin-top: 2em;
+}
+
+details + details {
+  margin-top: 1rem;
+}
+
+details {
+  border: 1px solid rgb(var(--border-rgb));
+
+  padding: 1rem;
+}
+
+summary {
+  cursor: pointer;
+}
+
+li + li {
+  margin-top: 0.5rem;
+}

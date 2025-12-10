@@ -1,164 +1,82 @@
 const tsilTmLanguage = {
-    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-    "name": "ціль",
-    "patterns": [
-        {
-            "include": "#keywords"
-        },
-        {
-            "include": "#strings"
-        },
-        {
-            "include": "#constants"
-        },
-        {
-            "include": "#comments"
-        },
-        {
-            "include": "#functions"
-        },
-        {
-            "include": "#types"
-        },
-        {
-            "include": "#construct"
-        },
-        {
-            "include": "#variables"
-        }
-    ],
-    "repository": {
-        "keywords": {
-            "patterns": [
-                {
-                    "name": "keyword.control.tsil",
-                    "match": "\\b(дія|як|ціль|мета|і|або|вабо|синонім|видалити|стала|змінна|композиція|простір|властивість|спец|я|розширити|зовнішня|внутрішня|місцева|покласти|відкласти|варіація|структура|перебрати|якщо|чекати|взяти|вернути|інакше|біб|поки)\\b"
-                }
-            ]
-        },
-        "strings": {
-            "name": "string.quoted.double.tsil",
-            "begin": "\"",
-            "end": "\"",
-            "patterns": [
-                {
-                    "name": "constant.character.escape.tsil",
-                    "match": "\\\\."
-                }
-            ]
-        },
-        "constants": {
-            "patterns": [
-                {
-                    "name": "constant.numeric.tsil",
-                    "match": "\\b\\d+(\\.\\d+)?\\b"
-                }
-            ]
-        },
-        "comments": {
-            "patterns": [
-                {
-                    "name": "comment.line.tsil",
-                    "match": "//.*$"
-                },
-                {
-                    "name": "comment.block.tsil",
-                    "begin": "/\\*.*",
-                    "end": "\\*/"
-                }
-            ]
-        },
-        "types": {
-            "patterns": [
-                {
-                    "name": "support.type.primitive.tsil",
-                    "match": "\\b(текст|памʼять|адреса|невідома_памʼять|невідома_адреса|д64|кд|логічне|ц8|ц16|ц32|ц64|ціле|д32|д64|ю8|п8|п16|п32|п64|позитивне|п8|п16|п32|п64|природне|список|щось|ніщо|так|ні|пусто)\\b"
-                }
-            ]
-        },
-        "variables": {
-            "patterns": [
-                {
-                    "name": "variable.other.tsil",
-                    "match": "\\b(\\w+'?\\w+)\\b"
-                }
-            ]
-        },
-        "functions": {
-            "patterns": [
-                {
-                    "begin": "([::|\\w]+)(<[::|\\w]+>)?\\(",
-                    "beginCaptures": {
-                        "1": {
-                            "name": "entity.name.function.tsil"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "include": "#keywords"
-                        },
-                        {
-                            "include": "#strings"
-                        },
-                        {
-                            "include": "#constants"
-                        },
-                        {
-                            "include": "#comments"
-                        },
-                        {
-                            "include": "#types"
-                        },
-                        {
-                            "include": "#functions"
-                        },
-                        {
-                            "include": "#variables"
-                        }
-                    ],
-                    "end": "\\)"
-                }
-            ]
-        },
-        "construct": {
-            "patterns": [
-                {
-                    "begin": "([::|\\w]+)(<[::|\\w]+>)? \\{",
-                    "beginCaptures": {
-                        "1": {
-                            "name": "entity.name.function.tsil"
-                        }
-                    },
-                    "patterns": [
-                        {
-                            "include": "#keywords"
-                        },
-                        {
-                            "include": "#strings"
-                        },
-                        {
-                            "include": "#constants"
-                        },
-                        {
-                            "include": "#comments"
-                        },
-                        {
-                            "include": "#types"
-                        },
-                        {
-                            "include": "#functions"
-                        },
-                        {
-                            "include": "#variables"
-                        }
-                    ],
-                    "end": "[ |\\n|\\}]"
-                }
-            ]
-        }
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "ціль",
+  "patterns": [
+    {
+      "include": "#keywords"
     },
-    "scopeName": "source.ціль"
-};
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#constants"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#attributes"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.tsil",
+          "match": "\\b(дія|структура|або|і|пусто|стрибнути|вабо|не|так|ні|стала|якщо|поки|взяти означення|взяти біб|взяти|як|вернути|інакше|зовнішня|місцева|внутрішня|простір|синонім|змінна|ціль)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.tsil",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.tsil",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.numeric.tsil",
+          "match": "\\b\\d+(\\.\\d+)?\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "support.type.primitive.tsil",
+          "match": "\\b(кд|ц8|ц16|ц32|ц64|ціле|п8|п16|п32|п64|природне|ю8|вміст|логічне|адреса|памʼять|невідома_адреса|невідома_памʼять|д32|д64|ніщо)\\b"
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.tsil",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.tsil",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "attributes": {
+      "name": "entity.other.attribute-name.tsil",
+      "match": "\\\\[a-zA-Zа-яА-ЯіІїЇєЄґҐ_][a-zA-Zа-яА-ЯіІїЇєЄґҐ0-9_]*"
+    }
+  },
+  "scopeName": "source.ціль"
+}
 
 global.extendAsync = async () => {
     let highlighter = await global.shikiCreateHighlighter({

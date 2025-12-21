@@ -346,20 +346,19 @@ pre, code {
 }
 
 .UiMainFooter {
-  z-index: 2;
+  z-index: 1002;
   margin: 0 auto;
   margin-top: 4rem;
   color: #7D2E34;
   text-align: center;
   font-size: 0.8rem;
-  letter-spacing: max(0.5rem, min(1vw, 1rem));
 }
 
 .UiMainFooter img {
-  margin-top: 0.25rem;
-  margin-right: calc(0.75rem + 1vw);
-  height: 1em;
+  height: 1rem;
   object-fit: contain;
+  z-index: 1002;
+  backdrop-filter: blur(2px);
 }
 
 .circled {

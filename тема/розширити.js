@@ -1,103 +1,106 @@
 const tsilTmLanguage = {
-  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "name": "ціль",
-  "patterns": [
+  $schema:
+    "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  name: "ціль",
+  patterns: [
     {
-      "include": "#keywords"
+      include: "#keywords",
     },
     {
-      "include": "#strings"
+      include: "#strings",
     },
     {
-      "include": "#constants"
+      include: "#constants",
     },
     {
-      "include": "#comments"
+      include: "#comments",
     },
     {
-      "include": "#types"
+      include: "#types",
     },
     {
-      "include": "#attributes"
-    }
+      include: "#attributes",
+    },
   ],
-  "repository": {
-    "keywords": {
-      "patterns": [
+  repository: {
+    keywords: {
+      patterns: [
         {
-          "name": "keyword.control.tsil",
-          "match": "\\b(дія|структура|або|і|пусто|стрибнути|вабо|не|так|ні|стала|якщо|поки|взяти означення|взяти біб|взяти|як|вернути|інакше|зовнішня|місцева|внутрішня|простір|синонім|змінна|ціль)\\b"
-        }
-      ]
+          name: "keyword.control.tsil",
+          match:
+            "\\b(дія|структура|або|і|пусто|стрибнути|вабо|не|так|ні|стала|якщо|поки|взяти означення|взяти біб|взяти|як|вернути|інакше|зовнішня|місцева|внутрішня|простір|синонім|змінна|ціль)\\b",
+        },
+      ],
     },
-    "strings": {
-      "name": "string.quoted.double.tsil",
-      "begin": "\"",
-      "end": "\"",
-      "patterns": [
+    strings: {
+      name: "string.quoted.double.tsil",
+      begin: '"',
+      end: '"',
+      patterns: [
         {
-          "name": "constant.character.escape.tsil",
-          "match": "\\\\."
-        }
-      ]
+          name: "constant.character.escape.tsil",
+          match: "\\\\.",
+        },
+      ],
     },
-    "constants": {
-      "patterns": [
+    constants: {
+      patterns: [
         {
-          "name": "constant.numeric.tsil",
-          "match": "\\b\\d+(\\.\\d+)?\\b"
-        }
-      ]
+          name: "constant.numeric.tsil",
+          match: "\\b\\d+(\\.\\d+)?\\b",
+        },
+      ],
     },
-    "types": {
-      "patterns": [
+    types: {
+      patterns: [
         {
-          "name": "support.type.primitive.tsil",
-          "match": "\\b(кд|ц8|ц16|ц32|ц64|ціле|п8|п16|п32|п64|природне|ю8|вміст|логічне|адреса|памʼять|невідома_адреса|невідома_памʼять|д32|д64|ніщо)\\b"
-        }
-      ]
+          name: "support.type.primitive.tsil",
+          match:
+            "\\b(кд|ц8|ц16|ц32|ц64|ціле|п8|п16|п32|п64|природне|ю8|вміст|логічне|адреса|памʼять|невідома_адреса|невідома_памʼять|д32|д64|ніщо)\\b",
+        },
+      ],
     },
-    "comments": {
-      "patterns": [
+    comments: {
+      patterns: [
         {
-          "name": "comment.line.tsil",
-          "match": "//.*$"
+          name: "comment.line.tsil",
+          match: "//.*$",
         },
         {
-          "name": "comment.block.tsil",
-          "begin": "/\\*",
-          "end": "\\*/"
-        }
-      ]
+          name: "comment.block.tsil",
+          begin: "/\\*",
+          end: "\\*/",
+        },
+      ],
     },
-    "attributes": {
-      "name": "entity.other.attribute-name.tsil",
-      "match": "\\\\[a-zA-Zа-яА-ЯіІїЇєЄґҐ_][a-zA-Zа-яА-ЯіІїЇєЄґҐ0-9_]*"
-    }
+    attributes: {
+      name: "entity.other.attribute-name.tsil",
+      match: "\\@[a-zA-Zа-яА-ЯіІїЇєЄґҐ_][a-zA-Zа-яА-ЯіІїЇєЄґҐ0-9_]*",
+    },
   },
-  "scopeName": "source.ціль"
-}
+  scopeName: "source.ціль",
+};
 
 global.extendAsync = async () => {
-    let highlighter = await global.shikiCreateHighlighter({
-        themes: ['github-dark'],
-        langs: ['cpp', 'shell', tsilTmLanguage],
-    });
-    md.options.highlight = (str, lang) => {
-        const wrap = (content) => {
-            return `<pre><div class="XDocsCodeWrapper">${content}</div></pre>`;
-        };
-        const code = highlighter.codeToHtml(str, {
-            theme: 'github-dark',
-            lang: lang,
-            transformers: [
-                {
-                    code(node) {
-                        this.addClassToHast(node, 'shikicode')
-                    },
-                }
-            ]
-        })
-        return wrap(code);
+  let highlighter = await global.shikiCreateHighlighter({
+    themes: ["github-dark"],
+    langs: ["cpp", "shell", tsilTmLanguage],
+  });
+  md.options.highlight = (str, lang) => {
+    const wrap = (content) => {
+      return `<pre><div class="XDocsCodeWrapper">${content}</div></pre>`;
     };
-}
+    const code = highlighter.codeToHtml(str, {
+      theme: "github-dark",
+      lang: lang,
+      transformers: [
+        {
+          code(node) {
+            this.addClassToHast(node, "shikicode");
+          },
+        },
+      ],
+    });
+    return wrap(code);
+  };
+};

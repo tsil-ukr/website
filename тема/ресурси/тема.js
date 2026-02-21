@@ -1,78 +1,96 @@
 function enableMobileMode() {
-    document.documentElement.classList.add("mobile");
+  document.documentElement.classList.add("mobile");
 }
 
 function disableMobileMode() {
-    document.documentElement.classList.remove("mobile");
+  document.documentElement.classList.remove("mobile");
 }
 
 function checkMobileMode() {
-    if (window.innerWidth < 950) {
-        enableMobileMode();
-    }
-    if (window.innerWidth >= 950) {
-        disableMobileMode();
-    }
+  if (window.innerWidth < 950) {
+    enableMobileMode();
+  }
+  if (window.innerWidth >= 950) {
+    disableMobileMode();
+  }
 }
 
 checkMobileMode();
 
 window.addEventListener("resize", () => {
-    checkMobileMode();
+  checkMobileMode();
 });
 
 function enableDarkMode() {
-    document.documentElement.classList.add("dark");
+  document.documentElement.classList.add("dark");
 }
 
 function disableDarkMode() {
-    document.documentElement.classList.remove("dark");
+  document.documentElement.classList.remove("dark");
 }
 
 function checkDarkMode() {
-    const currentMode = localStorage.getItem("tsil_ukr_light_mode");
-    if (currentMode === "auto") {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            enableDarkMode();
-        } else {
-            disableDarkMode();
-        }
-        document.querySelectorAll(`[data-navigation-light-toggle-badge-auto=true]`).forEach((el) => {
-            el.style.display = "block";
-        });
-        document.querySelectorAll(`[data-navigation-light-toggle-badge-yes=true]`).forEach((el) => {
-            el.style.display = "none";
-        });
-        document.querySelectorAll(`[data-navigation-light-toggle-badge-no=true]`).forEach((el) => {
-            el.style.display = "none";
-        });
-    } else if (currentMode === "light") {
-        disableDarkMode();
-        document.querySelectorAll(`[data-navigation-light-toggle-badge-auto=true]`).forEach((el) => {
-            el.style.display = "none";
-        });
-        document.querySelectorAll(`[data-navigation-light-toggle-badge-yes=true]`).forEach((el) => {
-            el.style.display = "block";
-        });
-        document.querySelectorAll(`[data-navigation-light-toggle-badge-no=true]`).forEach((el) => {
-            el.style.display = "none";
-        });
-    } else if (currentMode === "dark") {
-        enableDarkMode();
-        document.querySelectorAll(`[data-navigation-light-toggle-badge-auto=true]`).forEach((el) => {
-            el.style.display = "none";
-        });
-        document.querySelectorAll(`[data-navigation-light-toggle-badge-yes=true]`).forEach((el) => {
-            el.style.display = "none";
-        });
-        document.querySelectorAll(`[data-navigation-light-toggle-badge-no=true]`).forEach((el) => {
-            el.style.display = "block";
-        });
+  const currentMode = localStorage.getItem("tsil_ukr_light_mode");
+  if (currentMode === "auto") {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      enableDarkMode();
+    } else {
+      disableDarkMode();
     }
+    document
+      .querySelectorAll(`[data-navigation-light-toggle-badge-auto=true]`)
+      .forEach((el) => {
+        el.style.display = "block";
+      });
+    document
+      .querySelectorAll(`[data-navigation-light-toggle-badge-yes=true]`)
+      .forEach((el) => {
+        el.style.display = "none";
+      });
+    document
+      .querySelectorAll(`[data-navigation-light-toggle-badge-no=true]`)
+      .forEach((el) => {
+        el.style.display = "none";
+      });
+  } else if (currentMode === "light") {
+    disableDarkMode();
+    document
+      .querySelectorAll(`[data-navigation-light-toggle-badge-auto=true]`)
+      .forEach((el) => {
+        el.style.display = "none";
+      });
+    document
+      .querySelectorAll(`[data-navigation-light-toggle-badge-yes=true]`)
+      .forEach((el) => {
+        el.style.display = "block";
+      });
+    document
+      .querySelectorAll(`[data-navigation-light-toggle-badge-no=true]`)
+      .forEach((el) => {
+        el.style.display = "none";
+      });
+  } else if (currentMode === "dark") {
+    enableDarkMode();
+    document
+      .querySelectorAll(`[data-navigation-light-toggle-badge-auto=true]`)
+      .forEach((el) => {
+        el.style.display = "none";
+      });
+    document
+      .querySelectorAll(`[data-navigation-light-toggle-badge-yes=true]`)
+      .forEach((el) => {
+        el.style.display = "none";
+      });
+    document
+      .querySelectorAll(`[data-navigation-light-toggle-badge-no=true]`)
+      .forEach((el) => {
+        el.style.display = "block";
+      });
+  }
 }
 
 if (!localStorage.getItem("tsil_ukr_light_mode")) {
-    localStorage.setItem("tsil_ukr_light_mode", "auto");
+  localStorage.setItem("tsil_ukr_light_mode", "auto");
 }
 
 // document.querySelector(".XDocsPageNavigationFooter").innerHTML += `<button class="XDocsPageNavigationFooterConfigButton">
@@ -95,97 +113,109 @@ if (!localStorage.getItem("tsil_ukr_light_mode")) {
 //     checkDarkMode();
 // });
 
-document.querySelector(".XDocsPageNavigationSearch button").addEventListener("click", () => {
+document
+  .querySelector(".XDocsPageNavigationSearch button")
+  .addEventListener("click", () => {
     const $searchInput = document.createElement("input");
     $searchInput.classList.add("XDocsSearchInput");
     $searchInput.setAttribute("type", "text");
     $searchInput.setAttribute("placeholder", "Пошук");
     $searchInput.addEventListener("input", () => {
-        const searchValue = $searchInput.value.trim();
-        window.searchDocs(searchValue).then((result) => {
-            if (result.length === 0) {
-                renderEmpty();
-            } else {
-                renderResult(result);
-            }
-        });
+      const searchValue = $searchInput.value.trim();
+      window.searchDocs(searchValue).then((result) => {
+        if (result.length === 0) {
+          renderEmpty();
+        } else {
+          renderResult(result);
+        }
+      });
     });
-    $searchInput.addEventListener("keydown", (e) => {
+    $searchInput.addEventListener(
+      "keydown",
+      (e) => {
         if (e.key === "ArrowDown") {
-            const $firstItem = $searchResults.firstElementChild;
-            if ($firstItem) {
-                $firstItem.focus();
-                e.preventDefault();
-                e.stopPropagation();
-            } else {
-                $searchInput.focus();
-                e.preventDefault();
-                e.stopPropagation();
-            }
+          const $firstItem = $searchResults.firstElementChild;
+          if ($firstItem) {
+            $firstItem.focus();
+            e.preventDefault();
+            e.stopPropagation();
+          } else {
+            $searchInput.focus();
+            e.preventDefault();
+            e.stopPropagation();
+          }
         }
         if (e.key === "ArrowUp") {
-            const $lastItem = $searchResults.lastElementChild;
-            if ($lastItem) {
-                $lastItem.focus();
-                e.preventDefault();
-                e.stopPropagation();
-            } else {
-                $searchInput.focus();
-                e.preventDefault();
-                e.stopPropagation();
-            }
+          const $lastItem = $searchResults.lastElementChild;
+          if ($lastItem) {
+            $lastItem.focus();
+            e.preventDefault();
+            e.stopPropagation();
+          } else {
+            $searchInput.focus();
+            e.preventDefault();
+            e.stopPropagation();
+          }
         }
-    }, false);
+      },
+      false,
+    );
 
     const $searchResults = document.createElement("div");
     $searchResults.classList.add("XDocsSearchResults");
     $searchResults.classList.add("empty");
     $searchResults.innerHTML = "Введіть запит для пошуку";
 
-    const pathPrefix = document.querySelector("meta[name=\"xdocs-url-prefix\"]").getAttribute("content");
+    const pathPrefix = document
+      .querySelector('meta[name="xdocs-url-prefix"]')
+      .getAttribute("content");
 
     function renderResult(result) {
-        $searchResults.classList.remove("empty");
-        $searchResults.innerHTML = "";
-        result.forEach((item) => {
-            const $searchResultItem = document.createElement("a");
-            $searchResultItem.classList.add("XDocsSearchResultItem");
-            $searchResultItem.setAttribute("href", pathPrefix + item.path);
-            $searchResultItem.innerHTML = item.title;
-            $searchResults.appendChild($searchResultItem);
+      $searchResults.classList.remove("empty");
+      $searchResults.innerHTML = "";
+      result.forEach((item) => {
+        const $searchResultItem = document.createElement("a");
+        $searchResultItem.classList.add("XDocsSearchResultItem");
+        $searchResultItem.setAttribute("href", pathPrefix + item.path);
+        $searchResultItem.innerHTML = item.title;
+        $searchResults.appendChild($searchResultItem);
 
-            $searchResultItem.addEventListener("keydown", (e) => {
-                if (e.key === "ArrowDown") {
-                    const $nextItem = $searchResultItem.nextElementSibling;
-                    if ($nextItem) {
-                        $nextItem.focus();
-                        e.preventDefault();
-                        e.stopPropagation();
-                    } else {
-                        $searchInput.focus();
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                }
-                if (e.key === "ArrowUp") {
-                    const $prevItem = $searchResultItem.previousElementSibling;
-                    if ($prevItem) {
-                        $prevItem.focus();
-                        e.preventDefault();
-                        e.stopPropagation();
-                    } else {
-                        $searchInput.focus();
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                }
-            }, false);
-        });
+        $searchResultItem.addEventListener(
+          "keydown",
+          (e) => {
+            if (e.key === "ArrowDown") {
+              const $nextItem = $searchResultItem.nextElementSibling;
+              if ($nextItem) {
+                $nextItem.focus();
+                e.preventDefault();
+                e.stopPropagation();
+              } else {
+                $searchInput.focus();
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            }
+            if (e.key === "ArrowUp") {
+              const $prevItem = $searchResultItem.previousElementSibling;
+              if ($prevItem) {
+                $prevItem.focus();
+                e.preventDefault();
+                e.stopPropagation();
+              } else {
+                $searchInput.focus();
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            }
+          },
+          false,
+        );
+      });
     }
 
     function renderEmpty() {
-        $searchResults.classList.add("empty");
-        $searchResults.innerHTML = "Нічого не знайдено";
+      $searchResults.classList.add("empty");
+      $searchResults.innerHTML = "Нічого не знайдено";
     }
 
     const $searchContainer = document.createElement("div");
@@ -198,42 +228,70 @@ document.querySelector(".XDocsPageNavigationSearch button").addEventListener("cl
     $searchWrapper.appendChild($searchContainer);
 
     $searchWrapper.addEventListener("click", (e) => {
-        if (e.target === $searchWrapper) {
-            $searchWrapper.remove();
-        }
+      if (e.target === $searchWrapper) {
+        $searchWrapper.remove();
+      }
     });
     $searchWrapper.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-            $searchWrapper.remove();
-            e.preventDefault();
-            e.stopPropagation();
-        }
+      if (e.key === "Escape") {
+        $searchWrapper.remove();
+        e.preventDefault();
+        e.stopPropagation();
+      }
     });
 
     document.body.appendChild($searchWrapper);
 
     $searchInput.focus();
-});
+  });
 
 const $spaceBeforeFooterWrapper = document.createElement("div");
-$spaceBeforeFooterWrapper.classList.add("XDocsPageNavigationFooterWrapperSpaceBefore");
+$spaceBeforeFooterWrapper.classList.add(
+  "XDocsPageNavigationFooterWrapperSpaceBefore",
+);
 
-document.querySelector(".XDocsPageNavigationFooterWrapper").insertAdjacentElement("beforebegin", $spaceBeforeFooterWrapper);
+document
+  .querySelector(".XDocsPageNavigationFooterWrapper")
+  .insertAdjacentElement("beforebegin", $spaceBeforeFooterWrapper);
 
 const $activeMenuItem = document.querySelector(".XDocsPageNavigation .active");
 
 if ($activeMenuItem && $activeMenuItem.scrollIntoView) {
-    $activeMenuItem.scrollIntoView({
-        block: "center"
+  $activeMenuItem.scrollIntoView({
+    block: "center",
+  });
+}
+
+const $contentForHeadings = document.querySelector(".XDocsPageContent");
+if ($contentForHeadings) {
+  $contentForHeadings
+    .querySelectorAll("h1, h2, h3, h4, h5, h6")
+    .forEach(($heading) => {
+      const text = $heading.textContent.trim();
+      const id = text
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^a-z0-9\u0400-\u04ff-]/gi, "")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
+      if (!id) return;
+      $heading.id = id;
+      const $anchor = document.createElement("a");
+      $anchor.classList.add("XDocsHeadingAnchor");
+      $anchor.setAttribute("href", `#${id}`);
+      $anchor.setAttribute("aria-hidden", "true");
+      $anchor.setAttribute("tabindex", "-1");
+      $anchor.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"/></svg>`;
+      $heading.prepend($anchor);
     });
 }
 
 const $tables = document.querySelectorAll("table");
 
 $tables.forEach(($table) => {
-    // wrap with div
-    const $tableWrapper = document.createElement("div");
-    $tableWrapper.classList.add("XDocsTableWrapper");
-    $table.insertAdjacentElement("beforebegin", $tableWrapper);
-    $tableWrapper.appendChild($table);
+  // wrap with div
+  const $tableWrapper = document.createElement("div");
+  $tableWrapper.classList.add("XDocsTableWrapper");
+  $table.insertAdjacentElement("beforebegin", $tableWrapper);
+  $tableWrapper.appendChild($table);
 });

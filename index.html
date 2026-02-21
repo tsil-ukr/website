@@ -168,8 +168,9 @@
         text-align: center;
       }
 
-      .UiMainButton svg {
-        height: 1rem;
+      .UiMainButton svg,
+      .UiMainButton img {
+        height: 1.25rem;
       }
 
       .UiMainButton:hover {
@@ -209,6 +210,10 @@
         height: 2.5rem;
       }
 
+      .UiMainButton.github {
+        font-size: 0.6rem;
+      }
+
       .UiMainButtons {
         display: flex;
         flex-direction: column;
@@ -241,7 +246,7 @@
 
       .UiMainButtonsThirdLine {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr 1fr 2.5rem 2.5rem;
         grid-gap: 0.5rem;
       }
 
@@ -547,10 +552,17 @@
             </a>
             <a
               target="_blank"
-              href="https://github.com/tsil-ukr/tsil"
-              class="UiMainButton light outline"
+              href="https://storinka.ua/tsil"
+              class="UiMainButton light github outline"
             >
-              GitHub
+              <img src="./ресурси/сторінка.лого.svg" alt="Сторінка" />
+            </a>
+            <a
+              target="_blank"
+              href="https://github.com/tsil-ukr/tsil"
+              class="UiMainButton light github outline"
+            >
+              <img src="./ресурси/github.лого.svg" alt="GitHub" />
             </a>
           </div>
         </div>

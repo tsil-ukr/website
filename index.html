@@ -479,6 +479,74 @@
         }
       }
 
+      .TsilNavigationMenu {
+        position: fixed;
+        z-index: 1003;
+        top: calc(var(--menu-top) + 2.5rem + 0.5rem);
+        left: calc(var(--menu-left) - 180px + 2.5rem);
+        background-color: #fff6e0;
+        border: 1px solid #7d2e34;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 180px;
+        color: #7d2e34;
+      }
+
+      .TsilNavigationMenu[data-hidden="true"] {
+        display: none;
+      }
+
+      [data-navigation-menu-toggle="true"] [data-close-icon] {
+        display: none;
+      }
+
+      [data-navigation-menu-toggle="true"].active [data-menu-icon] {
+        display: none;
+      }
+
+      [data-navigation-menu-toggle="true"].active [data-close-icon] {
+        display: block;
+      }
+
+      .TsilNavigationMenu:has(.TsilNavigationMenuItem:hover) {
+        border-color: #1d1315;
+        color: #1d1315;
+      }
+
+      .TsilNavigationMenu:has(.TsilNavigationMenuItem:active) {
+        border-color: black;
+        color: black;
+      }
+
+      .TsilNavigationMenuItem {
+        height: 2.5rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 12px;
+        border: none;
+        background: transparent;
+        font-size: 1rem;
+        font-weight: 500;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        color: inherit;
+      }
+
+      .TsilNavigationMenuItem:hover {
+        background: #1d1315;
+        color: white;
+        cursor: pointer;
+      }
+
+      .TsilNavigationMenuItem:active {
+        background: black;
+        color: white;
+      }
+
       @media (max-width: 420px) {
         .UiMain {
           padding: 1.5rem 1rem;
@@ -557,15 +625,43 @@
             >
               <img src="./ресурси/сторінка.лого.svg" alt="Сторінка" />
             </a>
-            <a
-              target="_blank"
-              href="https://github.com/tsil-ukr/tsil"
+            <button
+              data-navigation-menu-toggle="true"
               class="UiMainButton light github outline"
             >
-              <img src="./ресурси/github.лого.svg" alt="GitHub" />
-            </a>
+              <svg
+                data-menu-icon="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+                />
+              </svg>
+              <svg
+                data-close-icon="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+                fill="currentColor"
+              >
+                <path
+                  d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
+      </div>
+
+      <div class="TsilNavigationMenu" data-hidden="true">
+        <a
+          target="_blank"
+          href="https://github.com/tsil-ukr/tsil"
+          class="TsilNavigationMenuItem"
+        >
+          GitHub
+        </a>
       </div>
 
       <div class="UiMainRight">
@@ -594,6 +690,131 @@
         </div>
       </div>
     </div>
+
+    <script>
+      // Detect if device is mobile
+      function isMobileDevice() {
+        return (
+          window.matchMedia("(max-width: 768px)").matches ||
+          "ontouchstart" in window ||
+          navigator.maxTouchPoints > 0
+        );
+      }
+
+      function showMenu() {
+        const menuButton = document.querySelector(
+          "[data-navigation-menu-toggle=true]",
+        );
+        menuButton.classList.add("active");
+        const buttonLeft = menuButton.getBoundingClientRect().left;
+        const buttonTop = menuButton.getBoundingClientRect().top;
+        document.documentElement.style.setProperty(
+          "--menu-left",
+          `${buttonLeft}px`,
+        );
+        document.documentElement.style.setProperty(
+          "--menu-top",
+          `${buttonTop}px`,
+        );
+        const menu = document.querySelector(".TsilNavigationMenu");
+        menu.dataset.hidden = "false";
+      }
+
+      function hideMenu() {
+        const menuButton = document.querySelector(
+          "[data-navigation-menu-toggle=true]",
+        );
+        menuButton.classList.remove("active");
+        const menu = document.querySelector(".TsilNavigationMenu");
+        menu.dataset.hidden = "true";
+      }
+
+      const menuButton = document.querySelector(
+        "[data-navigation-menu-toggle=true]",
+      );
+      const menu = document.querySelector(".TsilNavigationMenu");
+
+      let isHoveringButton = false;
+      let isHoveringMenu = false;
+      let hideTimeout = null;
+
+      function scheduleHide() {
+        clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+          if (!isHoveringButton && !isHoveringMenu) {
+            hideMenu();
+          }
+        }, 100);
+      }
+
+      // Mobile: click to toggle
+      menuButton.addEventListener("click", () => {
+        if (isMobileDevice()) {
+          const isHidden = menu.dataset.hidden === "true";
+          if (isHidden) {
+            showMenu();
+          } else {
+            hideMenu();
+          }
+        }
+      });
+
+      // Desktop: hover to show/hide
+      menuButton.addEventListener("mouseenter", () => {
+        if (!isMobileDevice()) {
+          isHoveringButton = true;
+          clearTimeout(hideTimeout);
+          showMenu();
+        }
+      });
+
+      menuButton.addEventListener("mouseleave", () => {
+        if (!isMobileDevice()) {
+          isHoveringButton = false;
+          scheduleHide();
+        }
+      });
+
+      menu.addEventListener("mouseenter", () => {
+        if (!isMobileDevice()) {
+          isHoveringMenu = true;
+          clearTimeout(hideTimeout);
+          showMenu();
+        }
+      });
+
+      menu.addEventListener("mouseleave", () => {
+        if (!isMobileDevice()) {
+          isHoveringMenu = false;
+          scheduleHide();
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        hideMenu();
+      });
+
+      window.addEventListener("scroll", () => {
+        hideMenu();
+      });
+
+      // Mobile: close menu when clicking outside
+      window.addEventListener("click", (event) => {
+        if (
+          isMobileDevice() &&
+          !event.target.closest(".TsilNavigationMenu") &&
+          !event.target.closest("[data-navigation-menu-toggle=true]")
+        ) {
+          hideMenu();
+        }
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          hideMenu();
+        }
+      });
+    </script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {

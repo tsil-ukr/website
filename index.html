@@ -9,10 +9,39 @@
 
     <title>Ціль</title>
 
-    <meta name="description" content="Надійна українська мова програмування" />
+    <meta name="description" content="Мова для програмування, українською!" />
     <meta
       name="keywords"
       content="ціль, мова програмування, програмування, українська мова програмування, українська мова, ціль мова програмування, ціль мова"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ціль.укр/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ціль.укр/" />
+    <meta property="og:title" content="Ціль — Українська мова програмування" />
+    <meta
+      property="og:description"
+      content="Мова для програмування, українською!"
+    />
+    <meta
+      property="og:image"
+      content="https://ціль.укр/ресурси/ціль.лого.png"
+    />
+    <meta property="og:locale" content="uk_UA" />
+    <meta property="og:site_name" content="Ціль" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Ціль — Українська мова програмування" />
+    <meta
+      name="twitter:description"
+      content="Мова для програмування, українською!"
+    />
+    <meta
+      name="twitter:image"
+      content="https://ціль.укр/ресурси/ціль.лого.png"
     />
 
     <link rel="icon" type="image/png" href="./ресурси/ціль.лого.png" />
@@ -125,12 +154,14 @@
       }
 
       .UiMainHeadName {
+        margin: 0;
         font-size: 2rem;
         font-weight: bold;
         line-height: 1;
       }
 
       .UiMainHeadSubname {
+        margin: 0;
         margin-top: 0.125rem;
         font-size: 0.875rem;
         line-height: 1;
@@ -139,6 +170,7 @@
 
       .UiMainTitle {
         z-index: 10;
+        margin: 0;
         margin-top: 1rem;
         margin-bottom: 1rem;
         max-width: 30ch;
@@ -569,22 +601,22 @@
   </head>
 
   <body>
-    <div class="UiMain">
+    <main class="UiMain">
       <div class="UiMainLeft">
         <div class="UiMainHead">
           <div class="UiMainHeadLogo">
-            <img src="./ресурси/ціль.лого.svg" alt="" />
+            <img src="./ресурси/ціль.лого.svg" alt="Логотип Ціль" />
           </div>
           <div class="UiMainHeadNameContainer">
-            <div class="UiMainHeadName">Ціль</div>
-            <div class="UiMainHeadSubname">Україна = створити(Рай)</div>
+            <h1 class="UiMainHeadName">Ціль</h1>
+            <p class="UiMainHeadSubname">Україна = створити(Рай)</p>
           </div>
         </div>
 
-        <div class="UiMainTitle">
+        <p class="UiMainTitle">
           Звичайна мова для створення програм. Українською!
           <span class="UiMainTitleAlpha">(альфа)</span>
-        </div>
+        </p>
 
         <div class="UiMainButtons">
           <div class="UiMainButtonsFirstLine">
@@ -628,6 +660,8 @@
             <button
               data-navigation-menu-toggle="true"
               class="UiMainButton light github outline"
+              aria-label="Відкрити меню"
+              aria-expanded="false"
             >
               <svg
                 data-menu-icon="true"
@@ -689,10 +723,9 @@
           <span>Ц</span>
         </div>
       </div>
-    </div>
+    </main>
 
     <script>
-      // Detect if device is mobile
       function isMobileDevice() {
         return (
           window.matchMedia("(max-width: 768px)").matches ||
@@ -706,6 +739,7 @@
           "[data-navigation-menu-toggle=true]",
         );
         menuButton.classList.add("active");
+        menuButton.setAttribute("aria-expanded", "true");
         const buttonLeft = menuButton.getBoundingClientRect().left;
         const buttonTop = menuButton.getBoundingClientRect().top;
         document.documentElement.style.setProperty(
@@ -725,6 +759,7 @@
           "[data-navigation-menu-toggle=true]",
         );
         menuButton.classList.remove("active");
+        menuButton.setAttribute("aria-expanded", "false");
         const menu = document.querySelector(".TsilNavigationMenu");
         menu.dataset.hidden = "true";
       }
@@ -747,7 +782,6 @@
         }, 100);
       }
 
-      // Mobile: click to toggle
       menuButton.addEventListener("click", () => {
         if (isMobileDevice()) {
           const isHidden = menu.dataset.hidden === "true";
@@ -759,7 +793,6 @@
         }
       });
 
-      // Desktop: hover to show/hide
       menuButton.addEventListener("mouseenter", () => {
         if (!isMobileDevice()) {
           isHoveringButton = true;
@@ -798,7 +831,6 @@
         hideMenu();
       });
 
-      // Mobile: close menu when clicking outside
       window.addEventListener("click", (event) => {
         if (
           isMobileDevice() &&

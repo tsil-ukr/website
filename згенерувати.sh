@@ -10,3 +10,8 @@ rm -rf ".будування/$VERSION"
 cp -a ресурси index.html 404.html robots.txt .будування
 докс карта --вхід=.будування --вихід=.будування --домен=ціль.мавка.укр
 find .будування -type f -name "*.html" -exec sed -i "s/{{ВЕРСІЯ_ЦІЛІ}}/$VERSION/g" {} \;
+
+cd код
+bash build.sh $VERSION
+cd -
+cp -a код .будування

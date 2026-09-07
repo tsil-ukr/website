@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.F15XRmrllU/ціль-0.78.0/БЦ/визначення/Памʼять.в.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> __біб__виділити_сиру_памʼять(розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> *</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> __біб__перевиділити_сиру_памʼять(значення: *</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">, розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> *</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> __біб__звільнити_сиру_памʼять(значення: *</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> біб {</span></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> виділити&#x3C;Т>(кількість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> *Т;</span></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> перевиділити&#x3C;Т>(значення: *Т, кількість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> *Т;</span></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити(значення: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> виділити&#x3C;Т>(кількість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> *Т {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> __біб__виділити_сиру_памʼять(кількість * Т.розмір) </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> *Т;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> перевиділити&#x3C;Т>(значення: *Т, кількість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> *Т {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> __біб__перевиділити_сиру_памʼять(значення </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> *</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">, кількість * Т.розмір) </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> *Т;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити(значення: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    __біб__звільнити_сиру_памʼять(значення </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> *</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

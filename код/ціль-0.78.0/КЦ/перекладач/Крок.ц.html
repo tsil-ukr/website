@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.F15XRmrllU/ціль-0.78.0/КЦ/перекладач/Крок.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_крок(компілятор: *Компілятор, контекст: Контекст, дані_кроку: розбирач::ДаніСполукиКрок, місцезнаходження: розбирач::Місцезнаходження) -> Результат {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.розібраний_текст.слова.дані[дані_кроку.ідентифікатор.позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">      назва_кд::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">    ) {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "Не вдалось отримати назву кроку."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        )</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва = отримати_назву(компілятор, назва_кд);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; контекст.кк_дії.обʼєкт_дії.кроки.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> назва == контекст.кк_дії.обʼєкт_дії.кроки.дані[п].назва {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку_субʼєкт_вже_визначено(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">            Місцезнаходження { контекст.розібраний_текст, дані_кроку.ідентифікатор.позиція_слова },</span></span>
+<span class="line"><span style="color:#E6EDF3">            назва_кд</span></span>
+<span class="line"><span style="color:#E6EDF3">          )</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> пм_крок = ПМ::створити_крок(контекст.кк_дії.обʼєкт_дії.пм_інструкція, отримати_назву(компілятор, назва_кд));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_крок(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.кк_дії.обʼєкт_дії.кроки::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      Крок { назва, контекст.кк_дії.обʼєкт_дії, пм_крок }</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> ПМ::перевірити_чи_крок_закінчується_стрибком(контекст.кк_дії.поточний_крок.пм_крок) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_стрибнути(контекст.кк_дії.поточний_крок.пм_крок, пм_крок);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    контекст.кк_дії.поточний_крок = Крок { назва, контекст.кк_дії.обʼєкт_дії, пм_крок };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

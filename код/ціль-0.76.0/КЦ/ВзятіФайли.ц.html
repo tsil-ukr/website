@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.qOex34uEgj/ціль-0.76.0/КЦ/ВзятіФайли.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> перед_заміною_в_реєстрі(реєстр: *біб::Реєстр&#x3C;біб::Шлях, *РозібранийТекст>, ак: біб::Шлях, аз: *РозібранийТекст, бк: *біб::Шлях, бз: **РозібранийТекст) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> компілятор = реєстр.аргумент </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> *Компілятор;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::знищити_шлях(ак);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> перед_видаленням_з_реєстру(реєстр: *біб::Реєстр&#x3C;біб::Шлях, *РозібранийТекст>, ключ: біб::Шлях, значення: *РозібранийТекст) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> компілятор = реєстр.аргумент </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> *Компілятор;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::знищити_шлях(ключ);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_взяті_файли(компілятор: *Компілятор) -> *ВзятіФайли {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> взяті_файли = біб::виділити&#x3C;ВзятіФайли>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    взяті_файли.компілятор = компілятор;</span></span>
+<span class="line"><span style="color:#E6EDF3">    взяті_файли.реєстр = біб::виділити_реєстр&#x3C;біб::Шлях, *РозібранийТекст>(</span></span>
+<span class="line"><span style="color:#79C0FF">      0</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      змішати_шлях_для_реєстру&#x3C;*РозібранийТекст>,</span></span>
+<span class="line"><span style="color:#E6EDF3">      перевірити_шляхи_в_реєстрі&#x3C;*РозібранийТекст>,</span></span>
+<span class="line"><span style="color:#E6EDF3">      перед_заміною_в_реєстрі,</span></span>
+<span class="line"><span style="color:#E6EDF3">      перед_видаленням_з_реєстру</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> взяті_файли;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знищити_взяті_файли(взяті_файли: *ВзятіФайли) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> компілятор = взяті_файли.компілятор;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити_реєстр&#x3C;біб::Шлях, *РозібранийТекст>(взяті_файли.реєстр);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(взяті_файли);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> покласти_взятий_файл(взяті_файли: *ВзятіФайли, шлях: біб::Шлях, розібраний_текст: *РозібранийТекст) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> компілятор = взяті_файли.компілятор;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::клонувати_шлях(шлях, шлях::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::змінити_в_реєстрі&#x3C;біб::Шлях, *РозібранийТекст>(</span></span>
+<span class="line"><span style="color:#E6EDF3">      взяті_файли.реєстр,</span></span>
+<span class="line"><span style="color:#E6EDF3">      шлях,</span></span>
+<span class="line"><span style="color:#E6EDF3">      розібраний_текст</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знайти_взятий_файл(взяті_файли: *ВзятіФайли, шлях: біб::Шлях, вихід: **РозібранийТекст) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> біб::знайти_в_реєстрі&#x3C;біб::Шлях, *РозібранийТекст>(</span></span>
+<span class="line"><span style="color:#E6EDF3">      взяті_файли.реєстр,</span></span>
+<span class="line"><span style="color:#E6EDF3">      шлях,</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

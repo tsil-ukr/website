@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.F15XRmrllU/ціль-0.78.0/КЦ/перекладач/ОтриматиЕлемент.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_отримати_елемент(компілятор: *Компілятор, контекст: Контекст, дані_отримати_елемент: розбирач::ДаніСполукиОтриматиЕлемент, місцезнаходження: розбирач::Місцезнаходження, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_ліво = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_отримати_елемент.ліво, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_ліво.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_ліво.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_ключа = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_отримати_елемент.ключ, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_ключа.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_ключа.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат = обʼєкт_отримати_за_позицією(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">      місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">      результат_ліво.обʼєкт,</span></span>
+<span class="line"><span style="color:#E6EDF3">      Аргумент { результат_ключа.обʼєкт, дані_отримати_елемент.ключ.місцезнаходження },</span></span>
+<span class="line"><span style="color:#E6EDF3">      очікуваний_тип</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

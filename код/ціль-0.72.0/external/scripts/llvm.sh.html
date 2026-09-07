@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.Kdmp7a5ndo/ціль-0.72.0/external/scripts/llvm.sh</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#8B949E">#!/usr/bin/env bash</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF">set</span><span style="color:#79C0FF"> -e</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">LLVM_VERSION</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"22.1.5"</span></span>
+<span class="line"><span style="color:#E6EDF3">TARGET_OS_CMAKE</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"Linux"</span></span>
+<span class="line"><span style="color:#E6EDF3">TARGET</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"x86_64-unknown-none"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> .llvm-source-and-build</span></span>
+<span class="line"><span style="color:#79C0FF">cd</span><span style="color:#A5D6FF"> .llvm-source-and-build</span></span>
+<span class="line"><span style="color:#FF7B72">if</span><span style="color:#E6EDF3"> [ </span><span style="color:#FF7B72">!</span><span style="color:#FF7B72"> -d</span><span style="color:#E6EDF3"> llvm-project-$LLVM_VERSION.src ]; </span><span style="color:#FF7B72">then</span></span>
+<span class="line"><span style="color:#FFA657">  wget</span><span style="color:#A5D6FF"> https://github.com/llvm/llvm-project/releases/download/llvmorg-</span><span style="color:#E6EDF3">$LLVM_VERSION</span><span style="color:#A5D6FF">/llvm-project-</span><span style="color:#E6EDF3">$LLVM_VERSION</span><span style="color:#A5D6FF">.src.tar.xz</span></span>
+<span class="line"><span style="color:#FFA657">  tar</span><span style="color:#79C0FF"> -xf</span><span style="color:#A5D6FF"> llvm-project-</span><span style="color:#E6EDF3">$LLVM_VERSION</span><span style="color:#A5D6FF">.src.tar.xz</span></span>
+<span class="line"><span style="color:#FF7B72">fi</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> llvm-project-</span><span style="color:#E6EDF3">$LLVM_VERSION</span><span style="color:#A5D6FF">.build/llvm-linux-x86_64</span></span>
+<span class="line"><span style="color:#79C0FF">cd</span><span style="color:#A5D6FF"> llvm-project-</span><span style="color:#E6EDF3">$LLVM_VERSION</span><span style="color:#A5D6FF">.build/llvm-linux-x86_64</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">cmake</span><span style="color:#A5D6FF"> ../../llvm-project-</span><span style="color:#E6EDF3">$LLVM_VERSION</span><span style="color:#A5D6FF">.src/llvm</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -G</span><span style="color:#A5D6FF"> Ninja</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DCMAKE_BUILD_TYPE=Release</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DCMAKE_CROSSCOMPILING=True</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DCMAKE_SYSTEM_NAME=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$TARGET_OS_CMAKE</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DCMAKE_C_COMPILER=</span><span style="color:#A5D6FF">"/usr/bin/clang"</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DCMAKE_CXX_COMPILER=</span><span style="color:#A5D6FF">"/usr/bin/clang++"</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DCMAKE_AR=</span><span style="color:#A5D6FF">"/usr/bin/llvm-ar"</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DCMAKE_RANLIB=</span><span style="color:#A5D6FF">"/usr/bin/llvm-ranlib"</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_DEFAULT_TARGET_TRIPLE=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$TARGET</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_TARGETS_TO_BUILD=</span><span style="color:#A5D6FF">"all"</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_ENABLE_PROJECTS=</span><span style="color:#A5D6FF">""</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_BUILD_STATIC=ON</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_ENABLE_THREADS=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_ENABLE_BACKTRACES=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_ENABLE_EH=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_ENABLE_RTTI=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_ENABLE_PLUGINS=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_ENABLE_TERMINFO=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_BUILD_TOOLS=ON</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_BUILD_UTILS=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_BUILD_RUNTIMES=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_ENABLE_LIBXML2=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_ENABLE_ZSTD=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_ENABLE_ZLIB=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_ENABLE_Z3_SOLVER=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_INCLUDE_UTILS=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_INCLUDE_TESTS=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_INCLUDE_EXAMPLES=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_INCLUDE_BENCHMARKS=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_INCLUDE_DOCS=OFF</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">  -DLLVM_ENABLE_BINDINGS=OFF</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">cmake</span><span style="color:#79C0FF"> --build</span><span style="color:#A5D6FF"> .</span><span style="color:#79C0FF"> --target</span><span style="color:#A5D6FF"> llvm-libraries</span><span style="color:#A5D6FF"> llvm-config</span></span></code></pre>
+</body>
+</html>

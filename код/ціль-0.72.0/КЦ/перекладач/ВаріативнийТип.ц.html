@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.Kdmp7a5ndo/ціль-0.72.0/КЦ/перекладач/ВаріативнийТип.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_варіативний_тип(компілятор: *Компілятор, контекст: Контекст, дані_варіативного_типу: розбирач::ДаніСполукиВаріативнийТип, місцезнаходження: розбирач::Місцезнаходження) -> РезультатОбʼєктаТипу {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> типи = біб::виділити&#x3C;*ОбʼєктТипу>(дані_варіативного_типу.типи.розмір);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; дані_варіативного_типу.типи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_типу = скомпілювати_значення_як_тип(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        дані_варіативного_типу.типи.дані[п],</span></span>
+<span class="line"><span style="color:#FF7B72">        так</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_типу.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(типи);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> результат_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      типи[п] = результат_типу.обʼєкт_типу;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу_варіації = створити_варіативний_тип(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані_варіативного_типу.типи.розмір,</span></span>
+<span class="line"><span style="color:#E6EDF3">      типи</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаТипу {</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_типу_варіації,</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

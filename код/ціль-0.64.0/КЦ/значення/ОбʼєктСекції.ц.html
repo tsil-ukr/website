@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.4VRH3Kcbdd/ціль-0.64.0/КЦ/значення/ОбʼєктСекції.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти означення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> виділити_обʼєкт_секції(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>) -> </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_секції = біб::виділити&#x3C;ОбʼєктСекції>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_секції.наступний = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_секції.назва = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_секції.середовище = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> компілятор.перший_обʼєкт_секції == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.перший_обʼєкт_секції = обʼєкт_секції;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> компілятор.останній_обʼєкт_секції == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_обʼєкт_секції = обʼєкт_секції;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_обʼєкт_секції.наступний = обʼєкт_секції;</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_обʼєкт_секції = обʼєкт_секції;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> обʼєкт_секції;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знищити_обʼєкт_секції(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    знищити_назву_якщо_копія(компілятор, обʼєкт_секції.назва);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(обʼєкт_секції);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_додати(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_відняти(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_помножити(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_поділити(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_поділити_за_модулем(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_більше(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_менше(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_більше_рівно(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_менше_рівно(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_рівно(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_не_рівно(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_зсунути_вліво(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_зсунути_вправо(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_ді(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_дабо(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_вабо(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_як(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_отримати_властивість(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, назва: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, очікуваний_тип: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктТипу>) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_отримати_властивість_секції(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, назва: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, очікуваний_тип: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктТипу>) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт: Обʼєкт;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> знайти_в_середовищі(обʼєкт_секції.середовище, назва, обʼєкт::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { обʼєкт, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_отримати_за_позицією(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, позиція: Аргумент, очікуваний_тип: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктТипу>) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_виконати(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, аргументи: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Аргумент>) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_виконати_шаблон(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, аргументи: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Аргумент>) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_змінити_властивість(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, назва: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_змінити_в_секції(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, назва: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_змінити_за_позицією(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>, позиція: Аргумент, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_унарний_мінус(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_заперечити(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_секції_двійкове_заперечення(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

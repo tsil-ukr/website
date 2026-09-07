@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.zhpZKrpbuU/ціль-0.73.0/КЦ/перекладач/Вернути.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_вернути(компілятор: *Компілятор, контекст: Контекст, дані_вернути: розбирач::ДаніСполукиВернути, місцезнаходження: розбирач::Місцезнаходження) -> Результат {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> контекст.кк_дії == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "Вернути можна лише всередині дії."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        )</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> контекст.кк_дії.значення_вернути.тип == компілятор.тип_ніщо {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> дані_вернути.значення != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> результат_значення = скомпілювати_значення_як_значення(компілятор, контекст, дані_вернути.значення, контекст.кк_дії.значення_вернути.тип);</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> результат_значення.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> Результат { помилка = результат_значення.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку_невірний_тип_вернути(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">            Місцезнаходження { контекст.розібраний_текст, дані_вернути.значення.місцезнаходження.позиція_початкового_слова },</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст.кк_дії.значення_вернути.тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">            результат_значення.обʼєкт_значення.тип</span></span>
+<span class="line"><span style="color:#E6EDF3">          )</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> ПМ::перевірити_чи_крок_закінчується_стрибком(контекст.кк_дії.поточний_крок.пм_крок) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ПМ::вказівка_стрибнути(контекст.кк_дії.поточний_крок.пм_крок, контекст.кк_дії.крок_вернути.пм_крок);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат { помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> дані_вернути.значення == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку_невірний_тип_вернути(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">            Місцезнаходження { контекст.розібраний_текст, місцезнаходження.позиція_початкового_слова },</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст.кк_дії.значення_вернути.тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор.тип_ніщо</span></span>
+<span class="line"><span style="color:#E6EDF3">          )</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_значення = скомпілювати_значення_як_значення(компілятор, контекст, дані_вернути.значення, контекст.кк_дії.значення_вернути.тип);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_значення.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> Результат { помилка = результат_значення.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> перевірити_тип_на_запис_і_конвертувати_якщо_треба(компілятор, контекст.кк_дії.значення_вернути.тип, результат_значення.обʼєкт_значення::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку_невірний_тип_вернути(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">            Місцезнаходження { контекст.розібраний_текст, дані_вернути.значення.місцезнаходження.позиція_початкового_слова },</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст.кк_дії.значення_вернути.тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">            результат_значення.обʼєкт_значення.тип</span></span>
+<span class="line"><span style="color:#E6EDF3">          )</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_записати(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.поточний_крок.пм_крок,</span></span>
+<span class="line"><span style="color:#E6EDF3">        результат_значення.обʼєкт_значення.пм_значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.значення_вернути.пм_значення</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> ПМ::перевірити_чи_крок_закінчується_стрибком(контекст.кк_дії.поточний_крок.пм_крок) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ПМ::вказівка_стрибнути(контекст.кк_дії.поточний_крок.пм_крок, контекст.кк_дії.крок_вернути.пм_крок);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат { помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

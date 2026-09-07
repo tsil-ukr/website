@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.nWxGTvH9sI/ціль-0.74.0/external/tsil.cpp</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">extern</span><span style="color:#A5D6FF"> "C"</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;libgen.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;stdbool.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;stdint.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;stdio.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;stdlib.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;string.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;unistd.h></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">#define п8 uint8_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define п16 uint16_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define п32 uint32_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define п64 uint64_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ц8 int8_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ц16 int16_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ц32 int32_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ц64 int64_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define р32 float</span></span>
+<span class="line"><span style="color:#E6EDF3">#define р64 double</span></span>
+<span class="line"><span style="color:#E6EDF3">#define логічне uint8_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define природне п64</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ціле ц64</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ніщо void</span></span>
+<span class="line"><span style="color:#E6EDF3">#define адреса_ніщо void*</span></span>
+<span class="line"><span style="color:#E6EDF3">#define памʼять_ніщо void*</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FF7B72"> struct</span><span style="color:#E6EDF3"> кд {</span></span>
+<span class="line"><span style="color:#E6EDF3">  п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> дані;</span></span>
+<span class="line"><span style="color:#E6EDF3">  природне розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">} кд;</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FF7B72"> struct</span><span style="color:#E6EDF3"> ю8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">  п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> дані;</span></span>
+<span class="line"><span style="color:#E6EDF3">  природне розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">} ю8;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">void</span><span style="color:#E6EDF3"> __КЦ__отримати_версію_цілі_як_ю8(ю8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> вихід) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  вихід</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)TSIL_VERSION;</span></span>
+<span class="line"><span style="color:#E6EDF3">  вихід</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> strlen</span><span style="color:#E6EDF3">(TSIL_VERSION);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">ц32 почати(природне кількість_аргументів, ю8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> аргументи);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">int</span><span style="color:#D2A8FF"> main</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">int</span><span style="color:#FFA657"> argc</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">char**</span><span style="color:#FFA657"> argv</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  auto</span><span style="color:#E6EDF3"> аргументи </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (ю8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">sizeof</span><span style="color:#E6EDF3">(ю8) </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> argc);</span></span>
+<span class="line"><span style="color:#FF7B72">  for</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">int</span><span style="color:#E6EDF3"> i </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">; i </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#E6EDF3"> argc; </span><span style="color:#FF7B72">++</span><span style="color:#E6EDF3">i) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    ю8 байти </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> {.дані </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)argv[i], .розмір </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> strlen</span><span style="color:#E6EDF3">(argv[i])};</span></span>
+<span class="line"><span style="color:#E6EDF3">    аргументи[i] </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> байти;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#FF7B72">  int</span><span style="color:#E6EDF3"> res </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> почати(argc, аргументи);</span></span>
+<span class="line"><span style="color:#D2A8FF">  free</span><span style="color:#E6EDF3">(аргументи);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> res;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

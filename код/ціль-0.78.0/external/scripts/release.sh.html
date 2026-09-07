@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.F15XRmrllU/ціль-0.78.0/external/scripts/release.sh</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#8B949E">#!/usr/bin/env sh</span></span>
+<span class="line"><span style="color:#79C0FF">set</span><span style="color:#79C0FF"> -e</span></span>
+<span class="line"><span style="color:#79C0FF">set</span><span style="color:#79C0FF"> -x</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">RunDir</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$PWD</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Version</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"$(</span><span style="color:#FFA657">cat</span><span style="color:#A5D6FF"> Версія)"</span></span>
+<span class="line"><span style="color:#E6EDF3">TsilTarget</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"лінукс-ікс86_64"</span></span>
+<span class="line"><span style="color:#E6EDF3">ReleaseFiles</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#FFA657">cat</span><span style="color:#A5D6FF"> ФайлиВипуску</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#E6EDF3">BuildDir</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"будування/</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$TsilTarget</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#E6EDF3">BuildSourceDir</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$BuildDir</span><span style="color:#A5D6FF">/напівготове"</span></span>
+<span class="line"><span style="color:#E6EDF3">BuildOutDir</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$BuildDir</span><span style="color:#A5D6FF">/готове"</span></span>
+<span class="line"><span style="color:#E6EDF3">BuildPackageDir</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$BuildDir</span><span style="color:#A5D6FF">/пакування"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">if</span><span style="color:#E6EDF3"> [ </span><span style="color:#FF7B72">-d</span><span style="color:#A5D6FF"> "випуски/</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3"> ]; </span><span style="color:#FF7B72">then</span></span>
+<span class="line"><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "Випуск </span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF"> вже існує"</span></span>
+<span class="line"><span style="color:#79C0FF">  exit</span><span style="color:#79C0FF"> 1</span></span>
+<span class="line"><span style="color:#FF7B72">fi</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">sh</span><span style="color:#A5D6FF"> external/scripts/build.sh</span><span style="color:#A5D6FF"> release</span></span>
+<span class="line"><span style="color:#FFA657">sh</span><span style="color:#A5D6FF"> external/scripts/package.sh</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> "випуски/</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">cp</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildPackageDir</span><span style="color:#A5D6FF">/ціль-</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">-</span><span style="color:#E6EDF3">$TsilTarget</span><span style="color:#A5D6FF">.tar.xz"</span><span style="color:#A5D6FF"> "випуски/</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> "випуски/</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">/ціль-</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">while</span><span style="color:#E6EDF3"> IFS</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">''</span><span style="color:#79C0FF"> read</span><span style="color:#79C0FF"> -r</span><span style="color:#A5D6FF"> ReleaseFile</span></span>
+<span class="line"><span style="color:#FF7B72">do</span></span>
+<span class="line"><span style="color:#FFA657">  cp</span><span style="color:#79C0FF"> -r</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$ReleaseFile</span><span style="color:#A5D6FF">"</span><span style="color:#A5D6FF"> "випуски/</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">/ціль-</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#FF7B72">done</span><span style="color:#FF7B72"> &#x3C;&#x3C;</span><span style="color:#E6EDF3">ReleaseFiles_HEREDOC_INPUT</span></span>
+<span class="line"><span style="color:#E6EDF3">$ReleaseFiles</span></span>
+<span class="line"><span style="color:#E6EDF3">ReleaseFiles_HEREDOC_INPUT</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF">cd</span><span style="color:#A5D6FF"> "випуски/</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#FFA657">tar</span><span style="color:#79C0FF"> -cJvf</span><span style="color:#A5D6FF"> "ціль-</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">.tar.xz"</span><span style="color:#A5D6FF"> "ціль-</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#79C0FF">cd</span><span style="color:#A5D6FF"> -</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">rm</span><span style="color:#79C0FF"> -rf</span><span style="color:#A5D6FF"> "випуски/</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">/ціль-</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF">cd</span><span style="color:#A5D6FF"> "випуски/</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">PRIVATE_KEY_FILE</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$RunDir</span><span style="color:#A5D6FF">/.releasegpgkey"</span></span>
+<span class="line"><span style="color:#E6EDF3">PRIVATE_KEY_FILE_PASSPHRASE</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$RunDir</span><span style="color:#A5D6FF">/.releasegpgkeypassphrase"</span></span>
+<span class="line"><span style="color:#E6EDF3">TMP_GPG_HOME</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#FFA657">mktemp</span><span style="color:#79C0FF"> -d</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#E6EDF3"> GNUPGHOME</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$TMP_GPG_HOME</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E"># Import the private key into temporary keyring</span></span>
+<span class="line"><span style="color:#FFA657">gpg</span><span style="color:#79C0FF"> --batch</span><span style="color:#79C0FF"> --yes</span><span style="color:#79C0FF"> --import</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$PRIVATE_KEY_FILE</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> ></span><span style="color:#A5D6FF">/dev/null</span><span style="color:#FF7B72"> 2>&#x26;1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E"># Get fingerprint from this keyring</span></span>
+<span class="line"><span style="color:#E6EDF3">FINGERPRINT</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#FFA657">gpg</span><span style="color:#79C0FF"> --with-colons</span><span style="color:#79C0FF"> --list-secret-keys</span><span style="color:#79C0FF"> --fingerprint</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#FF7B72">  |</span><span style="color:#FFA657"> awk</span><span style="color:#79C0FF"> -F:</span><span style="color:#A5D6FF"> '/^fpr:/ {print $10; exit}'</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">if</span><span style="color:#E6EDF3"> [ </span><span style="color:#FF7B72">-z</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$FINGERPRINT</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3"> ]; </span><span style="color:#FF7B72">then</span></span>
+<span class="line"><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "Failed to get fingerprint (no secret key found)"</span></span>
+<span class="line"><span style="color:#79C0FF">  exit</span><span style="color:#79C0FF"> 1</span></span>
+<span class="line"><span style="color:#FF7B72">fi</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "Using fingerprint: </span><span style="color:#E6EDF3">$FINGERPRINT</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E"># Read passphrase from file (trim spaces/newlines)</span></span>
+<span class="line"><span style="color:#E6EDF3">PASSPHRASE</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#FF7B72">&#x3C;</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$PRIVATE_KEY_FILE_PASSPHRASE</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">for</span><span style="color:#E6EDF3"> file </span><span style="color:#FF7B72">in</span><span style="color:#A5D6FF"> ціль-"</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">"-лінукс-ікс86_64.tar.xz</span><span style="color:#A5D6FF"> ціль-"</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">".tar.xz</span><span style="color:#E6EDF3">; </span><span style="color:#FF7B72">do</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> [ </span><span style="color:#FF7B72">!</span><span style="color:#FF7B72"> -f</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$file</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3"> ]; </span><span style="color:#FF7B72">then</span></span>
+<span class="line"><span style="color:#79C0FF">    echo</span><span style="color:#A5D6FF"> "File not found: </span><span style="color:#E6EDF3">$file</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#FF7B72">    continue</span></span>
+<span class="line"><span style="color:#FF7B72">  fi</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">  sha256sum</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$file</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> ></span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$file</span><span style="color:#A5D6FF">.sha256"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  # Sign using the imported key ONLY inside this GNUPGHOME</span></span>
+<span class="line"><span style="color:#FFA657">  gpg</span><span style="color:#79C0FF"> --batch</span><span style="color:#79C0FF"> --yes</span><span style="color:#79C0FF"> --pinentry-mode</span><span style="color:#A5D6FF"> loopback</span><span style="color:#79C0FF"> --passphrase</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$PASSPHRASE</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> \</span></span>
+<span class="line"><span style="color:#79C0FF">    --local-user</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$FINGERPRINT</span><span style="color:#A5D6FF">"</span><span style="color:#79C0FF"> --clearsign</span><span style="color:#79C0FF"> --output</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$file</span><span style="color:#A5D6FF">.sha256.signed"</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$file</span><span style="color:#A5D6FF">.sha256"</span></span>
+<span class="line"><span style="color:#FF7B72">done</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E"># Clean up the temporary keyring</span></span>
+<span class="line"><span style="color:#FFA657">rm</span><span style="color:#79C0FF"> -rf</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$TMP_GPG_HOME</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79C0FF">cd</span><span style="color:#A5D6FF"> -</span></span></code></pre>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.qOex34uEgj/ціль-0.76.0/КЦ/значення/ОбʼєктШаблону.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знищити_обʼєкт_шаблону(компілятор: *Компілятор, обʼєкт_шаблону: *ОбʼєктШаблону) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    знищити_назву_якщо_копія(компілятор, обʼєкт_шаблону.назва);</span></span>
+<span class="line"><span style="color:#E6EDF3">    знищити_параметри(компілятор, обʼєкт_шаблону.параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити_реєстр&#x3C;ГотовіАргументиШаблону, Обʼєкт>(обʼєкт_шаблону.готові);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(обʼєкт_шаблону);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_додати(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_відняти(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_помножити(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_поділити(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_поділити_за_модулем(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_більше(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_менше(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_більше_рівно(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_менше_рівно(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_рівно(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_не_рівно(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_зсунути_вліво(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_зсунути_вправо(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_ді(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_дабо(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_вабо(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_як(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_отримати_властивість(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, назва: *Назва, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_отримати_властивість_секції(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, назва: *Назва, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_отримати_за_позицією(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, позиція: Аргумент, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_виконати(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, аргументи: *Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_виконати_шаблон(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, аргументи: *Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> кількість_аргументів != обʼєкт_шаблону.параметри.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження,</span><span style="color:#A5D6FF">"Невірна кількість аргументів шаблону"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> контекст_виконання_шаблону = біб::виділити&#x3C;КонтекстКомпіляціїВиконанняШаблону>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    контекст_виконання_шаблону.обʼєкт_шаблону = обʼєкт_шаблону;</span></span>
+<span class="line"><span style="color:#E6EDF3">    контекст_виконання_шаблону.готові_аргументи_шаблону = ГотовіАргументиШаблону { кількість_аргументів, біб::виділити&#x3C;ГотовийАргументШаблону>(кількість_аргументів) };</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> середовище_шаблону = створити_середовище(компілятор, обʼєкт_шаблону.контекст_компіляції.середовище);</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; кількість_аргументів {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> аргумент = аргументи[п];</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_компіляції_значення_аргумента = отримати_як_тип(компілятор, контекст, аргумент.місцезнаходження, аргумент.обʼєкт, </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_компіляції_значення_аргумента.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        знищити_готові_аргументи_шаблону(компілятор, контекст_виконання_шаблону.готові_аргументи_шаблону);</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(контекст_виконання_шаблону);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_компіляції_значення_аргумента.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст_виконання_шаблону.готові_аргументи_шаблону.дані[п] = ГотовийАргументШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ВидАргументаГотовихШаблонуОбʼєктТипу,</span></span>
+<span class="line"><span style="color:#E6EDF3">        результат_компіляції_значення_аргумента.обʼєкт_типу</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">      змінити_в_середовищі(</span></span>
+<span class="line"><span style="color:#E6EDF3">        середовище_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт_шаблону.параметри.дані[п].назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">        Обʼєкт { ВидОбʼєктаТип, дані = результат_компіляції_значення_аргумента.обʼєкт_типу }</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_з_реєстру_готових: Обʼєкт;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> біб::знайти_в_реєстрі&#x3C;ГотовіАргументиШаблону, Обʼєкт>(обʼєкт_шаблону.готові, контекст_виконання_шаблону.готові_аргументи_шаблону, обʼєкт_з_реєстру_готових::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_готові_аргументи_шаблону(компілятор, контекст_виконання_шаблону.готові_аргументи_шаблону);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(контекст_виконання_шаблону);</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { обʼєкт_з_реєстру_готових, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат = скомпілювати_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      Контекст {</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібраний_текст = обʼєкт_шаблону.контекст_компіляції.розібраний_текст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        середовище = середовище_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">        кк_дії = обʼєкт_шаблону.контекст_компіляції.кк_дії</span></span>
+<span class="line"><span style="color:#E6EDF3">      },</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст_виконання_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_шаблону.сполука,</span></span>
+<span class="line"><span style="color:#FF7B72">      пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    знищити_готові_аргументи_шаблону(компілятор, контекст_виконання_шаблону.готові_аргументи_шаблону);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(контекст_виконання_шаблону);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_змінити_властивість(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, назва: *Назва, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_змінити_в_секції(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, назва: *Назва, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_змінити_за_позицією(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону, позиція: Аргумент, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_унарний_мінус(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_заперечити(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_шаблону_двійкове_заперечення(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_шаблону: *ОбʼєктШаблону) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

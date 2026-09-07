@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.0mz5ojI77Z/ціль-0.79.0/КЦ/розбирач/розбирач.в.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Памʼять;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Друк;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Кодування;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  простір</span><span style="color:#E6EDF3"> розбирач {</span></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> можливо&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      заповнено: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: Т;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Розбирач {</span></span>
+<span class="line"><span style="color:#E6EDF3">      а: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> визначити_розмір_символа(перший_байт: </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> створити() -> *Розбирач;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> знищити(розбирач: *Розбирач);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> КІНЕЦЬ_СЛІВ = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаВзяти = </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаВизначення = </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаВластивість = </span><span style="color:#79C0FF">7</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаВернути = </span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаДія = </span><span style="color:#79C0FF">9</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЄ = </span><span style="color:#79C0FF">11</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗовнішня = </span><span style="color:#79C0FF">12</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаМісцева = </span><span style="color:#79C0FF">13</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаВнутрішня = </span><span style="color:#79C0FF">14</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаІнакше = </span><span style="color:#79C0FF">15</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаСекція = </span><span style="color:#79C0FF">18</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаПростір = </span><span style="color:#79C0FF">19</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаНе = </span><span style="color:#79C0FF">22</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаПоки = </span><span style="color:#79C0FF">23</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаПерелік = </span><span style="color:#79C0FF">24</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаСтруктура = </span><span style="color:#79C0FF">28</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЯк = </span><span style="color:#79C0FF">35</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЯкщо = </span><span style="color:#79C0FF">36</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакРівно = </span><span style="color:#79C0FF">37</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакБільше = </span><span style="color:#79C0FF">38</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакМенше = </span><span style="color:#79C0FF">39</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакКрапка = </span><span style="color:#79C0FF">40</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакПлюс = </span><span style="color:#79C0FF">41</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакМінус = </span><span style="color:#79C0FF">42</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакПомножити = </span><span style="color:#79C0FF">43</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакПоділити = </span><span style="color:#79C0FF">44</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакВідсоток = </span><span style="color:#79C0FF">45</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакАмперсанд = </span><span style="color:#79C0FF">47</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакПряма = </span><span style="color:#79C0FF">48</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакВідкритаДужка = </span><span style="color:#79C0FF">49</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакЗакритаДужка = </span><span style="color:#79C0FF">50</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакВідкритаКвадратнаДужка = </span><span style="color:#79C0FF">51</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакЗакритаКвадратнаДужка = </span><span style="color:#79C0FF">52</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакПитання = </span><span style="color:#79C0FF">53</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакДвокрапка = </span><span style="color:#79C0FF">54</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакТильда = </span><span style="color:#79C0FF">55</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакОднолапка = </span><span style="color:#79C0FF">56</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакДволапка = </span><span style="color:#79C0FF">57</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакОклик = </span><span style="color:#79C0FF">58</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакКома = </span><span style="color:#79C0FF">59</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакМіжряд = </span><span style="color:#79C0FF">60</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЧисло = </span><span style="color:#79C0FF">61</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаСимвол = </span><span style="color:#79C0FF">63</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаТекст = </span><span style="color:#79C0FF">64</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаКоментар = </span><span style="color:#79C0FF">66</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаБагаторядковийКоментар = </span><span style="color:#79C0FF">67</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаІдентифікатор = </span><span style="color:#79C0FF">68</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗмінна = </span><span style="color:#79C0FF">69</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЦіль = </span><span style="color:#79C0FF">70</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакКрапкакома = </span><span style="color:#79C0FF">71</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаВідкритаФігурнаДужка = </span><span style="color:#79C0FF">72</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗакритаФігурнаДужка = </span><span style="color:#79C0FF">73</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаСинонім = </span><span style="color:#79C0FF">74</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаСтрибнути = </span><span style="color:#79C0FF">75</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаСтала = </span><span style="color:#79C0FF">76</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакГачок = </span><span style="color:#79C0FF">78</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакВище = </span><span style="color:#79C0FF">79</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакНижче = </span><span style="color:#79C0FF">80</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаІ = </span><span style="color:#79C0FF">81</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаАбо = </span><span style="color:#79C0FF">82</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаВабо = </span><span style="color:#79C0FF">83</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакОберкоса = </span><span style="color:#79C0FF">84</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСловаЗнакАтрибут = </span><span style="color:#79C0FF">85</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ПозиціяСлова {</span></span>
+<span class="line"><span style="color:#E6EDF3">      позиція_в_тексті: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      рядок: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      стовпець: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Слово {</span></span>
+<span class="line"><span style="color:#E6EDF3">      вид: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      позиція_початку: ПозиціяСлова;</span></span>
+<span class="line"><span style="color:#E6EDF3">      позиція_кінця: ПозиціяСлова;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Слова {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані: *Слово;</span></span>
+<span class="line"><span style="color:#E6EDF3">      вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> покласти_в_слова(розбирач: *Розбирач, слова: *Слова, слово: Слово) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> слова.розмір == слова.вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">        слова.вмісткість += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        слова.дані = біб::перевиділити&#x3C;Слово>(слова.дані, слова.вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      слова.дані[слова.розмір] = слово;</span></span>
+<span class="line"><span style="color:#E6EDF3">      слова.розмір += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ПомилкаРозборуНаСлова {</span></span>
+<span class="line"><span style="color:#E6EDF3">      позиція: ПозиціяСлова;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> розібрати_на_слова(розбирач: *Розбирач, значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, вихід: *Слова, вихід_помилки: *ПомилкаРозборуНаСлова) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> надрукувати_слова(розбирач: *Розбирач, значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, слова: Слова);</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> знищити_слова(розбирач: *Розбирач, слова: Слова);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> отримати_значення_слова(значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, слово: Слово, вихід: *</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        розмір = (слово.позиція_кінця.позиція_в_тексті - слово.позиція_початку.позиція_в_тексті) + </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        дані = значення.дані[слово.позиція_початку.позиція_в_тексті]::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> отримати_значення_тексту(значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, слово: Слово, вихід: *</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> значення_слова = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> отримати_значення_слова(значення, слово, значення_слова::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> розмір_нового_значення = значення_слова.розмір - </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані_нового_значення = біб::виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(розмір_нового_значення);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; розмір_нового_значення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        дані_нового_значення[п] = значення_слова.дані[п + </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        дані_нового_значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        розмір_нового_значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(значення_слова.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> КІНЕЦЬ_СПОЛУК = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиЦіль = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиДія = </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиСтруктура = </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиЗаписати = </span><span style="color:#79C0FF">5</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиПрочитати = </span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиОтриматиВластивість = </span><span style="color:#79C0FF">7</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиЗмінитиВластивість = </span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиСинонім = </span><span style="color:#79C0FF">9</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиВернути = </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиЯкщо = </span><span style="color:#79C0FF">11</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиПоки = </span><span style="color:#79C0FF">12</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиСекція = </span><span style="color:#79C0FF">13</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиКрок = </span><span style="color:#79C0FF">14</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиСтрибнути = </span><span style="color:#79C0FF">15</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиВзяти = </span><span style="color:#79C0FF">16</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиОтриматиСекційнуВластивість = </span><span style="color:#79C0FF">17</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиОтриматиЕлемент = </span><span style="color:#79C0FF">18</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиВиконатиШаблон = </span><span style="color:#79C0FF">19</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиВиконатиДію = </span><span style="color:#79C0FF">20</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиОднооперація = </span><span style="color:#79C0FF">21</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиОперація = </span><span style="color:#79C0FF">22</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиЧисло = </span><span style="color:#79C0FF">23</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиТекст = </span><span style="color:#79C0FF">24</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиОбʼєкт = </span><span style="color:#79C0FF">25</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиПерелік = </span><span style="color:#79C0FF">26</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиЗмінитиЕлемент = </span><span style="color:#79C0FF">27</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиЗмінитиСекційнуВластивість = </span><span style="color:#79C0FF">28</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиВаріативнийТип = </span><span style="color:#79C0FF">29</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиШаблон = </span><span style="color:#79C0FF">30</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиТипДії = </span><span style="color:#79C0FF">31</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиЗмінна = </span><span style="color:#79C0FF">32</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидСполукиСтала = </span><span style="color:#79C0FF">33</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВИДИМІСТЬ_НЕ_ВКАЗАНО = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВИДИМІСТЬ_ВНУТРІШНЯ = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВИДИМІСТЬ_ЗОВНІШНЯ = </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Сполука;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Місцезнаходження {</span></span>
+<span class="line"><span style="color:#E6EDF3">      позиція_початкового_слова: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      позиція_кінцевого_слова: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Ідентифікатор {</span></span>
+<span class="line"><span style="color:#E6EDF3">      позиція_слова: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ЕлементВзяти {</span></span>
+<span class="line"><span style="color:#E6EDF3">      позиція_слова: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> отримати_значення_ідентифікатора(значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, слова: Слова, ідентифікатор: Ідентифікатор, вихід: *</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> отримати_значення_слова(значення, слова.дані[ідентифікатор.позиція_слова], вихід);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Сполуки {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані: **Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Параметр {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: можливо&#x3C;Ідентифікатор>;</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Параметри {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані: *Параметр;</span></span>
+<span class="line"><span style="color:#E6EDF3">      вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ПараметрШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ПараметриШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані: *ПараметрШаблону;</span></span>
+<span class="line"><span style="color:#E6EDF3">      вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Аргумент {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: можливо&#x3C;Ідентифікатор>;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Аргументи {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані: *Аргумент;</span></span>
+<span class="line"><span style="color:#E6EDF3">      вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      автозаповнити: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ЕлементПереліка {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри: Параметри;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ЕлементиПереліка {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані: *ЕлементПереліка;</span></span>
+<span class="line"><span style="color:#E6EDF3">      вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Ідентифікатори {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані: *Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">      вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ЕлементиВзяти {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані: *ЕлементВзяти;</span></span>
+<span class="line"><span style="color:#E6EDF3">      вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Атрибут {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Атрибути {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані: *Атрибут;</span></span>
+<span class="line"><span style="color:#E6EDF3">      вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиЦіль {</span></span>
+<span class="line"><span style="color:#E6EDF3">      видимість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиЗмінна {</span></span>
+<span class="line"><span style="color:#E6EDF3">      видимість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиСтала {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиСинонім {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиВернути {</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиЯкщо {</span></span>
+<span class="line"><span style="color:#E6EDF3">      умова: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      тіло: Сполуки;</span></span>
+<span class="line"><span style="color:#E6EDF3">      тіло_інакше: Сполуки;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиПоки {</span></span>
+<span class="line"><span style="color:#E6EDF3">      умова: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      тіло: Сполуки;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиСекція {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: можливо&#x3C;Ідентифікатор>;</span></span>
+<span class="line"><span style="color:#E6EDF3">      тіло: Сполуки;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиКрок {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиСтрибнути {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиПрочитати {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиЗаписати {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиДія {</span></span>
+<span class="line"><span style="color:#E6EDF3">      видимість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор_структури: можливо&#x3C;Ідентифікатор>;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: можливо&#x3C;Ідентифікатор>;</span></span>
+<span class="line"><span style="color:#E6EDF3">      метод: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри: Параметри;</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип_результату: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      тіло: можливо&#x3C;Сполуки>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиТипДії {</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри: Параметри;</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип_результату: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиСтруктура {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: можливо&#x3C;Ідентифікатор>;</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри: Параметри;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дії: Сполуки;</span></span>
+<span class="line"><span style="color:#E6EDF3">      атрибути: Атрибути;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиВзяти {</span></span>
+<span class="line"><span style="color:#E6EDF3">      відносно: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      звідки: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">      шлях: ЕлементиВзяти;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиОтриматиВластивість {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ліво: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиЗмінитиВластивість {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ліво: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиЗмінитиЕлемент {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ліво: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ключ: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиОтриматиСекційнуВластивість {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ліво: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиЗмінитиСекційнуВластивість {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ліво: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: Ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиВаріативнийТип {</span></span>
+<span class="line"><span style="color:#E6EDF3">      типи: Сполуки;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиОтриматиЕлемент {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ліво: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргументи: Аргументи;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиВиконатиШаблон {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ліво: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргументи: Аргументи;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиВиконатиДію {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ліво: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргументи: Аргументи;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиОбʼєкт {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ліво: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргументи: Аргументи;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиПерелік {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: можливо&#x3C;Ідентифікатор>;</span></span>
+<span class="line"><span style="color:#E6EDF3">      елементи: ЕлементиПереліка;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиШаблон {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатор: можливо&#x3C;Ідентифікатор>;</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри: ПараметриШаблону;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОдноопераціїЗаперечення = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОдноопераціїПлюс = </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОдноопераціїМінус = </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОдноопераціїДвійковеЗаперечення = </span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОдноопераціїЗірочка = </span><span style="color:#79C0FF">5</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиОднооперація {</span></span>
+<span class="line"><span style="color:#E6EDF3">      вид: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиЧисло {</span></span>
+<span class="line"><span style="color:#E6EDF3">      позиція_слова: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиТекст {</span></span>
+<span class="line"><span style="color:#E6EDF3">      префікс: можливо&#x3C;Ідентифікатор>;</span></span>
+<span class="line"><span style="color:#E6EDF3">      позиція_слова: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїМноження = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїДілення = </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїМодуль = </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїДодавання = </span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїВіднімання = </span><span style="color:#79C0FF">5</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїЗсувВліво = </span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїЗсувВправо = </span><span style="color:#79C0FF">7</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїМенше = </span><span style="color:#79C0FF">9</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїБільше = </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїМеншеРівне = </span><span style="color:#79C0FF">11</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїБільшеРівне = </span><span style="color:#79C0FF">12</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїРівне = </span><span style="color:#79C0FF">13</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїНерівне = </span><span style="color:#79C0FF">14</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїДІ = </span><span style="color:#79C0FF">15</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїВАБО = </span><span style="color:#79C0FF">16</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїДАБО = </span><span style="color:#79C0FF">17</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїІ = </span><span style="color:#79C0FF">18</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїАБО = </span><span style="color:#79C0FF">19</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стала</span><span style="color:#E6EDF3"> ВидОпераціїЯк = </span><span style="color:#79C0FF">26</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ДаніСполукиОперація {</span></span>
+<span class="line"><span style="color:#E6EDF3">      вид: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ліво: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      право: *Сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> Сполука {</span></span>
+<span class="line"><span style="color:#E6EDF3">      вид: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані: ДаніСполукиЦіль</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиЗмінна</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиСтала</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиДія</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиТипДії</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиПрочитати</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиЗаписати</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиСтруктура</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиСинонім</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиВернути</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиЯкщо</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиПоки</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиСекція</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиКрок</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиСтрибнути</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиВзяти</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиОтриматиВластивість</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиЗмінитиВластивість</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиОтриматиСекційнуВластивість</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиЗмінитиСекційнуВластивість</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиВаріативнийТип</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиОтриматиЕлемент</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиЗмінитиЕлемент</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиВиконатиШаблон</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиВиконатиДію</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиОднооперація</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиОперація</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиЧисло</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиТекст</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиОбʼєкт</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиПерелік</span></span>
+<span class="line"><span style="color:#E6EDF3">          | ДаніСполукиШаблон;</span></span>
+<span class="line"><span style="color:#E6EDF3">      місцезнаходження: Місцезнаходження;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> покласти_в_сполуки(розбирач: *Розбирач, сполуки: *Сполуки, сполука: *Сполука) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> сполуки.розмір == сполуки.вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">        сполуки.вмісткість += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        сполуки.дані = біб::перевиділити&#x3C;*Сполука>(сполуки.дані, сполуки.вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      сполуки.дані[сполуки.розмір] = сполука;</span></span>
+<span class="line"><span style="color:#E6EDF3">      сполуки.розмір += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> покласти_в_параметри(розбирач: *Розбирач, параметри: *Параметри, параметр: Параметр) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> параметри.розмір == параметри.вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">        параметри.вмісткість += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        параметри.дані = біб::перевиділити&#x3C;Параметр>(параметри.дані, параметри.вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри.дані[параметри.розмір] = параметр;</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри.розмір += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> покласти_в_параметри_шаблону(розбирач: *Розбирач, параметри_шаблону: *ПараметриШаблону, параметр_шаблону: ПараметрШаблону) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> параметри_шаблону.розмір == параметри_шаблону.вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">        параметри_шаблону.вмісткість += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        параметри_шаблону.дані = біб::перевиділити&#x3C;ПараметрШаблону>(параметри_шаблону.дані, параметри_шаблону.вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри_шаблону.дані[параметри_шаблону.розмір] = параметр_шаблону;</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри_шаблону.розмір += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> покласти_в_аргументи(розбирач: *Розбирач, аргументи: *Аргументи, аргумент: Аргумент) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> аргументи.розмір == аргументи.вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргументи.вмісткість += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргументи.дані = біб::перевиділити&#x3C;Аргумент>(аргументи.дані, аргументи.вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргументи.дані[аргументи.розмір] = аргумент;</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргументи.розмір += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> покласти_в_елементи_переліка(розбирач: *Розбирач, елементи_переліка: *ЕлементиПереліка, елемент_переліка: ЕлементПереліка) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> елементи_переліка.розмір == елементи_переліка.вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">        елементи_переліка.вмісткість += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        елементи_переліка.дані = біб::перевиділити&#x3C;ЕлементПереліка>(елементи_переліка.дані, елементи_переліка.вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      елементи_переліка.дані[елементи_переліка.розмір] = елемент_переліка;</span></span>
+<span class="line"><span style="color:#E6EDF3">      елементи_переліка.розмір += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> покласти_в_ідентифікатори(розбирач: *Розбирач, ідентифікатори: *Ідентифікатори, ідентифікатор: Ідентифікатор) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> ідентифікатори.розмір == ідентифікатори.вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ідентифікатори.вмісткість += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        ідентифікатори.дані = біб::перевиділити&#x3C;Ідентифікатор>(ідентифікатори.дані, ідентифікатори.вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатори.дані[ідентифікатори.розмір] = ідентифікатор;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ідентифікатори.розмір += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> покласти_в_елементи_взяти(розбирач: *Розбирач, елементи_взяти: *ЕлементиВзяти, елемент_взяти: ЕлементВзяти) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> елементи_взяти.розмір == елементи_взяти.вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">        елементи_взяти.вмісткість += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        елементи_взяти.дані = біб::перевиділити&#x3C;ЕлементВзяти>(елементи_взяти.дані, елементи_взяти.вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      елементи_взяти.дані[елементи_взяти.розмір] = елемент_взяти;</span></span>
+<span class="line"><span style="color:#E6EDF3">      елементи_взяти.розмір += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> покласти_в_атрибути(розбирач: *Розбирач, атрибути: *Атрибути, атрибут: Атрибут) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> атрибути.розмір == атрибути.вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">        атрибути.вмісткість += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        атрибути.дані = біб::перевиділити&#x3C;Атрибут>(атрибути.дані, атрибути.вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      атрибути.дані[атрибути.розмір] = атрибут;</span></span>
+<span class="line"><span style="color:#E6EDF3">      атрибути.розмір += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> звільнити_сполуку(розбирач: *Розбирач, сполука: *Сполука);</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_сполуку(розбирач: *Розбирач, сполука: *Сполука) -> *Сполука;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_сполуки(розбирач: *Розбирач, сполуки: Сполуки) -> Сполуки;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_параметр(розбирач: *Розбирач, параметр: Параметр) -> Параметр;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_параметри(розбирач: *Розбирач, параметри: Параметри) -> Параметри;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_параметр_шаблону(розбирач: *Розбирач, параметр_шаблону: ПараметрШаблону) -> ПараметрШаблону;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_параметри_шаблону(розбирач: *Розбирач, параметри_шаблону: ПараметриШаблону) -> ПараметриШаблону;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_ідентифікатори(розбирач: *Розбирач, ідентифікатори: Ідентифікатори) -> Ідентифікатори;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_аргумент(розбирач: *Розбирач, аргумент: Аргумент) -> Аргумент;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_аргументи(розбирач: *Розбирач, аргументи: Аргументи) -> Аргументи;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_елемент_переліка(розбирач: *Розбирач, елемент_переліка: ЕлементПереліка) -> ЕлементПереліка;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_елементи_переліка(розбирач: *Розбирач, елементи_переліка: ЕлементиПереліка) -> ЕлементиПереліка;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_елемент_взяти(розбирач: *Розбирач, елемент_взяти: ЕлементВзяти) -> ЕлементВзяти;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_елементи_взяти(розбирач: *Розбирач, елементи_взяти: ЕлементиВзяти) -> ЕлементиВзяти;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_атрибут(розбирач: *Розбирач, атрибут: Атрибут) -> Атрибут;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> клонувати_атрибути(розбирач: *Розбирач, атрибути: Атрибути) -> Атрибути;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити_ідентифікатори(розбирач: *Розбирач, ідентифікатори: Ідентифікатори) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(ідентифікатори.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити_елементи_взяти(розбирач: *Розбирач, елементи_взяти: ЕлементиВзяти) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(елементи_взяти.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити_параметри(розбирач: *Розбирач, параметри: Параметри) {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; параметри.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">        звільнити_сполуку(розбирач, параметри.дані[п].тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(параметри.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити_параметри_шаблону(розбирач: *Розбирач, параметри_шаблону: ПараметриШаблону) {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; параметри_шаблону.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">        звільнити_сполуку(розбирач, параметри_шаблону.дані[п].тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(параметри_шаблону.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити_сполуки(розбирач: *Розбирач, сполуки: Сполуки) {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; сполуки.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">        звільнити_сполуку(розбирач, сполуки.дані[п]);</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(сполуки.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити_аргументи(розбирач: *Розбирач, аргументи: Аргументи) {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; аргументи.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">        звільнити_сполуку(розбирач, аргументи.дані[п].значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(аргументи.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити_елементи_переліка(розбирач: *Розбирач, елементи_переліка: ЕлементиПереліка) {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; елементи_переліка.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">        звільнити_сполуку(розбирач, елементи_переліка.дані[п].значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(елементи_переліка.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити_атрибути(розбирач: *Розбирач, атрибути: Атрибути) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(атрибути.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    структура</span><span style="color:#E6EDF3"> ПомилкаРозборуНаСполуки {</span></span>
+<span class="line"><span style="color:#E6EDF3">      позиція_слова: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> розібрати_слова_на_сполуки(розбирач: *Розбирач, слова: Слова, вихід: *Сполуки, вихід_помилки: *ПомилкаРозборуНаСполуки) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> надрукувати_сполуки(розбирач: *Розбирач, значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, слова: Слова, сполуки: Сполуки, глибина: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    дія</span><span style="color:#E6EDF3"> знищити_сполуки(розбирач: *Розбирач, сполуки: Сполуки);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

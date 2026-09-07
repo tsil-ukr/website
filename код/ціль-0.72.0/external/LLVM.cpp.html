@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.Kdmp7a5ndo/ціль-0.72.0/external/LLVM.cpp</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;iostream></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/IR/BasicBlock.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/IR/Constants.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/IR/DerivedTypes.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/IR/Function.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/IR/IRBuilder.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/IR/Instructions.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/IR/LLVMContext.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/IR/LegacyPassManager.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/IR/Module.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/IR/Type.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/MC/TargetRegistry.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/Support/TargetSelect.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/Target/TargetMachine.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/Target/TargetOptions.h"</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> "llvm/TargetParser/Host.h"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">static</span><span style="color:#FFA657"> std</span><span style="color:#E6EDF3">::unique_ptr</span><span style="color:#FF7B72">&#x3C;</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::LLVMContext</span><span style="color:#FF7B72">></span><span style="color:#E6EDF3"> llvmContext;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::Module Модуль;</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::Function Функція;</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::Value Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::Type Тип;</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::BasicBlock БазовийБлок;</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::BranchInst ІнструкціяРозгалуження;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#A5D6FF"> "C"</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;stdint.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;stdio.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;stdlib.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;string.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;unistd.h></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">#define п8 uint8_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define п16 uint16_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define п32 uint32_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define п64 uint64_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ц8 int8_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ц16 int16_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ц32 int32_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ц64 int64_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define р32 float</span></span>
+<span class="line"><span style="color:#E6EDF3">#define р64 double</span></span>
+<span class="line"><span style="color:#E6EDF3">#define логічне uint8_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define природне п64</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ціле ц64</span></span>
+<span class="line"><span style="color:#E6EDF3">#define дробове р64</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ніщо void</span></span>
+<span class="line"><span style="color:#E6EDF3">#define адреса_ніщо void*</span></span>
+<span class="line"><span style="color:#E6EDF3">#define памʼять &#x3C;ніщо> void*</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FF7B72"> struct</span><span style="color:#E6EDF3"> кд {</span></span>
+<span class="line"><span style="color:#E6EDF3">  п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> дані;</span></span>
+<span class="line"><span style="color:#E6EDF3">  природне розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">} кд;</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FF7B72"> struct</span><span style="color:#E6EDF3"> ю8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">  п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> дані;</span></span>
+<span class="line"><span style="color:#E6EDF3">  природне розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">} ю8;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">#define ВИДИМІСТЬ_ВНУТРІШНЯ 1</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ВИДИМІСТЬ_ЗОВНІШНЯ 3</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">#define ПЛАТФОРМА_ІКС86_64_ПК_ЛІНУКС_ГНУ 10</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ПЛАТФОРМА_ААРЧ64_ПК_ЛІНУКС_ГНУ 11</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ПЛАТФОРМА_ІКС86_64_ЕПЛ_ДАРВІН 20</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ПЛАТФОРМА_ААРЧ64_ЕПЛ_ДАРВІН 21</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ПЛАТФОРМА_ІКС86_64_ПК_ВІНДОВС_ГНУ 30</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ПЛАТФОРМА_ААРЧ64_64_ПК_ВІНДОВС_ГНУ 31</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ПЛАТФОРМА_ІКС86_64_ПК_ВІНДОВС_МСВС 32</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ПЛАТФОРМА_ААРЧ64_64_ПК_ВІНДОВС_МСВС 33</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ПЛАТФОРМА_ВАСМ32 40</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ПЛАТФОРМА_ВАСМ64 41</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">void</span><span style="color:#E6EDF3"> __ЛЛВМ__ініціалізувати() {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">InitializeAllTargetInfos</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">InitializeAllTargets</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">InitializeAllTargetMCs</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  llvmContext </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> std</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">make_unique</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">LLVMContext</span><span style="color:#E6EDF3">>();</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">void</span><span style="color:#E6EDF3"> __ЛЛВМ__деініціалізувати() {</span></span>
+<span class="line"><span style="color:#8B949E">  // llvmContext.reset();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // llvm::llvm_shutdown();</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__тип_войд() {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Type</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getVoidTy</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__тип_пойнтер() {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">PointerType</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__тип_і1() {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Type</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getInt1Ty</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__тип_і8() {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Type</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getInt8Ty</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__тип_і16() {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Type</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getInt16Ty</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__тип_і32() {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Type</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getInt32Ty</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__тип_і64() {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Type</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getInt64Ty</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__тип_флоат() {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Type</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getFloatTy</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__тип_даубл() {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Type</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getDoubleTy</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__тип_функція(природне кількість_параметрів,</span></span>
+<span class="line"><span style="color:#E6EDF3">                         Тип</span><span style="color:#FF7B72">**</span><span style="color:#E6EDF3"> параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">                         Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип_результату) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">FunctionType</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип_результату </span><span style="color:#FF7B72">==</span><span style="color:#79C0FF"> nullptr</span><span style="color:#FF7B72"> ?</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Type</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getVoidTy</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext)</span></span>
+<span class="line"><span style="color:#FF7B72">                                :</span><span style="color:#E6EDF3"> тип_результату,</span></span>
+<span class="line"><span style="color:#FFA657">      llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">ArrayRef</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Type</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">>(параметри, кількість_параметрів), </span><span style="color:#79C0FF">false</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__тип_аррай(Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип_елемента, природне розмір) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ArrayType</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(тип_елемента, розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__тип(ю8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">                 природне кількість_параметрів,</span></span>
+<span class="line"><span style="color:#E6EDF3">                 Тип</span><span style="color:#FF7B72">**</span><span style="color:#E6EDF3"> параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">                 природне пакована) {</span></span>
+<span class="line"><span style="color:#FFA657">  std</span><span style="color:#E6EDF3">::string </span><span style="color:#D2A8FF">name</span><span style="color:#E6EDF3">((</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)назва</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, назва</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">  std</span><span style="color:#E6EDF3">::vector</span><span style="color:#FF7B72">&#x3C;</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::Type</span><span style="color:#FF7B72">*></span><span style="color:#D2A8FF"> llvmFields</span><span style="color:#E6EDF3">(кількість_параметрів);</span></span>
+<span class="line"><span style="color:#FF7B72">  for</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">int</span><span style="color:#E6EDF3"> i </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">; i </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#E6EDF3"> кількість_параметрів; i</span><span style="color:#FF7B72">++</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    llvmFields[i] </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> параметри[i];</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">StructType</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">create</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, llvmFields, name,</span></span>
+<span class="line"><span style="color:#FF7B72">                                  static_cast&#x3C;bool></span><span style="color:#E6EDF3">(пакована));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__нулл() {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantPointerNull</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#FFA657">      llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">PointerType</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__і1(п8 значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantInt</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">APInt</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, значення </span><span style="color:#FF7B72">?</span><span style="color:#79C0FF"> 1</span><span style="color:#FF7B72"> :</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__і8(п8 значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantInt</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">APInt</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">, значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__і16(п16 значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantInt</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">APInt</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">16</span><span style="color:#E6EDF3">, значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__і32(п32 значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantInt</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">APInt</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">32</span><span style="color:#E6EDF3">, значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__і64(п64 значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantInt</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">APInt</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">64</span><span style="color:#E6EDF3">, значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__і8ц(ц8 значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantInt</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">APInt</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">, значення, </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__і16ц(ц16 значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantInt</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">APInt</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">16</span><span style="color:#E6EDF3">, значення, </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__і32ц(ц32 значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantInt</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">APInt</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">32</span><span style="color:#E6EDF3">, значення, </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__і64ц(ц64 значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantInt</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">APInt</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">64</span><span style="color:#E6EDF3">, значення, </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__флоат(р32 значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantFP</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">APFloat</span><span style="color:#E6EDF3">(значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__даубл(р64 значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantFP</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">APFloat</span><span style="color:#E6EDF3">(значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Модуль</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__створити_модуль(ю8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> назва, природне платформа) {</span></span>
+<span class="line"><span style="color:#FFA657">  std</span><span style="color:#E6EDF3">::string </span><span style="color:#D2A8FF">name</span><span style="color:#E6EDF3">((</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)назва</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, назва</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  auto</span><span style="color:#E6EDF3"> llvmModule </span><span style="color:#FF7B72">=</span><span style="color:#FF7B72"> new</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Module</span><span style="color:#E6EDF3">(name, </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::Triple targetTriple;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (платформа) {</span></span>
+<span class="line"><span style="color:#FF7B72">    if</span><span style="color:#E6EDF3"> (платформа </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ІКС86_64_ПК_ЛІНУКС_ГНУ) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      targetTriple </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Triple</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"x86_64-pc-linux-gnu"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">else</span><span style="color:#FF7B72"> if</span><span style="color:#E6EDF3"> (платформа </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ААРЧ64_ПК_ЛІНУКС_ГНУ) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      targetTriple </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Triple</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"aarch64-pc-linux-gnu"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">else</span><span style="color:#FF7B72"> if</span><span style="color:#E6EDF3"> (платформа </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ІКС86_64_ЕПЛ_ДАРВІН) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      targetTriple </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Triple</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"x86_64-apple-darwin"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">else</span><span style="color:#FF7B72"> if</span><span style="color:#E6EDF3"> (платформа </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ААРЧ64_ЕПЛ_ДАРВІН) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      targetTriple </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Triple</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"aarch64-apple-darwin"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">else</span><span style="color:#FF7B72"> if</span><span style="color:#E6EDF3"> (платформа </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ІКС86_64_ПК_ВІНДОВС_ГНУ) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      targetTriple </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Triple</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"x86_64-pc-windows-gnu"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">else</span><span style="color:#FF7B72"> if</span><span style="color:#E6EDF3"> (платформа </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ІКС86_64_ПК_ВІНДОВС_МСВС) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      targetTriple </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Triple</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"x86_64-pc-windows-msvc"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">else</span><span style="color:#FF7B72"> if</span><span style="color:#E6EDF3"> (платформа </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ААРЧ64_64_ПК_ВІНДОВС_ГНУ) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      targetTriple </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Triple</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"aarch64-pc-windows-gnu"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">else</span><span style="color:#FF7B72"> if</span><span style="color:#E6EDF3"> (платформа </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ААРЧ64_64_ПК_ВІНДОВС_МСВС) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      targetTriple </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Triple</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"aarch64-pc-windows-msvc"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">else</span><span style="color:#FF7B72"> if</span><span style="color:#E6EDF3"> (платформа </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ВАСМ32) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      targetTriple </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Triple</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"wasm32-unknown-unknown"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">else</span><span style="color:#FF7B72"> if</span><span style="color:#E6EDF3"> (платформа </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ВАСМ64) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      targetTriple </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Triple</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"wasm64-unknown-unknown"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">else</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      return</span><span style="color:#79C0FF"> nullptr</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">else</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    targetTriple </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Triple</span><span style="color:#E6EDF3">(</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">sys</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getDefaultTargetTriple</span><span style="color:#E6EDF3">());</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  llvmModule-></span><span style="color:#D2A8FF">setTargetTriple</span><span style="color:#E6EDF3">(targetTriple);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">  std</span><span style="color:#E6EDF3">::string Error;</span></span>
+<span class="line"><span style="color:#FF7B72">  auto</span><span style="color:#E6EDF3"> Target </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">TargetRegistry</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">lookupTarget</span><span style="color:#E6EDF3">(targetTriple, Error);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">Error.</span><span style="color:#D2A8FF">empty</span><span style="color:#E6EDF3">()) {</span></span>
+<span class="line"><span style="color:#FFA657">    std</span><span style="color:#E6EDF3">::cout </span><span style="color:#FF7B72">&#x3C;&#x3C;</span><span style="color:#E6EDF3"> Error </span><span style="color:#FF7B72">&#x3C;&#x3C;</span><span style="color:#FFA657"> std</span><span style="color:#E6EDF3">::endl;</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#79C0FF"> nullptr</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  auto</span><span style="color:#E6EDF3"> CPU </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> "generic"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  auto</span><span style="color:#E6EDF3"> Features </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> ""</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::TargetOptions opt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  auto</span><span style="color:#E6EDF3"> llvmTargetMachine </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> Target-></span><span style="color:#D2A8FF">createTargetMachine</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#E6EDF3">      targetTriple, CPU, Features, opt, </span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Reloc</span><span style="color:#E6EDF3">::PIC_);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  llvmModule-></span><span style="color:#D2A8FF">setDataLayout</span><span style="color:#E6EDF3">(llvmTargetMachine-></span><span style="color:#D2A8FF">createDataLayout</span><span style="color:#E6EDF3">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> llvmModule;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">void</span><span style="color:#E6EDF3"> __ЛЛВМ__знищити_модуль(Модуль</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> модуль) {</span></span>
+<span class="line"><span style="color:#8B949E">  // delete модуль;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Функція</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__створити_функцію(Модуль</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                  природне видимість,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                  ю8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                  природне кількість_параметрів,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                  Тип</span><span style="color:#FF7B72">**</span><span style="color:#E6EDF3"> параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                  Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип_результату) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Function</span><span style="color:#E6EDF3">::LinkageTypes linkageType;</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (видимість </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> ВИДИМІСТЬ_ЗОВНІШНЯ) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    linkageType </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Function</span><span style="color:#E6EDF3">::ExternalLinkage;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">else</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    linkageType </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Function</span><span style="color:#E6EDF3">::PrivateLinkage;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">  std</span><span style="color:#E6EDF3">::string </span><span style="color:#D2A8FF">name</span><span style="color:#E6EDF3">((</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)назва</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, назва</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">  std</span><span style="color:#E6EDF3">::vector</span><span style="color:#FF7B72">&#x3C;</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::Type</span><span style="color:#FF7B72">*></span><span style="color:#D2A8FF"> llvmParams</span><span style="color:#E6EDF3">(кількість_параметрів);</span></span>
+<span class="line"><span style="color:#FF7B72">  for</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">int</span><span style="color:#E6EDF3"> i </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">; i </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#E6EDF3"> кількість_параметрів; i</span><span style="color:#FF7B72">++</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    llvmParams[i] </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> параметри[i];</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  auto</span><span style="color:#E6EDF3"> functionType </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">FunctionType</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип_результату </span><span style="color:#FF7B72">==</span><span style="color:#79C0FF"> nullptr</span><span style="color:#FF7B72"> ?</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Type</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getVoidTy</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext)</span></span>
+<span class="line"><span style="color:#FF7B72">                                :</span><span style="color:#E6EDF3"> тип_результату,</span></span>
+<span class="line"><span style="color:#E6EDF3">      llvmParams, </span><span style="color:#79C0FF">false</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Function</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Create</span><span style="color:#E6EDF3">(functionType, linkageType, name, модуль);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__отримати_аргумент_функції(Функція</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> функція,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                            природне позиція) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> функція</span><span style="color:#FF7B72">-></span><span style="color:#D2A8FF">getArg</span><span style="color:#E6EDF3">(позиція);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__створити_базовий_блок(Функція</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> функція, ю8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> назва) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">BasicBlock</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">Create</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#A5D6FF">"bb"</span><span style="color:#E6EDF3">, функція);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_аллока(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок, Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateAlloca</span><span style="color:#E6EDF3">(тип, </span><span style="color:#79C0FF">nullptr</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"alloca"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_адд(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateAdd</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"addtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фадд(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFAdd</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"faddtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_саб(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateSub</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"subtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фсаб(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFSub</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"fsubtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_мул(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateMul</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"multmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фмул(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFMul</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"fmultmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_сдів(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateSDiv</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"sdivtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_удів(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateUDiv</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"udivtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фдів(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFDiv</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"fdivtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_срем(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateSRem</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"sremtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_урем(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateURem</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"uremtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фрем(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFRem</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"fremtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_іцмпекʼю(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateICmpEQ</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"icmpetmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фцмпекʼю(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFCmpUEQ</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"fcmpetmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_іцмпне(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateICmpNE</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"icmpnetmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фцмпуне(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFCmpUNE</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"fcmpunetmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_іцмпугт(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateICmpUGT</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"icmpugttmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_іцмпсгт(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateICmpSGT</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"icmpsgttmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фцмпугт(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFCmpUGT</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"fcmpugttmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_іцмпулт(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateICmpULT</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"icmpulttmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_іцмпслт(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateICmpSLT</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"icmpslttmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фцмпулт(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFCmpULT</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"fcmpulttmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_іцмпуге(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateICmpUGE</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"icmpugetmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_іцмпсге(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateICmpSGE</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"icmpsgetmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фцмпуге(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFCmpUGE</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"fcmpugetmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_іцмпуле(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateICmpULE</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"icmpuletmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_іцмпсле(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateICmpSLE</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"icmpsletmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фцмпуле(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFCmpULE</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"fcmpuletmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_шл(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                          Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                          Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateShl</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"shltmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_ашр(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateAShr</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"ashrtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_лшр(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateLShr</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"lshrtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_анд(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateAnd</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"andtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_ор(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                          Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                          Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateOr</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"ortmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_іксор(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                             Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">                             Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> право) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateXor</span><span style="color:#E6EDF3">(ліво, право, </span><span style="color:#A5D6FF">"xortmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_біткаст(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateBitCast</span><span style="color:#E6EDF3">(значення, тип, </span><span style="color:#A5D6FF">"bitcasttmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_гетелементптр(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                     Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                     Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                     природне кількість_індексів,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                     Значення</span><span style="color:#FF7B72">**</span><span style="color:#E6EDF3"> індекси) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">  std</span><span style="color:#E6EDF3">::vector</span><span style="color:#FF7B72">&#x3C;</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::Value</span><span style="color:#FF7B72">*></span><span style="color:#D2A8FF"> llvmIndices</span><span style="color:#E6EDF3">(кількість_індексів);</span></span>
+<span class="line"><span style="color:#FF7B72">  for</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">int</span><span style="color:#E6EDF3"> i </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">; i </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#E6EDF3"> кількість_індексів; i</span><span style="color:#FF7B72">++</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    llvmIndices[i] </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> індекси[i];</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateGEP</span><span style="color:#E6EDF3">(тип, значення,</span></span>
+<span class="line"><span style="color:#FFA657">                           llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">ArrayRef</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Value</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">>(llvmIndices),</span></span>
+<span class="line"><span style="color:#A5D6FF">                           "getelementptrtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__екстракт_валуе(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                 Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                 природне індекс) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateExtractValue</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення, {</span><span style="color:#FF7B72">static_cast&#x3C;unsigned</span><span style="color:#FF7B72"> int></span><span style="color:#E6EDF3">(індекс)}, </span><span style="color:#A5D6FF">"extractvaluetmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_сторе(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                             Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                             Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> куди) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateStore</span><span style="color:#E6EDF3">(значення, куди);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_лоад(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> звідки) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateLoad</span><span style="color:#E6EDF3">(тип, звідки, </span><span style="color:#A5D6FF">"loadtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_зекст(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                             Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                             Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateZExt</span><span style="color:#E6EDF3">(значення, тип, </span><span style="color:#A5D6FF">"zexttmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_секст(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                             Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                             Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateSExt</span><span style="color:#E6EDF3">(значення, тип, </span><span style="color:#A5D6FF">"sexttmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_трунк(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                             Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                             Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateTrunc</span><span style="color:#E6EDF3">(значення, тип, </span><span style="color:#A5D6FF">"trunctmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_уітуфп(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateUIToFP</span><span style="color:#E6EDF3">(значення, тип, </span><span style="color:#A5D6FF">"uitofptmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_сітуфп(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateSIToFP</span><span style="color:#E6EDF3">(значення, тип, </span><span style="color:#A5D6FF">"sitofptmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фпекст(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFPExt</span><span style="color:#E6EDF3">(значення, тип, </span><span style="color:#A5D6FF">"fpexttmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фптрунк(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                               Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFPTrunc</span><span style="color:#E6EDF3">(значення, тип, </span><span style="color:#A5D6FF">"fptrunctmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фптууі(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFPToUI</span><span style="color:#E6EDF3">(значення, тип, </span><span style="color:#A5D6FF">"fptoutmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_фптусі(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateFPToSI</span><span style="color:#E6EDF3">(значення, тип, </span><span style="color:#A5D6FF">"fptositmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_інттуптр(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateIntToPtr</span><span style="color:#E6EDF3">(значення, тип, </span><span style="color:#A5D6FF">"inttoptrtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_птртуінт(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreatePtrToInt</span><span style="color:#E6EDF3">(значення, тип, </span><span style="color:#A5D6FF">"ptrtointtmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_рет(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок, Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (значення </span><span style="color:#FF7B72">==</span><span style="color:#79C0FF"> nullptr</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateRetVoid</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateRet</span><span style="color:#E6EDF3">(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_калл(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            природне кількість_аргументів,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            Значення</span><span style="color:#FF7B72">**</span><span style="color:#E6EDF3"> аргументи) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">  std</span><span style="color:#E6EDF3">::vector</span><span style="color:#FF7B72">&#x3C;</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::Value</span><span style="color:#FF7B72">*></span><span style="color:#D2A8FF"> llvmArguments</span><span style="color:#E6EDF3">(кількість_аргументів);</span></span>
+<span class="line"><span style="color:#FF7B72">  for</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">int</span><span style="color:#E6EDF3"> i </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">; i </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#E6EDF3"> кількість_аргументів; i</span><span style="color:#FF7B72">++</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    llvmArguments[i] </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> аргументи[i];</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  auto</span><span style="color:#E6EDF3"> type </span><span style="color:#FF7B72">=</span><span style="color:#FF7B72"> reinterpret_cast&#x3C;</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::FunctionType</span><span style="color:#FF7B72">*></span><span style="color:#E6EDF3">(тип);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (type-></span><span style="color:#D2A8FF">getReturnType</span><span style="color:#E6EDF3">()-></span><span style="color:#D2A8FF">isVoidTy</span><span style="color:#E6EDF3">()) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateCall</span><span style="color:#E6EDF3">(type, значення, llvmArguments);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateCall</span><span style="color:#E6EDF3">(type, значення, llvmArguments, </span><span style="color:#A5D6FF">"calltmp"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_бр(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок, БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> куди) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateBr</span><span style="color:#E6EDF3">(куди);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__інст_кондбр(БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> базовий_блок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> умова,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> якщо_істина,</span></span>
+<span class="line"><span style="color:#E6EDF3">                              БазовийБлок</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> якщо_хиба) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::IRBuilder</span><span style="color:#FF7B72">&#x3C;></span><span style="color:#D2A8FF"> builder</span><span style="color:#E6EDF3">(базовий_блок);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> builder.</span><span style="color:#D2A8FF">CreateCondBr</span><span style="color:#E6EDF3">(умова, якщо_істина, якщо_хиба);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__створити_глобал_варіабле(Модуль</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                           природне видимість,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                           ю8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                           Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">GlobalValue</span><span style="color:#E6EDF3">::LinkageTypes linkageType;</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (видимість </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> ВИДИМІСТЬ_ЗОВНІШНЯ) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    linkageType </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">GlobalValue</span><span style="color:#E6EDF3">::ExternalLinkage;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">else</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    linkageType </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">GlobalValue</span><span style="color:#E6EDF3">::PrivateLinkage;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">  std</span><span style="color:#E6EDF3">::string </span><span style="color:#D2A8FF">name</span><span style="color:#E6EDF3">((</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)назва</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, назва</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FF7B72"> new</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">GlobalVariable</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">модуль, тип, </span><span style="color:#79C0FF">false</span><span style="color:#E6EDF3">, linkageType, </span><span style="color:#79C0FF">nullptr</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                  name);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__створити_глобал_константу_даних(Модуль</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                                  природне розмір,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                                  п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> дані) {</span></span>
+<span class="line"><span style="color:#FF7B72">  auto</span><span style="color:#E6EDF3"> constantString </span><span style="color:#FF7B72">=</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantDataArray</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getString</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#FF7B72">      *</span><span style="color:#E6EDF3">llvmContext, </span><span style="color:#FFA657">std</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">string</span><span style="color:#E6EDF3">((</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)дані, розмір), </span><span style="color:#79C0FF">false</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FF7B72"> new</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">GlobalVariable</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#FF7B72">      *</span><span style="color:#E6EDF3">модуль,</span></span>
+<span class="line"><span style="color:#FFA657">      llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ArrayType</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Type</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getInt8Ty</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">llvmContext), розмір), </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">      llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">GlobalValue</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">LinkageTypes</span><span style="color:#E6EDF3">::PrivateLinkage, constantString);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__констант_структ(Модуль</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                  Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                  природне кількість_аргументів,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                  Значення</span><span style="color:#FF7B72">**</span><span style="color:#E6EDF3"> аргументи) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">ConstantStruct</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">get</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#E6EDF3">      (</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::StructType</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)тип,</span></span>
+<span class="line"><span style="color:#FFA657">      llvm</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">ArrayRef</span><span style="color:#E6EDF3">((</span><span style="color:#FFA657">llvm</span><span style="color:#E6EDF3">::Constant</span><span style="color:#FF7B72">**</span><span style="color:#E6EDF3">)аргументи, кількість_аргументів));</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Значення</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __ЛЛВМ__констант_нулл_валуе(Модуль</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> модуль, Тип</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> тип) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#FFA657"> llvm</span><span style="color:#E6EDF3">::</span><span style="color:#FFA657">Constant</span><span style="color:#E6EDF3">::</span><span style="color:#D2A8FF">getNullValue</span><span style="color:#E6EDF3">(тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">логічне __ЛЛВМ__перетворити_на_ллвмір(Модуль</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                      природне</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> вихід_розміру,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                      п8</span><span style="color:#FF7B72">**</span><span style="color:#E6EDF3"> вихід_даних) {</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::SmallVector</span><span style="color:#FF7B72">&#x3C;char</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#FF7B72">></span><span style="color:#E6EDF3"> buffer;</span></span>
+<span class="line"><span style="color:#FFA657">  llvm</span><span style="color:#E6EDF3">::raw_svector_ostream </span><span style="color:#D2A8FF">os</span><span style="color:#E6EDF3">(buffer);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  модуль</span><span style="color:#FF7B72">-></span><span style="color:#D2A8FF">print</span><span style="color:#E6EDF3">(os, </span><span style="color:#79C0FF">nullptr</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (buffer.</span><span style="color:#D2A8FF">empty</span><span style="color:#E6EDF3">()) {</span></span>
+<span class="line"><span style="color:#FF7B72">    *</span><span style="color:#E6EDF3">вихід_розміру </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    *</span><span style="color:#E6EDF3">вихід_даних </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> nullptr</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#79C0FF"> false</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">else</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    *</span><span style="color:#E6EDF3">вихід_розміру </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> buffer.</span><span style="color:#D2A8FF">size</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#FF7B72">    *</span><span style="color:#E6EDF3">вихід_даних </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(buffer.</span><span style="color:#D2A8FF">size</span><span style="color:#E6EDF3">());</span></span>
+<span class="line"><span style="color:#D2A8FF">    memcpy</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">вихід_даних, buffer.</span><span style="color:#D2A8FF">data</span><span style="color:#E6EDF3">(), buffer.</span><span style="color:#D2A8FF">size</span><span style="color:#E6EDF3">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#79C0FF"> true</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

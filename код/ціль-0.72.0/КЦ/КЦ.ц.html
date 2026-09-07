@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.Kdmp7a5ndo/ціль-0.72.0/КЦ/КЦ.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> перекодувати_з_ю8_з_місцезнаходженнями(компілятор: *Компілятор, значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, вихід: *</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, вихід_місцезнаходжень: *біб::МісцезнаходженняПерекодованого) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> позиція_помилки: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> біб::перекодувати_з_ю8(</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення,</span></span>
+<span class="line"><span style="color:#FF7B72">      так</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FF7B72">      так</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід,</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_місцезнаходжень,</span></span>
+<span class="line"><span style="color:#E6EDF3">      позиція_помилки::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_текст_коду(компілятор: *Компілятор, середовище: *Середовище, текст_коду: *ТекстКоду, вихід_помилки: **Помилка) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> розбирач = КЦ::розбирач::створити();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> успіх_розбору = </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> розібраний_текст = створити_розібраний_текст(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    розібраний_текст.текст_коду = текст_коду;</span></span>
+<span class="line"><span style="color:#E6EDF3">    розібраний_текст.розбирач = розбирач;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_взятий_файл(компілятор.взяті_файли, текст_коду.шлях, розібраний_текст);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> помилка_розбору_на_слова: КЦ::розбирач::ПомилкаРозборуНаСлова;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> помилка_розбору_на_сполуки: КЦ::розбирач::ПомилкаРозборуНаСполуки;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    успіх_розбору = КЦ::розбирач::розібрати_на_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">      розбирач,</span></span>
+<span class="line"><span style="color:#E6EDF3">      текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      розібраний_текст.слова::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка_розбору_на_слова::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> успіх_розбору {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> позиція_в_тексті = помилка_розбору_на_слова.позиція.позиція_в_тексті;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> рядок = помилка_розбору_на_слова.позиція.рядок;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> стовпець = помилка_розбору_на_слова.позиція.стовпець;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_помилки::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">        "Неочікуваний символ."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        створити_місцезнаходження_помилки(компілятор, текст_коду, позиція_в_тексті, рядок, стовпець)</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">//    біб::надрукувати_ю8(ю8 { текст_коду.шлях.розмір, текст_коду.шлях.дані });</span></span>
+<span class="line"><span style="color:#8B949E">//    біб::надрукувати_ю8(ю8"--- слова ---");</span></span>
+<span class="line"><span style="color:#8B949E">//    КЦ::розбирач::надрукувати_слова(розбирач, текст_коду.значення, розібраний_текст.слова);</span></span>
+<span class="line"><span style="color:#8B949E">//    біб::надрукувати_ю8(ю8"--- кінець слів ---");</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    успіх_розбору = КЦ::розбирач::розібрати_слова_на_сполуки(розбирач, розібраний_текст.слова, розібраний_текст.сполуки::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, помилка_розбору_на_сполуки::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> успіх_розбору {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> позиція_в_тексті = розібраний_текст.слова.дані[помилка_розбору_на_сполуки.позиція_слова].позиція_початку.позиція_в_тексті;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> рядок = розібраний_текст.слова.дані[помилка_розбору_на_сполуки.позиція_слова].позиція_початку.рядок;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> стовпець = розібраний_текст.слова.дані[помилка_розбору_на_сполуки.позиція_слова].позиція_початку.стовпець;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_помилки::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">        "Неочікуване слово."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        створити_місцезнаходження_помилки(компілятор, текст_коду, позиція_в_тексті, рядок, стовпець)</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">//    біб::надрукувати_ю8(ю8 { текст_коду.шлях.розмір, текст_коду.шлях.дані });</span></span>
+<span class="line"><span style="color:#8B949E">//    біб::надрукувати_ю8(ю8"--- сполуки ---");</span></span>
+<span class="line"><span style="color:#8B949E">//    КЦ::розбирач::надрукувати_сполуки(розбирач, текст_коду.значення, розібраний_текст.слова, розібраний_текст.сполуки, 0);</span></span>
+<span class="line"><span style="color:#8B949E">//    біб::надрукувати_ю8(ю8"--- кінець сполук ---");</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_компіляції_тіла = скомпілювати_тіло(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      Контекст {</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібраний_текст = розібраний_текст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        середовище = середовище,</span></span>
+<span class="line"><span style="color:#E6EDF3">        кк_дії = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      },</span></span>
+<span class="line"><span style="color:#E6EDF3">      розібраний_текст.сполуки,</span></span>
+<span class="line"><span style="color:#E6EDF3">      КЦ::розбирач::Місцезнаходження { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_компіляції_тіла.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_помилки::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = результат_компіляції_тіла.помилка;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">    // ...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> взяти_файл_ю8(компілятор: *Компілятор, середовище: *Середовище, шлях: біб::Шлях, вихід_помилки: **Помилка) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> р: </span><span style="color:#79C0FF">ціле</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> взятий_файл: *РозібранийТекст = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> знайти_взятий_файл(компілятор.взяті_файли, шлях, взятий_файл::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> код = біб::Інформація { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    р = біб::прочитати_файл_за_шляхом(шлях, код::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> р &#x3C; </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_помилки::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = створити_помилку(компілятор, </span><span style="color:#A5D6FF">"Не вдалось прочитати файл."</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> значення_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> місцезнаходження_кд = біб::МісцезнаходженняПерекодованого { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> перекодувати_з_ю8_з_місцезнаходженнями(компілятор, </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { код.дані, код.розмір }, значення_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, місцезнаходження_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_помилки::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = створити_помилку(компілятор, </span><span style="color:#A5D6FF">"Не вдалось перекодувати файл в кд."</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(код.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> оригінальне_значення = біб::виділити&#x3C;ОригінальнеЗначенняТекстуКоду>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    оригінальне_значення.значення = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { код.дані, код.розмір };</span></span>
+<span class="line"><span style="color:#E6EDF3">    оригінальне_значення.місцезнаходження = місцезнаходження_кд;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> текст_коду = створити_текст_коду(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    р = біб::клонувати_шлях(шлях, текст_коду.шлях::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> р &#x3C; </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#8B949E">      // потім: почистити</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_помилки::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = створити_помилку(компілятор, </span><span style="color:#A5D6FF">"Не вдалось клонувати шлях."</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    текст_коду.значення = значення_кд;</span></span>
+<span class="line"><span style="color:#E6EDF3">    текст_коду.оригінальне_значення = оригінальне_значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> скомпілювати_текст_коду(компілятор, середовище, текст_коду, вихід_помилки);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_ПЛЮС = КД::символи::Хрестик;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_МІНУС = КД::символи::Риска;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_0 = КД::символи::Нуль;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_1 = КД::символи::Один;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_2 = КД::символи::Два;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_3 = КД::символи::Три;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_4 = КД::символи::Чотири;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_5 = КД::символи::Пʼять;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_6 = КД::символи::Шість;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_7 = КД::символи::Сім;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_8 = КД::символи::Вісім;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_9 = КД::символи::Девʼять;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> СИМВОЛ_КРАПКА = КД::символи::Крапка;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> спробувати_розібрати_ціле_число(компілятор: *Компілятор, значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, вихід: *</span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3">, вихід_помилки: *</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, вихід_позиції_помилки: *</span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> вихідне: </span><span style="color:#79C0FF">ціле</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> знак: </span><span style="color:#79C0FF">ц8</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> п &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> значення.дані[п] == СИМВОЛ_МІНУС {</span></span>
+<span class="line"><span style="color:#E6EDF3">        знак = </span><span style="color:#79C0FF">ц8</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення.дані[п] == СИМВОЛ_ПЛЮС {</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> с = значення.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_0 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_1 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_2 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_3 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_4 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_5 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">5</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_6 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_7 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">7</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_9 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">9</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        стрибнути</span><span style="color:#E6EDF3"> успіх;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      вихідне = вихідне * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">ціле</span><span style="color:#E6EDF3">(с);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  успіх:</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = вихідне * </span><span style="color:#79C0FF">ціле</span><span style="color:#E6EDF3">(знак);</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> спробувати_розібрати_природне_число(компілятор: *Компілятор, значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, вихід: *</span><span style="color:#79C0FF">п64</span><span style="color:#E6EDF3">, вихід_помилки: *</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, вихід_позиції_помилки: *</span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> вихідне: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> с = значення.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_0 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_1 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_2 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_3 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_4 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_5 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">5</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_6 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_7 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">7</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_9 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = </span><span style="color:#79C0FF">9</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        стрибнути</span><span style="color:#E6EDF3"> успіх;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      вихідне = вихідне * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">(с);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  успіх:</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = вихідне;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> спробувати_розібрати_дробове_число(компілятор: *Компілятор, значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, вихід: *</span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3">, вихід_помилки: *</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, вихід_позиції_помилки: *</span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> число: </span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0.0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> с: </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3"> = значення.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_0 { </span><span style="color:#8B949E">// 0</span></span>
+<span class="line"><span style="color:#E6EDF3">        число = число * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_1 { </span><span style="color:#8B949E">// 1</span></span>
+<span class="line"><span style="color:#E6EDF3">        число = число * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_2 { </span><span style="color:#8B949E">// 2</span></span>
+<span class="line"><span style="color:#E6EDF3">        число = число * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_3 { </span><span style="color:#8B949E">// 3</span></span>
+<span class="line"><span style="color:#E6EDF3">        число = число * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_4 { </span><span style="color:#8B949E">// 4</span></span>
+<span class="line"><span style="color:#E6EDF3">        число = число * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_5 { </span><span style="color:#8B949E">// 5</span></span>
+<span class="line"><span style="color:#E6EDF3">        число = число * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">5</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_6 { </span><span style="color:#8B949E">// 6</span></span>
+<span class="line"><span style="color:#E6EDF3">        число = число * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_7 { </span><span style="color:#8B949E">// 7</span></span>
+<span class="line"><span style="color:#E6EDF3">        число = число * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">7</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_8 { </span><span style="color:#8B949E">// 8</span></span>
+<span class="line"><span style="color:#E6EDF3">        число = число * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_9 { </span><span style="color:#8B949E">// 9</span></span>
+<span class="line"><span style="color:#E6EDF3">        число = число * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">9</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_КРАПКА { </span><span style="color:#8B949E">// .</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        с = значення.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> дробна_частина: </span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0.0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> дільник: </span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">1.0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        поки</span><span style="color:#E6EDF3"> п &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">          якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_0 { </span><span style="color:#8B949E">// 0</span></span>
+<span class="line"><span style="color:#E6EDF3">            дробна_частина = дробна_частина * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_1 { </span><span style="color:#8B949E">// 1</span></span>
+<span class="line"><span style="color:#E6EDF3">            дробна_частина = дробна_частина * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_2 { </span><span style="color:#8B949E">// 2</span></span>
+<span class="line"><span style="color:#E6EDF3">            дробна_частина = дробна_частина * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_3 { </span><span style="color:#8B949E">// 3</span></span>
+<span class="line"><span style="color:#E6EDF3">            дробна_частина = дробна_частина * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_4 { </span><span style="color:#8B949E">// 4</span></span>
+<span class="line"><span style="color:#E6EDF3">            дробна_частина = дробна_частина * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_5 { </span><span style="color:#8B949E">// 5</span></span>
+<span class="line"><span style="color:#E6EDF3">            дробна_частина = дробна_частина * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">5</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_6 { </span><span style="color:#8B949E">// 6</span></span>
+<span class="line"><span style="color:#E6EDF3">            дробна_частина = дробна_частина * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_7 { </span><span style="color:#8B949E">// 7</span></span>
+<span class="line"><span style="color:#E6EDF3">            дробна_частина = дробна_частина * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">7</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_8 { </span><span style="color:#8B949E">// 8</span></span>
+<span class="line"><span style="color:#E6EDF3">            дробна_частина = дробна_частина * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> с == СИМВОЛ_9 { </span><span style="color:#8B949E">// 9</span></span>
+<span class="line"><span style="color:#E6EDF3">            дробна_частина = дробна_частина * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> + </span><span style="color:#79C0FF">9</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">            вихід_позиції_помилки::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = п;</span></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">          п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          с = значення.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">          дільник = дільник * </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        число = число + дробна_частина / дільник;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = число;</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        вихід_позиції_помилки::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = п;</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      с = значення.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = число;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> перетворити_природне_на_кд(компілятор: *Компілятор, значення: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, вихід: *</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> довжина: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> тимч: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    довжина += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тимч /= </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> тимч != </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      довжина += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      тимч /= </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> значення_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { біб::виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(довжина), довжина };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п = </span><span style="color:#79C0FF">ціле</span><span style="color:#E6EDF3">(довжина - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п >= </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення_кд.дані[п] = </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(СИМВОЛ_0) + </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(значення % </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення /= </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      п -= </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = значення_кд;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_повну_назву_в_контексті(компілятор: *Компілятор, контекст: Контекст, назва: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_кд = зробити_накопичувач_кд(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, назва);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> поточне_середовище = контекст.середовище;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> поточне_середовище != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> поточне_середовище.обʼєкт_секції != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> поточне_середовище.обʼєкт_секції.назва.значення.розмір > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">          покласти_спереду_накопичувача_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"::"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">          покласти_спереду_накопичувача_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, поточне_середовище.обʼєкт_секції.назва.значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> поточне_середовище.обʼєкт_дії != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> поточне_середовище.обʼєкт_дії.назва.значення.розмір > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">          покласти_спереду_накопичувача_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"::"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">          покласти_спереду_накопичувача_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, поточне_середовище.обʼєкт_дії.назва.значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      поточне_середовище = поточне_середовище.зовнішнє;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> накопичувач_кд.значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_назву(компілятор: *Компілятор, значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) -> *Назва {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> ПМ::отримати_назву(компілятор.пм_сховище_назв, значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

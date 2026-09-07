@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.qOex34uEgj/ціль-0.76.0/КЦ/Компілятор.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> створити_тип_кд(компілятор: *Компілятор) -> *ОбʼєктТипу {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> параметри = Параметри { </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">, біб::виділити&#x3C;Параметр>(</span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">), </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    параметри.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] = Параметр {</span></span>
+<span class="line"><span style="color:#E6EDF3">      назва = отримати_назву(компілятор, </span><span style="color:#A5D6FF">"дані"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип = створити_тип_адреси(компілятор, компілятор.тип_п8),</span></span>
+<span class="line"><span style="color:#E6EDF3">      Місцезнаходження { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">      Місцезнаходження { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">    параметри.дані[</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] = Параметр {</span></span>
+<span class="line"><span style="color:#E6EDF3">      назва = отримати_назву(компілятор, </span><span style="color:#A5D6FF">"розмір"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип = компілятор.тип_п64,</span></span>
+<span class="line"><span style="color:#E6EDF3">      Місцезнаходження { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">      Місцезнаходження { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> пакована = </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу_структура = виділити_обʼєкт_типу(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу_структура.вид = ВидОбʼєктаТипуСтруктура;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу_структура.дані = ДаніОбʼєктаТипуСтруктура {</span></span>
+<span class="line"><span style="color:#E6EDF3">      назва = отримати_назву(компілятор, </span><span style="color:#A5D6FF">"кд"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри = параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">      повна_назва = отримати_назву(компілятор, </span><span style="color:#A5D6FF">"кд"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      готові_аргументи_шаблону = ГотовіАргументиШаблону { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">      дії = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      пакована = пакована</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> пм_параметри = ПМ::Параметри { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; параметри.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::покласти_параметр(компілятор.пм_модуль, пм_параметри::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, ПМ::Параметр { параметри.дані[п].тип.пм_тип });</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу_структура.пм_тип = ПМ::створити_структуру(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.пм_модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">      отримати_назву(компілятор, </span><span style="color:#A5D6FF">"кд"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      пм_параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">      пакована</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> обʼєкт_типу_структура;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> створити_тип_ю8(компілятор: *Компілятор) -> *ОбʼєктТипу {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> параметри = Параметри { </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">, біб::виділити&#x3C;Параметр>(</span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">), </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    параметри.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] = Параметр {</span></span>
+<span class="line"><span style="color:#E6EDF3">      назва = отримати_назву(компілятор, </span><span style="color:#A5D6FF">"дані"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип = створити_тип_адреси(компілятор, компілятор.тип_п8),</span></span>
+<span class="line"><span style="color:#E6EDF3">      Місцезнаходження { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">      Місцезнаходження { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">    параметри.дані[</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] = Параметр {</span></span>
+<span class="line"><span style="color:#E6EDF3">      назва = отримати_назву(компілятор, </span><span style="color:#A5D6FF">"розмір"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип = компілятор.тип_п64,</span></span>
+<span class="line"><span style="color:#E6EDF3">      Місцезнаходження { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">      Місцезнаходження { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> пакована = </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу_структура = виділити_обʼєкт_типу(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу_структура.вид = ВидОбʼєктаТипуСтруктура;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу_структура.дані = ДаніОбʼєктаТипуСтруктура {</span></span>
+<span class="line"><span style="color:#E6EDF3">      назва = отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ю8"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри = параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">      повна_назва = отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ю8"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      готові_аргументи_шаблону = ГотовіАргументиШаблону { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">      дії = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      пакована = пакована</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> пм_параметри = ПМ::Параметри { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; параметри.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::покласти_параметр(компілятор.пм_модуль, пм_параметри::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, ПМ::Параметр { параметри.дані[п].тип.пм_тип });</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу_структура.пм_тип = ПМ::створити_структуру(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.пм_модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">      отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ю8"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      пм_параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">      пакована</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> обʼєкт_типу_структура;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_компілятор(пм_модуль: *ПМ::Модуль) -> *Компілятор {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> компілятор = біб::виділити&#x3C;Компілятор>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.пм_модуль = пм_модуль;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.кореневий_шлях = біб::Шлях { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.шлях_до_біб = біб::Шлях { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.взяті_файли = створити_взяті_файли(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.шляхи_до_визначень = біб::Накопичувач&#x3C;біб::Шлях> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.пм_сховище_назв = ПМ::створити_сховище_назв();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.перше_середовище = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.останнє_середовище = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.перший_обʼєкт_дії = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.останній_обʼєкт_дії = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.перший_обʼєкт_типу = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.останній_обʼєкт_типу = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.перший_обʼєкт_секції = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.останній_обʼєкт_секції = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.перший_обʼєкт_шаблону = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.останній_обʼєкт_шаблону = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.перший_обʼєкт_сирого_значення = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.останній_обʼєкт_сирого_значення = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.перший_розібраний_текст = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.останній_розібраний_текст = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.перший_текст_коду = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.останній_текст_коду = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.глобальне_середовище = створити_середовище(компілятор, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_ніщо = створити_простий_тип(компілятор, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ніщо"</span><span style="color:#E6EDF3">), ПМ::отримати_тип_ніщо(компілятор.пм_модуль));</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ніщо"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_ніщо });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_адреса = виділити_обʼєкт_типу(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_адреса.вид = ВидОбʼєктаТипуАдреса;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_адреса.пм_тип = ПМ::отримати_тип_адреса(компілятор.пм_модуль);</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_адреса.дані = ДаніОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип_даних = компілятор.тип_ніщо</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"адреса"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_адреса });</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"невідома_адреса"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_адреса });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_памʼять = виділити_обʼєкт_типу(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_памʼять.вид = ВидОбʼєктаТипуАдреса;</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_памʼять.пм_тип = ПМ::отримати_тип_адреса(компілятор.пм_модуль);</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_памʼять.дані = ДаніОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип_даних = компілятор.тип_ніщо</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"памʼять"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_памʼять });</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"невідома_памʼять"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_памʼять });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_логічне = створити_простий_тип(компілятор, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"логічне"</span><span style="color:#E6EDF3">), ПМ::отримати_тип_логічне(компілятор.пм_модуль));</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"логічне"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_логічне });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_ц8 = створити_простий_тип(компілятор, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ц8"</span><span style="color:#E6EDF3">), ПМ::отримати_тип_ц8(компілятор.пм_модуль));</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ц8"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_ц8 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_ц16 = створити_простий_тип(компілятор, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ц16"</span><span style="color:#E6EDF3">), ПМ::отримати_тип_ц16(компілятор.пм_модуль));</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ц16"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_ц16 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_ц32 = створити_простий_тип(компілятор, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ц32"</span><span style="color:#E6EDF3">), ПМ::отримати_тип_ц32(компілятор.пм_модуль));</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ц32"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_ц32 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_ц64 = створити_простий_тип(компілятор, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ц64"</span><span style="color:#E6EDF3">), ПМ::отримати_тип_ц64(компілятор.пм_модуль));</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ц64"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_ц64 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ціле"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_ц64 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_п8 = створити_простий_тип(компілятор, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"п8"</span><span style="color:#E6EDF3">), ПМ::отримати_тип_п8(компілятор.пм_модуль));</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"п8"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_п8 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_п16 = створити_простий_тип(компілятор, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"п16"</span><span style="color:#E6EDF3">), ПМ::отримати_тип_п16(компілятор.пм_модуль));</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"п16"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_п16 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_п32 = створити_простий_тип(компілятор, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"п32"</span><span style="color:#E6EDF3">), ПМ::отримати_тип_п32(компілятор.пм_модуль));</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"п32"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_п32 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_п64 = створити_простий_тип(компілятор, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"п64"</span><span style="color:#E6EDF3">), ПМ::отримати_тип_п64(компілятор.пм_модуль));</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"п64"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_п64 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"природне"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_п64 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_р32 = створити_простий_тип(компілятор, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"р32"</span><span style="color:#E6EDF3">), ПМ::отримати_тип_р32(компілятор.пм_модуль));</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"р32"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_р32 });</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"д32"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_р32 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_р64 = створити_простий_тип(компілятор, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"р64"</span><span style="color:#E6EDF3">), ПМ::отримати_тип_р64(компілятор.пм_модуль));</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"р64"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_р64 });</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"д64"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_р64 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.обʼєкт_значення_так = ОбʼєктЗначення { компілятор.тип_логічне, ПМ::створити_логічне(компілятор.пм_модуль, </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">) };</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"так"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаЗначення, компілятор.обʼєкт_значення_так });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.обʼєкт_значення_ні = ОбʼєктЗначення { компілятор.тип_логічне, ПМ::створити_логічне(компілятор.пм_модуль, </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">) };</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ні"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаЗначення, компілятор.обʼєкт_значення_ні });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.обʼєкт_значення_пусто = ОбʼєктЗначення { компілятор.тип_адреса, ПМ::отримати_значення_пусто(компілятор.пм_модуль) };</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"пусто"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаЗначення, компілятор.обʼєкт_значення_пусто });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_кд = створити_тип_кд(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"кд"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_кд });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.тип_ю8 = створити_тип_ю8(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(компілятор.глобальне_середовище, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"ю8"</span><span style="color:#E6EDF3">), Обʼєкт { ВидОбʼєктаТип, компілятор.тип_ю8 });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> компілятор;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знищити_компілятор(компілятор: *Компілятор) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::знищити_шлях(компілятор.кореневий_шлях);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    знищити_взяті_файли(компілятор.взяті_файли);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> поточне_середовище = компілятор.перше_середовище;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> поточне_середовище != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> наступне = поточне_середовище.наступне;</span></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_середовище(поточне_середовище);</span></span>
+<span class="line"><span style="color:#E6EDF3">      поточне_середовище = наступне;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> поточний_обʼєкт_дії = компілятор.перший_обʼєкт_дії;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> поточний_обʼєкт_дії != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> наступний = поточний_обʼєкт_дії.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_обʼєкт_дії(компілятор, поточний_обʼєкт_дії);</span></span>
+<span class="line"><span style="color:#E6EDF3">      поточний_обʼєкт_дії = наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> поточний_обʼєкт_секції = компілятор.перший_обʼєкт_секції;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> поточний_обʼєкт_секції != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> наступний = поточний_обʼєкт_секції.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_обʼєкт_секції(компілятор, поточний_обʼєкт_секції);</span></span>
+<span class="line"><span style="color:#E6EDF3">      поточний_обʼєкт_секції = наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> поточний_обʼєкт_типу = компілятор.перший_обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> поточний_обʼєкт_типу != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> наступний = поточний_обʼєкт_типу.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_обʼєкт_типу(компілятор, поточний_обʼєкт_типу);</span></span>
+<span class="line"><span style="color:#E6EDF3">      поточний_обʼєкт_типу = наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> поточний_обʼєкт_шаблону = компілятор.перший_обʼєкт_шаблону;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> поточний_обʼєкт_шаблону != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> наступний = поточний_обʼєкт_шаблону.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_обʼєкт_шаблону(компілятор, поточний_обʼєкт_шаблону);</span></span>
+<span class="line"><span style="color:#E6EDF3">      поточний_обʼєкт_шаблону = наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> поточний_обʼєкт_сирого_значення = компілятор.перший_обʼєкт_сирого_значення;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> поточний_обʼєкт_сирого_значення != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> наступний = поточний_обʼєкт_сирого_значення.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_обʼєкт_сирого_значення(компілятор, поточний_обʼєкт_сирого_значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">      поточний_обʼєкт_сирого_значення = наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> поточний_розібраний_текст = компілятор.перший_розібраний_текст;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> поточний_розібраний_текст != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> наступний = поточний_розібраний_текст.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_розібраний_текст(поточний_розібраний_текст);</span></span>
+<span class="line"><span style="color:#E6EDF3">      поточний_розібраний_текст = наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> поточний_текст_коду = компілятор.перший_текст_коду;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> поточний_текст_коду != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> наступний = поточний_текст_коду.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_текст_коду(поточний_текст_коду);</span></span>
+<span class="line"><span style="color:#E6EDF3">      поточний_текст_коду = наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    ПМ::знищити_сховище_назв(компілятор.пм_сховище_назв);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">    // потім: знищити всі реєстри, накопичувачі, обʼєкти і тд</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

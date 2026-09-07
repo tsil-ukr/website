@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.tNWBk7xk5G/ціль-0.71.0/КЦ/перекладач/Значення.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_значення(компілятор: *Компілятор, контекст: Контекст, контекст_виконання_шаблону: *КонтекстКомпіляціїВиконанняШаблону, сполука: *розбирач::Сполука, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиПрочитати {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиПрочитати;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> скомпілювати_отримати_з_середовища(компілятор, контекст, дані, сполука.місцезнаходження, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиЧисло {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиЧисло;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> скомпілювати_число(компілятор, контекст, дані, сполука.місцезнаходження, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиТекст {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиТекст;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> скомпілювати_текст(компілятор, контекст, дані, сполука.місцезнаходження);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиВиконатиШаблон {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиВиконатиШаблон;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> скомпілювати_виконати_шаблон(компілятор, контекст, дані, сполука.місцезнаходження, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиОперація {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиОперація;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> скомпілювати_операцію(компілятор, контекст, дані, сполука.місцезнаходження);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиОднооперація {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиОднооперація;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> скомпілювати_однооперацію(компілятор, контекст, дані, сполука.місцезнаходження);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиОтриматиВластивість {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиОтриматиВластивість;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> скомпілювати_отримати_властивість(компілятор, контекст, дані, сполука.місцезнаходження, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиОтриматиЕлемент {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиОтриматиЕлемент;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> скомпілювати_отримати_елемент(компілятор, контекст, дані, сполука.місцезнаходження, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиОтриматиСекційнуВластивість {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиОтриматиСекційнуВластивість;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> скомпілювати_отримати_секційну_властивість(компілятор, контекст, дані, сполука.місцезнаходження, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиОбʼєкт {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиОбʼєкт;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> скомпілювати_обʼєкт(компілятор, контекст, дані, сполука.місцезнаходження, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиВиконатиДію {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиВиконатиДію;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> скомпілювати_виконати_дію(компілятор, контекст, дані, сполука.місцезнаходження, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиДія {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиДія;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат = скомпілювати_дію(компілятор, контекст, контекст_виконання_шаблону, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані, сполука.місцезнаходження);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаДія, результат.обʼєкт_дії }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиСтруктура {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиСтруктура;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат = скомпілювати_структуру(компілятор, контекст, контекст_виконання_шаблону, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані, сполука.місцезнаходження);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаТип, результат.обʼєкт_типу }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиТипДії {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиТипДії;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат = скомпілювати_тип_дії(компілятор, контекст, дані, сполука.місцезнаходження);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаТип, результат.обʼєкт_типу }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиВаріативнийТип {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиВаріативнийТип;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат = скомпілювати_варіативний_тип(компілятор, контекст, дані, сполука.місцезнаходження);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаТип, результат.обʼєкт_типу }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> сполука.вид == розбирач::ВидСполукиШаблон {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиШаблон;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат = скомпілювати_шаблон(компілятор, контекст, дані, сполука.місцезнаходження);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаШаблон, результат.обʼєкт_шаблону }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">        "Не вдалось скомпілювати значення."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, сполука.місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">      ),</span></span>
+<span class="line"><span style="color:#E6EDF3">      ...</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_значення_як_значення(компілятор: *Компілятор, контекст: Контекст, сполука: *розбирач::Сполука, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_значення = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, сполука, очікуваний_тип);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_значення.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = результат_значення.помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">        ...</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> отримати_як_значення(компілятор, контекст, сполука.місцезнаходження, результат_значення.обʼєкт, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_як_тип(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт: Обʼєкт, перевірка_на_повність: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">) -> РезультатОбʼєктаТипу {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт.вид != ВидОбʼєктаТип {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаТипу {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "Значення повинно бути типом."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        ),</span></span>
+<span class="line"><span style="color:#E6EDF3">        ...</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу = обʼєкт.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> *ОбʼєктТипу;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> перевірка_на_повність {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> перевірити_чи_тип_повний(компілятор, обʼєкт_типу) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаТипу {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Неповний тип."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаТипу { обʼєкт_типу, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_пустий_обʼєкт(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, тип: *ОбʼєктТипу) -> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> тип == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт_значення = компілятор.обʼєкт_значення_пусто,</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> тип.вид == ВидОбʼєктаТипуСтруктура {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> пм_значення = ПМ::створити_пусте_значення(компілятор.пм_модуль, тип.пм_тип);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт_значення = ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          тип = тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">          пм_значення = пм_значення</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> тип.вид == ВидОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> пм_значення = ПМ::створити_пусте_значення(компілятор.пм_модуль, тип.пм_тип);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт_значення = ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          тип = тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">          пм_значення = пм_значення</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> тип.вид == ВидОбʼєктаТипуДія {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> пм_значення = ПМ::створити_пусте_значення(компілятор.пм_модуль, тип.пм_тип);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт_значення = ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          тип = тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">          пм_значення = пм_значення</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">        "Неможливо зробити пустий обʼєкт."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">      ),</span></span>
+<span class="line"><span style="color:#E6EDF3">      ...</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_як_значення(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт: Обʼєкт, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт.вид == ВидОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_значення = обʼєкт.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> ОбʼєктЗначення;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення { обʼєкт_значення, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт.вид == ВидОбʼєктаНезавантаженеЗначення {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_незавантаженого_значення = обʼєкт.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> ОбʼєктНезавантаженогоЗначення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> контекст.кк_дії == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Неможливо прочитати значення поза тілом дії."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> пм_завантажене_значення = ПМ::вказівка_прочитати(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.поточний_крок.пм_крок,</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт_незавантаженого_значення.тип.пм_тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт_незавантаженого_значення.пм_значення</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_значення = ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт_незавантаженого_значення.тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">        пм_завантажене_значення</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення { обʼєкт_значення, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт.вид == ВидОбʼєктаДія {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_дії = обʼєкт.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> *ОбʼєктДії;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення { ОбʼєктЗначення { обʼєкт_дії.тип, обʼєкт_дії.пм_інструкція </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> *ПМ::Значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт.вид == ВидОбʼєктаСиреЗначення {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення = обʼєкт.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> *ОбʼєктСирогоЗначення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення.вид == ВидСирогоОбʼєктаЧисло {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> розібрати_число(компілятор, контекст, місцезнаходження, обʼєкт_сирого_значення.дані, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення.вид == ВидСирогоОбʼєктаПусто {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> створити_пустий_обʼєкт(компілятор, контекст, місцезнаходження, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">        "Значення повинно бути значенням."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">      ),</span></span>
+<span class="line"><span style="color:#E6EDF3">      ...</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_значення_як_тип(компілятор: *Компілятор, контекст: Контекст, сполука: *розбирач::Сполука, перевірка_на_повність: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">) -> РезультатОбʼєктаТипу {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_значення = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, сполука, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_значення.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаТипу {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = результат_значення.помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">        ...</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> отримати_як_тип(компілятор, контекст, сполука.місцезнаходження, результат_значення.обʼєкт, перевірка_на_повність);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

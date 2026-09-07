@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.3gEvzRWMzb/ціль-0.80.0/КЦ/перекладач/Синонім.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#8B949E">  // дія скомпілювати_синонім(</span></span>
+<span class="line"><span style="color:#8B949E">  //   компілятор: *Компілятор,</span></span>
+<span class="line"><span style="color:#8B949E">  //   контекст: Контекст,</span></span>
+<span class="line"><span style="color:#8B949E">  //   контекст_виконання_шаблону: *КонтекстКомпіляціїВиконанняШаблону,</span></span>
+<span class="line"><span style="color:#8B949E">  //   дані_синоніма: розбирач::ДаніСполукиСинонім,</span></span>
+<span class="line"><span style="color:#8B949E">  //   місцезнаходження: розбирач::Місцезнаходження,</span></span>
+<span class="line"><span style="color:#8B949E">  //   вихід: *Обʼєкт,</span></span>
+<span class="line"><span style="color:#8B949E">  //   вихід_помилки: **Помилка</span></span>
+<span class="line"><span style="color:#8B949E">  // ) -> логічне {</span></span>
+<span class="line"><span style="color:#8B949E">  //   вернути скомпілювати_значення(</span></span>
+<span class="line"><span style="color:#8B949E">  //     компілятор,</span></span>
+<span class="line"><span style="color:#8B949E">  //     контекст,</span></span>
+<span class="line"><span style="color:#8B949E">  //     пусто,</span></span>
+<span class="line"><span style="color:#8B949E">  //     дані_синоніма.значення,</span></span>
+<span class="line"><span style="color:#8B949E">  //     пусто,</span></span>
+<span class="line"><span style="color:#8B949E">  //     вихід,</span></span>
+<span class="line"><span style="color:#8B949E">  //     вихід_помилки</span></span>
+<span class="line"><span style="color:#8B949E">  //   );</span></span>
+<span class="line"><span style="color:#8B949E">  // }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_визначити_синонім(</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор: *Компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">    контекст: Контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані_синоніма: розбирач::ДаніСполукиСинонім,</span></span>
+<span class="line"><span style="color:#E6EDF3">    місцезнаходження: розбирач::Місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід: *Обʼєкт,</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_помилки: **Помилка</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> успіх = </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.розібраний_текст.слова.дані[дані_синоніма.ідентифікатор.позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">      назва_кд::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">    ) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_помилки::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">        "Не вдалось отримати назву змінної."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва = отримати_назву(компілятор, назва_кд);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_з_середовища: Обʼєкт;</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> знайти_в_середовищі(контекст.середовище, назва, обʼєкт_з_середовища::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_помилки::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">        "Субʼєкт вже визначено."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        створити_місцезнаходження_помилки_з_позиції_слова(компілятор, контекст.розібраний_текст, дані_синоніма.ідентифікатор.позиція_слова)</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    успіх = скомпілювати_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст,</span></span>
+<span class="line"><span style="color:#FF7B72">      пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані_синоніма.значення,</span></span>
+<span class="line"><span style="color:#FF7B72">      пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід,</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_помилки</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> успіх {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(контекст.середовище, назва, вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

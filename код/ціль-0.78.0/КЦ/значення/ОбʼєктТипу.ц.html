@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.F15XRmrllU/ціль-0.78.0/КЦ/значення/ОбʼєктТипу.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> виділити_обʼєкт_типу(компілятор: *Компілятор) -> *ОбʼєктТипу {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу = біб::виділити&#x3C;ОбʼєктТипу>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.наступний = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.вид = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.пм_тип = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> компілятор.перший_обʼєкт_типу == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.перший_обʼєкт_типу = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> компілятор.останній_обʼєкт_типу == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_обʼєкт_типу = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_обʼєкт_типу.наступний = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_обʼєкт_типу = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_простий_тип(компілятор: *Компілятор, назва: *Назва, пм_тип: *ПМ::Тип) -> *ОбʼєктТипу {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу = виділити_обʼєкт_типу(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.вид = ВидОбʼєктаТипуПростий;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.пм_тип = пм_тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.дані = ДаніОбʼєктаТипуПростий {</span></span>
+<span class="line"><span style="color:#E6EDF3">      назва = назва</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_тип_адреси(компілятор: *Компілятор, тип_даних: *ОбʼєктТипу) -> *ОбʼєктТипу {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу = виділити_обʼєкт_типу(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.вид = ВидОбʼєктаТипуАдреса;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.пм_тип = компілятор.тип_адреса.пм_тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.дані = ДаніОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип_даних = тип_даних</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_тип_дії(компілятор: *Компілятор, параметри: Параметри, тип_результату: *ОбʼєктТипу) -> *ОбʼєктТипу {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу = виділити_обʼєкт_типу(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.вид = ВидОбʼєктаТипуДія;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.пм_тип = компілятор.тип_адреса.пм_тип;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> пм_параметри = ПМ::Параметри { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; параметри.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::покласти_параметр(компілятор.пм_модуль, пм_параметри::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, ПМ::Параметр { параметри.дані[п].тип.пм_тип });</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> пм_тип_інструкції = ПМ::створити_тип_інструкції(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.пм_модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">      пм_параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип_результату.пм_тип</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.дані = ДаніОбʼєктаТипуДія {</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри = параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">      тип_результату = тип_результату,</span></span>
+<span class="line"><span style="color:#E6EDF3">      пм_тип_інструкції = пм_тип_інструкції</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_варіативний_тип(компілятор: *Компілятор, кількість_типів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, типи: **ОбʼєктТипу) -> *ОбʼєктТипу {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу = виділити_обʼєкт_типу(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.вид = ВидОбʼєктаТипуВаріація;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> найбільший_тип = типи[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">];</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> розмір_найбільшого_типу: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = ПМ::отримати_розмір_типу_для_виділення(компілятор.пм_модуль, типи[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">].пм_тип);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; кількість_типів {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> тип = типи[п];</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> розмір = ПМ::отримати_розмір_типу_для_виділення(компілятор.пм_модуль, тип.пм_тип);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> розмір > розмір_найбільшого_типу {</span></span>
+<span class="line"><span style="color:#E6EDF3">        найбільший_тип = тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">        розмір_найбільшого_типу = розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.пм_тип = найбільший_тип.пм_тип;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_типу.дані = ДаніОбʼєктаТипуВаріація {</span></span>
+<span class="line"><span style="color:#E6EDF3">      кількість_типів = кількість_типів,</span></span>
+<span class="line"><span style="color:#E6EDF3">      типи = типи,</span></span>
+<span class="line"><span style="color:#E6EDF3">      найбільший_тип = найбільший_тип</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знищити_обʼєкт_типу(компілятор: *Компілятор, обʼєкт_типу: *ОбʼєктТипу) {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт_типу.вид == ВидОбʼєктаТипуСтруктура {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = обʼєкт_типу.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> ДаніОбʼєктаТипуСтруктура;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_назву_якщо_копія(компілятор, дані.назва);</span></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_параметри(компілятор, дані.параметри);</span></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_назву_якщо_копія(компілятор, дані.повна_назва);</span></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_готові_аргументи_шаблону(компілятор, дані.готові_аргументи_шаблону);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_типу.вид == ВидОбʼєктаТипуДія {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = обʼєкт_типу.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> ДаніОбʼєктаТипуДія;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      знищити_параметри(компілятор, дані.параметри);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_типу.вид == ВидОбʼєктаТипуВаріація {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = обʼєкт_типу.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> ДаніОбʼєктаТипуВаріація;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(дані.типи);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(обʼєкт_типу);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_додати(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_відняти(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_помножити(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_поділити(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_поділити_за_модулем(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_більше(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_менше(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_більше_рівно(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_менше_рівно(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_рівно(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_не_рівно(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_зсунути_вліво(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_зсунути_вправо(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_ді(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_дабо(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_вабо(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_як(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_отримати_властивість(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, назва: *Назва, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> перевірити_чи_тип_повний(компілятор, обʼєкт_типу) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> назва == отримати_назву(компілятор, </span><span style="color:#A5D6FF">"розмір"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> розмір_типу = дізнатись_розмір_типу(компілятор, обʼєкт_типу);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> розмір_типу_як_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> перетворити_природне_на_кд(компілятор, розмір_типу, розмір_типу_як_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення = виділити_обʼєкт_сирого_значення(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_сирого_значення.дані = розмір_типу_як_кд;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаСиреЗначення, дані = обʼєкт_сирого_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_отримати_властивість_секції(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, назва: *Назва, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт_типу.вид == ВидОбʼєктаТипуСтруктура {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані = обʼєкт_типу.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> ДаніОбʼєктаТипуСтруктура;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> дані.дії != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> обʼєкт_з_середовища: Обʼєкт;</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> знайти_в_середовищі(дані.дії, назва, обʼєкт_з_середовища::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { обʼєкт_з_середовища, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_отримати_за_позицією(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, позиція: Аргумент, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_виконати(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, аргументи: *Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> кількість_аргументів == </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> перший_аргумент = аргументи[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_як_значення = отримати_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">        перший_аргумент.обʼєкт,</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт_типу</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_як_значення.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_як_значення.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_значення = результат_як_значення.обʼєкт_значення;</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == обʼєкт_типу {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_логічне.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_логічне.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_логічне.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_логічне.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_логічне.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_логічне.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_логічне.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_логічне.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_логічне.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_логічне.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип.вид == ВидОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_логічне.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип.вид == ВидОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип.вид == ВидОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип.вид == ВидОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип.вид == ВидОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_ц64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип.вид == ВидОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п8.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип.вид == ВидОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п16.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип.вид == ВидОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип.вид == ВидОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип.вид == ВидОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п64.пм_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р32.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип.вид == ВидОбʼєктаТипуАдреса {</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.тип = обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_п64.пм_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_значення.пм_значення = ПМ::вказівка_перетворити(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення.пм_значення, компілятор.тип_р64.пм_тип);</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаЗначення, дані = обʼєкт_значення }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_виконати_шаблон(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, аргументи: *Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_адреса {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> кількість_аргументів != </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_компіляції_значення_аргумента = отримати_як_тип(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргументи[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">].місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргументи[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">].обʼєкт,</span></span>
+<span class="line"><span style="color:#FF7B72">        ні</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_компіляції_значення_аргумента.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_компіляції_значення_аргумента.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_типу_комірки = створити_тип_адреси(компілятор, результат_компіляції_значення_аргумента.обʼєкт_типу);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаТип, дані = обʼєкт_типу_комірки }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт_типу == компілятор.тип_памʼять {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> кількість_аргументів != </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_компіляції_значення_аргумента = отримати_як_тип(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргументи[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">].місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргументи[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">].обʼєкт,</span></span>
+<span class="line"><span style="color:#FF7B72">        ні</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_компіляції_значення_аргумента.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_компіляції_значення_аргумента.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_типу_комірки = створити_тип_адреси(компілятор, результат_компіляції_значення_аргумента.обʼєкт_типу);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаТип, дані = обʼєкт_типу_комірки }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_змінити_властивість(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, назва: *Назва, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_змінити_в_секції(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, назва: *Назва, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_змінити_за_позицією(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу, позиція: Аргумент, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_унарний_мінус(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_заперечити(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_двійкове_заперечення(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_типу_зірочка(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_типу: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу_комірки = створити_тип_адреси(компілятор, обʼєкт_типу);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { Обʼєкт { ВидОбʼєктаТип, дані = обʼєкт_типу_комірки }, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

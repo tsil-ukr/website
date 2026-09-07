@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.tNWBk7xk5G/ціль-0.71.0/КЦ/перекладач/Число.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> розібрати_число(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> помилка_розбору_числа = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> позиція_помилки_розбору_числа: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_розбору_цілого_числа: </span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_розбору_природного_числа: </span><span style="color:#79C0FF">п64</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_розбору_дробового_числа: </span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> очікуваний_тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> спробувати_розібрати_природне_число(компілятор, значення, результат_розбору_природного_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, помилка_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, позиція_помилки_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка_розбору_числа,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(помилка_розбору_числа.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_розбору_природного_числа > </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Значення числа завелике для типу логічне."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор.тип_логічне,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ПМ::створити_логічне(компілятор.пм_модуль, </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">(результат_розбору_природного_числа))</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> очікуваний_тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> спробувати_розібрати_ціле_число(компілятор, значення, результат_розбору_цілого_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, помилка_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, позиція_помилки_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка_розбору_числа,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(помилка_розбору_числа.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_розбору_цілого_числа > </span><span style="color:#79C0FF">127</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Значення числа завелике для типу ц8."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_розбору_цілого_числа &#x3C; -</span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">128</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Значення числа завелике для типу ц8."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор.тип_ц8,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ПМ::створити_ц8(компілятор.пм_модуль, </span><span style="color:#79C0FF">ц8</span><span style="color:#E6EDF3">(результат_розбору_цілого_числа))</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> очікуваний_тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> спробувати_розібрати_ціле_число(компілятор, значення, результат_розбору_цілого_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, помилка_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, позиція_помилки_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка_розбору_числа,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(помилка_розбору_числа.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_розбору_цілого_числа > </span><span style="color:#79C0FF">32767</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Значення числа завелике для типу ц16."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_розбору_цілого_числа &#x3C; -</span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">32768</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Значення числа завелике для типу ц16."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор.тип_ц16,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ПМ::створити_ц16(компілятор.пм_модуль, </span><span style="color:#79C0FF">ц16</span><span style="color:#E6EDF3">(результат_розбору_цілого_числа))</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> очікуваний_тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> спробувати_розібрати_ціле_число(компілятор, значення, результат_розбору_цілого_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, помилка_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, позиція_помилки_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка_розбору_числа,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(помилка_розбору_числа.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_розбору_цілого_числа > </span><span style="color:#79C0FF">2147483647</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Значення числа завелике для типу ц32."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_розбору_цілого_числа &#x3C; -</span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">2147483648</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Значення числа завелике для типу ц32."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор.тип_ц32,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ПМ::створити_ц32(компілятор.пм_модуль, </span><span style="color:#79C0FF">ц32</span><span style="color:#E6EDF3">(результат_розбору_цілого_числа))</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> очікуваний_тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> спробувати_розібрати_ціле_число(компілятор, значення, результат_розбору_цілого_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, помилка_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, позиція_помилки_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка_розбору_числа,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(помилка_розбору_числа.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">      // потім: перевірити межі числа</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор.тип_ц64,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ПМ::створити_ц64(компілятор.пм_модуль, </span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3">(результат_розбору_цілого_числа))</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> очікуваний_тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> спробувати_розібрати_природне_число(компілятор, значення, результат_розбору_природного_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, помилка_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, позиція_помилки_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка_розбору_числа,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(помилка_розбору_числа.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_розбору_природного_числа > </span><span style="color:#79C0FF">255</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Значення числа завелике для типу п8."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор.тип_п8,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ПМ::створити_п8(компілятор.пм_модуль, </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(результат_розбору_природного_числа))</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> очікуваний_тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> спробувати_розібрати_природне_число(компілятор, значення, результат_розбору_природного_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, помилка_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, позиція_помилки_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка_розбору_числа,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(помилка_розбору_числа.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_розбору_природного_числа > </span><span style="color:#79C0FF">65535</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Значення числа завелике для типу п16."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор.тип_п16,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ПМ::створити_п16(компілятор.пм_модуль, </span><span style="color:#79C0FF">п16</span><span style="color:#E6EDF3">(результат_розбору_природного_числа))</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> очікуваний_тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> спробувати_розібрати_природне_число(компілятор, значення, результат_розбору_природного_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, помилка_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, позиція_помилки_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка_розбору_числа,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(помилка_розбору_числа.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_розбору_природного_числа > </span><span style="color:#79C0FF">4294967295</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Значення числа завелике для типу п32."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор.тип_п32,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ПМ::створити_п32(компілятор.пм_модуль, </span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">(результат_розбору_природного_числа))</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> очікуваний_тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> спробувати_розібрати_природне_число(компілятор, значення, результат_розбору_природного_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, помилка_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, позиція_помилки_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка_розбору_числа,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(помилка_розбору_числа.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">      // потім: перевірити межі числа</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор.тип_п64,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ПМ::створити_п64(компілятор.пм_модуль, </span><span style="color:#79C0FF">п64</span><span style="color:#E6EDF3">(результат_розбору_природного_числа))</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> очікуваний_тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> спробувати_розібрати_дробове_число(компілятор, значення, результат_розбору_дробового_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, помилка_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, позиція_помилки_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка_розбору_числа,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(помилка_розбору_числа.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> х: </span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">2139095039</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> д = х::</span><span style="color:#79C0FF">адреса</span><span style="color:#FF7B72"> як</span><span style="color:#E6EDF3"> *</span><span style="color:#79C0FF">р32</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_розбору_дробового_числа > </span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3">(д::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Значення числа завелике для типу р32."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор.тип_р32,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ПМ::створити_р32(компілятор.пм_модуль, </span><span style="color:#79C0FF">р32</span><span style="color:#E6EDF3">(результат_розбору_дробового_числа))</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> очікуваний_тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> спробувати_розібрати_дробове_число(компілятор, значення, результат_розбору_дробового_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, помилка_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, позиція_помилки_розбору_числа::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка_розбору_числа,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(помилка_розбору_числа.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = помилка,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">      // потім: перевірити межі числа</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ОбʼєктЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор.тип_р64,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ПМ::створити_р64(компілятор.пм_модуль, </span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3">(результат_розбору_дробового_числа))</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "Не вдалось скомпілювати число."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        ),</span></span>
+<span class="line"><span style="color:#E6EDF3">        ...</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_число(компілятор: *Компілятор, контекст: Контекст, дані_числа: розбирач::ДаніСполукиЧисло, місцезнаходження: розбирач::Місцезнаходження, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> значення_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.розібраний_текст.слова.дані[дані_числа.позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">      значення_кд::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">    ) {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "Не вдалось скомпілювати число."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        ),</span></span>
+<span class="line"><span style="color:#E6EDF3">        ...</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> очікуваний_тип == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення = виділити_обʼєкт_сирого_значення(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_сирого_значення.дані = виділити_копію_кд(компілятор, значення_кд);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">        Обʼєкт {</span></span>
+<span class="line"><span style="color:#E6EDF3">          ВидОбʼєктаСиреЗначення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_сирого_значення</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_розбору_числа = розібрати_число(компілятор, контекст, місцезнаходження, значення_кд, очікуваний_тип);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_розбору_числа.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_розбору_числа.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">        Обʼєкт {</span></span>
+<span class="line"><span style="color:#E6EDF3">          ВидОбʼєктаЗначення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          результат_розбору_числа.обʼєкт_значення</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">        "Не вдалось скомпілювати число."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">      ),</span></span>
+<span class="line"><span style="color:#E6EDF3">      ...</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

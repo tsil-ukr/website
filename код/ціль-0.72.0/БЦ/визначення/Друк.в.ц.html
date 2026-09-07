@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.Kdmp7a5ndo/ціль-0.72.0/БЦ/визначення/Друк.в.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./Памʼять;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./Кодування;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> __біб__вивести_ю8(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> __біб__вивести_байти(розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, дані: *</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> __біб__надрукувати_ю8(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> __біб__вивести_природне(значення: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> __біб__надрукувати_природне(значення: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> __біб__перетворити_природне_на_ю8(значення: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, вихід: *</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> біб {</span></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> вивести_символ(значення: </span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> символ = </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(значення);</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> значення_ю8 = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> позиція_помилки: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    перекодувати_в_ю8(</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { символ::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> }, </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">, значення_ю8::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, позиція_помилки::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    __біб__вивести_ю8(значення_ю8);</span></span>
+<span class="line"><span style="color:#E6EDF3">    звільнити(значення_ю8.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> вивести(значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> значення_ю8 = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> позиція_помилки: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    перекодувати_в_ю8(значення, </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">, значення_ю8::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, позиція_помилки::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    __біб__вивести_ю8(значення_ю8);</span></span>
+<span class="line"><span style="color:#E6EDF3">    звільнити(значення_ю8.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> надрукувати(значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> значення_ю8 = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> позиція_помилки: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    перекодувати_в_ю8(значення, </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">, значення_ю8::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, позиція_помилки::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    __біб__надрукувати_ю8(значення_ю8);</span></span>
+<span class="line"><span style="color:#E6EDF3">    звільнити(значення_ю8.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> вивести_символ_юнікоду(значення: </span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> дані = виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(</span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> значення &#x3C;= </span><span style="color:#79C0FF">127</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення &#x3C;= </span><span style="color:#79C0FF">2047</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір = </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">192</span><span style="color:#E6EDF3">) | (значення >> </span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані[</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">128</span><span style="color:#E6EDF3">) | (значення &#x26; </span><span style="color:#79C0FF">63</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення &#x3C;= </span><span style="color:#79C0FF">65535</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір = </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">224</span><span style="color:#E6EDF3">) | (значення >> </span><span style="color:#79C0FF">12</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані[</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">128</span><span style="color:#E6EDF3">) | ((значення >> </span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">) &#x26; </span><span style="color:#79C0FF">63</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані[</span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">128</span><span style="color:#E6EDF3">) | (значення &#x26; </span><span style="color:#79C0FF">63</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення &#x3C;= </span><span style="color:#79C0FF">1114111</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      розмір = </span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">240</span><span style="color:#E6EDF3">) | (значення >> </span><span style="color:#79C0FF">18</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані[</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">128</span><span style="color:#E6EDF3">) | ((значення >> </span><span style="color:#79C0FF">12</span><span style="color:#E6EDF3">) &#x26; </span><span style="color:#79C0FF">63</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані[</span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">128</span><span style="color:#E6EDF3">) | ((значення >> </span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">) &#x26; </span><span style="color:#79C0FF">63</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані[</span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">128</span><span style="color:#E6EDF3">) | (значення &#x26; </span><span style="color:#79C0FF">63</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> значення_ю8 = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { дані, розмір };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    __біб__вивести_ю8(значення_ю8);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    звільнити(дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> вивести_ю8(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    __біб__вивести_ю8(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> вивести_байти(розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, дані: *</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    __біб__вивести_байти(розмір, дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> надрукувати_ю8(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    __біб__надрукувати_ю8(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> перетворити_природне_на_ю8(значення: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    __біб__перетворити_природне_на_ю8(значення, результат::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> вивести_природне(значення: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    __біб__вивести_природне(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> надрукувати_природне(значення: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    __біб__надрукувати_природне(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

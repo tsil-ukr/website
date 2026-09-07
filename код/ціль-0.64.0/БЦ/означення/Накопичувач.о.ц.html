@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.4VRH3Kcbdd/ціль-0.64.0/БЦ/означення/Накопичувач.о.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти означення</span><span style="color:#E6EDF3"> ./Памʼять;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> біб {</span></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Накопичувач&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Т>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> виділити_накопичувач&#x3C;Т>(початкова_вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Накопичувач&#x3C;Т>> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач = виділити&#x3C;Накопичувач&#x3C;Т>>();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    накопичувач.розмір = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> початкова_вмісткість > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач.дані = виділити&#x3C;Т>(початкова_вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач.дані = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">    накопичувач.вмісткість = початкова_вмісткість;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> накопичувач;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> зробити_накопичувач&#x3C;Т>(початкова_вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> Накопичувач&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач: Накопичувач&#x3C;Т>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    накопичувач.розмір = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> початкова_вмісткість > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач.дані = виділити&#x3C;Т>(початкова_вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач.дані = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">    накопичувач.вмісткість = початкова_вмісткість;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> накопичувач;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> покласти_в_накопичувач&#x3C;Т>(накопичувач: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Накопичувач&#x3C;Т>>, значення: Т) {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> накопичувач.розмір == накопичувач.вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач.вмісткість += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач.дані = перевиділити&#x3C;Т>(накопичувач.дані, накопичувач.вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    накопичувач.дані[накопичувач.розмір] = значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    накопичувач.розмір += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> змінити_в_накопичувачі&#x3C;Т>(накопичувач: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Накопичувач&#x3C;Т>>, позиція: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, значення: Т) {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> позиція >= накопичувач.вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач.вмісткість = позиція + </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач.дані = перевиділити&#x3C;Т>(накопичувач.дані, накопичувач.вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    накопичувач.дані[позиція] = значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    накопичувач.розмір = позиція + </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> змінити_в_накопичувачі_без_розширення&#x3C;Т>(накопичувач: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Накопичувач&#x3C;Т>>, позиція: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, значення: Т) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    накопичувач.дані[позиція] = значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити_значення_накопичувача&#x3C;Т>(накопичувач: Накопичувач&#x3C;Т>) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(накопичувач.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити_накопичувач&#x3C;Т>(накопичувач: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Накопичувач&#x3C;Т>>) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    звільнити_значення_накопичувача&#x3C;Т>(накопичувач::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(накопичувач);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

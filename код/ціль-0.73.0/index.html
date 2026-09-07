@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ціль-0.73.0</title>
+    <link rel="icon" type="image/png" href="./докс_код_favicon.png" />
+    <link
+      rel="icon"
+      sizes="any"
+      type="image/svg+xml"
+      href="./докс_код_favicon.svg"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0d1117;
+        --bg-sidebar: #0d1117;
+        --bg-titlebar: #0d1117;
+        --bg-hover: #6e76811a;
+        --bg-selected: #6e768166;
+        --border: #30363d;
+        --accent: #1f6feb;
+        --text: #e6edf3;
+        --text-muted: #8b949e;
+        --text-heading: #8b949e;
+        --folder-color: #d29922;
+        --file-color: #79c0ff;
+        --tree-text: #c9d1d9;
+        --sidebar-width: 260px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+        font-size: 13px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ─── Рядок заголовку ───────────────────────────────── */
+      .TitleBar {
+        height: 35px;
+        flex-shrink: 0;
+        background: var(--bg-titlebar);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        user-select: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .TitleBar-label {
+        font-size: 12px;
+        color: var(--text-muted);
+        pointer-events: none;
+        max-width: calc(100% - 80px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .TitleBar-toggle {
+        position: absolute;
+        left: 8px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background: none;
+        border: none;
+        border-radius: 3px;
+        color: var(--text-muted);
+        cursor: pointer;
+        padding: 0;
+      }
+      .TitleBar-toggle:hover {
+        background: var(--bg-hover);
+        color: var(--text);
+      }
+
+      .TitleBar-actions {
+        position: absolute;
+        left: 8px;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+      }
+
+      .TitleBar-action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background: none;
+        border: none;
+        border-radius: 3px;
+        color: var(--text-muted);
+        cursor: pointer;
+        padding: 0;
+        text-decoration: none;
+      }
+      .TitleBar-action:hover {
+        background: var(--bg-hover);
+        color: var(--text);
+      }
+      .TitleBar-action[hidden] {
+        display: none;
+      }
+
+      /* ─── Робоча область ─────────────────────────────────── */
+      .Workbench {
+        flex: 1;
+        display: flex;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      /* ─── Бічна панель ─────────────────────────────────── */
+      .Sidebar {
+        width: var(--sidebar-width);
+        flex-shrink: 0;
+        background: var(--bg-sidebar);
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .Sidebar-head {
+        height: 35px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 14px;
+      }
+
+      .Sidebar-title {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: var(--text-heading);
+      }
+
+      /* ─── Дерево ─────────────────────────────────────────── */
+      .Tree {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 2px 0 8px;
+      }
+      .Tree::-webkit-scrollbar {
+        width: 8px;
+      }
+      .Tree::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .Tree::-webkit-scrollbar-thumb {
+        background: rgba(121, 121, 121, 0.35);
+        border-radius: 4px;
+      }
+      .Tree::-webkit-scrollbar-thumb:hover {
+        background: rgba(121, 121, 121, 0.6);
+      }
+
+      .TreeList {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .TreeItem {
+        list-style: none;
+      }
+
+      .TreeRow {
+        display: flex;
+        align-items: center;
+        height: 22px;
+        padding-right: 8px;
+        gap: 2px;
+        cursor: pointer;
+        user-select: none;
+        color: var(--tree-text);
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+        outline: none;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .TreeRow:hover {
+        background: var(--bg-hover);
+      }
+      .TreeRow.is-selected {
+        background: var(--bg-selected);
+      }
+      .TreeRow:focus-visible {
+        outline: 1px solid var(--accent);
+        outline-offset: -1px;
+      }
+
+      .TreeRow-chevron {
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        transition: transform 0.12s ease;
+      }
+      .TreeRow[aria-expanded="true"] .TreeRow-chevron {
+        transform: rotate(90deg);
+      }
+
+      .TreeRow-spacer {
+        flex-shrink: 0;
+        width: 16px;
+      }
+
+      .TreeRow-icon {
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .TreeRow-icon svg {
+        width: 16px;
+        height: 16px;
+        display: block;
+      }
+
+      .TreeRow-label {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 13px;
+        line-height: 1;
+      }
+
+      .TreeChildren {
+        list-style: none;
+      }
+      .TreeChildren[hidden] {
+        display: none;
+      }
+
+      /* ─── Редактор ───────────────────────────────────────── */
+      .Editor {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg);
+        overflow: hidden;
+      }
+
+      .Welcome {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: var(--text-muted);
+        pointer-events: none;
+      }
+      .Welcome-icon {
+        opacity: 0.12;
+      }
+      .Welcome-hint {
+        font-size: 14px;
+      }
+      .Welcome.is-hidden {
+        display: none;
+      }
+
+      .EditorFrame {
+        flex: 1;
+        min-height: 0;
+        border: none;
+        width: 100%;
+        height: 100%;
+        background: var(--bg);
+        display: none;
+        color-scheme: dark;
+      }
+      .EditorFrame.is-visible {
+        display: block;
+      }
+
+      /* ─── Мобільне накладення ──────────────────────────── */
+      .Overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.48);
+        z-index: 50;
+      }
+
+      /* ─── Адаптивність ──────────────────────────────────── */
+      @media (max-width: 680px) {
+        .TitleBar-toggle {
+          display: flex;
+        }
+
+        .TitleBar-actions {
+          left: auto;
+          right: 8px;
+        }
+
+        .Sidebar {
+          position: fixed;
+          top: 35px;
+          bottom: 22px;
+          left: 0;
+          z-index: 100;
+          transform: translateX(-100%);
+          transition: transform 0.2s ease;
+          box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+          border-right-color: rgba(255, 255, 255, 0.08);
+        }
+        .Sidebar.is-open {
+          transform: translateX(0);
+        }
+
+        .Overlay.is-visible {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="TitleBar">
+      <button
+        class="TitleBar-toggle"
+        id="sidebarToggle"
+        aria-label="Перемкнути провідник"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M1 3.5h14v1H1v-1zm0 4h14v1H1v-1zm0 4h14v1H1v-1z"
+          />
+        </svg>
+      </button>
+      <span class="TitleBar-label" id="titleLabel">ціль-0.73.0</span>
+
+      <div class="TitleBar-actions">
+        <a
+          class="TitleBar-action"
+          id="versionsBtn"
+          href="../index.html"
+          aria-label="Версії"
+          title="Версії"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"
+            />
+          </svg>
+        </a>
+        <a
+          class="TitleBar-action"
+          id="downloadBtn"
+          href="https://github.com/tsil-ukr/files/raw/main/%D0%B2%D0%B8%D0%BF%D1%83%D1%81%D0%BA%D0%B8-%D1%86%D1%96%D0%BB%D1%96/0.73.0/%D1%86%D1%96%D0%BB%D1%8C-0.73.0.tar.xz"
+          download
+          aria-label="Завантажити"
+          title="Завантажити"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M7.47 10.78a.75.75 0 001.06 0l3.75-3.75a.75.75 0 00-1.06-1.06L8.75
+              8.44V1.75a.75.75 0 00-1.5 0v6.69L4.78 5.97a.75.75 0 00-1.06 1.06l3.75 3.75z"
+            />
+            <path
+              d="M1.75 13.25a.75.75 0 000 1.5h12.5a.75.75 0 000-1.5H1.75z"
+            />
+          </svg>
+        </a>
+        <a
+          class="TitleBar-action"
+          id="githubBtn"
+          href="https://github.com/tsil-ukr/tsil"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          title="GitHub"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+              0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+              -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+              .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+              -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27
+              .68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
+              .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+              0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="Workbench">
+      <div class="Overlay" id="overlay"></div>
+
+      <aside class="Sidebar" id="sidebar" aria-label="Провідник">
+        <div class="Sidebar-head">
+          <span class="Sidebar-title">ціль-0.73.0</span>
+        </div>
+        <nav class="Tree" id="tree"></nav>
+      </aside>
+
+      <main class="Editor">
+        <div class="Welcome" id="welcome">
+          <svg
+            class="Welcome-icon"
+            width="72"
+            height="72"
+            viewBox="0 0 72 72"
+            fill="none"
+            aria-hidden="true"
+          >
+            <rect
+              x="4"
+              y="4"
+              width="64"
+              height="64"
+              rx="6"
+              stroke="#cccccc"
+              stroke-width="3"
+            />
+            <path
+              d="M18 26h36M18 36h28M18 46h20"
+              stroke="#cccccc"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+          </svg>
+          <span class="Welcome-hint">Оберіть файл для перегляду</span>
+        </div>
+
+        <iframe
+          class="EditorFrame"
+          id="editorFrame"
+          title="Перегляд файлу"
+          sandbox="allow-scripts allow-same-origin"
+        ></iframe>
+      </main>
+    </div>
+
+    <script>
+      const TREE      = {"children":[{"type":"file","name":".gitignore","path":".gitignore"},{"type":"file","name":"README.md","path":"README.md"},{"type":"folder","name":"external","children":[{"type":"file","name":".clang-format","path":"external/.clang-format"},{"type":"file","name":"LLVM.cpp","path":"external/LLVM.cpp"},{"type":"folder","name":"scripts","children":[{"type":"file","name":"build.sh","path":"external/scripts/build.sh"},{"type":"file","name":"llvm.sh","path":"external/scripts/llvm.sh"},{"type":"file","name":"package.sh","path":"external/scripts/package.sh"},{"type":"file","name":"release.sh","path":"external/scripts/release.sh"}]},{"type":"file","name":"tsil.cpp","path":"external/tsil.cpp"}]},{"type":"folder","name":"БЦ","children":[{"type":"file","name":".clang-format","path":"БЦ/.clang-format"},{"type":"file","name":"bib.c","path":"БЦ/bib.c"},{"type":"file","name":"КД.ц","path":"БЦ/КД.ц"},{"type":"file","name":"біб.ц","path":"БЦ/біб.ц"},{"type":"folder","name":"визначення","children":[{"type":"file","name":"Інформація.в.ц","path":"БЦ/визначення/Інформація.в.ц"},{"type":"file","name":"Друк.в.ц","path":"БЦ/визначення/Друк.в.ц"},{"type":"file","name":"КД.в.ц","path":"БЦ/визначення/КД.в.ц"},{"type":"file","name":"Кодування.в.ц","path":"БЦ/визначення/Кодування.в.ц"},{"type":"file","name":"Накопичувач.в.ц","path":"БЦ/визначення/Накопичувач.в.ц"},{"type":"file","name":"Памʼять.в.ц","path":"БЦ/визначення/Памʼять.в.ц"},{"type":"file","name":"Процес.в.ц","path":"БЦ/визначення/Процес.в.ц"},{"type":"file","name":"Реєстр.в.ц","path":"БЦ/визначення/Реєстр.в.ц"},{"type":"file","name":"Файли.в.ц","path":"БЦ/визначення/Файли.в.ц"},{"type":"file","name":"Шлях.в.ц","path":"БЦ/визначення/Шлях.в.ц"},{"type":"file","name":"цілеспрямовано.в.ц","path":"БЦ/визначення/цілеспрямовано.в.ц"}]}]},{"type":"file","name":"Версія","path":"Версія"},{"type":"folder","name":"КЦ","children":[{"type":"file","name":"ВзятіФайли.ц","path":"КЦ/ВзятіФайли.ц"},{"type":"file","name":"ГотовіАргументиШаблону.ц","path":"КЦ/ГотовіАргументиШаблону.ц"},{"type":"file","name":"КЦ.в.ц","path":"КЦ/КЦ.в.ц"},{"type":"file","name":"КЦ.ц","path":"КЦ/КЦ.ц"},{"type":"file","name":"Компілятор.ц","path":"КЦ/Компілятор.ц"},{"type":"file","name":"Крок.ц","path":"КЦ/Крок.ц"},{"type":"file","name":"Кроки.ц","path":"КЦ/Кроки.ц"},{"type":"file","name":"Назва.ц","path":"КЦ/Назва.ц"},{"type":"file","name":"Параметр.ц","path":"КЦ/Параметр.ц"},{"type":"file","name":"Параметри.ц","path":"КЦ/Параметри.ц"},{"type":"file","name":"Помилка.ц","path":"КЦ/Помилка.ц"},{"type":"file","name":"РозібранийТекст.ц","path":"КЦ/РозібранийТекст.ц"},{"type":"file","name":"Середовище.ц","path":"КЦ/Середовище.ц"},{"type":"file","name":"Стрибки.ц","path":"КЦ/Стрибки.ц"},{"type":"file","name":"Стрибок.ц","path":"КЦ/Стрибок.ц"},{"type":"file","name":"ТекстКоду.ц","path":"КЦ/ТекстКоду.ц"},{"type":"file","name":"Шлях.ц","path":"КЦ/Шлях.ц"},{"type":"folder","name":"значення","children":[{"type":"file","name":"Обʼєкт.ц","path":"КЦ/значення/Обʼєкт.ц"},{"type":"file","name":"ОбʼєктДії.ц","path":"КЦ/значення/ОбʼєктДії.ц"},{"type":"file","name":"ОбʼєктЗначення.ц","path":"КЦ/значення/ОбʼєктЗначення.ц"},{"type":"file","name":"ОбʼєктНезавантаженогоЗначення.ц","path":"КЦ/значення/ОбʼєктНезавантаженогоЗначення.ц"},{"type":"file","name":"ОбʼєктСекції.ц","path":"КЦ/значення/ОбʼєктСекції.ц"},{"type":"file","name":"ОбʼєктСирогоЗначення.ц","path":"КЦ/значення/ОбʼєктСирогоЗначення.ц"},{"type":"file","name":"ОбʼєктТипу.ц","path":"КЦ/значення/ОбʼєктТипу.ц"},{"type":"file","name":"ОбʼєктШаблону.ц","path":"КЦ/значення/ОбʼєктШаблону.ц"}]},{"type":"folder","name":"перекладач","children":[{"type":"file","name":"ВаріативнийТип.ц","path":"КЦ/перекладач/ВаріативнийТип.ц"},{"type":"file","name":"Вернути.ц","path":"КЦ/перекладач/Вернути.ц"},{"type":"file","name":"Взяти.ц","path":"КЦ/перекладач/Взяти.ц"},{"type":"file","name":"ВиконатиДію.ц","path":"КЦ/перекладач/ВиконатиДію.ц"},{"type":"file","name":"ВиконатиШаблон.ц","path":"КЦ/перекладач/ВиконатиШаблон.ц"},{"type":"file","name":"Дія.ц","path":"КЦ/перекладач/Дія.ц"},{"type":"file","name":"ЗмінитиВСередовищі.ц","path":"КЦ/перекладач/ЗмінитиВСередовищі.ц"},{"type":"file","name":"ЗмінитиВластивість.ц","path":"КЦ/перекладач/ЗмінитиВластивість.ц"},{"type":"file","name":"ЗмінитиЕлемент.ц","path":"КЦ/перекладач/ЗмінитиЕлемент.ц"},{"type":"file","name":"ЗмінитиСекційнуВластивість.ц","path":"КЦ/перекладач/ЗмінитиСекційнуВластивість.ц"},{"type":"file","name":"Змінна.ц","path":"КЦ/перекладач/Змінна.ц"},{"type":"file","name":"Значення.ц","path":"КЦ/перекладач/Значення.ц"},{"type":"file","name":"Крок.ц","path":"КЦ/перекладач/Крок.ц"},{"type":"file","name":"Обʼєкт.ц","path":"КЦ/перекладач/Обʼєкт.ц"},{"type":"file","name":"Однооперація.ц","path":"КЦ/перекладач/Однооперація.ц"},{"type":"file","name":"Операція.ц","path":"КЦ/перекладач/Операція.ц"},{"type":"file","name":"ОтриматиВластивість.ц","path":"КЦ/перекладач/ОтриматиВластивість.ц"},{"type":"file","name":"ОтриматиЕлемент.ц","path":"КЦ/перекладач/ОтриматиЕлемент.ц"},{"type":"file","name":"ОтриматиЗСередовища.ц","path":"КЦ/перекладач/ОтриматиЗСередовища.ц"},{"type":"file","name":"ОтриматиСекційнуВластивість.ц","path":"КЦ/перекладач/ОтриматиСекційнуВластивість.ц"},{"type":"file","name":"Поки.ц","path":"КЦ/перекладач/Поки.ц"},{"type":"file","name":"Секція.ц","path":"КЦ/перекладач/Секція.ц"},{"type":"file","name":"Синонім.ц","path":"КЦ/перекладач/Синонім.ц"},{"type":"file","name":"Стала.ц","path":"КЦ/перекладач/Стала.ц"},{"type":"file","name":"Стрибнути.ц","path":"КЦ/перекладач/Стрибнути.ц"},{"type":"file","name":"Структура.ц","path":"КЦ/перекладач/Структура.ц"},{"type":"file","name":"Текст.ц","path":"КЦ/перекладач/Текст.ц"},{"type":"file","name":"ТипДії.ц","path":"КЦ/перекладач/ТипДії.ц"},{"type":"file","name":"Тіло.ц","path":"КЦ/перекладач/Тіло.ц"},{"type":"file","name":"Ціль.ц","path":"КЦ/перекладач/Ціль.ц"},{"type":"file","name":"Число.ц","path":"КЦ/перекладач/Число.ц"},{"type":"file","name":"Шаблон.ц","path":"КЦ/перекладач/Шаблон.ц"},{"type":"file","name":"Якщо.ц","path":"КЦ/перекладач/Якщо.ц"}]},{"type":"folder","name":"розбирач","children":[{"type":"file","name":"розбирач.в.ц","path":"КЦ/розбирач/розбирач.в.ц"},{"type":"file","name":"розбирач.ц","path":"КЦ/розбирач/розбирач.ц"}]}]},{"type":"folder","name":"ЛЛВМ","children":[{"type":"file","name":".clang-format","path":"ЛЛВМ/.clang-format"},{"type":"file","name":"ЛЛВМ.в.ц","path":"ЛЛВМ/ЛЛВМ.в.ц"}]},{"type":"folder","name":"ПМ","children":[{"type":"file","name":"ПМ.в.ц","path":"ПМ/ПМ.в.ц"},{"type":"file","name":"ПМ.ец","path":"ПМ/ПМ.ец"},{"type":"file","name":"ПМ.ц","path":"ПМ/ПМ.ц"},{"type":"file","name":"привіт.п","path":"ПМ/привіт.п"}]},{"type":"folder","name":"ПМЛЛВМ","children":[{"type":"file","name":"ПМЛЛВМ.в.ц","path":"ПМЛЛВМ/ПМЛЛВМ.в.ц"},{"type":"file","name":"ПМЛЛВМ.ц","path":"ПМЛЛВМ/ПМЛЛВМ.ц"}]},{"type":"file","name":"ФайлиВипуску","path":"ФайлиВипуску"},{"type":"file","name":"ФайлиКомпіляції","path":"ФайлиКомпіляції"},{"type":"folder","name":"команди","children":[{"type":"file","name":"команди.в.ц","path":"команди/команди.в.ц"},{"type":"file","name":"ціль_версія.ц","path":"команди/ціль_версія.ц"},{"type":"file","name":"ціль_допомога.ц","path":"команди/ціль_допомога.ц"},{"type":"file","name":"ціль_зібрати.ц","path":"команди/ціль_зібрати.ц"},{"type":"file","name":"ціль_кдвю.ц","path":"команди/ціль_кдвю.ц"},{"type":"file","name":"ціль_платформи.ц","path":"команди/ціль_платформи.ц"},{"type":"file","name":"ціль_скомпілювати.ц","path":"команди/ціль_скомпілювати.ц"},{"type":"file","name":"ціль_ювкд.ц","path":"команди/ціль_ювкд.ц"}]},{"type":"file","name":"початок.ц","path":"початок.ц"}]};
+      const ICONS     = {};
+      const PAGE_NAME = "ціль-0.73.0";
+
+      const elTree       = document.getElementById("tree");
+      const elWelcome    = document.getElementById("welcome");
+      const elFrame      = document.getElementById("editorFrame");
+      const elTitleLabel = document.getElementById("titleLabel");
+      const elSidebar    = document.getElementById("sidebar");
+      const elOverlay    = document.getElementById("overlay");
+      const elToggle     = document.getElementById("sidebarToggle");
+
+      // шлях → { node, rowEl, ancestors[] }
+      const fileIndex = new Map();
+      let activeRow = null;
+
+      function ext(name) {
+        const i = name.lastIndexOf(".");
+        return i !== -1 ? name.slice(i + 1).toLowerCase() : "";
+      }
+
+      function resolveIcon(node) {
+        if (!ICONS) return null;
+        if (node.type === "folder") return ICONS["folder"] ?? null;
+        return ICONS[ext(node.name)] ?? ICONS[node.name] ?? ICONS["file"] ?? null;
+      }
+
+      function makeIconEl(node) {
+        const span = document.createElement("span");
+        const custom = resolveIcon(node);
+        if (custom) {
+          span.innerHTML = custom;
+          return span;
+        }
+        if (node.type === "folder") {
+          span.innerHTML = `<svg viewBox="0 0 16 16" fill="var(--folder-color)"><path d="M1.5 13.5h13a.5.5 0 00.5-.5V5a.5.5 0 00-.5-.5H7.5L6.15 3.15A.5.5 0 005.8 3H1.5a.5.5 0 00-.5.5v9.5a.5.5 0 00.5.5z"/></svg>`;
+        } else {
+          span.innerHTML = `<svg viewBox="0 0 16 16" fill="none"><path d="M4 2h6l3.5 3.5V14a.5.5 0 01-.5.5h-9A.5.5 0 013 14V2.5A.5.5 0 014 2z" stroke="var(--file-color)" stroke-width="1.2"/><path d="M10 2v3.5H13.5" stroke="var(--file-color)" stroke-width="1.2"/></svg>`;
+        }
+        return span;
+      }
+
+      function sortNodes(nodes) {
+        return [...nodes].sort((a, b) => {
+          if (a.type !== b.type) return a.type === "folder" ? -1 : 1;
+          return a.name.localeCompare(b.name, undefined, { sensitivity: "base" });
+        });
+      }
+
+      function buildList(nodes, depth, ancestors) {
+        const ul = document.createElement("ul");
+        ul.className = "TreeList";
+        for (const node of sortNodes(nodes)) {
+          ul.append(buildItem(node, depth, ancestors));
+        }
+        return ul;
+      }
+
+      function buildItem(node, depth, ancestors) {
+        const li = document.createElement("li");
+        li.className = "TreeItem";
+
+        const row = document.createElement("div");
+        row.className = "TreeRow";
+        row.setAttribute("tabindex", "0");
+        row.style.paddingLeft = `${6 + depth * 14}px`;
+
+        if (node.type === "folder") {
+          row.setAttribute("role", "treeitem");
+          row.setAttribute("aria-expanded", "false");
+
+          const chevron = document.createElement("span");
+          chevron.className = "TreeRow-chevron";
+          chevron.setAttribute("aria-hidden", "true");
+          chevron.innerHTML = `<svg viewBox="0 0 16 16" fill="currentColor" width="10" height="10"><path d="M4 3l6 5-6 5V3z"/></svg>`;
+
+          const icon = makeIconEl(node);
+          icon.className = "TreeRow-icon";
+
+          const label = document.createElement("span");
+          label.className = "TreeRow-label";
+          label.textContent = node.name;
+
+          row.append(chevron, icon, label);
+
+          const children = document.createElement("ul");
+          children.className = "TreeChildren";
+          children.hidden = true;
+
+          for (const child of sortNodes(node.children || [])) {
+            children.append(buildItem(child, depth + 1, [...ancestors, row]));
+          }
+
+          const toggle = () => {
+            const open = row.getAttribute("aria-expanded") === "true";
+            row.setAttribute("aria-expanded", open ? "false" : "true");
+            children.hidden = open;
+          };
+          row.addEventListener("click", toggle);
+          row.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
+
+          li.append(row, children);
+        } else {
+          row.setAttribute("role", "treeitem");
+
+          const spacer = document.createElement("span");
+          spacer.className = "TreeRow-spacer";
+
+          const icon = makeIconEl(node);
+          icon.className = "TreeRow-icon";
+
+          const label = document.createElement("span");
+          label.className = "TreeRow-label";
+          label.textContent = node.name;
+
+          row.append(spacer, icon, label);
+
+          fileIndex.set(node.path, { node, rowEl: row, ancestors });
+          row.addEventListener("click", () => navigate(node.path));
+          row.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); navigate(node.path); } });
+
+          li.append(row);
+        }
+
+        return li;
+      }
+
+      function navigate(path) {
+        const entry = fileIndex.get(path);
+        if (!entry) return;
+
+        // Розгорнути батьківські вузли
+        for (const anc of entry.ancestors) {
+          if (anc.getAttribute("aria-expanded") === "false") {
+            anc.setAttribute("aria-expanded", "true");
+            anc.nextElementSibling.hidden = false;
+          }
+        }
+
+        // Виділити рядок
+        if (activeRow) activeRow.classList.remove("is-selected");
+        activeRow = entry.rowEl;
+        activeRow.classList.add("is-selected");
+        activeRow.scrollIntoView({ block: "nearest" });
+
+        // Завантажити iframe
+        elFrame.src = path + ".html";
+        elFrame.classList.add("is-visible");
+        elWelcome.classList.add("is-hidden");
+
+        // Оновити заголовок
+        document.title = path;
+        elTitleLabel.textContent = path;
+
+        // Оновити хеш URL
+        const encoded = encodeURIComponent(path);
+        if (location.hash !== `#${encoded}`) {
+          history.replaceState(null, "", `#${encoded}`);
+        }
+
+        // Закрити мобільну бічну панель
+        if (window.innerWidth <= 680) {
+          elSidebar.classList.remove("is-open");
+          elOverlay.classList.remove("is-visible");
+        }
+      }
+
+      // Мобільна бічна панель
+      elToggle.addEventListener("click", () => {
+        elSidebar.classList.toggle("is-open");
+        elOverlay.classList.toggle("is-visible");
+      });
+      elOverlay.addEventListener("click", () => {
+        elSidebar.classList.remove("is-open");
+        elOverlay.classList.remove("is-visible");
+      });
+
+      // Показати/сховати кнопки дій
+      const DOWNLOAD     = "https://github.com/tsil-ukr/files/raw/main/%D0%B2%D0%B8%D0%BF%D1%83%D1%81%D0%BA%D0%B8-%D1%86%D1%96%D0%BB%D1%96/0.73.0/%D1%86%D1%96%D0%BB%D1%8C-0.73.0.tar.xz";
+      const GITHUB       = "https://github.com/tsil-ukr/tsil";
+      const VERSIONS_URL = "../index.html";
+      const elGithubBtn   = document.getElementById("githubBtn");
+      const elDownloadBtn = document.getElementById("downloadBtn");
+      const elVersionsBtn = document.getElementById("versionsBtn");
+      if (!GITHUB)       elGithubBtn.hidden   = true;
+      if (!DOWNLOAD)     elDownloadBtn.hidden = true;
+      if (!VERSIONS_URL) elVersionsBtn.hidden = true;
+
+      // Побудувати дерево
+      elTree.append(buildList(TREE.children || [], 0, []));
+
+      // Відновити з хешу
+      function openFromHash() {
+        const hash = location.hash.slice(1);
+        if (!hash) return;
+        const path = decodeURIComponent(hash);
+        if (fileIndex.has(path)) navigate(path);
+      }
+
+      openFromHash();
+      window.addEventListener("hashchange", openFromHash);
+    </script>
+  </body>
+</html>

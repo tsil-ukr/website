@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.F15XRmrllU/ціль-0.78.0/external/scripts/build.sh</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#8B949E">#!/usr/bin/env sh</span></span>
+<span class="line"><span style="color:#79C0FF">set</span><span style="color:#79C0FF"> -e</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Target</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"лінукс-ікс86_64"</span></span>
+<span class="line"><span style="color:#E6EDF3">Mode</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#79C0FF">$1</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">if</span><span style="color:#E6EDF3"> [ </span><span style="color:#FF7B72">-z</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$TSIL</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3"> ]</span></span>
+<span class="line"><span style="color:#FF7B72">then</span></span>
+<span class="line"><span style="color:#E6EDF3">  TSIL</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"ціль"</span></span>
+<span class="line"><span style="color:#FF7B72">fi</span></span>
+<span class="line"><span style="color:#E6EDF3">Version</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"$(</span><span style="color:#FFA657">cat</span><span style="color:#A5D6FF"> Версія)"</span></span>
+<span class="line"><span style="color:#E6EDF3">BuildDir</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"будування/</span><span style="color:#E6EDF3">$Version</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$Target</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#E6EDF3">BuildSourceDir</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$BuildDir</span><span style="color:#A5D6FF">/напівготове"</span></span>
+<span class="line"><span style="color:#E6EDF3">BuildOutDir</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$BuildDir</span><span style="color:#A5D6FF">/готове"</span></span>
+<span class="line"><span style="color:#E6EDF3">CompilationFiles</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"$(</span><span style="color:#FFA657">cat</span><span style="color:#A5D6FF"> ФайлиКомпіляції)"</span></span>
+<span class="line"><span style="color:#E6EDF3">LLCompiledFiles</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">""</span></span>
+<span class="line"><span style="color:#E6EDF3">CCompiledFiles</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">""</span></span>
+<span class="line"><span style="color:#E6EDF3">ClangOptions</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"-DTSIL_VERSION=</span><span style="color:#FF7B72">\"</span><span style="color:#E6EDF3">$Version</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF"> --target=x86_64-pc-linux-gnu"</span></span>
+<span class="line"><span style="color:#FF7B72">if</span><span style="color:#E6EDF3"> [ </span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$Mode</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "release"</span><span style="color:#E6EDF3"> ]</span></span>
+<span class="line"><span style="color:#FF7B72">then</span></span>
+<span class="line"><span style="color:#E6EDF3">  ClangOptions</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$ClangOptions</span><span style="color:#A5D6FF"> -static -O3 -flto"</span></span>
+<span class="line"><span style="color:#FF7B72">else</span></span>
+<span class="line"><span style="color:#E6EDF3">  ClangOptions</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$ClangOptions</span><span style="color:#A5D6FF"> -g -O0"</span></span>
+<span class="line"><span style="color:#FF7B72">fi</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildOutDir</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildOutDir</span><span style="color:#A5D6FF">/програми"</span></span>
+<span class="line"><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">/ЛЛВМ"</span></span>
+<span class="line"><span style="color:#FFA657">mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">/external"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">while</span><span style="color:#E6EDF3"> IFS</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">''</span><span style="color:#79C0FF"> read</span><span style="color:#79C0FF"> -r</span><span style="color:#A5D6FF"> CompilationFile</span></span>
+<span class="line"><span style="color:#FF7B72">do</span></span>
+<span class="line"><span style="color:#FF7B72">  case</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$CompilationFile</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72"> in</span></span>
+<span class="line"><span style="color:#FF7B72">    *</span><span style="color:#A5D6FF">".ц"</span><span style="color:#FF7B72">)</span></span>
+<span class="line"><span style="color:#E6EDF3">      LLCompilationFile</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$CompilationFile</span><span style="color:#A5D6FF">.ллвмір"</span></span>
+<span class="line"><span style="color:#FFA657">      mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> "$(</span><span style="color:#FFA657">dirname</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$LLCompilationFile</span><span style="color:#A5D6FF">")"</span></span>
+<span class="line"><span style="color:#E6EDF3">      Command</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$TSIL</span><span style="color:#E6EDF3"> $BuildSourceDir</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$LLCompilationFile</span><span style="color:#A5D6FF"> --формат=ллвмір --платформа=лінукс-ікс86_64 скомпілювати </span><span style="color:#E6EDF3">$CompilationFile</span><span style="color:#A5D6FF"> --біб=./БЦ"</span></span>
+<span class="line"><span style="color:#79C0FF">      echo</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$Command</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#E6EDF3">      $Command</span></span>
+<span class="line"><span style="color:#FF7B72">      if</span><span style="color:#E6EDF3"> [ </span><span style="color:#FF7B72">-z</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$LLCompiledFiles</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3"> ]; </span><span style="color:#FF7B72">then</span></span>
+<span class="line"><span style="color:#E6EDF3">        LLCompiledFiles</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#79C0FF">printf</span><span style="color:#A5D6FF"> "%s"</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$LLCompilationFile</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#FF7B72">      else</span></span>
+<span class="line"><span style="color:#E6EDF3">        LLCompiledFiles</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#79C0FF">printf</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$LLCompiledFiles</span><span style="color:#A5D6FF"> %s"</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$LLCompilationFile</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#FF7B72">      fi</span></span>
+<span class="line"><span style="color:#E6EDF3">      ;;</span></span>
+<span class="line"><span style="color:#FF7B72">    *</span><span style="color:#A5D6FF">".c"</span><span style="color:#FF7B72">)</span></span>
+<span class="line"><span style="color:#E6EDF3">      LLCompilationFile</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">$CompilationFile</span><span style="color:#A5D6FF">.o"</span></span>
+<span class="line"><span style="color:#FFA657">      mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> "$(</span><span style="color:#FFA657">dirname</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$LLCompilationFile</span><span style="color:#A5D6FF">")"</span></span>
+<span class="line"><span style="color:#E6EDF3">      Command</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"clang </span><span style="color:#E6EDF3">$ClangOptions</span><span style="color:#A5D6FF"> -c -o </span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$LLCompilationFile</span><span style="color:#E6EDF3"> $CompilationFile</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#79C0FF">      echo</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$Command</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#E6EDF3">      $Command</span></span>
+<span class="line"><span style="color:#FF7B72">      if</span><span style="color:#E6EDF3"> [ </span><span style="color:#FF7B72">-z</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$CCompiledFiles</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3"> ]; </span><span style="color:#FF7B72">then</span></span>
+<span class="line"><span style="color:#E6EDF3">        CCompiledFiles</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#79C0FF">printf</span><span style="color:#A5D6FF"> "%s"</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$LLCompilationFile</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#FF7B72">      else</span></span>
+<span class="line"><span style="color:#E6EDF3">        CCompiledFiles</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#79C0FF">printf</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$CCompiledFiles</span><span style="color:#A5D6FF"> %s"</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$LLCompilationFile</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#FF7B72">      fi</span></span>
+<span class="line"><span style="color:#E6EDF3">      ;;</span></span>
+<span class="line"><span style="color:#FF7B72">    *)</span></span>
+<span class="line"><span style="color:#FFA657">      mkdir</span><span style="color:#79C0FF"> -p</span><span style="color:#A5D6FF"> "$(</span><span style="color:#FFA657">dirname</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$LLCompilationFile</span><span style="color:#A5D6FF">")"</span></span>
+<span class="line"><span style="color:#E6EDF3">      Command</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"cp </span><span style="color:#E6EDF3">$CompilationFile</span><span style="color:#E6EDF3"> $BuildSourceDir</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$CompilationFile</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#79C0FF">      echo</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$Command</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#E6EDF3">      $Command</span></span>
+<span class="line"><span style="color:#FF7B72">      if</span><span style="color:#E6EDF3"> [ </span><span style="color:#FF7B72">-z</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$CCompiledFiles</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3"> ]; </span><span style="color:#FF7B72">then</span></span>
+<span class="line"><span style="color:#E6EDF3">        CCompiledFiles</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#79C0FF">printf</span><span style="color:#A5D6FF"> "%s"</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$CompilationFile</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#FF7B72">      else</span></span>
+<span class="line"><span style="color:#E6EDF3">        CCompiledFiles</span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3">$(</span><span style="color:#79C0FF">printf</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$CCompiledFiles</span><span style="color:#A5D6FF"> %s"</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$BuildSourceDir</span><span style="color:#A5D6FF">/</span><span style="color:#E6EDF3">$CompilationFile</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#FF7B72">      fi</span></span>
+<span class="line"><span style="color:#E6EDF3">      ;;</span></span>
+<span class="line"><span style="color:#FF7B72">  esac</span></span>
+<span class="line"><span style="color:#FF7B72">done</span><span style="color:#FF7B72"> &#x3C;&#x3C;</span><span style="color:#E6EDF3">CompilationFiles_HEREDOC_INPUT</span></span>
+<span class="line"><span style="color:#E6EDF3">$CompilationFiles</span></span>
+<span class="line"><span style="color:#E6EDF3">CompilationFiles_HEREDOC_INPUT</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">LlvmConfig</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"llvm-config"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">if</span><span style="color:#E6EDF3"> [ </span><span style="color:#FF7B72">-f</span><span style="color:#A5D6FF"> "./.llvm-source-and-build/llvm-project-22.1.5.build/llvm-linux-x86_64/bin/llvm-config"</span><span style="color:#E6EDF3"> ];</span></span>
+<span class="line"><span style="color:#FF7B72">then</span></span>
+<span class="line"><span style="color:#E6EDF3">  LlvmConfig</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"./.llvm-source-and-build/llvm-project-22.1.5.build/llvm-linux-x86_64/bin/llvm-config"</span></span>
+<span class="line"><span style="color:#FF7B72">else</span></span>
+<span class="line"><span style="color:#79C0FF">  echo</span><span style="color:#A5D6FF"> "LLVM не знайдено, використовуємо системний LLVM. Щоб збудувати LLVM, запустіть ./external/scripts/llvm.sh"</span></span>
+<span class="line"><span style="color:#FF7B72">fi</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Command</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"clang++ </span><span style="color:#E6EDF3">$ClangOptions</span><span style="color:#A5D6FF"> -o </span><span style="color:#E6EDF3">$BuildOutDir</span><span style="color:#A5D6FF">/програми/ціль </span><span style="color:#E6EDF3">$CCompiledFiles</span><span style="color:#A5D6FF"> -x ir </span><span style="color:#E6EDF3">$LLCompiledFiles</span><span style="color:#A5D6FF"> `</span><span style="color:#E6EDF3">$LlvmConfig</span><span style="color:#A5D6FF"> --cxxflags --ldflags --system-libs --libs`"</span></span>
+<span class="line"><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$Command</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#E6EDF3">$Command</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Command</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"cp основа.в.ц </span><span style="color:#E6EDF3">$BuildOutDir</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$Command</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#E6EDF3">$Command</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Command</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"rm -rf </span><span style="color:#E6EDF3">$BuildOutDir</span><span style="color:#A5D6FF">/біб"</span></span>
+<span class="line"><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$Command</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#E6EDF3">$Command</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">Command</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"cp -a БЦ </span><span style="color:#E6EDF3">$BuildOutDir</span><span style="color:#A5D6FF">/біб"</span></span>
+<span class="line"><span style="color:#79C0FF">echo</span><span style="color:#A5D6FF"> "</span><span style="color:#E6EDF3">$Command</span><span style="color:#A5D6FF">"</span></span>
+<span class="line"><span style="color:#E6EDF3">$Command</span></span></code></pre>
+</body>
+</html>

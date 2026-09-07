@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.3gEvzRWMzb/ціль-0.80.0/біб/визначення/друк.в.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./бібц;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> біб {</span></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк(значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_кд(значення.дані, значення.розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_ю8(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_ю8(значення.дані, значення.розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр(значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_ю8(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_ю8(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_п(значення: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_п64(</span><span style="color:#79C0FF">п64</span><span style="color:#E6EDF3">(значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_п8(значення: </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_п64(</span><span style="color:#79C0FF">п64</span><span style="color:#E6EDF3">(значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_п16(значення: </span><span style="color:#79C0FF">п16</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_п64(</span><span style="color:#79C0FF">п64</span><span style="color:#E6EDF3">(значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_п32(значення: </span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_п64(</span><span style="color:#79C0FF">п64</span><span style="color:#E6EDF3">(значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_п64(значення: </span><span style="color:#79C0FF">п64</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_п64(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_п(значення: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_п(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_п8(значення: </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_п8(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_п16(значення: </span><span style="color:#79C0FF">п16</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_п16(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_п32(значення: </span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_п32(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_п64(значення: </span><span style="color:#79C0FF">п64</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_п64(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_ц(значення: </span><span style="color:#79C0FF">ціле</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_ц64(</span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3">(значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_ц8(значення: </span><span style="color:#79C0FF">ц8</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_ц64(</span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3">(значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_ц16(значення: </span><span style="color:#79C0FF">ц16</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_ц64(</span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3">(значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_ц32(значення: </span><span style="color:#79C0FF">ц32</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_ц64(</span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3">(значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_ц64(значення: </span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_ц64(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_ц(значення: </span><span style="color:#79C0FF">ціле</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_ц(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_ц8(значення: </span><span style="color:#79C0FF">ц8</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_ц8(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_ц16(значення: </span><span style="color:#79C0FF">ц16</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_ц16(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_ц32(значення: </span><span style="color:#79C0FF">ц32</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_ц32(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_ц64(значення: </span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_ц64(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_р32(значення: </span><span style="color:#79C0FF">р32</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_р64(</span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3">(значення));</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друк_р64(значення: </span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    бібц__друк_р64(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_р32(значення: </span><span style="color:#79C0FF">р32</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_р32(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> друкр_р64(значення: </span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк_р64(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">    друк(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\р</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

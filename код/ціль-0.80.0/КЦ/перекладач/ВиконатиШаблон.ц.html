@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.3gEvzRWMzb/ціль-0.80.0/КЦ/перекладач/ВиконатиШаблон.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_виконати_шаблон(</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор: *Компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">    контекст: Контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані_виконати_шаблон: розбирач::ДаніСполукиВиконатиШаблон,</span></span>
+<span class="line"><span style="color:#E6EDF3">    місцезнаходження: розбирач::Місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">    очікуваний_тип: *ОбʼєктТипу,</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід: *Обʼєкт,</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_помилки: **Помилка</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> успіх = </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_ліво: Обʼєкт;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    успіх = скомпілювати_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст,</span></span>
+<span class="line"><span style="color:#FF7B72">      пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані_виконати_шаблон.ліво,</span></span>
+<span class="line"><span style="color:#FF7B72">      пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_ліво::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_помилки</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> успіх {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> аргументи = біб::виділити&#x3C;Аргумент>(</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані_виконати_шаблон.аргументи.розмір</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; дані_виконати_шаблон.аргументи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_аргумента: Обʼєкт;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      успіх = скомпілювати_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#FF7B72">        пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        дані_виконати_шаблон.аргументи.дані[п].значення,</span></span>
+<span class="line"><span style="color:#FF7B72">        пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт_аргумента::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        вихід_помилки</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> успіх {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::звільнити(аргументи);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      аргументи[п] = Аргумент {</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт = обʼєкт_аргумента,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження = дані_виконати_шаблон.аргументи.дані[п].значення.місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    успіх = обʼєкт_виконати_шаблон(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">      місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані_виконати_шаблон.аргументи.розмір,</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргументи,</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід,</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_помилки</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(аргументи);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> успіх;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

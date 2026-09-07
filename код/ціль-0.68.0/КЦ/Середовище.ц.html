@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.8mIUL76fGc/ціль-0.68.0/КЦ/Середовище.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> перед_заміною_субʼєкта(реєстр: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;біб::Реєстр&#x3C;</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, Обʼєкт>>, ак: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, аз: Обʼєкт, бк: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>>, бз: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Обʼєкт>) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> перед_видаленням_субʼєкта(реєстр: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;біб::Реєстр&#x3C;</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, Обʼєкт>>, ключ: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, значення: Обʼєкт) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_середовище(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, зовнішнє: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Середовище>) -> </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Середовище> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> середовище = біб::виділити&#x3C;Середовище>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    середовище.наступне = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    середовище.компілятор = компілятор;</span></span>
+<span class="line"><span style="color:#E6EDF3">    середовище.зовнішнє = зовнішнє;</span></span>
+<span class="line"><span style="color:#E6EDF3">    середовище.субʼєкти = біб::виділити_реєстр&#x3C;</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, Обʼєкт>(</span></span>
+<span class="line"><span style="color:#79C0FF">      0</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      змішати_назву_шлях_для_реєстру&#x3C;Обʼєкт>,</span></span>
+<span class="line"><span style="color:#E6EDF3">      перевірити_назви_з_реєстру&#x3C;Обʼєкт>,</span></span>
+<span class="line"><span style="color:#E6EDF3">      перед_заміною_субʼєкта,</span></span>
+<span class="line"><span style="color:#E6EDF3">      перед_видаленням_субʼєкта</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">    середовище.обʼєкт_секції = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    середовище.обʼєкт_дії = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> компілятор.перше_середовище == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.перше_середовище = середовище;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> компілятор.останнє_середовище == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останнє_середовище = середовище;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останнє_середовище.наступне = середовище;</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останнє_середовище = середовище;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> середовище;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_середовище_секції(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, зовнішнє: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Середовище>, обʼєкт_секції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСекції>) -> </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Середовище> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> середовище = створити_середовище(компілятор, зовнішнє);</span></span>
+<span class="line"><span style="color:#E6EDF3">    середовище.обʼєкт_секції = обʼєкт_секції;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> середовище;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_середовище_дії(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, зовнішнє: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Середовище>, обʼєкт_дії: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктДії>) -> </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Середовище> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> середовище = створити_середовище(компілятор, зовнішнє);</span></span>
+<span class="line"><span style="color:#E6EDF3">    середовище.обʼєкт_дії = обʼєкт_дії;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> середовище;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знищити_середовище(середовище: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Середовище>) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> компілятор = середовище.компілятор;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити_реєстр&#x3C;</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, Обʼєкт>(середовище.субʼєкти);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(середовище);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> змінити_в_середовищі(середовище: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Середовище>, назва: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, обʼєкт: Обʼєкт) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::змінити_в_реєстрі&#x3C;</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, Обʼєкт>(середовище.субʼєкти, назва, обʼєкт);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знайти_в_середовищі(середовище: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Середовище>, назва: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, вихід: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Обʼєкт>) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> біб::знайти_в_реєстрі&#x3C;</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, Обʼєкт>(середовище.субʼєкти, назва, вихід);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знайти_в_середовищі_рекурсивно(середовище: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Середовище>, назва: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, вихід: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Обʼєкт>) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> поточне_середовище = середовище;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> поточне_середовище != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> біб::знайти_в_реєстрі&#x3C;</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Назва>, Обʼєкт>(поточне_середовище.субʼєкти, назва, вихід) {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      поточне_середовище = поточне_середовище.зовнішнє;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

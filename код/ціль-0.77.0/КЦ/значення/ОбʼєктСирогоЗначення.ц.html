@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.i64yC0j1Ra/ціль-0.77.0/КЦ/значення/ОбʼєктСирогоЗначення.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> виділити_обʼєкт_сирого_значення(компілятор: *Компілятор) -> *ОбʼєктСирогоЗначення {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення = біб::виділити&#x3C;ОбʼєктСирогоЗначення>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_сирого_значення.наступний = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_сирого_значення.компілятор = компілятор;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_сирого_значення.вид = ВидСирогоОбʼєктаЧисло;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_сирого_значення.дані = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> компілятор.перший_обʼєкт_сирого_значення == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.перший_обʼєкт_сирого_значення = обʼєкт_сирого_значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> компілятор.останній_обʼєкт_сирого_значення == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_обʼєкт_сирого_значення = обʼєкт_сирого_значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_обʼєкт_сирого_значення.наступний = обʼєкт_сирого_значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_обʼєкт_сирого_значення = обʼєкт_сирого_значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знищити_обʼєкт_сирого_значення(компілятор: *Компілятор, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(обʼєкт_сирого_значення.дані.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(обʼєкт_сирого_значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_додати(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_відняти(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_помножити(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_поділити(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_поділити_за_модулем(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_більше(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_менше(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_більше_рівно(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_менше_рівно(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_рівно(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_не_рівно(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_зсунути_вліво(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_зсунути_вправо(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_ді(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_дабо(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_вабо(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_як(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> аргумент.обʼєкт.вид == ВидОбʼєктаТип {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> тип = аргумент.обʼєкт.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> *ОбʼєктТипу;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення.вид == ВидСирогоОбʼєктаПусто {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> результат = створити_пустий_обʼєкт(компілятор, контекст, місцезнаходження, тип);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> результат.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">          Обʼєкт {</span></span>
+<span class="line"><span style="color:#E6EDF3">            ВидОбʼєктаЗначення,</span></span>
+<span class="line"><span style="color:#E6EDF3">            результат.обʼєкт_значення</span></span>
+<span class="line"><span style="color:#E6EDF3">          },</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення.вид == ВидСирогоОбʼєктаЧисло {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> результат_розбору_числа = розібрати_число(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">          місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_сирого_значення.дані,</span></span>
+<span class="line"><span style="color:#E6EDF3">          тип</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> результат_розбору_числа.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_розбору_числа.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">          Обʼєкт {</span></span>
+<span class="line"><span style="color:#E6EDF3">            ВидОбʼєктаЗначення,</span></span>
+<span class="line"><span style="color:#E6EDF3">            результат_розбору_числа.обʼєкт_значення</span></span>
+<span class="line"><span style="color:#E6EDF3">          },</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_отримати_властивість(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, назва: *Назва, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_отримати_властивість_секції(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, назва: *Назва, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_отримати_за_позицією(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, позиція: Аргумент, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_виконати(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, аргументи: *Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_виконати_шаблон(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, аргументи: *Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_змінити_властивість(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, назва: *Назва, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_змінити_в_секції(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, назва: *Назва, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_змінити_за_позицією(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення, позиція: Аргумент, аргумент: Аргумент) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_унарний_мінус(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_заперечити(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_сирого_значення_двійкове_заперечення(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_сирого_значення: *ОбʼєктСирогоЗначення) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

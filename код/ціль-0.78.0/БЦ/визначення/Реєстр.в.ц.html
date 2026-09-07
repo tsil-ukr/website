@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.F15XRmrllU/ціль-0.78.0/БЦ/визначення/Реєстр.в.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./Памʼять;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./Друк;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> біб {</span></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ЕлементРеєстру&#x3C;К, З>;</span></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Реєстр&#x3C;К, З>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ЕлементРеєстру&#x3C;К, З> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    ключ: К;</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: З;</span></span>
+<span class="line"><span style="color:#E6EDF3">    наступний: *ЕлементРеєстру&#x3C;К, З>;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  синонім</span><span style="color:#E6EDF3"> ДіяЗмішуванняКлючаРеєстру&#x3C;К, З> = (реєстр: *Реєстр&#x3C;К, З>, ключ: К) -> </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  синонім</span><span style="color:#E6EDF3"> ДіяПеревіркиКлючаРеєстру&#x3C;К, З> = (реєстр: *Реєстр&#x3C;К, З>, а: К, б: К) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  синонім</span><span style="color:#E6EDF3"> ДіяПередЗаміноюЕлементаРеєстру&#x3C;К, З> = (реєстр: *Реєстр&#x3C;К, З>, ак: К, аз: З, бк: *К, бз: *З) -> </span><span style="color:#79C0FF">ніщо</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  синонім</span><span style="color:#E6EDF3"> ДіяПередВидаленнямЕлементаРеєстру&#x3C;К, З> = (реєстр: *Реєстр&#x3C;К, З>, ключ: К, значення: З) -> </span><span style="color:#79C0FF">ніщо</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Реєстр&#x3C;К, З> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: **ЕлементРеєстру&#x3C;К, З>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    аргумент: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дія_змішування: ДіяЗмішуванняКлючаРеєстру&#x3C;К, З>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дія_перевірки: ДіяПеревіркиКлючаРеєстру&#x3C;К, З>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дія_перед_заміною: ДіяПередЗаміноюЕлементаРеєстру&#x3C;К, З>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дія_перед_видаленням: ДіяПередВидаленнямЕлементаРеєстру&#x3C;К, З>;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> виділити_реєстр&#x3C;К, З>(початкова_вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            аргумент: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            дія_змішування: ДіяЗмішуванняКлючаРеєстру&#x3C;К, З>,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            дія_перевірки: ДіяПеревіркиКлючаРеєстру&#x3C;К, З>,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            дія_перед_заміною: ДіяПередЗаміноюЕлементаРеєстру&#x3C;К, З>,</span></span>
+<span class="line"><span style="color:#E6EDF3">                            дія_перед_видаленням: ДіяПередВидаленнямЕлементаРеєстру&#x3C;К, З>) -> *Реєстр&#x3C;К, З> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> реєстр = виділити&#x3C;Реєстр&#x3C;К, З>>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    реєстр.розмір = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> початкова_вмісткість > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      реєстр.дані = виділити&#x3C;*ЕлементРеєстру&#x3C;К, З>>(початкова_вмісткість);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      реєстр.дані = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    реєстр.вмісткість = початкова_вмісткість;</span></span>
+<span class="line"><span style="color:#E6EDF3">    реєстр.аргумент = аргумент;</span></span>
+<span class="line"><span style="color:#E6EDF3">    реєстр.дія_змішування = дія_змішування;</span></span>
+<span class="line"><span style="color:#E6EDF3">    реєстр.дія_перевірки = дія_перевірки;</span></span>
+<span class="line"><span style="color:#E6EDF3">    реєстр.дія_перед_заміною = дія_перед_заміною;</span></span>
+<span class="line"><span style="color:#E6EDF3">    реєстр.дія_перед_видаленням = дія_перед_видаленням;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; реєстр.вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">      реєстр.дані[п] = </span><span style="color:#FF7B72">пусто</span><span style="color:#FF7B72"> як</span><span style="color:#E6EDF3"> *ЕлементРеєстру&#x3C;К, З>;</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> реєстр;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> розширити_реєстр&#x3C;К, З>(реєстр: *Реєстр&#x3C;К, З>, нова_вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> нова_вмісткість == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      нова_вмісткість = реєстр.вмісткість * </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> нова_вмісткість &#x3C;= реєстр.вмісткість {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> нові_дані = виділити&#x3C;*ЕлементРеєстру&#x3C;К, З>>(нова_вмісткість);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; нова_вмісткість {</span></span>
+<span class="line"><span style="color:#E6EDF3">      нові_дані[п] = </span><span style="color:#FF7B72">пусто</span><span style="color:#FF7B72"> як</span><span style="color:#E6EDF3"> *ЕлементРеєстру&#x3C;К, З>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; реєстр.вмісткість {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> поточний_елемент = реєстр.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> поточний_елемент != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> нова_позиція = реєстр.дія_змішування(реєстр, поточний_елемент.ключ) % нова_вмісткість;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> наступний = поточний_елемент.наступний;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        поточний_елемент.наступний = нові_дані[нова_позиція];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        нові_дані[нова_позиція] = поточний_елемент;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        поточний_елемент = наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    звільнити(реєстр.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    реєстр.дані = нові_дані;</span></span>
+<span class="line"><span style="color:#E6EDF3">    реєстр.вмісткість = нова_вмісткість;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> змінити_в_реєстрі&#x3C;К, З>(реєстр: *Реєстр&#x3C;К, З>, ключ: К, значення: З) {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> реєстр.вмісткість == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      реєстр.дані = виділити&#x3C;*ЕлементРеєстру&#x3C;К, З>>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      реєстр.вмісткість = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      реєстр.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] = </span><span style="color:#FF7B72">пусто</span><span style="color:#FF7B72"> як</span><span style="color:#E6EDF3"> *ЕлементРеєстру&#x3C;К, З>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> ((</span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3">(реєстр.розмір) / </span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3">(реєстр.вмісткість)) > </span><span style="color:#79C0FF">0.7</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">       розширити_реєстр&#x3C;К, З>(реєстр, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> позиція = реєстр.дія_змішування(реєстр, ключ) % реєстр.вмісткість;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> елемент = реєстр.дані[позиція];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> елемент != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> реєстр.дія_перевірки(реєстр, елемент.ключ, ключ) {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> реєстр.дія_перед_заміною != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">          реєстр.дія_перед_заміною(реєстр, елемент.ключ, елемент.значення, ключ::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, значення::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        елемент.ключ = ключ;</span></span>
+<span class="line"><span style="color:#E6EDF3">        елемент.значення = значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      елемент = елемент.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> новий_елемент = біб::виділити&#x3C;ЕлементРеєстру&#x3C;К, З>>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    новий_елемент.ключ = ключ;</span></span>
+<span class="line"><span style="color:#E6EDF3">    новий_елемент.значення = значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    новий_елемент.наступний = реєстр.дані[позиція];</span></span>
+<span class="line"><span style="color:#E6EDF3">    реєстр.дані[позиція] = новий_елемент;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    реєстр.розмір += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> знайти_в_реєстрі&#x3C;К, З>(реєстр: *Реєстр&#x3C;К, З>, ключ: К, вихід: *З) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> реєстр.вмісткість == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> позиція = реєстр.дія_змішування(реєстр, ключ) % реєстр.вмісткість;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> елемент = реєстр.дані[позиція];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> елемент != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> реєстр.дія_перевірки(реєстр, елемент.ключ, ключ) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = елемент.значення;</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      елемент = елемент.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> видалити_з_реєстру&#x3C;К, З>(реєстр: *Реєстр&#x3C;К, З>, ключ: К) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> позиція = реєстр.дія_змішування(реєстр, ключ) % реєстр.вмісткість;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> елемент = реєстр.дані[позиція];</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> попередній: *ЕлементРеєстру&#x3C;К, З> = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> елемент != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> реєстр.дія_перевірки(реєстр, елемент.ключ, ключ) {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> реєстр.дія_перед_видаленням != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">          реєстр.дія_перед_видаленням(реєстр, елемент.ключ, елемент.значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> попередній == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">          реєстр.дані[позиція] = елемент.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">          попередній.наступний = елемент.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        звільнити(елемент);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        реєстр.розмір -= </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      попередній = елемент;</span></span>
+<span class="line"><span style="color:#E6EDF3">      елемент = елемент.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> перебрати_реєстр&#x3C;К, З>(реєстр: *Реєстр&#x3C;К, З>, дія_перебору: (реєстр: *Реєстр&#x3C;К, З>, аргумент: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, ключ: К, значення: З) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">, аргумент: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; реєстр.вмісткість {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> елемент = реєстр.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> елемент != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> дія_перебору(реєстр, аргумент, елемент.ключ, елемент.значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        елемент = елемент.наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> звільнити_реєстр&#x3C;К, З>(реєстр: *Реєстр&#x3C;К, З>) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; реєстр.вмісткість {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> елемент = реєстр.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> елемент != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> реєстр.дія_перед_видаленням != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">          реєстр.дія_перед_видаленням(реєстр, елемент.ключ, елемент.значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> наступний = елемент.наступний;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        звільнити(елемент);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        елемент = наступний;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    звільнити(реєстр.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    звільнити(реєстр);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> дія_змішування_кд&#x3C;З>(реєстр: *Реєстр&#x3C;</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, З>, ключ: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> змішане: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">5381</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; ключ.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">      змішане = (змішане * </span><span style="color:#79C0FF">33</span><span style="color:#E6EDF3">) + </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">(ключ.дані[п]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> змішане;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> дія_перевірки_кд&#x3C;З>(реєстр: *Реєстр&#x3C;</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, З>, а: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, б: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> а.розмір != б.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; а.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> а.дані[п] != б.дані[п] {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> дія_перед_заміною_у_текстовому_реєстру&#x3C;З>(реєстр: *Реєстр&#x3C;</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, З>, ак: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, аз: З, бк: *</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, бз: *З) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> дія_перед_видаленням_з_текстового_реєстру&#x3C;З>(реєстр: *Реєстр&#x3C;</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, З>, ключ: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, значення: З) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> виділити_текстовий_реєстр&#x3C;З>(початкова_вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                   аргумент: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) -> *Реєстр&#x3C;</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, З> {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> виділити_реєстр&#x3C;</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, З>(</span></span>
+<span class="line"><span style="color:#E6EDF3">      початкова_вмісткість,</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргумент,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дія_змішування_кд&#x3C;З>,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дія_перевірки_кд&#x3C;З>,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дія_перед_заміною_у_текстовому_реєстру&#x3C;З>,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дія_перед_видаленням_з_текстового_реєстру&#x3C;З></span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.nWxGTvH9sI/ціль-0.74.0/КЦ/перекладач/Операція.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_операцію(компілятор: *Компілятор, контекст: Контекст, дані_операції: розбирач::ДаніСполукиОперація, місцезнаходження: розбирач::Місцезнаходження) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_ліво = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.ліво, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_ліво.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_ліво.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> очікуваний_тип_право: *ОбʼєктТипу = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_ліво.обʼєкт.вид == ВидОбʼєктаЗначення {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані_обʼєкта = результат_ліво.обʼєкт.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> ОбʼєктЗначення;</span></span>
+<span class="line"><span style="color:#E6EDF3">      очікуваний_тип_право = дані_обʼєкта.тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_ліво.обʼєкт.вид == ВидОбʼєктаНезавантаженеЗначення {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані_обʼєкта = результат_ліво.обʼєкт.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> ОбʼєктНезавантаженогоЗначення;</span></span>
+<span class="line"><span style="color:#E6EDF3">      очікуваний_тип_право = дані_обʼєкта.тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> ліво = результат_ліво.обʼєкт;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїДодавання {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_додати(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїВіднімання {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_відняти(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїМноження {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_помножити(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїДілення {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_поділити(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїМодуль {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_поділити_за_модулем(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїЗсувВліво {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_зсунути_вліво(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїЗсувВправо {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_зсунути_вправо(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїБільше {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_більше(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїМенше {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_менше(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїБільшеРівне {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_більше_рівно(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїМеншеРівне {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_менше_рівно(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїРівне {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_рівно(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїНерівне {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_не_рівно(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїДІ {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_ді(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїДАБО {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_дабо(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїВАБО {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_вабо(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїІ {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_ліво = отримати_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">        ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.тип_логічне</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_ліво.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_обʼєкт_значення_ліво.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_значення = результат_обʼєкт_значення_ліво.обʼєкт_значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> пм_значення_результату = ПМ::вказівка_виділити(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.крок_накопичень.пм_крок,</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.тип_логічне.пм_тип</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> крок_інакше = ПМ::створити_крок(контекст.кк_дії.обʼєкт_дії.пм_інструкція, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"або_інакше"</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> крок_успіху = ПМ::створити_крок(контекст.кк_дії.обʼєкт_дії.пм_інструкція, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"або_успіх"</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> крок_невдачі = ПМ::створити_крок(контекст.кк_дії.обʼєкт_дії.пм_інструкція, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"або_невдача"</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> крок_виходу = ПМ::створити_крок(контекст.кк_дії.обʼєкт_дії.пм_інструкція, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"або_вихід"</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_записати(</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_успіху,</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.обʼєкт_значення_так.пм_значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        пм_значення_результату</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_стрибнути(</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_успіху,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_виходу</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_записати(</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_невдачі,</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.обʼєкт_значення_ні.пм_значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        пм_значення_результату</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_стрибнути(</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_невдачі,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_виходу</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> аргумент1_нуль: Аргумент;</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц8, ПМ::створити_ц8(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц16, ПМ::створити_ц16(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц32, ПМ::створити_ц32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц64, ПМ::створити_ц64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_логічне, ПМ::створити_логічне(компілятор.пм_модуль, </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п8, ПМ::створити_п8(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п16, ПМ::створити_п16(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п32, ПМ::створити_п32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п64, ПМ::створити_п64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_р32, ПМ::створити_р32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0.0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_р64, ПМ::створити_р64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0.0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_рівно_ліво = обʼєкт_значення_рівно(компілятор, контекст, місцезнаходження, обʼєкт_значення, аргумент1_нуль);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_рівно_ліво.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_рівно_ліво.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_рівно_ліво = отримати_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">        результат_рівно_ліво.обʼєкт,</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.тип_логічне</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_рівно_ліво.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_обʼєкт_значення_рівно_ліво.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_рівно_ліво.обʼєкт_значення.тип != компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_стрибнути_якщо(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.поточний_крок.пм_крок,</span></span>
+<span class="line"><span style="color:#E6EDF3">        результат_обʼєкт_значення_рівно_ліво.обʼєкт_значення.пм_значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_невдачі,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_інакше</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.кк_дії.поточний_крок = Крок {</span></span>
+<span class="line"><span style="color:#E6EDF3">        отримати_назву(компілятор, </span><span style="color:#A5D6FF">"або_інакше"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.обʼєкт_дії,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_інакше</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право = отримати_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        дані_операції.право.місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">        результат_право.обʼєкт,</span></span>
+<span class="line"><span style="color:#FF7B72">        пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_обʼєкт_значення_право.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> аргумент2_нуль: Аргумент;</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц8, ПМ::створити_ц8(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц16, ПМ::створити_ц16(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц32, ПМ::створити_ц32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц64, ПМ::створити_ц64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_логічне, ПМ::створити_логічне(компілятор.пм_модуль, </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п8, ПМ::створити_п8(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п16, ПМ::створити_п16(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п32, ПМ::створити_п32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п64, ПМ::створити_п64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_р32, ПМ::створити_р32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0.0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_р64, ПМ::створити_р64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0.0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_рівно_право = обʼєкт_значення_рівно(компілятор, контекст, місцезнаходження, результат_обʼєкт_значення_право.обʼєкт_значення, аргумент2_нуль);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_рівно_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_рівно_право.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_рівно_право = отримати_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">        результат_рівно_право.обʼєкт,</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.тип_логічне</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_рівно_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_обʼєкт_значення_рівно_право.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_рівно_право.обʼєкт_значення.тип != компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_стрибнути_якщо(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.поточний_крок.пм_крок,</span></span>
+<span class="line"><span style="color:#E6EDF3">        результат_обʼєкт_значення_рівно_право.обʼєкт_значення.пм_значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_невдачі,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_успіху</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.кк_дії.поточний_крок = Крок {</span></span>
+<span class="line"><span style="color:#E6EDF3">        отримати_назву(компілятор, </span><span style="color:#A5D6FF">"або_вихід"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.обʼєкт_дії,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_виходу</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">        Обʼєкт {</span></span>
+<span class="line"><span style="color:#E6EDF3">          ВидОбʼєктаНезавантаженеЗначення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ОбʼєктНезавантаженогоЗначення { компілятор.тип_логічне, пм_значення_результату }</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїАБО {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_ліво = отримати_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">        ліво,</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.тип_логічне</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_ліво.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_обʼєкт_значення_ліво.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> обʼєкт_значення = результат_обʼєкт_значення_ліво.обʼєкт_значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> пм_значення_результату = ПМ::вказівка_виділити(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.крок_накопичень.пм_крок,</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.тип_логічне.пм_тип</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> крок_інакше = ПМ::створити_крок(контекст.кк_дії.обʼєкт_дії.пм_інструкція, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"або_інакше"</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> крок_успіху = ПМ::створити_крок(контекст.кк_дії.обʼєкт_дії.пм_інструкція, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"або_успіх"</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> крок_невдачі = ПМ::створити_крок(контекст.кк_дії.обʼєкт_дії.пм_інструкція, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"або_невдача"</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> крок_виходу = ПМ::створити_крок(контекст.кк_дії.обʼєкт_дії.пм_інструкція, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"або_вихід"</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_записати(</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_успіху,</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.обʼєкт_значення_так.пм_значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        пм_значення_результату</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_стрибнути(</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_успіху,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_виходу</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_записати(</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_невдачі,</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.обʼєкт_значення_ні.пм_значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        пм_значення_результату</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_стрибнути(</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_невдачі,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_виходу</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> аргумент1_нуль: Аргумент;</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц8, ПМ::створити_ц8(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц16, ПМ::створити_ц16(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц32, ПМ::створити_ц32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц64, ПМ::створити_ц64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_логічне, ПМ::створити_логічне(компілятор.пм_модуль, </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п8, ПМ::створити_п8(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п16, ПМ::створити_п16(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п32, ПМ::створити_п32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п64, ПМ::створити_п64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_р32, ПМ::створити_р32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0.0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент1_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_р64, ПМ::створити_р64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0.0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_не_рівно_ліво = обʼєкт_значення_не_рівно(компілятор, контекст, місцезнаходження, обʼєкт_значення, аргумент1_нуль);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_не_рівно_ліво.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_не_рівно_ліво.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_не_рівно_ліво = отримати_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">        результат_не_рівно_ліво.обʼєкт,</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.тип_логічне</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_не_рівно_ліво.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_обʼєкт_значення_не_рівно_ліво.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_не_рівно_ліво.обʼєкт_значення.тип != компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_стрибнути_якщо(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.поточний_крок.пм_крок,</span></span>
+<span class="line"><span style="color:#E6EDF3">        результат_обʼєкт_значення_не_рівно_ліво.обʼєкт_значення.пм_значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_успіху,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_інакше</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.кк_дії.поточний_крок = Крок {</span></span>
+<span class="line"><span style="color:#E6EDF3">        отримати_назву(компілятор, </span><span style="color:#A5D6FF">"або_інакше"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.обʼєкт_дії,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_інакше</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право = отримати_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        дані_операції.право.місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">        результат_право.обʼєкт,</span></span>
+<span class="line"><span style="color:#FF7B72">        пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_обʼєкт_значення_право.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> аргумент2_нуль: Аргумент;</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц8, ПМ::створити_ц8(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц16, ПМ::створити_ц16(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц32, ПМ::створити_ц32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц64, ПМ::створити_ц64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_логічне, ПМ::створити_логічне(компілятор.пм_модуль, </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п8, ПМ::створити_п8(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п16, ПМ::створити_п16(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п32, ПМ::створити_п32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п64, ПМ::створити_п64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_р32, ПМ::створити_р32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0.0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_право.обʼєкт_значення.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент2_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_р64, ПМ::створити_р64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0.0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_не_рівно_право = обʼєкт_значення_не_рівно(компілятор, контекст, місцезнаходження, результат_обʼєкт_значення_право.обʼєкт_значення, аргумент2_нуль);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_не_рівно_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_не_рівно_право.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_не_рівно_право = отримати_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">        результат_не_рівно_право.обʼєкт,</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.тип_логічне</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_не_рівно_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_обʼєкт_значення_не_рівно_право.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_не_рівно_право.обʼєкт_значення.тип != компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> результат_обʼєкта_помилка(компілятор, контекст.розібраний_текст, місцезнаходження, </span><span style="color:#A5D6FF">"Не вдалось скомпілювати"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_стрибнути_якщо(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.поточний_крок.пм_крок,</span></span>
+<span class="line"><span style="color:#E6EDF3">        результат_обʼєкт_значення_не_рівно_право.обʼєкт_значення.пм_значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_успіху,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_невдачі</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.кк_дії.поточний_крок = Крок {</span></span>
+<span class="line"><span style="color:#E6EDF3">        отримати_назву(компілятор, </span><span style="color:#A5D6FF">"або_вихід"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.обʼєкт_дії,</span></span>
+<span class="line"><span style="color:#E6EDF3">        крок_виходу</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">        Обʼєкт {</span></span>
+<span class="line"><span style="color:#E6EDF3">          ВидОбʼєктаНезавантаженеЗначення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          ОбʼєктНезавантаженогоЗначення { компілятор.тип_логічне, пм_значення_результату }</span></span>
+<span class="line"><span style="color:#E6EDF3">        },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_операції.вид == розбирач::ВидОпераціїЯк {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_право = скомпілювати_значення(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_операції.право, очікуваний_тип_право);</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_право.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_право.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_як(компілятор, контекст, місцезнаходження, ліво, Аргумент { результат_право.обʼєкт, дані_операції.право.місцезнаходження });</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">        "Операція не підтримується."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">      ),</span></span>
+<span class="line"><span style="color:#E6EDF3">      ...</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

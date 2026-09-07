@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.zhpZKrpbuU/ціль-0.73.0/КЦ/перекладач/Обʼєкт.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_обʼєкт(компілятор: *Компілятор, контекст: Контекст, дані_обʼєкта: розбирач::ДаніСполукиОбʼєкт, місцезнаходження: розбирач::Місцезнаходження, очікуваний_тип: *ОбʼєктТипу) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу = очікуваний_тип;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> дані_обʼєкта.ліво != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> результат_компіляції_типу = скомпілювати_значення_як_тип(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        дані_обʼєкта.ліво,</span></span>
+<span class="line"><span style="color:#FF7B72">        так</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> результат_компіляції_типу.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { ..., помилка = результат_компіляції_типу.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_типу = результат_компіляції_типу.обʼєкт_типу;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт_типу.вид != ВидОбʼєктаТипуСтруктура {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "Неможливо скомпілювати обʼєкт."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        ),</span></span>
+<span class="line"><span style="color:#E6EDF3">        ...</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> дані_структури = обʼєкт_типу.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> ДаніОбʼєктаТипуСтруктура;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> контекст.кк_дії == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> кількість_аргументів = дані_структури.параметри.розмір;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> аргументи = біб::виділити&#x3C;*ПМ::Значення>(дані_структури.параметри.розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> заповнені_параметри = біб::виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(дані_структури.параметри.розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; дані_структури.параметри.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">        заповнені_параметри[п] = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; дані_обʼєкта.аргументи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> аргумент = дані_обʼєкта.аргументи.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> знайдено_параметр = </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> параметр: Параметр;</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> позиція_параметра: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> аргумент.ідентифікатор.заповнено {</span></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> назва_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст.розібраний_текст.слова.дані[аргумент.ідентифікатор.значення.позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">            назва_кд::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">          ) {</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(аргументи);</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">              помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">                компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">                "Не вдалось отримати назву параметра."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                створити_місцезнаходження_помилки_з_позиції_слова(компілятор, контекст.розібраний_текст, аргумент.ідентифікатор.значення.позиція_слова)</span></span>
+<span class="line"><span style="color:#E6EDF3">              ),</span></span>
+<span class="line"><span style="color:#E6EDF3">              ...</span></span>
+<span class="line"><span style="color:#E6EDF3">            };</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> назва = отримати_назву(компілятор, назва_кд);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> пп: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          поки</span><span style="color:#E6EDF3"> пп &#x3C; дані_структури.параметри.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">            якщо</span><span style="color:#E6EDF3"> назва == дані_структури.параметри.дані[пп].назва {</span></span>
+<span class="line"><span style="color:#E6EDF3">              знайдено_параметр = </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">              параметр = дані_структури.параметри.дані[пп];</span></span>
+<span class="line"><span style="color:#E6EDF3">              позиція_параметра = пп;</span></span>
+<span class="line"><span style="color:#E6EDF3">            }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">            пп += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_структури.параметри.розмір > п {</span></span>
+<span class="line"><span style="color:#E6EDF3">          знайдено_параметр = </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          параметр = дані_структури.параметри.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">          позиція_параметра = п;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> знайдено_параметр {</span></span>
+<span class="line"><span style="color:#E6EDF3">          заповнені_параметри[позиція_параметра] = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> результат_аргумента = скомпілювати_значення_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">            аргумент.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">            параметр.тип</span></span>
+<span class="line"><span style="color:#E6EDF3">          );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          якщо</span><span style="color:#E6EDF3"> результат_аргумента.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(аргументи);</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_аргумента.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          якщо</span><span style="color:#E6EDF3"> перевірити_тип_на_запис_і_конвертувати_якщо_треба(компілятор, параметр.тип, результат_аргумента.обʼєкт_значення::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(аргументи);</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">              помилка = створити_помилку_невірний_тип_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">                компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">                Місцезнаходження { контекст.розібраний_текст, аргумент.значення.місцезнаходження.позиція_початкового_слова },</span></span>
+<span class="line"><span style="color:#E6EDF3">                параметр.тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">                результат_аргумента.обʼєкт_значення.тип</span></span>
+<span class="line"><span style="color:#E6EDF3">              ),</span></span>
+<span class="line"><span style="color:#E6EDF3">              ...</span></span>
+<span class="line"><span style="color:#E6EDF3">            };</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">          аргументи[позиція_параметра] = результат_аргумента.обʼєкт_значення.пм_значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          якщо</span><span style="color:#E6EDF3"> аргумент.ідентифікатор.заповнено {</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(аргументи);</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">              помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">                компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">                "Неочікуваний аргумент."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                створити_місцезнаходження_помилки_з_позиції_слова(компілятор, контекст.розібраний_текст, аргумент.ідентифікатор.значення.позиція_слова)</span></span>
+<span class="line"><span style="color:#E6EDF3">              ),</span></span>
+<span class="line"><span style="color:#E6EDF3">              ...</span></span>
+<span class="line"><span style="color:#E6EDF3">            };</span></span>
+<span class="line"><span style="color:#E6EDF3">          } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(аргументи);</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">              помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">                компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">                "Неочікуваний аргумент."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, аргумент.значення.місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">              ),</span></span>
+<span class="line"><span style="color:#E6EDF3">              ...</span></span>
+<span class="line"><span style="color:#E6EDF3">            };</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> пм_значення = ПМ::створити_обʼєкт(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор.пм_модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт_типу.пм_тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">        кількість_аргументів,</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргументи</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">        Обʼєкт { ВидОбʼєктаЗначення, ОбʼєктЗначення { обʼєкт_типу, пм_значення } },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> пм_значення = ПМ::вказівка_виділити(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.кк_дії.крок_накопичень.пм_крок,</span></span>
+<span class="line"><span style="color:#E6EDF3">        обʼєкт_типу.пм_тип</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> заповнені_параметри = біб::виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(дані_структури.параметри.розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; дані_структури.параметри.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">        заповнені_параметри[п] = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; дані_обʼєкта.аргументи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> аргумент = дані_обʼєкта.аргументи.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> знайдено_параметр = </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> параметр: Параметр;</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> позиція_параметра: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> аргумент.ідентифікатор.заповнено {</span></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> назва_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст.розібраний_текст.слова.дані[аргумент.ідентифікатор.значення.позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">            назва_кд::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">          ) {</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">              помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">                компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">                "Не вдалось отримати назву параметра."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                створити_місцезнаходження_помилки_з_позиції_слова(компілятор, контекст.розібраний_текст, аргумент.ідентифікатор.значення.позиція_слова)</span></span>
+<span class="line"><span style="color:#E6EDF3">              ),</span></span>
+<span class="line"><span style="color:#E6EDF3">              ...</span></span>
+<span class="line"><span style="color:#E6EDF3">            };</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> назва = отримати_назву(компілятор, назва_кд);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> пп: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          поки</span><span style="color:#E6EDF3"> пп &#x3C; дані_структури.параметри.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">            якщо</span><span style="color:#E6EDF3"> назва == дані_структури.параметри.дані[пп].назва {</span></span>
+<span class="line"><span style="color:#E6EDF3">              знайдено_параметр = </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">              параметр = дані_структури.параметри.дані[пп];</span></span>
+<span class="line"><span style="color:#E6EDF3">              позиція_параметра = пп;</span></span>
+<span class="line"><span style="color:#E6EDF3">            }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">            пп += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_структури.параметри.розмір > п {</span></span>
+<span class="line"><span style="color:#E6EDF3">          знайдено_параметр = </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          параметр = дані_структури.параметри.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">          позиція_параметра = п;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> знайдено_параметр {</span></span>
+<span class="line"><span style="color:#E6EDF3">          заповнені_параметри[позиція_параметра] = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> результат_аргумента = скомпілювати_значення_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">            аргумент.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">            параметр.тип</span></span>
+<span class="line"><span style="color:#E6EDF3">          );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          якщо</span><span style="color:#E6EDF3"> результат_аргумента.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = результат_аргумента.помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          якщо</span><span style="color:#E6EDF3"> перевірити_тип_на_запис_і_конвертувати_якщо_треба(компілятор, параметр.тип, результат_аргумента.обʼєкт_значення::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">              помилка = створити_помилку_невірний_тип_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">                компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">                Місцезнаходження { контекст.розібраний_текст, аргумент.значення.місцезнаходження.позиція_початкового_слова },</span></span>
+<span class="line"><span style="color:#E6EDF3">                параметр.тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">                результат_аргумента.обʼєкт_значення.тип</span></span>
+<span class="line"><span style="color:#E6EDF3">              ),</span></span>
+<span class="line"><span style="color:#E6EDF3">              ...</span></span>
+<span class="line"><span style="color:#E6EDF3">            };</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> пм_позиції_аргумента = біб::виділити&#x3C;*ПМ::Значення>(</span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">          пм_позиції_аргумента[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] = ПМ::створити_п32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">          пм_позиції_аргумента[</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] = ПМ::створити_п32(компілятор.пм_модуль, </span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">(позиція_параметра));</span></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> пм_значення_аргумента = ПМ::вказівка_отримати_адресу_елемента(</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст.кк_дії.поточний_крок.пм_крок,</span></span>
+<span class="line"><span style="color:#E6EDF3">            обʼєкт_типу.пм_тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">            пм_значення,</span></span>
+<span class="line"><span style="color:#79C0FF">            2</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            пм_позиції_аргумента</span></span>
+<span class="line"><span style="color:#E6EDF3">          );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">          біб::звільнити(пм_позиції_аргумента);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">          ПМ::вказівка_записати(</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст.кк_дії.поточний_крок.пм_крок,</span></span>
+<span class="line"><span style="color:#E6EDF3">            результат_аргумента.обʼєкт_значення.пм_значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">            пм_значення_аргумента</span></span>
+<span class="line"><span style="color:#E6EDF3">          );</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          якщо</span><span style="color:#E6EDF3"> аргумент.ідентифікатор.заповнено {</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">              помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">                компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">                "Неочікуваний аргумент."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                створити_місцезнаходження_помилки_з_позиції_слова(компілятор, контекст.розібраний_текст, аргумент.ідентифікатор.значення.позиція_слова)</span></span>
+<span class="line"><span style="color:#E6EDF3">              ),</span></span>
+<span class="line"><span style="color:#E6EDF3">              ...</span></span>
+<span class="line"><span style="color:#E6EDF3">            };</span></span>
+<span class="line"><span style="color:#E6EDF3">          } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">              помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">                компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">                "Неочікуваний аргумент."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, аргумент.значення.місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">              ),</span></span>
+<span class="line"><span style="color:#E6EDF3">              ...</span></span>
+<span class="line"><span style="color:#E6EDF3">            };</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> дані_обʼєкта.аргументи.автозаповнити {</span></span>
+<span class="line"><span style="color:#FF7B72">        поки</span><span style="color:#E6EDF3"> п &#x3C; дані_структури.параметри.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">          якщо</span><span style="color:#E6EDF3"> заповнені_параметри[п] == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">              помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">                компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">                "Пропущено аргумент."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">              ),</span></span>
+<span class="line"><span style="color:#E6EDF3">              ...</span></span>
+<span class="line"><span style="color:#E6EDF3">            };</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">          п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(заповнені_параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">        Обʼєкт { ВидОбʼєктаНезавантаженеЗначення, ОбʼєктНезавантаженогоЗначення { обʼєкт_типу, пм_значення } },</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

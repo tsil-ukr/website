@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.qOex34uEgj/ціль-0.76.0/БЦ/визначення/цілеспрямовано.в.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./Памʼять;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./Накопичувач;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./КД;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./Друк;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> цілеспрямовано {</span></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> перевірити_чи_Т_рівні&#x3C;Т>(а: Т, б: Т) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> а.розмір != б.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; а.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> а.дані[п] != б.дані[п] {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> перевірити_чи_Т_починається_на&#x3C;Т>(значення: Т, очікуване: Т) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> значення.розмір &#x3C; очікуване.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; очікуване.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> очікуване.дані[п] != значення.дані[п] {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> можливо&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    заповнено: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: Т;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Опція&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    ключ: Т;</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: можливо&#x3C;Т>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    коротка: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Опції&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: *Опція&#x3C;Т>;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ВихідКоманди&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: Т;</span></span>
+<span class="line"><span style="color:#E6EDF3">    опції: Опції&#x3C;Т>;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ВиходиКоманди&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: *ВихідКоманди&#x3C;Т>;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ВхідКоманди&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: Т;</span></span>
+<span class="line"><span style="color:#E6EDF3">    опції: Опції&#x3C;Т>;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ВходиКоманди&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: *ВхідКоманди&#x3C;Т>;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Команда&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    опції_програми: Опції&#x3C;Т>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    виходи: ВиходиКоманди&#x3C;Т>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    команда: Т;</span></span>
+<span class="line"><span style="color:#E6EDF3">    опції_команди: Опції&#x3C;Т>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    входи: ВходиКоманди&#x3C;Т>;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> АргументиДляРозбору&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: *Т;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДоступніКомандиДляРозбору&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: *Т;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> розібрати_опцію&#x3C;Т>(</span></span>
+<span class="line"><span style="color:#E6EDF3">    аргументи: АргументиДляРозбору&#x3C;Т>,</span></span>
+<span class="line"><span style="color:#E6EDF3">    позиція_початку: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    знак_початку_опції: Т,</span></span>
+<span class="line"><span style="color:#E6EDF3">    знак_початку_короткої_опції: Т,</span></span>
+<span class="line"><span style="color:#E6EDF3">    знак_розділення_опції: Т,</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід: *Опція&#x3C;Т>,</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_позиції_кінця: *</span><span style="color:#79C0FF">природне</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> позиція_початку >= аргументи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід_з_помилкою;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> поточна_позиція = позиція_початку;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> аргумент = аргументи.дані[поточна_позиція];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> перевірити_чи_Т_починається_на&#x3C;Т>(аргумент, знак_початку_опції) {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> опція = Опція&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ключ = Т { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">        значення = можливо&#x3C;Т> { </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">, Т { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> } },</span></span>
+<span class="line"><span style="color:#E6EDF3">        коротка = </span><span style="color:#FF7B72">ні</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> пп: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> пп &#x3C; аргумент.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> аргумент.дані[пп] == знак_розділення_опції.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] {</span></span>
+<span class="line"><span style="color:#E6EDF3">          опція.ключ = Т {</span></span>
+<span class="line"><span style="color:#E6EDF3">            аргумент.дані[знак_початку_опції.розмір]::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            пп - знак_початку_опції.розмір,</span></span>
+<span class="line"><span style="color:#E6EDF3">          };</span></span>
+<span class="line"><span style="color:#E6EDF3">          опція.значення = можливо&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#FF7B72">            так</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            Т {</span></span>
+<span class="line"><span style="color:#E6EDF3">              аргумент.дані[пп + </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">]::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">              аргумент.розмір - пп - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            }</span></span>
+<span class="line"><span style="color:#E6EDF3">          };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">          вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = опція;</span></span>
+<span class="line"><span style="color:#E6EDF3">          вихід_позиції_кінця::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = поточна_позиція;</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        пп += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      опція.ключ = Т {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент.дані[знак_початку_опції.розмір]::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент.розмір - знак_початку_опції.розмір,</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = опція;</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_позиції_кінця::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = поточна_позиція;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> перевірити_чи_Т_починається_на&#x3C;Т>(аргумент, знак_початку_короткої_опції) {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> опція = Опція&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ключ = Т { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">        значення = можливо&#x3C;Т> { </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">, Т { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> } },</span></span>
+<span class="line"><span style="color:#E6EDF3">        коротка = </span><span style="color:#FF7B72">так</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> пп: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> пп &#x3C; аргумент.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> аргумент.дані[пп] == знак_розділення_опції.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] {</span></span>
+<span class="line"><span style="color:#E6EDF3">          опція.ключ = Т {</span></span>
+<span class="line"><span style="color:#E6EDF3">            аргумент.дані[знак_початку_короткої_опції.розмір]::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            пп - знак_початку_короткої_опції.розмір,</span></span>
+<span class="line"><span style="color:#E6EDF3">          };</span></span>
+<span class="line"><span style="color:#E6EDF3">          опція.значення = можливо&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#FF7B72">            так</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            Т {</span></span>
+<span class="line"><span style="color:#E6EDF3">              аргумент.дані[пп + </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">]::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">              аргумент.розмір - пп - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            }</span></span>
+<span class="line"><span style="color:#E6EDF3">          };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">          вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = опція;</span></span>
+<span class="line"><span style="color:#E6EDF3">          вихід_позиції_кінця::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = поточна_позиція;</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        пп += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      опція.ключ = Т {</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент.дані[знак_початку_короткої_опції.розмір]::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        аргумент.розмір - знак_початку_короткої_опції.розмір,</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = опція;</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_позиції_кінця::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = поточна_позиція;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  вихід_з_помилкою:</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> розібрати_опції&#x3C;Т>(аргументи: АргументиДляРозбору&#x3C;Т>,</span></span>
+<span class="line"><span style="color:#E6EDF3">                         позиція_початку: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                         знак_початку_опції: Т,</span></span>
+<span class="line"><span style="color:#E6EDF3">                         знак_початку_короткої_опції: Т,</span></span>
+<span class="line"><span style="color:#E6EDF3">                         знак_розділення_опції: Т,</span></span>
+<span class="line"><span style="color:#E6EDF3">                         вихід: *Опції&#x3C;Т>,</span></span>
+<span class="line"><span style="color:#E6EDF3">                         вихід_позиції_кінця: *</span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> позиція_початку >= аргументи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> опції = біб::зробити_накопичувач&#x3C;Опція&#x3C;Т>>(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> поточна_позиція = позиція_початку;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> опція: Опція&#x3C;Т>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> розібрати_опцію&#x3C;Т>(аргументи, поточна_позиція, знак_початку_опції, знак_початку_короткої_опції, знак_розділення_опції, опція::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, поточна_позиція::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::покласти_в_накопичувач&#x3C;Опція&#x3C;Т>>(</span></span>
+<span class="line"><span style="color:#E6EDF3">        опції::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        опція</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід_з_помилкою;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    поточна_позиція += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> поточна_позиція &#x3C; аргументи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> аргумент = аргументи.дані[поточна_позиція];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> розібрати_опцію&#x3C;Т>(аргументи, поточна_позиція, знак_початку_опції, знак_початку_короткої_опції, знак_розділення_опції, опція::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, поточна_позиція::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::покласти_в_накопичувач&#x3C;Опція&#x3C;Т>>(</span></span>
+<span class="line"><span style="color:#E6EDF3">          опції::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          опція</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        стрибнути</span><span style="color:#E6EDF3"> успішний_вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      поточна_позиція += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  успішний_вихід:</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = Опції&#x3C;Т> { опції.розмір, опції.дані };</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_позиції_кінця::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = поточна_позиція - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  вихід_з_помилкою:</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити_значення_накопичувача&#x3C;Опція&#x3C;Т>>(опції);</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> зробити_розібрану_команду&#x3C;Т>() -> Команда&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> Команда&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      опції_програми = Опції&#x3C;Т> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">      виходи = ВиходиКоманди&#x3C;Т> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">      команда = Т { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">      опції_команди = Опції&#x3C;Т> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">      входи = ВходиКоманди&#x3C;Т> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> знищити_розібрану_команду&#x3C;Т>(розібрана_команда: Команда&#x3C;Т>) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(розібрана_команда.опції_програми.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; розібрана_команда.виходи.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(розібрана_команда.виходи.дані[п].опції.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(розібрана_команда.виходи.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(розібрана_команда.опції_команди.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; розібрана_команда.входи.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(розібрана_команда.входи.дані[п].опції.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(розібрана_команда.входи.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // не робить копії значень аргументів</span></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> розібрати_команду&#x3C;Т>(аргументи: АргументиДляРозбору&#x3C;Т>,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           доступні_команди: ДоступніКомандиДляРозбору&#x3C;Т>,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           знак_початку_опції: Т,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           знак_початку_короткої_опції: Т,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           знак_розділення_опції: Т,</span></span>
+<span class="line"><span style="color:#E6EDF3">                           вихід: *Команда&#x3C;Т>) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> розібрана_команда = зробити_розібрану_команду&#x3C;Т>();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> аргументи.розмір == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> успішний_вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  розбір_опцій_програми:</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> розібрати_опції&#x3C;Т>(аргументи, п, знак_початку_опції, знак_початку_короткої_опції, знак_розділення_опції, розібрана_команда.опції_програми::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, п::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> п >= аргументи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> успішний_вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  розбір_вихідних:</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> виходи = біб::зробити_накопичувач&#x3C;ВихідКоманди&#x3C;Т>>(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; аргументи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> аргумент = аргументи.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> пп: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> пп &#x3C; доступні_команди.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> перевірити_чи_Т_рівні&#x3C;Т>(аргумент, доступні_команди.дані[пп]) {</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.команда = аргумент;</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.виходи = ВиходиКоманди&#x3C;Т> { виходи.розмір, виходи.дані };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">          п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          стрибнути</span><span style="color:#E6EDF3"> розбір_опцій_команди;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        пп += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::покласти_в_накопичувач&#x3C;ВихідКоманди&#x3C;Т>>(</span></span>
+<span class="line"><span style="color:#E6EDF3">        виходи::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        ВихідКоманди&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">          значення = аргумент,</span></span>
+<span class="line"><span style="color:#E6EDF3">          опції = Опції&#x3C;Т> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> розібрати_опції&#x3C;Т>(аргументи, п, знак_початку_опції, знак_початку_короткої_опції, знак_розділення_опції, виходи.дані[виходи.розмір - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">].опції::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, п::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    розібрана_команда.виходи = ВиходиКоманди&#x3C;Т> { виходи.розмір, виходи.дані };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> розібрана_команда.команда.розмір == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід_з_помилкою;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  розбір_опцій_команди:</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> розібрати_опції&#x3C;Т>(аргументи, п, знак_початку_опції, знак_початку_короткої_опції, знак_розділення_опції, розібрана_команда.опції_команди::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, п::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  розбір_вхідних:</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> входи = біб::зробити_накопичувач&#x3C;ВхідКоманди&#x3C;Т>>(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; аргументи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> аргумент = аргументи.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::покласти_в_накопичувач&#x3C;ВхідКоманди&#x3C;Т>>(</span></span>
+<span class="line"><span style="color:#E6EDF3">        входи::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        ВхідКоманди&#x3C;Т> {</span></span>
+<span class="line"><span style="color:#E6EDF3">          значення = аргумент,</span></span>
+<span class="line"><span style="color:#E6EDF3">          опції = Опції&#x3C;Т> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> розібрати_опції&#x3C;Т>(аргументи, п, знак_початку_опції, знак_початку_короткої_опції, знак_розділення_опції, входи.дані[входи.розмір - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">].опції::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, п::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    розібрана_команда.входи = ВходиКоманди&#x3C;Т> { входи.розмір, входи.дані };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  успішний_вихід:</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = розібрана_команда;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  вихід_з_помилкою:</span></span>
+<span class="line"><span style="color:#E6EDF3">    знищити_розібрану_команду&#x3C;Т>(розібрана_команда);</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.nWxGTvH9sI/ціль-0.74.0/КЦ/перекладач/Якщо.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_якщо(компілятор: *Компілятор, контекст: Контекст, дані_якщо: розбирач::ДаніСполукиЯкщо, місцезнаходження: розбирач::Місцезнаходження) -> Результат {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_компіляції_умови = скомпілювати_значення_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані_якщо.умова,</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.тип_логічне</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_компіляції_умови.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат { помилка = результат_компіляції_умови.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_значення_умови = результат_компіляції_умови.обʼєкт_значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> аргумент_нуль: Аргумент;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт_значення_умови.тип == компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргумент_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_логічне, ПМ::створити_логічне(компілятор.пм_модуль, </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення_умови.тип == компілятор.тип_ц8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргумент_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц8, ПМ::створити_ц8(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення_умови.тип == компілятор.тип_ц16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргумент_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц16, ПМ::створити_ц16(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення_умови.тип == компілятор.тип_ц32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргумент_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц32, ПМ::створити_ц32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення_умови.тип == компілятор.тип_ц64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргумент_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_ц64, ПМ::створити_ц64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення_умови.тип == компілятор.тип_п8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргумент_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п8, ПМ::створити_п8(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення_умови.тип == компілятор.тип_п16 {</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргумент_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п16, ПМ::створити_п16(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення_умови.тип == компілятор.тип_п32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргумент_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п32, ПМ::створити_п32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення_умови.тип == компілятор.тип_п64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргумент_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_п64, ПМ::створити_п64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення_умови.тип == компілятор.тип_р32 {</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргумент_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_р32, ПМ::створити_р32(компілятор.пм_модуль, </span><span style="color:#79C0FF">0.0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_значення_умови.тип == компілятор.тип_р64 {</span></span>
+<span class="line"><span style="color:#E6EDF3">      аргумент_нуль = Аргумент { Обʼєкт { ВидОбʼєктаЗначення, дані = ОбʼєктЗначення { компілятор.тип_р64, ПМ::створити_р64(компілятор.пм_модуль, </span><span style="color:#79C0FF">0.0</span><span style="color:#E6EDF3">) } }, місцезнаходження };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "Умова має бути логічним."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, дані_якщо.умова.місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        )</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_рівно = обʼєкт_значення_не_рівно(компілятор, контекст, місцезнаходження, обʼєкт_значення_умови, аргумент_нуль);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_рівно.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат { помилка = результат_рівно.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_рівно = отримати_як_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">      місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">      результат_рівно.обʼєкт,</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.тип_логічне</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_рівно.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат { помилка = результат_обʼєкт_значення_рівно.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_обʼєкт_значення_рівно.обʼєкт_значення.тип != компілятор.тип_логічне {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "Умова має бути логічним."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, дані_якщо.умова.місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        )</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_значення_умови = результат_обʼєкт_значення_рівно.обʼєкт_значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> пм_крок_тіла_якщо = ПМ::створити_крок(контекст.кк_дії.обʼєкт_дії.пм_інструкція, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"тіло_якщо"</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> пм_крок_тіла_інакше = ПМ::створити_крок(контекст.кк_дії.обʼєкт_дії.пм_інструкція, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"тіло_інакше"</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> пм_крок_виходу_з_тіла_якщо = ПМ::створити_крок(контекст.кк_дії.обʼєкт_дії.пм_інструкція, отримати_назву(компілятор, </span><span style="color:#A5D6FF">"тіло_якщо_вихід"</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    ПМ::вказівка_стрибнути_якщо(контекст.кк_дії.поточний_крок.пм_крок, обʼєкт_значення_умови.пм_значення, пм_крок_тіла_якщо, пм_крок_тіла_інакше);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> середовище_якщо = створити_середовище(компілятор, контекст.середовище);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    контекст.кк_дії.поточний_крок = Крок {</span></span>
+<span class="line"><span style="color:#E6EDF3">      отримати_назву(компілятор, </span><span style="color:#A5D6FF">"тіло_якщо"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.кк_дії.обʼєкт_дії,</span></span>
+<span class="line"><span style="color:#E6EDF3">      пм_крок_тіла_якщо</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_тіла = скомпілювати_тіло(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      Контекст {</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібраний_текст = контекст.розібраний_текст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        середовище = середовище_якщо,</span></span>
+<span class="line"><span style="color:#E6EDF3">        кк_дії = контекст.кк_дії</span></span>
+<span class="line"><span style="color:#E6EDF3">      },</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані_якщо.тіло,</span></span>
+<span class="line"><span style="color:#E6EDF3">      місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_тіла.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат { помилка = результат_тіла.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> ПМ::перевірити_чи_крок_закінчується_стрибком(контекст.кк_дії.поточний_крок.пм_крок) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_стрибнути(контекст.кк_дії.поточний_крок.пм_крок, пм_крок_виходу_з_тіла_якщо);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> середовище_інакше = створити_середовище(компілятор, контекст.середовище);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    контекст.кк_дії.поточний_крок = Крок {</span></span>
+<span class="line"><span style="color:#E6EDF3">      отримати_назву(компілятор, </span><span style="color:#A5D6FF">"тіло_інакше"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.кк_дії.обʼєкт_дії,</span></span>
+<span class="line"><span style="color:#E6EDF3">      пм_крок_тіла_інакше</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_тіла_інакше = скомпілювати_тіло(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      Контекст {</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібраний_текст = контекст.розібраний_текст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        середовище = середовище_інакше,</span></span>
+<span class="line"><span style="color:#E6EDF3">        кк_дії = контекст.кк_дії</span></span>
+<span class="line"><span style="color:#E6EDF3">      },</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані_якщо.тіло_інакше,</span></span>
+<span class="line"><span style="color:#E6EDF3">      місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_тіла_інакше.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат { помилка = результат_тіла_інакше.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> ПМ::перевірити_чи_крок_закінчується_стрибком(контекст.кк_дії.поточний_крок.пм_крок) == </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ПМ::вказівка_стрибнути(контекст.кк_дії.поточний_крок.пм_крок, пм_крок_виходу_з_тіла_якщо);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    контекст.кк_дії.поточний_крок = Крок {</span></span>
+<span class="line"><span style="color:#E6EDF3">      отримати_назву(компілятор, </span><span style="color:#A5D6FF">"тіло_якщо_вихід"</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.кк_дії.обʼєкт_дії,</span></span>
+<span class="line"><span style="color:#E6EDF3">      пм_крок_виходу_з_тіла_якщо</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> Результат { помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

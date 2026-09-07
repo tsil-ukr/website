@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.4VRH3Kcbdd/ціль-0.64.0/КЦ/РозібранийТекст.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти означення</span><span style="color:#E6EDF3"> ./КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_розібраний_текст(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>) -> </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;РозібранийТекст> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> розібраний_текст = біб::виділити&#x3C;РозібранийТекст>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    розібраний_текст.наступний = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    розібраний_текст.компілятор = компілятор;</span></span>
+<span class="line"><span style="color:#E6EDF3">    розібраний_текст.текст_коду = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    розібраний_текст.розбирач = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    розібраний_текст.слова = КЦ::розбирач::Слова { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    розібраний_текст.сполуки = КЦ::розбирач::Сполуки { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> компілятор.перший_розібраний_текст == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.перший_розібраний_текст = розібраний_текст;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> компілятор.останній_розібраний_текст == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_розібраний_текст = розібраний_текст;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_розібраний_текст.наступний = розібраний_текст;</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_розібраний_текст = розібраний_текст;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> розібраний_текст;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знищити_розібраний_текст(розібраний_текст: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;РозібранийТекст>) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> компілятор = розібраний_текст.компілятор;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    розбирач::знищити_слова(розібраний_текст.розбирач, розібраний_текст.слова);</span></span>
+<span class="line"><span style="color:#E6EDF3">    розбирач::знищити_сполуки(розібраний_текст.розбирач, розібраний_текст.сполуки);</span></span>
+<span class="line"><span style="color:#E6EDF3">    розбирач::знищити(розібраний_текст.розбирач);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(розібраний_текст);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

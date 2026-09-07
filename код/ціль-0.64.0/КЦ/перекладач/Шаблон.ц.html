@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.4VRH3Kcbdd/ціль-0.64.0/КЦ/перекладач/Шаблон.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти означення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_параметри_шаблону(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, параметри_розбирача: розбирач::ПараметриШаблону, місцезнаходження: розбирач::Місцезнаходження) -> РезультатПараметрів {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> параметри = Параметри { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; параметри_розбирача.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> параметр_розбирача = параметри_розбирача.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> назва_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.розібраний_текст.слова.дані[параметр_розбирача.ідентифікатор.позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">        назва_кд::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">      ) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        знищити_параметри(компілятор, параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатПараметрів {</span></span>
+<span class="line"><span style="color:#E6EDF3">          ..., помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Не вдалось отримати назву параметра шаблону."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          )</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> назва = отримати_назву(компілятор, назва_кд);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> параметр_розбирача.тип == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        покласти_параметр(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          параметри::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          Параметр {</span></span>
+<span class="line"><span style="color:#E6EDF3">            назва,</span></span>
+<span class="line"><span style="color:#FF7B72">            пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            Місцезнаходження { контекст.розібраний_текст, параметр_розбирача.ідентифікатор.позиція_слова },</span></span>
+<span class="line"><span style="color:#E6EDF3">            Місцезнаходження { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> результат_типу = скомпілювати_значення_як_тип(компілятор, контекст, параметр_розбирача.тип, </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> результат_типу.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">          знищити_параметри(компілятор, параметри);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатПараметрів { ..., помилка = результат_типу.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        покласти_параметр(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          параметри::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          Параметр {</span></span>
+<span class="line"><span style="color:#E6EDF3">            назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">            результат_типу.обʼєкт_типу,</span></span>
+<span class="line"><span style="color:#E6EDF3">            Місцезнаходження { контекст.розібраний_текст, параметр_розбирача.ідентифікатор.позиція_слова },</span></span>
+<span class="line"><span style="color:#E6EDF3">            Місцезнаходження { контекст.розібраний_текст, параметр_розбирача.тип.місцезнаходження.позиція_початкового_слова }</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатПараметрів {</span></span>
+<span class="line"><span style="color:#E6EDF3">      параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> перевірити_параметри_задекларованого_шаблону(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, обʼєкт_задекларованого_шаблону: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктШаблону>, дані_шаблону: розбирач::ДаніСполукиШаблон, місцезнаходження: розбирач::Місцезнаходження) -> Результат {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт_задекларованого_шаблону.параметри.розмір != дані_шаблону.параметри.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "Невірна кількість параметрів шаблону."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        )</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">    // потім: перевірити назви</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> Результат { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> КонтекстПереборуГотовихСтруктурШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    помилка: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Помилка>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    контекст: Контекст;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_шаблону: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктШаблону>;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> дія_перебору_реєстру_готових_структури(реєстр: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;біб::Реєстр&#x3C;ГотовіАргументиШаблону, Обʼєкт>>, аргумент: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#79C0FF">ніщо</span><span style="color:#E6EDF3">>, ключ: ГотовіАргументиШаблону, значення: Обʼєкт) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> кпгсш = аргумент </span><span style="color:#FF7B72">як</span><span style="color:#79C0FF"> адреса</span><span style="color:#E6EDF3">&#x3C;КонтекстПереборуГотовихСтруктурШаблону>;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> компілятор = кпгсш.компілятор;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> контекст = кпгсш.контекст;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_шаблону = кпгсш.обʼєкт_шаблону;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу = значення.дані </span><span style="color:#FF7B72">як</span><span style="color:#79C0FF"> адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктТипу>;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> дані_обʼєкта_типу_структура = обʼєкт_типу.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> ДаніОбʼєктаТипуСтруктура;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> середовище_доповнення_структури = створити_середовище(компілятор, контекст.середовище);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; обʼєкт_шаблону.параметри.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> параметр = обʼєкт_шаблону.параметри.дані[п];</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> готовий_аргумент_шаблону = ключ.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> готовий_аргумент_шаблону.вид == ВидАргументаГотовихШаблонуОбʼєктТипу {</span></span>
+<span class="line"><span style="color:#E6EDF3">        змінити_в_середовищі(</span></span>
+<span class="line"><span style="color:#E6EDF3">          середовище_доповнення_структури,</span></span>
+<span class="line"><span style="color:#E6EDF3">          параметр.назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">          Обʼєкт { ВидОбʼєктаТип, дані = готовий_аргумент_шаблону.значення </span><span style="color:#FF7B72">як</span><span style="color:#79C0FF"> адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктТипу> }</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> готовий_аргумент_шаблону.вид == ВидАргументаГотовихШаблонуОбʼєктСирогоЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        змінити_в_середовищі(</span></span>
+<span class="line"><span style="color:#E6EDF3">          середовище_доповнення_структури,</span></span>
+<span class="line"><span style="color:#E6EDF3">          параметр.назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">          Обʼєкт { ВидОбʼєктаСиреЗначення, дані = готовий_аргумент_шаблону.значення </span><span style="color:#FF7B72">як</span><span style="color:#79C0FF"> адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСирогоЗначення> }</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> контекст_виконання_шаблону = біб::виділити&#x3C;КонтекстКомпіляціїВиконанняШаблону>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    контекст_виконання_шаблону.обʼєкт_шаблону = обʼєкт_шаблону;</span></span>
+<span class="line"><span style="color:#E6EDF3">    контекст_виконання_шаблону.готові_аргументи_шаблону = ключ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_доповнення_структури = скомпілювати_структуру(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      Контекст {</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібраний_текст = обʼєкт_шаблону.контекст_компіляції.розібраний_текст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        середовище = середовище_доповнення_структури,</span></span>
+<span class="line"><span style="color:#E6EDF3">        кк_дії = обʼєкт_шаблону.контекст_компіляції.кк_дії</span></span>
+<span class="line"><span style="color:#E6EDF3">      },</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст_виконання_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_типу,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_шаблону.сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиСтруктура,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_шаблону.сполука.місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_доповнення_структури.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      кпгсш.помилка = результат_доповнення_структури.помилка;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> дозаповнити_задекларований_шаблон_структури(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, обʼєкт_задекларованого_шаблону: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктШаблону>, дані_шаблону: розбирач::ДаніСполукиШаблон, місцезнаходження: розбирач::Місцезнаходження) -> Результат {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> дані_структури = дані_шаблону.значення.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиСтруктура;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> місцезнаходження_структури = дані_шаблону.значення.місцезнаходження;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> дані_задекларованої_структури = обʼєкт_задекларованого_шаблону.сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиСтруктура;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> місцезнаходження_задекларованої_структури = обʼєкт_задекларованого_шаблону.сполука.місцезнаходження;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> дані_структури.параметри.розмір == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> дані_задекларованої_структури.параметри.розмір != </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> дані_шаблону.ідентифікатор.заповнено {</span></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> назва_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">            контекст.розібраний_текст.слова.дані[дані_шаблону.ідентифікатор.значення.позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">            назва_кд::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">          ) {</span></span>
+<span class="line"><span style="color:#FF7B72">            вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">              помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">                компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">                "Не вдалось отримати назву шаблону."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">              )</span></span>
+<span class="line"><span style="color:#E6EDF3">            };</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> назва = отримати_назву(компілятор, назва_кд);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">            помилка = створити_помилку_субʼєкт_вже_визначено(</span></span>
+<span class="line"><span style="color:#E6EDF3">              компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">              Місцезнаходження { контекст.розібраний_текст, дані_шаблону.ідентифікатор.значення.позиція_слова },</span></span>
+<span class="line"><span style="color:#E6EDF3">              назва_кд</span></span>
+<span class="line"><span style="color:#E6EDF3">            )</span></span>
+<span class="line"><span style="color:#E6EDF3">          };</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">            помилка = створити_помилку_субʼєкт_вже_визначено(</span></span>
+<span class="line"><span style="color:#E6EDF3">              компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">              Місцезнаходження { контекст.розібраний_текст, місцезнаходження.позиція_початкового_слова },</span></span>
+<span class="line"><span style="color:#79C0FF">              кд</span><span style="color:#E6EDF3"> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">            )</span></span>
+<span class="line"><span style="color:#E6EDF3">          };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_задекларованого_шаблону.сполука = дані_шаблону.значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_задекларованого_шаблону.контекст_компіляції = контекст;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> кпгсш = КонтекстПереборуГотовихСтруктурШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#FF7B72">      пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_задекларованого_шаблону</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::перебрати_реєстр&#x3C;ГотовіАргументиШаблону, Обʼєкт>(</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_задекларованого_шаблону.готові,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дія_перебору_реєстру_готових_структури,</span></span>
+<span class="line"><span style="color:#E6EDF3">      кпгсш::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> кпгсш.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат { кпгсш.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> Результат { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> КонтекстПереборуГотовихДійШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    помилка: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Помилка>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    контекст: Контекст;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_шаблону: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктШаблону>;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> дія_перебору_реєстру_готових_дії(реєстр: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;біб::Реєстр&#x3C;ГотовіАргументиШаблону, Обʼєкт>>, аргумент: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#79C0FF">ніщо</span><span style="color:#E6EDF3">>, ключ: ГотовіАргументиШаблону, значення: Обʼєкт) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> кпгдш = аргумент </span><span style="color:#FF7B72">як</span><span style="color:#79C0FF"> адреса</span><span style="color:#E6EDF3">&#x3C;КонтекстПереборуГотовихДійШаблону>;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> компілятор = кпгдш.компілятор;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> контекст = кпгдш.контекст;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_шаблону = кпгдш.обʼєкт_шаблону;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_дії = значення.дані </span><span style="color:#FF7B72">як</span><span style="color:#79C0FF"> адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктДії>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> середовище_доповнення_дії = створити_середовище(компілятор, контекст.середовище);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; обʼєкт_шаблону.параметри.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> параметр = обʼєкт_шаблону.параметри.дані[п];</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> готовий_аргумент_шаблону = ключ.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> готовий_аргумент_шаблону.вид == ВидАргументаГотовихШаблонуОбʼєктТипу {</span></span>
+<span class="line"><span style="color:#E6EDF3">        змінити_в_середовищі(</span></span>
+<span class="line"><span style="color:#E6EDF3">          середовище_доповнення_дії,</span></span>
+<span class="line"><span style="color:#E6EDF3">          параметр.назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">          Обʼєкт { ВидОбʼєктаТип, дані = готовий_аргумент_шаблону.значення </span><span style="color:#FF7B72">як</span><span style="color:#79C0FF"> адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктТипу> }</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> готовий_аргумент_шаблону.вид == ВидАргументаГотовихШаблонуОбʼєктСирогоЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">        змінити_в_середовищі(</span></span>
+<span class="line"><span style="color:#E6EDF3">          середовище_доповнення_дії,</span></span>
+<span class="line"><span style="color:#E6EDF3">          параметр.назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">          Обʼєкт { ВидОбʼєктаСиреЗначення, дані = готовий_аргумент_шаблону.значення </span><span style="color:#FF7B72">як</span><span style="color:#79C0FF"> адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктСирогоЗначення> }</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> контекст_виконання_шаблону = біб::виділити&#x3C;КонтекстКомпіляціїВиконанняШаблону>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    контекст_виконання_шаблону.обʼєкт_шаблону = обʼєкт_шаблону;</span></span>
+<span class="line"><span style="color:#E6EDF3">    контекст_виконання_шаблону.готові_аргументи_шаблону = ключ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_доповнення_дії = скомпілювати_дію(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      Контекст {</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібраний_текст = обʼєкт_шаблону.контекст_компіляції.розібраний_текст,</span></span>
+<span class="line"><span style="color:#E6EDF3">        середовище = середовище_доповнення_дії,</span></span>
+<span class="line"><span style="color:#E6EDF3">        кк_дії = обʼєкт_шаблону.контекст_компіляції.кк_дії</span></span>
+<span class="line"><span style="color:#E6EDF3">      },</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст_виконання_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_дії,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_шаблону.сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиДія,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_шаблону.сполука.місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_доповнення_дії.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      кпгдш.помилка = результат_доповнення_дії.помилка;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> дозаповнити_задекларований_шаблон_дії(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, обʼєкт_задекларованого_шаблону: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктШаблону>, дані_шаблону: розбирач::ДаніСполукиШаблон, місцезнаходження: розбирач::Місцезнаходження) -> Результат {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> дані_дії = дані_шаблону.значення.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиДія;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> місцезнаходження_дії = дані_шаблону.значення.місцезнаходження;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> дані_задекларованої_дії = обʼєкт_задекларованого_шаблону.сполука.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиДія;</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> місцезнаходження_задекларованої_дії = обʼєкт_задекларованого_шаблону.сполука.місцезнаходження;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_задекларованого_шаблону.сполука = дані_шаблону.значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_задекларованого_шаблону.контекст_компіляції = контекст;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> кпгдш = КонтекстПереборуГотовихДійШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#FF7B72">      пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_задекларованого_шаблону</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::перебрати_реєстр&#x3C;ГотовіАргументиШаблону, Обʼєкт>(</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_задекларованого_шаблону.готові,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дія_перебору_реєстру_готових_дії,</span></span>
+<span class="line"><span style="color:#E6EDF3">      кпгдш::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> кпгдш.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> Результат { кпгдш.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> Результат { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> дозаповнити_задекларований_шаблон(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, обʼєкт_задекларованого_шаблону: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктШаблону>, дані_шаблону: розбирач::ДаніСполукиШаблон, місцезнаходження: розбирач::Місцезнаходження) -> Результат {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> дані_шаблону.ідентифікатор.заповнено {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.розібраний_текст.слова.дані[дані_шаблону.ідентифікатор.значення.позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">        назва_кд::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">      ) {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Не вдалось отримати назву шаблону."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          )</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва = отримати_назву(компілятор, назва_кд);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_перевірки_параметрів = перевірити_параметри_задекларованого_шаблону(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_задекларованого_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">      місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_перевірки_параметрів.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> результат_перевірки_параметрів;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> обʼєкт_задекларованого_шаблону.сполука.вид == розбирач::ВидСполукиСтруктура {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> дані_шаблону.значення.вид == розбирач::ВидСполукиСтруктура {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> дозаповнити_задекларований_шаблон_структури(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_задекларованого_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">          дані_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">          місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> обʼєкт_задекларованого_шаблону.сполука.вид == розбирач::ВидСполукиДія {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> дані_шаблону.значення.вид == розбирач::ВидСполукиДія {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> дозаповнити_задекларований_шаблон_дії(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_задекларованого_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">          дані_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">          місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> Результат {</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка = створити_помилку_субʼєкт_вже_визначено(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        Місцезнаходження { контекст.розібраний_текст, дані_шаблону.ідентифікатор.значення.позиція_слова },</span></span>
+<span class="line"><span style="color:#E6EDF3">        назва_кд</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_шаблон(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, дані_шаблону: розбирач::ДаніСполукиШаблон, місцезнаходження: розбирач::Місцезнаходження) -> РезультатОбʼєктаШаблону {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> дані_шаблону.ідентифікатор.заповнено {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.розібраний_текст.слова.дані[дані_шаблону.ідентифікатор.значення.позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">        назва_кд::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">      ) {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">          ..., помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Не вдалось отримати назву шаблону."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          )</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва = отримати_назву(компілятор, назва_кд);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_параметрів = скомпілювати_параметри_шаблону(компілятор, контекст, дані_шаблону.параметри, місцезнаходження);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_параметрів.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ...,</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = результат_параметрів.помилка</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> дані_шаблону.значення.вид == розбирач::ВидСполукиДія {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> дані_дії = дані_шаблону.значення.дані </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> розбирач::ДаніСполукиДія;</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> дані_дії.видимість != розбирач::ВИДИМІСТЬ_ВНУТРІШНЯ {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...,</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Дія шаблону повинна мати внутрішню видимість."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          )</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_шаблону = виділити_обʼєкт_шаблону(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_шаблону.назва = назва;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_шаблону.параметри = результат_параметрів.параметри;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_шаблону.сполука = дані_шаблону.значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_шаблону.контекст_компіляції = контекст;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_визначити_шаблон(компілятор: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">&#x3C;Компілятор>, контекст: Контекст, дані_шаблону: розбирач::ДаніСполукиШаблон, місцезнаходження: розбирач::Місцезнаходження) -> РезультатОбʼєктаШаблону {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.розібраний_текст.слова.дані[дані_шаблону.ідентифікатор.значення.позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">      назва_кд::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">    ) {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ..., помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "Не вдалось отримати назву шаблону."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        )</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва = отримати_назву(компілятор, назва_кд);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_з_середовища: Обʼєкт;</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> знайти_в_середовищі(контекст.середовище, назва, обʼєкт_з_середовища::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> обʼєкт_з_середовища.вид == ВидОбʼєктаШаблон {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> обʼєкт_шаблону = обʼєкт_з_середовища.дані </span><span style="color:#FF7B72">як</span><span style="color:#79C0FF"> адреса</span><span style="color:#E6EDF3">&#x3C;ОбʼєктШаблону>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> результат_дозаповнення = дозаповнити_задекларований_шаблон(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">          обʼєкт_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">          дані_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">          місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> результат_дозаповнення.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаШаблону { ..., помилка = результат_дозаповнення.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаШаблону { обʼєкт_шаблону, помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ...,</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = створити_помилку_субʼєкт_вже_визначено(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">          Місцезнаходження { контекст.розібраний_текст, дані_шаблону.ідентифікатор.значення.позиція_слова },</span></span>
+<span class="line"><span style="color:#E6EDF3">          назва_кд</span></span>
+<span class="line"><span style="color:#E6EDF3">        )</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_шаблону = скомпілювати_шаблон(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">      місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_шаблону.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаШаблону { ..., помилка = результат_шаблону.помилка };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    змінити_в_середовищі(контекст.середовище, назва, Обʼєкт { ВидОбʼєктаШаблон, результат_шаблону.обʼєкт_шаблону });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаШаблону {</span></span>
+<span class="line"><span style="color:#E6EDF3">      результат_шаблону.обʼєкт_шаблону,</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

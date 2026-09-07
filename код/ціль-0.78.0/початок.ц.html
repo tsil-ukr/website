@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.F15XRmrllU/ціль-0.78.0/початок.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./ПМ;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./ПМЛЛВМ;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./КЦ;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./команди;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> цілеспрямовано;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> __КЦ__отримати_шлях_до_цілі_як_ю8(вихід: *</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> зробити_шлях_до_основи(шлях_до_цілі: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, вихід: *</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_папки_цілі = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { шлях_до_цілі.дані, шлях_до_цілі.розмір };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> глиб = </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> шлях_до_папки_цілі.розмір > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> шлях_до_папки_цілі.дані[шлях_до_папки_цілі.розмір - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] == </span><span style="color:#79C0FF">47</span><span style="color:#E6EDF3"> { </span><span style="color:#8B949E">// '/'</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> глиб == </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        стрибнути</span><span style="color:#E6EDF3"> далі;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        глиб += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.розмір -= </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">далі:</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> назва_основи = </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"основа.в.ц"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях_до_папки_цілі.дані = біб::виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(шлях_до_папки_цілі.розмір + назва_основи.розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; шлях_до_папки_цілі.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.дані[п] = шлях_до_цілі.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; назва_основи.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.дані[шлях_до_папки_цілі.розмір + п] = назва_основи.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях_до_папки_цілі.розмір += назва_основи.розмір;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = шлях_до_папки_цілі;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> зробити_шлях_до_мейн(шлях_до_цілі: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, вихід: *</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_папки_цілі = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { шлях_до_цілі.дані, шлях_до_цілі.розмір };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> глиб = </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> шлях_до_папки_цілі.розмір > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> шлях_до_папки_цілі.дані[шлях_до_папки_цілі.розмір - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] == </span><span style="color:#79C0FF">47</span><span style="color:#E6EDF3"> { </span><span style="color:#8B949E">// '/'</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> глиб == </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        стрибнути</span><span style="color:#E6EDF3"> далі;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        глиб += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.розмір -= </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">далі:</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> назва_мейн = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(</span><span style="color:#79C0FF">13</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#79C0FF">    13</span></span>
+<span class="line"><span style="color:#E6EDF3">  };</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">208</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">177</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">209</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">150</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">208</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">5</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">177</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">47</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">7</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">109</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">97</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">9</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">105</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">110</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">11</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">46</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_мейн.дані[</span><span style="color:#79C0FF">12</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">99</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях_до_папки_цілі.дані = біб::виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(шлях_до_папки_цілі.розмір + назва_мейн.розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; шлях_до_папки_цілі.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.дані[п] = шлях_до_цілі.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; назва_мейн.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.дані[шлях_до_папки_цілі.розмір + п] = назва_мейн.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях_до_папки_цілі.розмір += назва_мейн.розмір;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = шлях_до_папки_цілі;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> зробити_шлях_до_біб(шлях_до_цілі: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, вихід: *</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_папки_цілі = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { шлях_до_цілі.дані, шлях_до_цілі.розмір };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> глиб = </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> шлях_до_папки_цілі.розмір > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> шлях_до_папки_цілі.дані[шлях_до_папки_цілі.розмір - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] == </span><span style="color:#79C0FF">47</span><span style="color:#E6EDF3"> { </span><span style="color:#8B949E">// '/'</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> глиб == </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        стрибнути</span><span style="color:#E6EDF3"> далі;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        глиб += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.розмір -= </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">далі:</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> назва_біб_ц = </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"біб"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях_до_папки_цілі.дані = біб::виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(шлях_до_папки_цілі.розмір + назва_біб_ц.розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; шлях_до_папки_цілі.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.дані[п] = шлях_до_цілі.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; назва_біб_ц.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.дані[шлях_до_папки_цілі.розмір + п] = назва_біб_ц.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях_до_папки_цілі.розмір += назва_біб_ц.розмір;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = шлях_до_папки_цілі;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> зробити_шлях_до_біб_ц(шлях_до_цілі: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, вихід: *</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_папки_цілі = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { шлях_до_цілі.дані, шлях_до_цілі.розмір };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> глиб = </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> шлях_до_папки_цілі.розмір > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> шлях_до_папки_цілі.дані[шлях_до_папки_цілі.розмір - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] == </span><span style="color:#79C0FF">47</span><span style="color:#E6EDF3"> { </span><span style="color:#8B949E">// '/'</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> глиб == </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        стрибнути</span><span style="color:#E6EDF3"> далі;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        глиб += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.розмір -= </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">далі:</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> назва_біб_ц = </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"біб/біб.ц"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях_до_папки_цілі.дані = біб::виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(шлях_до_папки_цілі.розмір + назва_біб_ц.розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; шлях_до_папки_цілі.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.дані[п] = шлях_до_цілі.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; назва_біб_ц.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.дані[шлях_до_папки_цілі.розмір + п] = назва_біб_ц.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях_до_папки_цілі.розмір += назва_біб_ц.розмір;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = шлях_до_папки_цілі;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> зробити_шлях_до_біб_сі(шлях_до_цілі: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, вихід: *</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_папки_цілі = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { шлях_до_цілі.дані, шлях_до_цілі.розмір };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> глиб = </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> шлях_до_папки_цілі.розмір > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> шлях_до_папки_цілі.дані[шлях_до_папки_цілі.розмір - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] == </span><span style="color:#79C0FF">47</span><span style="color:#E6EDF3"> { </span><span style="color:#8B949E">// '/'</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> глиб == </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        стрибнути</span><span style="color:#E6EDF3"> далі;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        глиб += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.розмір -= </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">далі:</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> назва_біб_сі = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(</span><span style="color:#79C0FF">12</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#79C0FF">    12</span></span>
+<span class="line"><span style="color:#E6EDF3">  };</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_біб_сі.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">208</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_біб_сі.дані[</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">177</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_біб_сі.дані[</span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">209</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_біб_сі.дані[</span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">150</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_біб_сі.дані[</span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">208</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_біб_сі.дані[</span><span style="color:#79C0FF">5</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">177</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_біб_сі.дані[</span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">47</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_біб_сі.дані[</span><span style="color:#79C0FF">7</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">98</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_біб_сі.дані[</span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">105</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_біб_сі.дані[</span><span style="color:#79C0FF">9</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">98</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_біб_сі.дані[</span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">46</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  назва_біб_сі.дані[</span><span style="color:#79C0FF">11</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">99</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях_до_папки_цілі.дані = біб::виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(шлях_до_папки_цілі.розмір + назва_біб_сі.розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; шлях_до_папки_цілі.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.дані[п] = шлях_до_цілі.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; назва_біб_сі.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_папки_цілі.дані[шлях_до_папки_цілі.розмір + п] = назва_біб_сі.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях_до_папки_цілі.розмір += назва_біб_сі.розмір;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = шлях_до_папки_цілі;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> почати(кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, аргументи: *</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">ц32</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> статус_виходу: </span><span style="color:#79C0FF">ц32</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_цілі: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_основи: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_мейн: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_біб: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_біб_ц: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_біб_сі: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  __КЦ__отримати_шлях_до_цілі_як_ю8(шлях_до_цілі::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> зробити_шлях_до_основи(шлях_до_цілі, шлях_до_основи::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати_ю8(шлях_до_цілі);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати(</span><span style="color:#A5D6FF">"Не вдалось визначити шлях до основи.в.ц!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> зробити_шлях_до_мейн(шлях_до_цілі, шлях_до_мейн::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати_ю8(шлях_до_цілі);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати(</span><span style="color:#A5D6FF">"Не вдалось визначити шлях до мейн!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> зробити_шлях_до_біб(шлях_до_цілі, шлях_до_біб::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати_ю8(шлях_до_цілі);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати(</span><span style="color:#A5D6FF">"Не вдалось визначити шлях до біб!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> зробити_шлях_до_біб_ц(шлях_до_цілі, шлях_до_біб_ц::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати_ю8(шлях_до_цілі);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати(</span><span style="color:#A5D6FF">"Не вдалось визначити шлях до біб.ц!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> зробити_шлях_до_біб_сі(шлях_до_цілі, шлях_до_біб_сі::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати_ю8(шлях_до_цілі);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати(</span><span style="color:#A5D6FF">"Не вдалось визначити шлях до біб сі!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> кількість_команд: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> доступні_команди = цілеспрямовано::ДоступніКомандиДляРозбору&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">> { кількість_команд, біб::виділити&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">>(кількість_команд) };</span></span>
+<span class="line"><span style="color:#E6EDF3">  доступні_команди.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"допомога"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  доступні_команди.дані[</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"версія"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  доступні_команди.дані[</span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"скомпілювати"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  доступні_команди.дані[</span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"перетворити"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  доступні_команди.дані[</span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"ювкд"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  доступні_команди.дані[</span><span style="color:#79C0FF">5</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"кдвю"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  доступні_команди.дані[</span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"платформи"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  доступні_команди.дані[</span><span style="color:#79C0FF">7</span><span style="color:#E6EDF3">] = </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"зібрати"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> розібрана_команда = цілеспрямовано::зробити_розібрану_команду&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">>();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> успіх_розбору_команди = цілеспрямовано::розібрати_команду&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">>(</span></span>
+<span class="line"><span style="color:#E6EDF3">    цілеспрямовано::АргументиДляРозбору&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">> { кількість_аргументів - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, аргументи[</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">]::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">    доступні_команди,</span></span>
+<span class="line"><span style="color:#79C0FF">    ю8</span><span style="color:#A5D6FF">"--"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#79C0FF">    ю8</span><span style="color:#A5D6FF">"-"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#79C0FF">    ю8</span><span style="color:#A5D6FF">"="</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    розібрана_команда::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> успіх_розбору_команди {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати(</span><span style="color:#A5D6FF">"Не вдалось розібрати команду!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> розібрана_команда.команда.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">""</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    статус_виходу = ціль_допомога(</span></span>
+<span class="line"><span style="color:#E6EDF3">      цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">      цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> розібрана_команда.команда.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"допомога"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    статус_виходу = ціль_допомога(</span></span>
+<span class="line"><span style="color:#E6EDF3">      розібрана_команда.опції_програми,</span></span>
+<span class="line"><span style="color:#E6EDF3">      розібрана_команда.опції_команди</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> розібрана_команда.команда.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"версія"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    статус_виходу = ціль_версія(</span></span>
+<span class="line"><span style="color:#E6EDF3">      розібрана_команда.опції_програми,</span></span>
+<span class="line"><span style="color:#E6EDF3">      розібрана_команда.опції_команди</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> розібрана_команда.команда.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"скомпілювати"</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">або</span><span style="color:#E6EDF3"> розібрана_команда.команда.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"перетворити"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> розібрана_команда.входи.розмір &#x3C; </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати(</span><span style="color:#A5D6FF">"Недостатньо вхідних!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      статус_виходу = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> розібрана_команда.виходи.розмір == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; розібрана_команда.входи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> вхід = розібрана_команда.входи.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        статус_виходу = ціль_скомпілювати(</span></span>
+<span class="line"><span style="color:#E6EDF3">          біб::Шлях { шлях_до_основи.розмір, шлях_до_основи.дані, шлях_до_основи.розмір },</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.опції_програми,</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.опції_команди,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вхід.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вхід.опції,</span></span>
+<span class="line"><span style="color:#79C0FF">          ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">          цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.входи.розмір == </span><span style="color:#79C0FF">1</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> статус_виходу != </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> розібрана_команда.входи.розмір > </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::надрукувати(</span><span style="color:#A5D6FF">"Команда скомпілювати з вказаними виходами може мати лише один вхід!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">        статус_виходу = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">        стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> вхід = розібрана_команда.входи.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; розібрана_команда.виходи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> вихід = розібрана_команда.виходи.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        статус_виходу = ціль_скомпілювати(</span></span>
+<span class="line"><span style="color:#E6EDF3">          біб::Шлях { шлях_до_основи.розмір, шлях_до_основи.дані, шлях_до_основи.розмір },</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.опції_програми,</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.опції_команди,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вхід.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вхід.опції,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вихід.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вихід.опції,</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.виходи.розмір == </span><span style="color:#79C0FF">1</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> статус_виходу != </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> розібрана_команда.команда.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"зібрати"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> розібрана_команда.входи.розмір &#x3C; </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати(</span><span style="color:#A5D6FF">"Недостатньо вхідних!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      статус_виходу = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> розібрана_команда.виходи.розмір == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      статус_виходу = ціль_зібрати(</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::Шлях { шлях_до_основи.розмір, шлях_до_основи.дані, шлях_до_основи.розмір },</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::Шлях { шлях_до_мейн.розмір, шлях_до_мейн.дані, шлях_до_мейн.розмір },</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::Шлях { шлях_до_біб.розмір, шлях_до_біб.дані, шлях_до_біб.розмір },</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::Шлях { шлях_до_біб_ц.розмір, шлях_до_біб_ц.дані, шлях_до_біб_ц.розмір },</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::Шлях { шлях_до_біб_сі.розмір, шлях_до_біб_сі.дані, шлях_до_біб_сі.розмір },</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібрана_команда.опції_програми,</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібрана_команда.опції_команди,</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібрана_команда.входи,</span></span>
+<span class="line"><span style="color:#79C0FF">        ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">        цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> розібрана_команда.виходи.розмір == </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      статус_виходу = ціль_зібрати(</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::Шлях { шлях_до_основи.розмір, шлях_до_основи.дані, шлях_до_основи.розмір },</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::Шлях { шлях_до_мейн.розмір, шлях_до_мейн.дані, шлях_до_мейн.розмір },</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::Шлях { шлях_до_біб.розмір, шлях_до_біб.дані, шлях_до_біб.розмір },</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::Шлях { шлях_до_біб_ц.розмір, шлях_до_біб_ц.дані, шлях_до_біб_ц.розмір },</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::Шлях { шлях_до_біб_сі.розмір, шлях_до_біб_сі.дані, шлях_до_біб_сі.розмір },</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібрана_команда.опції_програми,</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібрана_команда.опції_команди,</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібрана_команда.входи,</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібрана_команда.виходи.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">].значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        розібрана_команда.виходи.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">].опції,</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати(</span><span style="color:#A5D6FF">"Команда зібрати може мати лише один вихід!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      статус_виходу = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> розібрана_команда.команда.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"ювкд"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> розібрана_команда.входи.розмір &#x3C; </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати(</span><span style="color:#A5D6FF">"Недостатньо вхідних!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      статус_виходу = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> розібрана_команда.виходи.розмір == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; розібрана_команда.входи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> вхід = розібрана_команда.входи.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        статус_виходу = ціль_ювкд(</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.опції_програми,</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.опції_команди,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вхід.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вхід.опції,</span></span>
+<span class="line"><span style="color:#79C0FF">          ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">          цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.входи.розмір == </span><span style="color:#79C0FF">1</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> статус_виходу != </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> розібрана_команда.входи.розмір > </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::надрукувати(</span><span style="color:#A5D6FF">"Команда кдвю з вказаними виходами може мати лише один вхід!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">        статус_виходу = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">        стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> вхід = розібрана_команда.входи.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; розібрана_команда.виходи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> вихід = розібрана_команда.виходи.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        статус_виходу = ціль_ювкд(</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.опції_програми,</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.опції_команди,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вхід.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вхід.опції,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вихід.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вихід.опції,</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.виходи.розмір == </span><span style="color:#79C0FF">1</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> статус_виходу != </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> розібрана_команда.команда.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"кдвю"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> розібрана_команда.входи.розмір &#x3C; </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати(</span><span style="color:#A5D6FF">"Недостатньо вхідних!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      статус_виходу = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> розібрана_команда.виходи.розмір == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; розібрана_команда.входи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> вхід = розібрана_команда.входи.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        статус_виходу = ціль_кдвю(</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.опції_програми,</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.опції_команди,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вхід.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вхід.опції,</span></span>
+<span class="line"><span style="color:#79C0FF">          ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">          цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">> { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.входи.розмір == </span><span style="color:#79C0FF">1</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> статус_виходу != </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> розібрана_команда.входи.розмір > </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::надрукувати(</span><span style="color:#A5D6FF">"Команда кдвю з вказаними виходами може мати лише один вхід!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">        статус_виходу = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">        стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> вхід = розібрана_команда.входи.дані[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; розібрана_команда.виходи.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> вихід = розібрана_команда.виходи.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        статус_виходу = ціль_кдвю(</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.опції_програми,</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.опції_команди,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вхід.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вхід.опції,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вихід.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">          вихід.опції,</span></span>
+<span class="line"><span style="color:#E6EDF3">          розібрана_команда.виходи.розмір == </span><span style="color:#79C0FF">1</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> статус_виходу != </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> розібрана_команда.команда.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"платформи"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    статус_виходу = ціль_платформи(</span></span>
+<span class="line"><span style="color:#E6EDF3">      розібрана_команда.опції_програми,</span></span>
+<span class="line"><span style="color:#E6EDF3">      розібрана_команда.опції_команди</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  біб::надрукувати(</span><span style="color:#A5D6FF">"Невідома команда!"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  статус_виходу = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">вихід:</span></span>
+<span class="line"><span style="color:#E6EDF3">  цілеспрямовано::знищити_розібрану_команду&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">>(розібрана_команда);</span></span>
+<span class="line"><span style="color:#E6EDF3">  біб::звільнити(доступні_команди.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#E6EDF3"> статус_виходу;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

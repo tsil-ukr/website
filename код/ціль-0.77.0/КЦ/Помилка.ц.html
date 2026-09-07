@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.i64yC0j1Ra/ціль-0.77.0/КЦ/Помилка.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_помилку_невірний_тип_вернути(компілятор: *Компілятор, місцезнаходження: Місцезнаходження, очікуваний_тип: *ОбʼєктТипу, тип: *ОбʼєктТипу) -> *Помилка {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_кд = зробити_накопичувач_кд(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"Невірний тип вернути: очікується </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_очікуваного_типу = отримати_повну_назву_типу(компілятор, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, назва_очікуваного_типу);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(назва_очікуваного_типу.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">, отримано </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_типу = отримати_повну_назву_типу(компілятор, тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, назва_типу);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(назва_типу.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> створити_помилку_без_копіювання(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач_кд.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      створити_місцезнаходження_помилки_з_місцезнаходження(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_помилку_невірний_тип_значення(компілятор: *Компілятор, місцезнаходження: Місцезнаходження, очікуваний_тип: *ОбʼєктТипу, тип: *ОбʼєктТипу) -> *Помилка {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_кд = зробити_накопичувач_кд(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"Невірний тип значення: очікується </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_очікуваного_типу = отримати_повну_назву_типу(компілятор, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, назва_очікуваного_типу);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(назва_очікуваного_типу.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">, отримано </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_типу = отримати_повну_назву_типу(компілятор, тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, назва_типу);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(назва_типу.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> створити_помилку_без_копіювання(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач_кд.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      створити_місцезнаходження_помилки_з_місцезнаходження(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_помилку_субʼєкт_не_визначено(компілятор: *Компілятор, місцезнаходження: Місцезнаходження, ідентифікатор: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) -> *Помилка {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_кд = зробити_накопичувач_кд(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"Субʼєкт </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, ідентифікатор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF"> не визначено."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> створити_помилку_без_копіювання(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач_кд.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      створити_місцезнаходження_помилки_з_місцезнаходження(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_помилку_субʼєкт_вже_визначено(компілятор: *Компілятор, місцезнаходження: Місцезнаходження, ідентифікатор: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) -> *Помилка {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_кд = зробити_накопичувач_кд(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"Субʼєкт </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, ідентифікатор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF"> вже визначено."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> створити_помилку_без_копіювання(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач_кд.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      створити_місцезнаходження_помилки_з_місцезнаходження(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> видимість_дії_як_кд(видимість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> видимість == ВидимістьВнутрішня {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#A5D6FF"> "внутрішня"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> видимість == ВидимістьЗовнішня {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#A5D6FF"> "зовнішня"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#79C0FF"> кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_помилку_видимість_дії_не_відповідає_задекларованій(компілятор: *Компілятор, місцезнаходження: Місцезнаходження, очікується: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, отримано: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> *Помилка {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_кд = зробити_накопичувач_кд(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"Видимість дії не відповідає задекларованій: очікується </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, видимість_дії_як_кд(очікується));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">, отримано </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, видимість_дії_як_кд(отримано));</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> створити_помилку_без_копіювання(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач_кд.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      створити_місцезнаходження_помилки_з_місцезнаходження(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_помилку_кількість_параметрів_дії_не_відповідає_задекларованій(компілятор: *Компілятор, місцезнаходження: Місцезнаходження, очікується: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, отримано: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> *Помилка {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_кд = зробити_накопичувач_кд(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"Кількість параметрів дії не відповідає задекларованій: очікується "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_природне_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, очікується);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">", отримано "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_природне_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, отримано);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> створити_помилку_без_копіювання(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач_кд.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      створити_місцезнаходження_помилки_з_місцезнаходження(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_помилку_тип_параметра_дії_не_відповідає_задекларованому(компілятор: *Компілятор, місцезнаходження: Місцезнаходження, назва: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">, очікуваний_тип: *ОбʼєктТипу, тип: *ОбʼєктТипу) -> *Помилка {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_кд = зробити_накопичувач_кд(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> назва.розмір > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"Тип параметра </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, назва);</span></span>
+<span class="line"><span style="color:#E6EDF3">      покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF"> не відповідає задекларованому: очікується </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"Тип параметра не відповідає задекларованому: очікується </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_очікуваного_типу = отримати_повну_назву_типу(компілятор, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, назва_очікуваного_типу);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(назва_очікуваного_типу.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">, отримано </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_типу = отримати_повну_назву_типу(компілятор, тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, назва_типу);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(назва_типу.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> створити_помилку_без_копіювання(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач_кд.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      створити_місцезнаходження_помилки_з_місцезнаходження(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_помилку_тип_результату_дії_не_відповідає_задекларованому(компілятор: *Компілятор, місцезнаходження: Місцезнаходження, очікуваний_тип: *ОбʼєктТипу, тип: *ОбʼєктТипу) -> *Помилка {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_кд = зробити_накопичувач_кд(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"Тип результату дії не відповідає задекларованому: очікується </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_очікуваного_типу = отримати_повну_назву_типу(компілятор, очікуваний_тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, назва_очікуваного_типу);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(назва_очікуваного_типу.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">, отримано </span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> назва_типу = отримати_повну_назву_типу(компілятор, тип);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, назва_типу);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(назва_типу.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_в_накопичувач_кд(компілятор, накопичувач_кд::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">\"</span><span style="color:#A5D6FF">."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> створити_помилку_без_копіювання(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      накопичувач_кд.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      створити_місцезнаходження_помилки_з_місцезнаходження(</span></span>
+<span class="line"><span style="color:#E6EDF3">        компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">        місцезнаходження</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

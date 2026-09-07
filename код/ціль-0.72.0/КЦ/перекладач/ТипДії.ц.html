@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.Kdmp7a5ndo/ціль-0.72.0/КЦ/перекладач/ТипДії.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_тип_дії(компілятор: *Компілятор, контекст: Контекст, дані_типу_дії: розбирач::ДаніСполукиТипДії, місцезнаходження: розбирач::Місцезнаходження) -> РезультатОбʼєктаТипу {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_параметрів = скомпілювати_параметри_дії(компілятор, контекст, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, дані_типу_дії.параметри, місцезнаходження);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_параметрів.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаТипу {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ...,</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = результат_параметрів.помилка</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> результат_типу = скомпілювати_значення_як_тип(компілятор, контекст, дані_типу_дії.тип_результату, </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> результат_типу.помилка != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаТипу {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ...,</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = результат_типу.помилка</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_типу = створити_тип_дії(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      результат_параметрів.параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">      результат_типу.обʼєкт_типу</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатОбʼєктаТипу {</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_типу,</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка = </span><span style="color:#FF7B72">пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

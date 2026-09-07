@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.3gEvzRWMzb/ціль-0.80.0/команди/ціль_скомпілювати.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> цілеспрямовано;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Шлях;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Процес;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Файли;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ПМ;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ПМЛЛВМ;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./команди;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./допоміжне;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">структура</span><span style="color:#E6EDF3"> ВитнутеЗначенняЗіСловомЮ8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">  витнуте_значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  початок_підкреслення: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> знайти_границі_рядка(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, позиція_в_тексті: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, вихід_початку: *</span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, вихід_кінця: *</span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> початок = позиція_в_тексті;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> початок > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> значення.дані[початок - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] == </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> далі_кінець;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">    початок -= </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">далі_кінець:</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> кінець = позиція_в_тексті;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> кінець &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> значення.дані[кінець] == </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">    кінець += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">вихід:</span></span>
+<span class="line"><span style="color:#E6EDF3">  вихід_початку::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = початок;</span></span>
+<span class="line"><span style="color:#E6EDF3">  вихід_кінця::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = кінець;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> знайти_границі_рядка_ю8(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, позиція_в_тексті: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, вихід_початку: *</span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, вихід_кінця: *</span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> початок = позиція_в_тексті;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> початок > </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> значення.дані[початок - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">] == </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> далі_кінець;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">    початок -= </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">далі_кінець:</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> кінець = позиція_в_тексті;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> кінець &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> значення.дані[кінець] == </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> вихід;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">    кінець += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">вихід:</span></span>
+<span class="line"><span style="color:#E6EDF3">  вихід_початку::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = початок;</span></span>
+<span class="line"><span style="color:#E6EDF3">  вихід_кінця::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = кінець;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> порахувати_кількість_символів_ю8(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> кількість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> с = значення.дані[п];</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> с &#x3C; </span><span style="color:#79C0FF">128</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> (с &#x26; </span><span style="color:#79C0FF">224</span><span style="color:#E6EDF3">) == </span><span style="color:#79C0FF">192</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> (с &#x26; </span><span style="color:#79C0FF">240</span><span style="color:#E6EDF3">) == </span><span style="color:#79C0FF">224</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> (с &#x26; </span><span style="color:#79C0FF">248</span><span style="color:#E6EDF3">) == </span><span style="color:#79C0FF">240</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> кількість;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">    кількість += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#E6EDF3"> кількість;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> порахувати_зсув_ю8(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, позиція_символа: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> символи: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> символи == позиція_символа {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> п;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> с = значення.дані[п];</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> с &#x3C; </span><span style="color:#79C0FF">128</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> (с &#x26; </span><span style="color:#79C0FF">224</span><span style="color:#E6EDF3">) == </span><span style="color:#79C0FF">192</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> (с &#x26; </span><span style="color:#79C0FF">240</span><span style="color:#E6EDF3">) == </span><span style="color:#79C0FF">224</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> (с &#x26; </span><span style="color:#79C0FF">248</span><span style="color:#E6EDF3">) == </span><span style="color:#79C0FF">240</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> п;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">    символи += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#E6EDF3"> п;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> виправити_ю8_якщо_незакінчено(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> с = значення.дані[п];</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> с &#x3C; </span><span style="color:#79C0FF">128</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> (с &#x26; </span><span style="color:#79C0FF">224</span><span style="color:#E6EDF3">) == </span><span style="color:#79C0FF">192</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> п + </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        значення.розмір = значення.розмір - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> (с &#x26; </span><span style="color:#79C0FF">240</span><span style="color:#E6EDF3">) == </span><span style="color:#79C0FF">224</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> п + </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3"> &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        значення.розмір = значення.розмір - </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> (с &#x26; </span><span style="color:#79C0FF">248</span><span style="color:#E6EDF3">) == </span><span style="color:#79C0FF">240</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> п + </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3"> &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        значення.розмір = значення.розмір - </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#E6EDF3"> значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> витнути_значення_ю8(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, позиція_помилки: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, максимальна_довжина: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> ВитнутеЗначенняЗіСловомЮ8 {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> результат = ВитнутеЗначенняЗіСловомЮ8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">    витнуте_значення = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> },</span></span>
+<span class="line"><span style="color:#E6EDF3">    початок_підкреслення = </span><span style="color:#79C0FF">0</span></span>
+<span class="line"><span style="color:#E6EDF3">  };</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> максимальна_довжина == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> результат;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> рядок_початок: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> рядок_кінець: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  знайти_границі_рядка_ю8(значення, позиція_помилки, рядок_початок::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, рядок_кінець::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> рядок = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення.дані[рядок_початок]::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    рядок_кінець - рядок_початок,</span></span>
+<span class="line"><span style="color:#E6EDF3">  };</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> позиція_символа_помилки = порахувати_кількість_символів_ю8(</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { рядок.дані, позиція_помилки - рядок_початок });</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> рядок_символи = порахувати_кількість_символів_ю8(рядок);</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> макс_байти = максимальна_довжина;</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> макс_байти > рядок.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">    макс_байти = рядок.розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> половина_символів = макс_байти / </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> під_початок_символ: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> позиція_символа_помилки > половина_символів {</span></span>
+<span class="line"><span style="color:#E6EDF3">    під_початок_символ = позиція_символа_помилки - половина_символів;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> (під_початок_символ + макс_байти) > рядок_символи {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> рядок_символи > макс_байти {</span></span>
+<span class="line"><span style="color:#E6EDF3">      під_початок_символ = рядок_символи - макс_байти;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      під_початок_символ = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> під_початок_байт = порахувати_зсув_ю8(рядок, під_початок_символ);</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> під_кінець_байт = під_початок_байт + макс_байти;</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> під_кінець_байт > рядок.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">    під_кінець_байт = рядок.розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> під_розмір = під_кінець_байт - під_початок_байт;</span></span>
+<span class="line"><span style="color:#E6EDF3">  результат.витнуте_значення = виправити_ю8_якщо_незакінчено(</span></span>
+<span class="line"><span style="color:#79C0FF">    ю8</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      рядок.дані[під_початок_байт]::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      під_розмір,</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> позиція_символа_помилки >= під_початок_символ {</span></span>
+<span class="line"><span style="color:#E6EDF3">    результат.початок_підкреслення = позиція_символа_помилки - під_початок_символ;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    результат.початок_підкреслення = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#E6EDF3"> результат;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> очікується_ЛЛВМІР(вихід: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#E6EDF3"> вихід.зак_на(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">".ллвмір"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> очікується_ЛЛВМО(вихід: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#E6EDF3"> вихід.зак_на(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">".ллвмо"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">стала</span><span style="color:#E6EDF3"> ФОРМАТ_ВИХОДУ_ЛЛВМО = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">стала</span><span style="color:#E6EDF3"> ФОРМАТ_ВИХОДУ_ЛЛВМІР = </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> розібрати_значення_опції_формат_виходу(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, назва_опції: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, в_команді: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">, вихід_формат: *</span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"ллвмір"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_формат::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = ФОРМАТ_ВИХОДУ_ЛЛВМІР;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"ллвмо"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_формат::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = ФОРМАТ_ВИХОДУ_ЛЛВМО;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> в_команді {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::вивести(</span><span style="color:#A5D6FF">"Неочікуване значення опції команди "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::вивести(</span><span style="color:#A5D6FF">"Неочікуване значення опції виходу "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  біб::вивести_ю8(назва_опції);</span></span>
+<span class="line"><span style="color:#E6EDF3">  біб::вивести(</span><span style="color:#A5D6FF">"."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> розібрати_значення_опції_платформа_виходу(значення: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, назва_опції: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">, в_команді: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">, вихід_платформа: *</span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"ікс86_64-пк-лінукс-гну"</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">або</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"лінукс-ікс86_64"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_платформа::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = ПМ::ПЛАТФОРМА_ІКС86_64_ПК_ЛІНУКС_ГНУ;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"аарч64-пк-лінукс-гну"</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">або</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"лінукс-аарч64"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_платформа::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = ПМ::ПЛАТФОРМА_ААРЧ64_ПК_ЛІНУКС_ГНУ;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"ікс86_64-епл-дарвін"</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">або</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"макос-ікс86_64"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_платформа::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = ПМ::ПЛАТФОРМА_ІКС86_64_ЕПЛ_ДАРВІН;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"аарч64-епл-дарвін"</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">або</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"макос-аарч64"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_платформа::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = ПМ::ПЛАТФОРМА_ААРЧ64_ЕПЛ_ДАРВІН;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"ікс86_64-пк-віндовс-гну"</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">або</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"віндовс-ікс86_64"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_платформа::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = ПМ::ПЛАТФОРМА_ІКС86_64_ПК_ВІНДОВС_ГНУ;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"ікс86_64-пк-віндовс-мсвс"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_платформа::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = ПМ::ПЛАТФОРМА_ІКС86_64_ПК_ВІНДОВС_МСВС;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"аарч64-пк-віндовс-гну"</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">або</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"віндовс-аарч64"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_платформа::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = ПМ::ПЛАТФОРМА_ААРЧ64_64_ПК_ВІНДОВС_ГНУ;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"аарч64-пк-віндовс-мсвс"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_платформа::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = ПМ::ПЛАТФОРМА_ААРЧ64_64_ПК_ВІНДОВС_МСВС;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"васм32"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_платформа::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = ПМ::ПЛАТФОРМА_ВАСМ32;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> значення.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"васм64"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_платформа::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = ПМ::ПЛАТФОРМА_ВАСМ64;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> в_команді {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::вивести(</span><span style="color:#A5D6FF">"Неочікуване значення опції команди "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::вивести(</span><span style="color:#A5D6FF">"Неочікуване значення опції виходу "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  біб::вивести_ю8(назва_опції);</span></span>
+<span class="line"><span style="color:#E6EDF3">  біб::вивести(</span><span style="color:#A5D6FF">"."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> ціль_скомпілювати(</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях_до_цілі: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">  опції_програми: цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">>,</span></span>
+<span class="line"><span style="color:#E6EDF3">  опції_команди: цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">>,</span></span>
+<span class="line"><span style="color:#E6EDF3">  вхід: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">  опції_входу: цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">>,</span></span>
+<span class="line"><span style="color:#E6EDF3">  вихід: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">  опції_виходу: цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">>,</span></span>
+<span class="line"><span style="color:#E6EDF3">  треба_знищити_залишки: </span><span style="color:#79C0FF">логічне</span></span>
+<span class="line"><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">ц32</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> р: </span><span style="color:#79C0FF">ціле</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> успіх = </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_основи_ю8: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_основи: біб::Шлях;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  успіх = зробити_шлях_до_основи(шлях_до_цілі, шлях_до_основи_ю8::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> успіх {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  р = біб::шлях_з_ю8(шлях_до_основи_ю8, шлях_до_основи::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> р != </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> формат_виходу: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = ФОРМАТ_ВИХОДУ_ЛЛВМО;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> визначено_формат_виходу = </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> пм_платформа_виходу: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = ПМ::ПЛАТФОРМА_ІКС86_64_ПК_ЛІНУКС_ГНУ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_до_біб = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; опції_команди.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> опція = опції_команди.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> опція.коротка </span><span style="color:#FF7B72">і</span><span style="color:#E6EDF3"> опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"формат-виходів"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> опція.значення.заповнено {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> розібрати_значення_опції_формат_виходу(опція.значення.значення, </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"--формат-виходів"</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">, формат_виходу::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">          визначено_формат_виходу = </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">       біб::надрукувати(</span><span style="color:#A5D6FF">"Опція команди --формат-виходів має мати значення."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">       вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">     }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> опція.коротка </span><span style="color:#FF7B72">і</span><span style="color:#E6EDF3"> опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"платформа-виходів"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> опція.значення.заповнено {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> розібрати_значення_опції_платформа_виходу(опція.значення.значення, </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"--платформа-виходів"</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">, пм_платформа_виходу::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">       біб::надрукувати(</span><span style="color:#A5D6FF">"Опція команди --платформа-виходів має мати значення."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">       вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> опція.коротка </span><span style="color:#FF7B72">і</span><span style="color:#E6EDF3"> (опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"бібліотека-входів"</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">або</span><span style="color:#E6EDF3"> опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"біб-входів"</span><span style="color:#E6EDF3">)) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> опція.значення.заповнено {</span></span>
+<span class="line"><span style="color:#E6EDF3">        шлях_до_біб = опція.значення.значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">       біб::надрукувати(</span><span style="color:#A5D6FF">"Опція команди --бібліотека-входів має мати значення."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">       вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести(</span><span style="color:#A5D6FF">"Неочікувана опція команди "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати_ю8(опція.ключ);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шляхи_до_визначень = біб::зробити_накопичувач&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">>(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; опції_входу.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> опція = опції_входу.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> опція.коротка </span><span style="color:#FF7B72">і</span><span style="color:#E6EDF3"> опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"Б"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> опція.значення.заповнено {</span></span>
+<span class="line"><span style="color:#E6EDF3">        шлях_до_біб = опція.значення.значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">         біб::надрукувати(</span><span style="color:#A5D6FF">"Опція входу -Б має мати значення."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">         вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> опція.коротка </span><span style="color:#FF7B72">і</span><span style="color:#E6EDF3"> (опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"бібліотека"</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">або</span><span style="color:#E6EDF3"> опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"біб"</span><span style="color:#E6EDF3">)) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> опція.значення.заповнено {</span></span>
+<span class="line"><span style="color:#E6EDF3">        шлях_до_біб = опція.значення.значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">         біб::надрукувати(</span><span style="color:#A5D6FF">"Опція входу --бібліотека має мати значення."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">         вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> опція.коротка </span><span style="color:#FF7B72">і</span><span style="color:#E6EDF3"> опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"В"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> опція.значення.заповнено {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::покласти_в_накопичувач&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">>(шляхи_до_визначень::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, опція.значення.значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">         біб::надрукувати(</span><span style="color:#A5D6FF">"Опція входу -В має мати значення."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">         вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> опція.коротка </span><span style="color:#FF7B72">і</span><span style="color:#E6EDF3"> опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"визначення"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> опція.значення.заповнено {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::покласти_в_накопичувач&#x3C;</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">>(шляхи_до_визначень::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, опція.значення.значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">         біб::надрукувати(</span><span style="color:#A5D6FF">"Опція входу --визначення має мати значення."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">         вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести(</span><span style="color:#A5D6FF">"Неочікувана опція входу "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати_ю8(опція.ключ);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; опції_виходу.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> опція = опції_виходу.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> опція.коротка </span><span style="color:#FF7B72">і</span><span style="color:#E6EDF3"> опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"Ф"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> опція.значення.заповнено {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> розібрати_значення_опції_формат_виходу(опція.значення.значення, </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"-Ф"</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">, формат_виходу::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">          визначено_формат_виходу = </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">       біб::надрукувати(</span><span style="color:#A5D6FF">"Опція виходу -Ф має мати значення."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">       вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">     }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> опція.коротка </span><span style="color:#FF7B72">і</span><span style="color:#E6EDF3"> опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"формат"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> опція.значення.заповнено {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> розібрати_значення_опції_формат_виходу(опція.значення.значення, </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"--формат"</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">, формат_виходу::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">          визначено_формат_виходу = </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">       біб::надрукувати(</span><span style="color:#A5D6FF">"Опція виходу --формат має мати значення."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">       вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">     }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> опція.коротка </span><span style="color:#FF7B72">і</span><span style="color:#E6EDF3"> опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"П"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> опція.значення.заповнено {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> розібрати_значення_опції_платформа_виходу(опція.значення.значення, </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"-П"</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">, пм_платформа_виходу::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">       біб::надрукувати(</span><span style="color:#A5D6FF">"Опція виходу -П має мати значення."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">       вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">     }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> опція.коротка </span><span style="color:#FF7B72">і</span><span style="color:#E6EDF3"> опція.ключ.рівн(</span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"платформа"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> опція.значення.заповнено {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> розібрати_значення_опції_платформа_виходу(опція.значення.значення, </span><span style="color:#79C0FF">ю8</span><span style="color:#A5D6FF">"--платформа"</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">, пм_платформа_виходу::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">       біб::надрукувати(</span><span style="color:#A5D6FF">"Опція виходу --платформа має мати значення."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">       вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">     }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести(</span><span style="color:#A5D6FF">"Неочікувана опція виходу "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати_ю8(опція.ключ);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> визначено_формат_виходу {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> очікується_ЛЛВМІР(вихід) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      формат_виходу = ФОРМАТ_ВИХОДУ_ЛЛВМІР;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> очікується_ЛЛВМО(вихід) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      формат_виходу = ФОРМАТ_ВИХОДУ_ЛЛВМО;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> пм_модуль = ПМ::створити_модуль(</span></span>
+<span class="line"><span style="color:#FF7B72">    пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    пм_платформа_виходу</span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> компілятор = КЦ::створити_компілятор(пм_модуль);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  поки</span><span style="color:#E6EDF3"> п &#x3C; шляхи_до_визначень.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> шлях_ю8 = шляхи_до_визначень.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> шлях: біб::Шлях;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::шлях_з_ю8(шлях_ю8, шлях::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::покласти_в_накопичувач&#x3C;біб::Шлях>(компілятор.шляхи_до_визначень::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, шлях);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> біб::отримати_робочу_директорію_процесу(компілятор.кореневий_шлях::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) &#x3C; </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    КЦ::померти(компілятор, </span><span style="color:#A5D6FF">"Не вдалось отримати поточну директорію процесу."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  біб::шлях_з_ю8(шлях_до_біб, компілятор.шлях_до_біб::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> помилка: *КЦ::Помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> успіх_взяття = КЦ::взяти_файл_ю8(</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор.глобальне_середовище,</span></span>
+<span class="line"><span style="color:#E6EDF3">    шлях_до_основи,</span></span>
+<span class="line"><span style="color:#E6EDF3">    помилка::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> успіх_взяття {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> шлях_входу: біб::Шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::шлях_з_ю8(вхід, шлях_входу::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    успіх_взяття = КЦ::взяти_файл_ю8(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.глобальне_середовище,</span></span>
+<span class="line"><span style="color:#E6EDF3">      шлях_входу,</span></span>
+<span class="line"><span style="color:#E6EDF3">      помилка::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> успіх_взяття {</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> помилка.місцезнаходження != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> текст_коду = помилка.місцезнаходження.текст_коду;</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести_ю8(</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { текст_коду.шлях.дані, текст_коду.шлях.розмір });</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести(</span><span style="color:#A5D6FF">":"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести_природне(помилка.місцезнаходження.рядок);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести(</span><span style="color:#A5D6FF">":"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести_природне(помилка.місцезнаходження.стовпець);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести(</span><span style="color:#A5D6FF">" помилка: "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> повідомлення_ю8 = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> позиція_помилки: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> біб::перекодувати_в_ю8(помилка.повідомлення, </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">, повідомлення_ю8::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, позиція_помилки::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      КЦ::померти(компілятор, </span><span style="color:#A5D6FF">"Не вдалось перекодувати помилку повідомлення в ю8."</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати_ю8(повідомлення_ю8);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(повідомлення_ю8.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> помилка.місцезнаходження != </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> текст_коду = помилка.місцезнаходження.текст_коду;</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> оригінальне_значення = текст_коду.оригінальне_значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> витнутний_текст = витнути_значення_ю8(</span></span>
+<span class="line"><span style="color:#E6EDF3">        оригінальне_значення.значення,</span></span>
+<span class="line"><span style="color:#79C0FF">        природне</span><span style="color:#E6EDF3">(оригінальне_значення.місцезнаходження.дані[помилка.місцезнаходження.позиція_в_тексті]),</span></span>
+<span class="line"><span style="color:#79C0FF">        100</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> природне_ю8 = біб::перетворити_природне_на_ю8(помилка.місцезнаходження.рядок);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести_ю8(природне_ю8);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести(</span><span style="color:#A5D6FF">"| "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати_ю8(витнутний_текст.витнуте_значення);</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; (витнутний_текст.початок_підкреслення + природне_ю8.розмір + </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::вивести(</span><span style="color:#A5D6FF">" "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати(</span><span style="color:#A5D6FF">"^"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(природне_ю8.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> треба_знищити_залишки {</span></span>
+<span class="line"><span style="color:#E6EDF3">      КЦ::знищити_помилку(компілятор, помилка);</span></span>
+<span class="line"><span style="color:#E6EDF3">      КЦ::знищити_компілятор(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> значення_запису = КЦ::Байти { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> формат_виходу == ФОРМАТ_ВИХОДУ_ЛЛВМІР {</span></span>
+<span class="line"><span style="color:#E6EDF3">    ПМЛЛВМ::перетворити_на_ллвмір(пм_модуль, значення_запису.розмір::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, значення_запису.дані::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> формат_виходу == ФОРМАТ_ВИХОДУ_ЛЛВМО {</span></span>
+<span class="line"><span style="color:#8B949E">    // потім: помилка</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> вихід.розмір == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::вивести_байти(значення_запису.розмір, значення_запису.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> шлях_виходу: біб::Шлях;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    р = біб::шлях_з_ю8(вихід, шлях_виходу::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> р &#x3C; </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести(</span><span style="color:#A5D6FF">"Не вдалось створити шлях для вихідного файлу "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати_ю8(вихід);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    р = біб::перезаписати_файл_за_шляхом(шлях_виходу, значення_запису.розмір, значення_запису.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> р &#x3C; </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести(</span><span style="color:#A5D6FF">"Не вдалось записати у файл "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати_ю8(вихід);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::знищити_шлях(шлях_виходу);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> треба_знищити_залишки {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(значення_запису.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    КЦ::знищити_компілятор(компілятор);</span></span>
+<span class="line"><span style="color:#E6EDF3">    ПМ::знищити_модуль(пм_модуль);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

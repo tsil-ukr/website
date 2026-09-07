@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.i64yC0j1Ra/ціль-0.77.0/БЦ/bib.c</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;arpa/inet.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;libgen.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;liburing.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;memory.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;netinet/in.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;poll.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;stdint.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;stdio.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;stdlib.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;sys/socket.h></span></span>
+<span class="line"><span style="color:#FF7B72">#include</span><span style="color:#A5D6FF"> &#x3C;unistd.h></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">#define п8 </span><span style="color:#FF7B72">uint8_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define п16 </span><span style="color:#FF7B72">uint16_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define п32 </span><span style="color:#FF7B72">uint32_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define п64 </span><span style="color:#FF7B72">uint64_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ц8 </span><span style="color:#FF7B72">int8_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ц16 </span><span style="color:#FF7B72">int16_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ц32 </span><span style="color:#FF7B72">int32_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ц64 </span><span style="color:#FF7B72">int64_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define р32 </span><span style="color:#FF7B72">float</span></span>
+<span class="line"><span style="color:#E6EDF3">#define р64 </span><span style="color:#FF7B72">double</span></span>
+<span class="line"><span style="color:#E6EDF3">#define логічне </span><span style="color:#FF7B72">uint8_t</span></span>
+<span class="line"><span style="color:#E6EDF3">#define природне п64</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ціле ц64</span></span>
+<span class="line"><span style="color:#E6EDF3">#define ніщо </span><span style="color:#FF7B72">void</span></span>
+<span class="line"><span style="color:#E6EDF3">#define адреса_ніщо </span><span style="color:#FF7B72">void*</span></span>
+<span class="line"><span style="color:#E6EDF3">#define памʼять_ніщо </span><span style="color:#FF7B72">void*</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FF7B72"> struct</span><span style="color:#E6EDF3"> кд кд;</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FF7B72"> struct</span><span style="color:#E6EDF3"> ю8 ю8;</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FF7B72"> struct</span><span style="color:#E6EDF3"> Інформація Інформація;</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FF7B72"> struct</span><span style="color:#E6EDF3"> Шлях Шлях;</span></span>
+<span class="line"><span style="color:#FF7B72">typedef</span><span style="color:#FF7B72"> struct</span><span style="color:#E6EDF3"> Файл Файл;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">struct</span><span style="color:#E6EDF3"> кд {</span></span>
+<span class="line"><span style="color:#E6EDF3">  п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> дані;</span></span>
+<span class="line"><span style="color:#E6EDF3">  природне розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">struct</span><span style="color:#E6EDF3"> ю8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">  п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> дані;</span></span>
+<span class="line"><span style="color:#E6EDF3">  природне розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">struct</span><span style="color:#E6EDF3"> Інформація {</span></span>
+<span class="line"><span style="color:#E6EDF3">  природне розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">  п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> дані;</span></span>
+<span class="line"><span style="color:#E6EDF3">  природне вмісткість;</span></span>
+<span class="line"><span style="color:#E6EDF3">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">struct</span><span style="color:#E6EDF3"> Шлях {</span></span>
+<span class="line"><span style="color:#E6EDF3">  природне розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">  п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> дані;</span></span>
+<span class="line"><span style="color:#E6EDF3">  природне вмісткість;</span></span>
+<span class="line"><span style="color:#E6EDF3">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">struct</span><span style="color:#E6EDF3"> Файл {</span></span>
+<span class="line"><span style="color:#E6EDF3">  ц32 дескриптор;</span></span>
+<span class="line"><span style="color:#E6EDF3">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__перекодувати_текст_в_ю8(кд* значення, ю8* вихід);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// &#x3C;Памʼять.о.ц></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __біб__виділити_сиру_памʼять(природне розмір) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#D2A8FF"> malloc</span><span style="color:#E6EDF3">(розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> __біб__перевиділити_сиру_памʼять(п8* значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                            природне новий_розмір) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#D2A8FF"> realloc</span><span style="color:#E6EDF3">(значення, новий_розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#FF7B72"> void</span><span style="color:#E6EDF3"> __біб__звільнити_сиру_памʼять(п8* значення) {</span></span>
+<span class="line"><span style="color:#D2A8FF">  free</span><span style="color:#E6EDF3">(значення);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// &#x3C;/Памʼять.о.ц></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// &#x3C;Друк.о.ц></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#FF7B72"> void</span><span style="color:#E6EDF3"> __біб__вивести(кд значення) {</span></span>
+<span class="line"><span style="color:#D2A8FF">  fwrite</span><span style="color:#E6EDF3">(значення.дані, значення.розмір, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, stdout);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#FF7B72"> void</span><span style="color:#E6EDF3"> __біб__надрукувати(кд значення) {</span></span>
+<span class="line"><span style="color:#D2A8FF">  fwrite</span><span style="color:#E6EDF3">(значення.дані, значення.розмір, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, stdout);</span></span>
+<span class="line"><span style="color:#FF7B72">  char</span><span style="color:#E6EDF3"> newline </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#D2A8FF">  fwrite</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">&#x26;</span><span style="color:#FFA657">newline</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, stdout);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#FF7B72"> void</span><span style="color:#E6EDF3"> __біб__вивести_ю8(ю8 значення) {</span></span>
+<span class="line"><span style="color:#D2A8FF">  fwrite</span><span style="color:#E6EDF3">(значення.дані, значення.розмір, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, stdout);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#FF7B72"> void</span><span style="color:#E6EDF3"> __біб__вивести_байти(природне розмір, п8* дані) {</span></span>
+<span class="line"><span style="color:#D2A8FF">  fwrite</span><span style="color:#E6EDF3">(дані, розмір, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, stdout);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#FF7B72"> void</span><span style="color:#E6EDF3"> __біб__надрукувати_ю8(ю8 значення) {</span></span>
+<span class="line"><span style="color:#D2A8FF">  fwrite</span><span style="color:#E6EDF3">(значення.дані, значення.розмір, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, stdout);</span></span>
+<span class="line"><span style="color:#FF7B72">  char</span><span style="color:#E6EDF3"> newline </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#D2A8FF">  fwrite</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">&#x26;</span><span style="color:#FFA657">newline</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, stdout);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#FF7B72"> void</span><span style="color:#E6EDF3"> __біб__перетворити_природне_на_ю8(природне значення, ю8* вихід) {</span></span>
+<span class="line"><span style="color:#FF7B72">  int</span><span style="color:#E6EDF3"> length </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> snprintf</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">NULL</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">%ld</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">, значення);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (length </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  char*</span><span style="color:#E6EDF3"> buffer </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(length </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">buffer) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">  snprintf</span><span style="color:#E6EDF3">(buffer, length </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">%ld</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">, значення);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  ю8 результат </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> {.розмір </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> length, .дані </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)buffer};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  *</span><span style="color:#E6EDF3">вихід </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> результат;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#FF7B72"> void</span><span style="color:#E6EDF3"> __біб__вивести_природне(природне значення) {</span></span>
+<span class="line"><span style="color:#D2A8FF">  printf</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">%lu</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">, значення);</span></span>
+<span class="line"><span style="color:#D2A8FF">  fflush</span><span style="color:#E6EDF3">(stdout);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#FF7B72"> void</span><span style="color:#E6EDF3"> __біб__надрукувати_природне(природне значення) {</span></span>
+<span class="line"><span style="color:#D2A8FF">  printf</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"</span><span style="color:#FF7B72">%lu\n</span><span style="color:#A5D6FF">"</span><span style="color:#E6EDF3">, значення);</span></span>
+<span class="line"><span style="color:#D2A8FF">  fflush</span><span style="color:#E6EDF3">(stdout);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// &#x3C;/Друк.о.ц></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// &#x3C;Інформація.о.ц></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// ...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// &#x3C;/Інформація.о.ц></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// &#x3C;Шлях.о.ц></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__шлях_з_ю8(ю8* значення, Шлях* вихід) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  Шлях шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях.розмір </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> значення</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях.дані </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(значення</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях.вмісткість </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> значення</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір;</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">шлях.дані) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#D2A8FF">  memcpy</span><span style="color:#E6EDF3">(шлях.дані, значення</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, значення</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">  *</span><span style="color:#E6EDF3">вихід </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> шлях;</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__шлях_з_тексту(кд* значення, Шлях* вихід) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  ю8 значення_ю8;</span></span>
+<span class="line"><span style="color:#E6EDF3">  ціле результат </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> __біб__перекодувати_текст_в_ю8(значення, &#x26;значення_ю8);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (результат </span><span style="color:#FF7B72">!=</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> результат;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">  Шлях шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях.розмір </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> значення_ю8.розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях.дані </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> значення_ю8.дані;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях.вмісткість </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> значення_ю8.розмір;</span></span>
+<span class="line"><span style="color:#FF7B72">  *</span><span style="color:#E6EDF3">вихід </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> шлях;</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__знищити_шлях(Шлях* шлях) {</span></span>
+<span class="line"><span style="color:#D2A8FF">  free</span><span style="color:#E6EDF3">(шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__клонувати_шлях(Шлях* шлях, Шлях* вихід) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  Шлях новий_шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">  новий_шлях.розмір </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">  новий_шлях.дані </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">  новий_шлях.вмісткість </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір;</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">новий_шлях.дані) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#D2A8FF">  memcpy</span><span style="color:#E6EDF3">(новий_шлях.дані, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">  *</span><span style="color:#E6EDF3">вихід </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> новий_шлях;</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__вивести_шлях(Шлях* шлях) {</span></span>
+<span class="line"><span style="color:#D2A8FF">  fwrite</span><span style="color:#E6EDF3">(шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, stdout);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__надрукувати_шлях(Шлях* шлях) {</span></span>
+<span class="line"><span style="color:#D2A8FF">  fwrite</span><span style="color:#E6EDF3">(шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, stdout);</span></span>
+<span class="line"><span style="color:#FF7B72">  char</span><span style="color:#E6EDF3"> newline </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#D2A8FF">  fwrite</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">&#x26;</span><span style="color:#FFA657">newline</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, stdout);</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__доповнити_шлях_ю8(Шлях* шлях, ю8* доповнення) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  природне новий_розмір </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір </span><span style="color:#FF7B72">+</span><span style="color:#E6EDF3"> доповнення</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">  п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> нові_дані </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">realloc</span><span style="color:#E6EDF3">(шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, новий_розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">нові_дані) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#D2A8FF">  memcpy</span><span style="color:#E6EDF3">(нові_дані </span><span style="color:#FF7B72">+</span><span style="color:#E6EDF3"> шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір, доповнення</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, доповнення</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> нові_дані;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> новий_розмір;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">вмісткість </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> новий_розмір;</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__доповнити_шлях_текстом(Шлях* шлях, кд* доповнення) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  ю8 значення_ю8;</span></span>
+<span class="line"><span style="color:#E6EDF3">  ціле результат </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> __біб__перекодувати_текст_в_ю8(доповнення, &#x26;значення_ю8);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (результат </span><span style="color:#FF7B72">!=</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> результат;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  результат </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> __біб__доповнити_шлях_ю8(шлях, &#x26;значення_ю8);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">  free</span><span style="color:#E6EDF3">(значення_ю8.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> результат;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__отримати_абсолютний_шлях(Шлях* шлях, Шлях* вихід) {</span></span>
+<span class="line"><span style="color:#FF7B72">  char*</span><span style="color:#E6EDF3"> тимчасовий_буфер </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">тимчасовий_буфер) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#D2A8FF">  memcpy</span><span style="color:#E6EDF3">(тимчасовий_буфер, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">  тимчасовий_буфер[шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір] </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> '</span><span style="color:#FF7B72">\0</span><span style="color:#A5D6FF">'</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  char</span><span style="color:#E6EDF3"> абсолютний_шлях_буфер[</span><span style="color:#79C0FF">4096</span><span style="color:#E6EDF3">];</span></span>
+<span class="line"><span style="color:#FF7B72">  char*</span><span style="color:#E6EDF3"> результат_реалізації </span><span style="color:#FF7B72">=</span></span>
+<span class="line"><span style="color:#D2A8FF">      realpath</span><span style="color:#E6EDF3">(тимчасовий_буфер, абсолютний_шлях_буфер);</span></span>
+<span class="line"><span style="color:#D2A8FF">  free</span><span style="color:#E6EDF3">(тимчасовий_буфер);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">результат_реалізації) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  природне довжина </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> strlen</span><span style="color:#E6EDF3">(абсолютний_шлях_буфер);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  Шлях абсолютний_шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">  абсолютний_шлях.розмір </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> довжина;</span></span>
+<span class="line"><span style="color:#E6EDF3">  абсолютний_шлях.дані </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(довжина);</span></span>
+<span class="line"><span style="color:#E6EDF3">  абсолютний_шлях.вмісткість </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> довжина;</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">абсолютний_шлях.дані) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#D2A8FF">  memcpy</span><span style="color:#E6EDF3">(абсолютний_шлях.дані, абсолютний_шлях_буфер, довжина);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  *</span><span style="color:#E6EDF3">вихід </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> абсолютний_шлях;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__отримати_зовнішній_шлях(Шлях* шлях, Шлях* вихід) {</span></span>
+<span class="line"><span style="color:#FF7B72">  char*</span><span style="color:#E6EDF3"> тимчасовий_буфер </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">тимчасовий_буфер) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#D2A8FF">  memcpy</span><span style="color:#E6EDF3">(тимчасовий_буфер, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">  тимчасовий_буфер[шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір] </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> '</span><span style="color:#FF7B72">\0</span><span style="color:#A5D6FF">'</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  char</span><span style="color:#E6EDF3"> зовнішній_шлях_буфер[</span><span style="color:#79C0FF">4096</span><span style="color:#E6EDF3">];</span></span>
+<span class="line"><span style="color:#FF7B72">  char*</span><span style="color:#E6EDF3"> результат_реалізації </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> dirname</span><span style="color:#E6EDF3">(тимчасовий_буфер);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">результат_реалізації) {</span></span>
+<span class="line"><span style="color:#D2A8FF">    free</span><span style="color:#E6EDF3">(тимчасовий_буфер);</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  природне довжина </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> strlen</span><span style="color:#E6EDF3">(результат_реалізації);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  Шлях зовнішній_шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">  зовнішній_шлях.розмір </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> довжина;</span></span>
+<span class="line"><span style="color:#E6EDF3">  зовнішній_шлях.дані </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(довжина);</span></span>
+<span class="line"><span style="color:#E6EDF3">  зовнішній_шлях.вмісткість </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> довжина;</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">зовнішній_шлях.дані) {</span></span>
+<span class="line"><span style="color:#D2A8FF">    free</span><span style="color:#E6EDF3">(тимчасовий_буфер);</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#D2A8FF">  memcpy</span><span style="color:#E6EDF3">(зовнішній_шлях.дані, результат_реалізації, довжина);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">  free</span><span style="color:#E6EDF3">(тимчасовий_буфер);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  *</span><span style="color:#E6EDF3">вихід </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> зовнішній_шлях;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__перевірити_чи_шлях_існує(Шлях* шлях) {</span></span>
+<span class="line"><span style="color:#FF7B72">  char*</span><span style="color:#E6EDF3"> тимчасовий_буфер </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">тимчасовий_буфер) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#D2A8FF">  memcpy</span><span style="color:#E6EDF3">(тимчасовий_буфер, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">  тимчасовий_буфер[шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір] </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> '</span><span style="color:#FF7B72">\0</span><span style="color:#A5D6FF">'</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  ц32 результат_перевірки </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> access</span><span style="color:#E6EDF3">(тимчасовий_буфер, F_OK);</span></span>
+<span class="line"><span style="color:#D2A8FF">  free</span><span style="color:#E6EDF3">(тимчасовий_буфер);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (результат_перевірки </span><span style="color:#FF7B72">==</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">else</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// &#x3C;/Шлях.о.ц></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// &#x3C;Файли.о.ц></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__відкрити_файл(Шлях* шлях,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                 логічне створити_якщо_не_існує,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                 Файл</span><span style="color:#FF7B72">**</span><span style="color:#E6EDF3"> вихід) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  Файл</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> файл </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (Файл</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">sizeof</span><span style="color:#E6EDF3">(Файл));</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">файл) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  char*</span><span style="color:#E6EDF3"> тимчасовий_буфер </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">тимчасовий_буфер) {</span></span>
+<span class="line"><span style="color:#D2A8FF">    free</span><span style="color:#E6EDF3">(файл);</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#D2A8FF">  memcpy</span><span style="color:#E6EDF3">(тимчасовий_буфер, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">  тимчасовий_буфер[шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір] </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> '</span><span style="color:#FF7B72">\0</span><span style="color:#A5D6FF">'</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор </span><span style="color:#FF7B72">=</span></span>
+<span class="line"><span style="color:#D2A8FF">      open</span><span style="color:#E6EDF3">(тимчасовий_буфер, O_RDWR </span><span style="color:#FF7B72">|</span><span style="color:#E6EDF3"> (O_CREAT </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> створити_якщо_не_існує),</span></span>
+<span class="line"><span style="color:#E6EDF3">           S_IRUSR </span><span style="color:#FF7B72">|</span><span style="color:#E6EDF3"> S_IWUSR </span><span style="color:#FF7B72">|</span><span style="color:#E6EDF3"> S_IRGRP </span><span style="color:#FF7B72">|</span><span style="color:#E6EDF3"> S_IROTH);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">  free</span><span style="color:#E6EDF3">(тимчасовий_буфер);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#D2A8FF">    free</span><span style="color:#E6EDF3">(файл);</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  *</span><span style="color:#E6EDF3">вихід </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> файл;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__відкрити_файл_для_перезапису(Шлях* шлях,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                                логічне створити_якщо_не_існує,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                                Файл</span><span style="color:#FF7B72">**</span><span style="color:#E6EDF3"> вихід) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  Файл</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> файл </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (Файл</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">sizeof</span><span style="color:#E6EDF3">(Файл));</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">файл) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  char*</span><span style="color:#E6EDF3"> тимчасовий_буфер </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">тимчасовий_буфер) {</span></span>
+<span class="line"><span style="color:#D2A8FF">    free</span><span style="color:#E6EDF3">(файл);</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#D2A8FF">  memcpy</span><span style="color:#E6EDF3">(тимчасовий_буфер, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дані, шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">  тимчасовий_буфер[шлях</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">розмір] </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> '</span><span style="color:#FF7B72">\0</span><span style="color:#A5D6FF">'</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> open</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#E6EDF3">      тимчасовий_буфер, O_WRONLY </span><span style="color:#FF7B72">|</span><span style="color:#E6EDF3"> (O_CREAT </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> створити_якщо_не_існує) </span><span style="color:#FF7B72">|</span><span style="color:#E6EDF3"> O_TRUNC,</span></span>
+<span class="line"><span style="color:#E6EDF3">      S_IRUSR </span><span style="color:#FF7B72">|</span><span style="color:#E6EDF3"> S_IWUSR </span><span style="color:#FF7B72">|</span><span style="color:#E6EDF3"> S_IRGRP </span><span style="color:#FF7B72">|</span><span style="color:#E6EDF3"> S_IROTH);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">  free</span><span style="color:#E6EDF3">(тимчасовий_буфер);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#D2A8FF">    free</span><span style="color:#E6EDF3">(файл);</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  *</span><span style="color:#E6EDF3">вихід </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> файл;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__закрити_файл(Файл* файл) {</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#D2A8FF">close</span><span style="color:#E6EDF3">(файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор) </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__прочитати_файл_повністю(Файл* файл, Інформація* вихід) {</span></span>
+<span class="line"><span style="color:#FF7B72">  off_t</span><span style="color:#E6EDF3"> поточна_позиція </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> lseek</span><span style="color:#E6EDF3">(файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, SEEK_CUR);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (поточна_позиція </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">off_t</span><span style="color:#E6EDF3">)</span><span style="color:#FF7B72">-</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  off_t</span><span style="color:#E6EDF3"> розмір_файлу </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> lseek</span><span style="color:#E6EDF3">(файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, SEEK_END);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (розмір_файлу </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">off_t</span><span style="color:#E6EDF3">)</span><span style="color:#FF7B72">-</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#D2A8FF">lseek</span><span style="color:#E6EDF3">(файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор, поточна_позиція, SEEK_SET) </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">off_t</span><span style="color:#E6EDF3">)</span><span style="color:#FF7B72">-</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  Інформація інформація;</span></span>
+<span class="line"><span style="color:#E6EDF3">  інформація.розмір </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> розмір_файлу;</span></span>
+<span class="line"><span style="color:#E6EDF3">  інформація.дані </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(розмір_файлу);</span></span>
+<span class="line"><span style="color:#E6EDF3">  інформація.вмісткість </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> розмір_файлу;</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">інформація.дані) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  ssize_t</span><span style="color:#E6EDF3"> прочитано_байт </span><span style="color:#FF7B72">=</span></span>
+<span class="line"><span style="color:#D2A8FF">      read</span><span style="color:#E6EDF3">(файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор, інформація.дані, розмір_файлу);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (прочитано_байт </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#79C0FF"> 0</span><span style="color:#FF7B72"> ||</span><span style="color:#E6EDF3"> (прочитано_байт </span><span style="color:#FF7B72">!=</span><span style="color:#E6EDF3"> розмір_файлу)) {</span></span>
+<span class="line"><span style="color:#D2A8FF">    free</span><span style="color:#E6EDF3">(інформація.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  *</span><span style="color:#E6EDF3">вихід </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> інформація;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__прочитати_частину_файлу(Файл* файл,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                           природне початок,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                           природне розмір,</span></span>
+<span class="line"><span style="color:#E6EDF3">                                           п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> дані) {</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#D2A8FF">lseek</span><span style="color:#E6EDF3">(файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор, початок, SEEK_SET) </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">off_t</span><span style="color:#E6EDF3">)</span><span style="color:#FF7B72">-</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  ssize_t</span><span style="color:#E6EDF3"> прочитано_байт </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> read</span><span style="color:#E6EDF3">(файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор, дані, розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (прочитано_байт </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__записати_файл(Файл* файл, природне розмір, п8* дані) {</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#D2A8FF">lseek</span><span style="color:#E6EDF3">(файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, SEEK_SET) </span><span style="color:#FF7B72">==</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">off_t</span><span style="color:#E6EDF3">)</span><span style="color:#FF7B72">-</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  ssize_t</span><span style="color:#E6EDF3"> записано_байт </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> write</span><span style="color:#E6EDF3">(файл</span><span style="color:#FF7B72">-></span><span style="color:#E6EDF3">дескриптор, дані, розмір);</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (записано_байт </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#79C0FF"> 0</span><span style="color:#FF7B72"> ||</span><span style="color:#E6EDF3"> (записано_байт </span><span style="color:#FF7B72">!=</span><span style="color:#E6EDF3"> розмір)) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// &#x3C;/Файли.о.ц></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// &#x3C;Процес.о.ц></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__отримати_робочу_директорію_процесу(Шлях* вихід) {</span></span>
+<span class="line"><span style="color:#E6EDF3">  п8 буфер[</span><span style="color:#79C0FF">4096</span><span style="color:#E6EDF3">];</span></span>
+<span class="line"><span style="color:#E6EDF3">  п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> результат </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">getcwd</span><span style="color:#E6EDF3">((</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)буфер, </span><span style="color:#FF7B72">sizeof</span><span style="color:#E6EDF3">(буфер));</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">результат) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  природне довжина </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> strlen</span><span style="color:#E6EDF3">((</span><span style="color:#FF7B72">char*</span><span style="color:#E6EDF3">)буфер);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  Шлях шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях.розмір </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> довжина;</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях.дані </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (п8</span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3">)</span><span style="color:#D2A8FF">malloc</span><span style="color:#E6EDF3">(довжина);</span></span>
+<span class="line"><span style="color:#E6EDF3">  шлях.вмісткість </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> довжина;</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">шлях.дані) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#D2A8FF">  memcpy</span><span style="color:#E6EDF3">(шлях.дані, буфер, довжина);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  *</span><span style="color:#E6EDF3">вихід </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> шлях;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">extern</span><span style="color:#E6EDF3"> ціле __біб__виконати_системну_команду(природне розмір, п8* дані) {</span></span>
+<span class="line"><span style="color:#FF7B72">  char*</span><span style="color:#E6EDF3"> команда </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> malloc</span><span style="color:#E6EDF3">(розмір </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#D2A8FF">  memcpy</span><span style="color:#E6EDF3">(команда, дані, розмір);</span></span>
+<span class="line"><span style="color:#E6EDF3">  команда[розмір] </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> '</span><span style="color:#FF7B72">\0</span><span style="color:#A5D6FF">'</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  int</span><span style="color:#E6EDF3"> результат </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> system</span><span style="color:#E6EDF3">(команда);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">  free</span><span style="color:#E6EDF3">(команда);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (ціле)результат;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// &#x3C;/Процес.о.ц></span></span>
+<span class="line"></span></code></pre>
+</body>
+</html>

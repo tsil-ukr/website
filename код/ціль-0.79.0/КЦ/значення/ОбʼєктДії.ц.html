@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.0mz5ojI77Z/ціль-0.79.0/КЦ/значення/ОбʼєктДії.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> виділити_обʼєкт_дії(компілятор: *Компілятор) -> *ОбʼєктДії {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_дії = біб::виділити&#x3C;ОбʼєктДії>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.наступний = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.видимість = ВидимістьВнутрішня;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.назва = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.місцезнаходження = Місцезнаходження { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.місцезнаходження_назви = Місцезнаходження { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.повна_назва = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.параметри = Параметри { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.тип_результату = компілятор.тип_ніщо;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.місцезнаходження_типу_результату = Місцезнаходження { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.тип = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.пм_інструкція = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.має_тіло = </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.кроки = Кроки { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_дії.стрибки = Стрибки { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> компілятор.перший_обʼєкт_дії == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.перший_обʼєкт_дії = обʼєкт_дії;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> компілятор.останній_обʼєкт_дії == </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_обʼєкт_дії = обʼєкт_дії;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_обʼєкт_дії.наступний = обʼєкт_дії;</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор.останній_обʼєкт_дії = обʼєкт_дії;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> обʼєкт_дії;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знищити_обʼєкт_дії(компілятор: *Компілятор, обʼєкт_дії: *ОбʼєктДії) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    знищити_назву_якщо_копія(компілятор, обʼєкт_дії.назва);</span></span>
+<span class="line"><span style="color:#E6EDF3">    знищити_назву_якщо_копія(компілятор, обʼєкт_дії.повна_назва);</span></span>
+<span class="line"><span style="color:#E6EDF3">    знищити_параметри(компілятор, обʼєкт_дії.параметри);</span></span>
+<span class="line"><span style="color:#E6EDF3">    знищити_кроки(компілятор, обʼєкт_дії.кроки);</span></span>
+<span class="line"><span style="color:#E6EDF3">    знищити_стрибки(компілятор, обʼєкт_дії.стрибки);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(обʼєкт_дії);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> обʼєкт_дії_виконати(компілятор: *Компілятор, контекст: Контекст, місцезнаходження: розбирач::Місцезнаходження, обʼєкт_дії: *ОбʼєктДії, кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, аргументи: *Аргумент, вихід: *Обʼєкт, вихід_помилки: **Помилка) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_значення: ОбʼєктЗначення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_значення.тип = обʼєкт_дії.тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    обʼєкт_значення.пм_значення = обʼєкт_дії.пм_інструкція </span><span style="color:#FF7B72">як</span><span style="color:#E6EDF3"> *ПМ::Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> обʼєкт_значення_виконати(компілятор, контекст, місцезнаходження, обʼєкт_значення, кількість_аргументів, аргументи, вихід, вихід_помилки);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

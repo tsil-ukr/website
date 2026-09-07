@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.0mz5ojI77Z/ціль-0.79.0/КЦ/перекладач/Однооперація.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_однооперацію(</span></span>
+<span class="line"><span style="color:#E6EDF3">    компілятор: *Компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">    контекст: Контекст,</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані_однооперації: розбирач::ДаніСполукиОднооперація,</span></span>
+<span class="line"><span style="color:#E6EDF3">    місцезнаходження: розбирач::Місцезнаходження,</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід: *Обʼєкт,</span></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_помилки: **Помилка</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> успіх = </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> обʼєкт_значення: Обʼєкт;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    успіх = скомпілювати_значення(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст,</span></span>
+<span class="line"><span style="color:#FF7B72">      пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      дані_однооперації.значення,</span></span>
+<span class="line"><span style="color:#FF7B72">      пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      обʼєкт_значення::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід_помилки</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> успіх {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> дані_однооперації.вид == розбирач::ВидОдноопераціїЗаперечення {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_заперечити(компілятор, контекст, місцезнаходження, обʼєкт_значення, вихід, вихід_помилки);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_однооперації.вид == розбирач::ВидОдноопераціїПлюс {</span></span>
+<span class="line"><span style="color:#E6EDF3">      вихід::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = обʼєкт_значення;</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#FF7B72"> так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_однооперації.вид == розбирач::ВидОдноопераціїМінус {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_унарний_мінус(компілятор, контекст, місцезнаходження, обʼєкт_значення, вихід, вихід_помилки);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_однооперації.вид == розбирач::ВидОдноопераціїДвійковеЗаперечення {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_двійкове_заперечення(компілятор, контекст, місцезнаходження, обʼєкт_значення, вихід, вихід_помилки);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> дані_однооперації.вид == розбирач::ВидОдноопераціїЗірочка {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> обʼєкт_зірочка(компілятор, контекст, місцезнаходження, обʼєкт_значення, вихід, вихід_помилки);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    вихід_помилки::</span><span style="color:#79C0FF">вміст</span><span style="color:#E6EDF3"> = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">      компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">      "Однооперацію не втілено."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#FF7B72"> ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.zhpZKrpbuU/ціль-0.73.0/КЦ/перекладач/Взяти.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> КЦ {</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> скомпілювати_взяти(компілятор: *Компілятор, контекст: Контекст, дані_взяти: розбирач::ДаніСполукиВзяти, місцезнаходження: розбирач::Місцезнаходження) -> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_шляху_1 = зробити_накопичувач_шляху(компілятор);</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_шляху_2 = зробити_накопичувач_шляху(компілятор);</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_шляху_3 = зробити_накопичувач_шляху(компілятор);</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> накопичувач_шляху_4 = зробити_накопичувач_шляху(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> звідки = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">      контекст.розібраний_текст.слова.дані[дані_взяти.звідки.позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">      звідки::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">    ) {</span></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "Не вдалось отримати значення слова для звідки."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        ),</span></span>
+<span class="line"><span style="color:#E6EDF3">        ...</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> директорія = біб::Шлях { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> директорію_треба_звільнити = </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> біб::перевірити_чи_кд_рівні(звідки, </span><span style="color:#A5D6FF">"визначення"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> дані_взяти.відносно {</span></span>
+<span class="line"><span style="color:#FF7B72">        змінна</span><span style="color:#E6EDF3"> р = біб::зовнішній_шлях(контекст.розібраний_текст.текст_коду.шлях, директорія::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> р &#x3C; </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">            помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">              компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">              "Не вдалось отримати директорію шляху до файлу."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">              створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">            ),</span></span>
+<span class="line"><span style="color:#E6EDF3">            ...</span></span>
+<span class="line"><span style="color:#E6EDF3">          };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">        директорію_треба_звільнити = </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        директорія = компілятор.кореневий_шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> біб::перевірити_чи_кд_рівні(звідки, </span><span style="color:#A5D6FF">"біб"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> дані_взяти.відносно {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Неможливо взяти біб відносно."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> компілятор.шлях_до_біб.розмір == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> дані_взяти.відносно {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">            помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">              компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">              "Шлях до біб не вказано."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">              створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">            ),</span></span>
+<span class="line"><span style="color:#E6EDF3">            ...</span></span>
+<span class="line"><span style="color:#E6EDF3">          };</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      директорія = компілятор.шлях_до_біб;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_ю8_в_накопичувач_шляху(компілятор, накопичувач_шляху_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { директорія.дані, директорія.розмір });</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_ю8_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { директорія.дані, директорія.розмір });</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_ю8_в_накопичувач_шляху(компілятор, накопичувач_шляху_3::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { директорія.дані, директорія.розмір });</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_3::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_ю8_в_накопичувач_шляху(компілятор, накопичувач_шляху_4::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { директорія.дані, директорія.розмір });</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_4::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/визначення"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_4::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> директорію_треба_звільнити {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(директорія);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; дані_взяти.шлях.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> частина_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">        контекст.розібраний_текст.слова.дані[дані_взяти.шлях.дані[п].позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">        частина_кд::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">      ) {</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">          помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">            компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "Не вдалось отримати значення слова для частини шляху."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">          ),</span></span>
+<span class="line"><span style="color:#E6EDF3">          ...</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, частина_кд);</span></span>
+<span class="line"><span style="color:#E6EDF3">      покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, частина_кд);</span></span>
+<span class="line"><span style="color:#E6EDF3">      покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_3::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, частина_кд);</span></span>
+<span class="line"><span style="color:#E6EDF3">      покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_4::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, частина_кд);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> п != дані_взяти.шлях.розмір - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">        покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">        покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_3::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">        покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_4::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> п == дані_взяти.шлях.розмір - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">        покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, частина_кд);</span></span>
+<span class="line"><span style="color:#E6EDF3">        покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_3::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">        покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_3::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, частина_кд);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">".в.ц"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">".в.ц"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_3::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">".в.ц"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_4::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">".в.ц"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> шлях_1: біб::Шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::шлях_з_ю8(</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { накопичувач_шляху_1.значення.дані, накопичувач_шляху_1.значення.розмір }, шлях_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(накопичувач_шляху_1.значення.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> шлях_2: біб::Шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::шлях_з_ю8(</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { накопичувач_шляху_2.значення.дані, накопичувач_шляху_2.значення.розмір }, шлях_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(накопичувач_шляху_2.значення.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> шлях_3: біб::Шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::шлях_з_ю8(</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { накопичувач_шляху_3.значення.дані, накопичувач_шляху_3.значення.розмір }, шлях_3::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(накопичувач_шляху_3.значення.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> шлях_4: біб::Шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::шлях_з_ю8(</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { накопичувач_шляху_4.значення.дані, накопичувач_шляху_4.значення.розмір }, шлях_4::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(накопичувач_шляху_4.значення.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> помилка: *Помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> біб::перевірити_чи_шлях_існує(шлях_1) {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> абсолютний_шлях_1: біб::Шлях;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::абсолютний_шлях(шлях_1, абсолютний_шлях_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_1);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_2);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> взяти_файл_ю8(компілятор, контекст.середовище, абсолютний_шлях_1, помилка::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::знищити_шлях(абсолютний_шлях_1);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(абсолютний_шлях_1);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> біб::перевірити_чи_шлях_існує(шлях_2) {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> абсолютний_шлях_2: біб::Шлях;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::абсолютний_шлях(шлях_2, абсолютний_шлях_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_1);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_2);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_3);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_4);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> взяти_файл_ю8(компілятор, контекст.середовище, абсолютний_шлях_2, помилка::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::знищити_шлях(абсолютний_шлях_2);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(абсолютний_шлях_2);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> біб::перевірити_чи_шлях_існує(шлях_3) {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> абсолютний_шлях_3: біб::Шлях;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::абсолютний_шлях(шлях_3, абсолютний_шлях_3::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_1);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_2);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_3);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_4);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> взяти_файл_ю8(компілятор, контекст.середовище, абсолютний_шлях_3, помилка::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::знищити_шлях(абсолютний_шлях_3);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(абсолютний_шлях_3);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> біб::перевірити_чи_шлях_існує(шлях_4) {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> абсолютний_шлях_4: біб::Шлях;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::абсолютний_шлях(шлях_4, абсолютний_шлях_4::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_1);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_2);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_3);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_4);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> взяти_файл_ю8(компілятор, контекст.середовище, абсолютний_шлях_4, помилка::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::знищити_шлях(абсолютний_шлях_4);</span></span>
+<span class="line"><span style="color:#FF7B72">        вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(абсолютний_шлях_4);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_1);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_2);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_3);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::знищити_шлях(шлях_4);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#E6EDF3"> біб::перевірити_чи_кд_рівні(звідки, </span><span style="color:#A5D6FF">"визначення"</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> дані_взяти.відносно {</span></span>
+<span class="line"><span style="color:#FF7B72">          змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">          поки</span><span style="color:#E6EDF3"> п &#x3C; компілятор.шляхи_до_визначень.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">            змінна</span><span style="color:#E6EDF3"> шлях_до_визначень = компілятор.шляхи_до_визначень.дані[п];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            змінна</span><span style="color:#E6EDF3"> накопичувач_шляху_1 = зробити_накопичувач_шляху(компілятор);</span></span>
+<span class="line"><span style="color:#FF7B72">            змінна</span><span style="color:#E6EDF3"> накопичувач_шляху_2 = зробити_накопичувач_шляху(компілятор);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">            покласти_в_накопичувач_шляху(компілятор, накопичувач_шляху_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, Шлях { шлях_до_визначень.розмір, шлях_до_визначень.дані });</span></span>
+<span class="line"><span style="color:#E6EDF3">            покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">            покласти_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, Шлях { шлях_до_визначень.розмір, шлях_до_визначень.дані });</span></span>
+<span class="line"><span style="color:#E6EDF3">            покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            змінна</span><span style="color:#E6EDF3"> пп: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            поки</span><span style="color:#E6EDF3"> пп &#x3C; дані_взяти.шлях.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">              змінна</span><span style="color:#E6EDF3"> частина_кд = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">              якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> розбирач::отримати_значення_слова(</span></span>
+<span class="line"><span style="color:#E6EDF3">                контекст.розібраний_текст.текст_коду.значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">                контекст.розібраний_текст.слова.дані[дані_взяти.шлях.дані[пп].позиція_слова],</span></span>
+<span class="line"><span style="color:#E6EDF3">                частина_кд::</span><span style="color:#79C0FF">адреса</span></span>
+<span class="line"><span style="color:#E6EDF3">              ) {</span></span>
+<span class="line"><span style="color:#FF7B72">                вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">                  помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">                    компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">                    "Не вдалось отримати значення слова для частини шляху."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                    створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">                  ),</span></span>
+<span class="line"><span style="color:#E6EDF3">                  ...</span></span>
+<span class="line"><span style="color:#E6EDF3">                };</span></span>
+<span class="line"><span style="color:#E6EDF3">              }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">              покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, частина_кд);</span></span>
+<span class="line"><span style="color:#E6EDF3">              покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, частина_кд);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">              якщо</span><span style="color:#E6EDF3"> пп != дані_взяти.шлях.розмір - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">                покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">                покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">              }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">              якщо</span><span style="color:#E6EDF3"> пп == дані_взяти.шлях.розмір - </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">                покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"/"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">                покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, частина_кд);</span></span>
+<span class="line"><span style="color:#E6EDF3">              }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">              пп += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">            }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">            покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">".в.ц"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">            покласти_кд_в_накопичувач_шляху(компілятор, накопичувач_шляху_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">".в.ц"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            змінна</span><span style="color:#E6EDF3"> шлях_1: біб::Шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::шлях_з_ю8(</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { накопичувач_шляху_1.значення.дані, накопичувач_шляху_1.значення.розмір }, шлях_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(накопичувач_шляху_1.значення.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            змінна</span><span style="color:#E6EDF3"> шлях_2: біб::Шлях;</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::шлях_з_ю8(</span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { накопичувач_шляху_2.значення.дані, накопичувач_шляху_2.значення.розмір }, шлях_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">            біб::звільнити(накопичувач_шляху_2.значення.дані);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">            якщо</span><span style="color:#E6EDF3"> біб::перевірити_чи_шлях_існує(шлях_1) {</span></span>
+<span class="line"><span style="color:#FF7B72">              змінна</span><span style="color:#E6EDF3"> абсолютний_шлях_1: біб::Шлях;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">              біб::абсолютний_шлях(шлях_1, абсолютний_шлях_1::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">              біб::знищити_шлях(шлях_1);</span></span>
+<span class="line"><span style="color:#E6EDF3">              біб::знищити_шлях(шлях_2);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">              якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> взяти_файл_ю8(компілятор, контекст.середовище, абсолютний_шлях_1, помилка::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">                біб::знищити_шлях(абсолютний_шлях_1);</span></span>
+<span class="line"><span style="color:#FF7B72">                вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">              }</span></span>
+<span class="line"><span style="color:#E6EDF3">              біб::знищити_шлях(абсолютний_шлях_1);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">              вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">            } </span><span style="color:#FF7B72">інакше</span><span style="color:#FF7B72"> якщо</span><span style="color:#E6EDF3"> біб::перевірити_чи_шлях_існує(шлях_2) {</span></span>
+<span class="line"><span style="color:#FF7B72">              змінна</span><span style="color:#E6EDF3"> абсолютний_шлях_2: біб::Шлях;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">              біб::абсолютний_шлях(шлях_2, абсолютний_шлях_2::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">              біб::знищити_шлях(шлях_1);</span></span>
+<span class="line"><span style="color:#E6EDF3">              біб::знищити_шлях(шлях_2);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">              якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> взяти_файл_ю8(компілятор, контекст.середовище, абсолютний_шлях_2, помилка::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">                біб::знищити_шлях(абсолютний_шлях_2);</span></span>
+<span class="line"><span style="color:#FF7B72">                вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = помилка, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">              }</span></span>
+<span class="line"><span style="color:#E6EDF3">              біб::знищити_шлях(абсолютний_шлях_2);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">              вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">            }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">            п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта {</span></span>
+<span class="line"><span style="color:#E6EDF3">        помилка = створити_помилку(</span></span>
+<span class="line"><span style="color:#E6EDF3">          компілятор,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "Шлях взяття не існує."</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          створити_місцезнаходження_помилки_з_місцезнаходження_розбирача(компілятор, контекст.розібраний_текст, місцезнаходження)</span></span>
+<span class="line"><span style="color:#E6EDF3">        ),</span></span>
+<span class="line"><span style="color:#E6EDF3">        ...</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> РезультатОбʼєкта { помилка = </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, ... };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

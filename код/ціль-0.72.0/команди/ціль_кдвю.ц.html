@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.Kdmp7a5ndo/ціль-0.72.0/команди/ціль_кдвю.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> цілеспрямовано;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Памʼять;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> КД;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Шлях;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> КЦ;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> ./команди;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">дія</span><span style="color:#E6EDF3"> ціль_кдвю(опції_програми: цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">>,</span></span>
+<span class="line"><span style="color:#E6EDF3">                      опції_команди: цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">>,</span></span>
+<span class="line"><span style="color:#E6EDF3">                      вхід: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                      опції_входу: цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">>,</span></span>
+<span class="line"><span style="color:#E6EDF3">                      вихід: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                      опції_виходу: цілеспрямовано::Опції&#x3C;</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">>,</span></span>
+<span class="line"><span style="color:#E6EDF3">                      треба_знищити_залишки: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">) -> </span><span style="color:#79C0FF">ц32</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> р: </span><span style="color:#79C0FF">ціле</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> статус: </span><span style="color:#79C0FF">ц32</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_входу = біб::пустий_шлях();</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> шлях_виходу = біб::пустий_шлях();</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> байти_входу = біб::Інформація { </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> значення_виходу = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  р = біб::шлях_з_тексту(вхід, шлях_входу::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> р &#x3C; </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::вивести(</span><span style="color:#A5D6FF">"Не вдалось створити шлях для файлу "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати(вхід);</span></span>
+<span class="line"><span style="color:#E6EDF3">    статус = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стрибнути</span><span style="color:#E6EDF3"> завершення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">  р = біб::прочитати_файл_за_шляхом(шлях_входу, байти_входу::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> р &#x3C; </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::вивести(</span><span style="color:#A5D6FF">"Не вдалось прочитати файл "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати(вхід);</span></span>
+<span class="line"><span style="color:#E6EDF3">    статус = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стрибнути</span><span style="color:#E6EDF3"> завершення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  змінна</span><span style="color:#E6EDF3"> позиція_помилки: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> біб::перекодувати_в_ю8(</span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> { байти_входу.дані, байти_входу.розмір }, </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">, значення_виходу::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, позиція_помилки::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::вивести(</span><span style="color:#A5D6FF">"Не вдалось перекодувати файл "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::надрукувати(вхід);</span></span>
+<span class="line"><span style="color:#E6EDF3">    статус = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    стрибнути</span><span style="color:#E6EDF3"> завершення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> вихід.розмір == </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::вивести_байти(значення_виходу.розмір, значення_виходу.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">  } </span><span style="color:#FF7B72">інакше</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    р = біб::шлях_з_тексту(вихід, шлях_виходу::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> р &#x3C; </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести(</span><span style="color:#A5D6FF">"Не вдалось створити шлях для файлу "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати(вихід);</span></span>
+<span class="line"><span style="color:#E6EDF3">      статус = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> завершення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    р = біб::перезаписати_файл_за_шляхом(шлях_виходу, значення_виходу.розмір, значення_виходу.дані);</span></span>
+<span class="line"><span style="color:#FF7B72">    якщо</span><span style="color:#E6EDF3"> р &#x3C; </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::вивести(</span><span style="color:#A5D6FF">"Не вдалось записати файл "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::надрукувати(вихід);</span></span>
+<span class="line"><span style="color:#E6EDF3">      статус = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      стрибнути</span><span style="color:#E6EDF3"> завершення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">завершення:</span></span>
+<span class="line"><span style="color:#FF7B72">  якщо</span><span style="color:#E6EDF3"> треба_знищити_залишки {</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::знищити_шлях(шлях_входу);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::знищити_шлях(шлях_виходу);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(байти_входу.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(значення_виходу.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  вернути</span><span style="color:#E6EDF3"> статус;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>

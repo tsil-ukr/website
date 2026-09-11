@@ -31,4 +31,3 @@ tar -xf "$ARCHIVE_NAME" -C "$EXTRACT_DIR"
 докс код --вхід="$EXTRACT_DIR/ціль-$VERSION" --вихід="$OUTPUT_DIR" --назва="ціль-$VERSION" --завантажити="$DOWNLOAD_URL" --гітхаб="https://github.com/tsil-ukr/tsil" --версії="../index.html"
 
 cp "favicon.png" "$OUTPUT_DIR/докс_код_favicon.png"
-cp "favicon.svg" "$OUTPUT_DIR/докс_код_favicon.svg"

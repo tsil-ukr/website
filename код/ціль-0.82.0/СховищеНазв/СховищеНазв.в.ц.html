@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.ByeB8lcGOz/ціль-0.82.0/СховищеНазв/СховищеНазв.в.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Памʼять;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Накопичувач;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Кодування;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> СховищеНазв {</span></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Назва {</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення_ю8: </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    має_значення_ю8: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> як_ю8(я: *Я) -> </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      якщо</span><span style="color:#FF7B72"> не</span><span style="color:#E6EDF3"> я.має_значення_ю8 {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::перекодувати_в_ю8(</span></span>
+<span class="line"><span style="color:#E6EDF3">          я.значення,</span></span>
+<span class="line"><span style="color:#FF7B72">          так</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          я.значення_ю8::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FF7B72">          пусто</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FF7B72">          пусто</span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        я.має_значення_ю8 = </span><span style="color:#FF7B72">так</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> я.значення_ю8;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Сховище {</span></span>
+<span class="line"><span style="color:#E6EDF3">    назви: біб::Накопичувач&#x3C;*Назва>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> отримати(я: *Я, значення: </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3">) -> *Назва {</span></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; я.назви.розмір {</span></span>
+<span class="line"><span style="color:#FF7B72">        якщо</span><span style="color:#E6EDF3"> я.назви.дані[п].значення.рівн(значення) {</span></span>
+<span class="line"><span style="color:#FF7B72">          вернути</span><span style="color:#E6EDF3"> я.назви.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      змінна</span><span style="color:#E6EDF3"> нова_назва = біб::виділити&#x3C;Назва>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      нова_назва.значення = </span><span style="color:#79C0FF">кд</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">        біб::виділити&#x3C;</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">>(значення.розмір),</span></span>
+<span class="line"><span style="color:#E6EDF3">        значення.розмір,</span></span>
+<span class="line"><span style="color:#E6EDF3">      };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      нова_назва.значення_ю8 = </span><span style="color:#79C0FF">ю8</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">пусто</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> };</span></span>
+<span class="line"><span style="color:#E6EDF3">      нова_назва.має_значення_ю8 = </span><span style="color:#FF7B72">ні</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">      поки</span><span style="color:#E6EDF3"> п &#x3C; значення.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">        нова_назва.значення.дані[п] = значення.дані[п];</span></span>
+<span class="line"><span style="color:#E6EDF3">        п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      біб::покласти_в_накопичувач&#x3C;*Назва>(</span></span>
+<span class="line"><span style="color:#E6EDF3">        я.назви::</span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        нова_назва</span></span>
+<span class="line"><span style="color:#E6EDF3">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> нова_назва;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> створити_сховище() -> *Сховище {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> сховище = біб::виділити&#x3C;Сховище>(</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    сховище.назви = біб::зробити_накопичувач&#x3C;*Назва>(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    вернути</span><span style="color:#E6EDF3"> сховище;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> знищити_сховище(сховище: *Сховище) {</span></span>
+<span class="line"><span style="color:#FF7B72">    змінна</span><span style="color:#E6EDF3"> п: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3"> = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    поки</span><span style="color:#E6EDF3"> п &#x3C; сховище.назви.розмір {</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(сховище.назви.дані[п].значення.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">      біб::звільнити(сховище.назви.дані[п]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">      п += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(сховище.назви.дані);</span></span>
+<span class="line"><span style="color:#E6EDF3">    біб::звільнити(сховище);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+</body>
+</html>

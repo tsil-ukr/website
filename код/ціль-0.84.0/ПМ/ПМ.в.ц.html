@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>/tmp/tmp.W9PQip7p3i/ціль-0.84.0/ПМ/ПМ.в.ц</title>
+  <style>
+    html, body, pre {
+      margin: 0;
+      font-family: monospace;
+      background: #0d1117;
+    }
+
+    .shiki {
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Памʼять;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти біб</span><span style="color:#E6EDF3"> Реєстр;</span></span>
+<span class="line"><span style="color:#FF7B72">взяти визначення</span><span style="color:#E6EDF3"> СховищеНазв;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">простір</span><span style="color:#E6EDF3"> ПМ {</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВИДИМІСТЬ_ВНУТРІШНЯ = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВИДИМІСТЬ_ЗОВНІШНЯ = </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_АЙ386_ПК_ЛІНУКС_ГНУ = </span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_АЙ686_ПК_ЛІНУКС_ГНУ = </span><span style="color:#79C0FF">9</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ІКС86_64_ПК_ЛІНУКС_ГНУ = </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ААРЧ64_ПК_ЛІНУКС_ГНУ = </span><span style="color:#79C0FF">11</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ІКС86_64_ЕПЛ_ДАРВІН = </span><span style="color:#79C0FF">20</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ААРЧ64_ЕПЛ_ДАРВІН = </span><span style="color:#79C0FF">21</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ІКС86_64_ПК_ВІНДОВС_ГНУ = </span><span style="color:#79C0FF">30</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ААРЧ64_ПК_ВІНДОВС_ГНУ = </span><span style="color:#79C0FF">31</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ІКС86_64_ПК_ВІНДОВС_МСВС = </span><span style="color:#79C0FF">32</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ААРЧ64_ПК_ВІНДОВС_МСВС = </span><span style="color:#79C0FF">33</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ВАСМ32 = </span><span style="color:#79C0FF">40</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ВАСМ64 = </span><span style="color:#79C0FF">41</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ПЛАТФОРМА_ЕСП32С3 = </span><span style="color:#79C0FF">50</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Модуль;</span></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Інструкція;</span></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Крок;</span></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Стрибок;</span></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Тип;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  синонім</span><span style="color:#E6EDF3"> Назва = СховищеНазв::Назва;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Параметр {</span></span>
+<span class="line"><span style="color:#E6EDF3">    назва: *Назва;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Параметри {</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: *Параметр;</span></span>
+<span class="line"><span style="color:#E6EDF3">    вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Модуль {</span></span>
+<span class="line"><span style="color:#E6EDF3">    сн: *СховищеНазв::Сховище;</span></span>
+<span class="line"><span style="color:#E6EDF3">    назва: *Назва;</span></span>
+<span class="line"><span style="color:#E6EDF3">    платформа: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір_слова: </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    типи: *біб::Реєстр&#x3C;*Назва, *Тип>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    глобальні: *біб::Реєстр&#x3C;*Назва, *Значення>;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_ніщо: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_адреса: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_логічне: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_ц8: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_ц16: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_ц32: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_ц64: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_р32: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_р64: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення_пусто: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення_так: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення_ні: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидТипуНеподільний = </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидТипуІнструкція = </span><span style="color:#79C0FF">13</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидТипуСтруктура = </span><span style="color:#79C0FF">14</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидТипуМасив = </span><span style="color:#79C0FF">15</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніТипуСтруктура {</span></span>
+<span class="line"><span style="color:#E6EDF3">    назва: *Назва;</span></span>
+<span class="line"><span style="color:#E6EDF3">    параметри: Параметри;</span></span>
+<span class="line"><span style="color:#E6EDF3">    пакована: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніТипуМасив {</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_елемента: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніТипуІнструкція {</span></span>
+<span class="line"><span style="color:#E6EDF3">    параметри: Параметри;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_результату: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Тип {</span></span>
+<span class="line"><span style="color:#E6EDF3">    модуль: *Модуль;</span></span>
+<span class="line"><span style="color:#E6EDF3">    вид: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: ДаніТипуСтруктура</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніТипуМасив</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніТипуІнструкція;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані_компіляції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Вказівки {</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: **Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Кроки {</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: **Крок;</span></span>
+<span class="line"><span style="color:#E6EDF3">    вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидЗначенняЛогічне = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидЗначенняБеззнаковеЦіле = </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидЗначенняЗнаковеЦіле = </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидЗначенняРухоме = </span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидЗначенняАдреса = </span><span style="color:#79C0FF">5</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидЗначенняІнструкція = </span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидЗначенняВказівка = </span><span style="color:#79C0FF">7</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидЗначенняГлобальна = </span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидЗначенняГлобальнаКонстантаДаних = </span><span style="color:#79C0FF">9</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидЗначенняОбʼєкт = </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидЗначенняПустийОбʼєкт = </span><span style="color:#79C0FF">11</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидЗначенняАргумент = </span><span style="color:#79C0FF">12</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиВиділ = </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// алока</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиДод = </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// адд</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиВід = </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// саб</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиМнж = </span><span style="color:#79C0FF">4</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// мул</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиБзДіл = </span><span style="color:#79C0FF">5</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// ...</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиБзОст = </span><span style="color:#79C0FF">6</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРівн = </span><span style="color:#79C0FF">7</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиНеРівн = </span><span style="color:#79C0FF">8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиБзБілш = </span><span style="color:#79C0FF">9</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиБзМенш = </span><span style="color:#79C0FF">10</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиБзБілшРівн = </span><span style="color:#79C0FF">11</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиБзМеншРівн = </span><span style="color:#79C0FF">12</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЗсунЛів = </span><span style="color:#79C0FF">13</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЛогЗсунПрав = </span><span style="color:#79C0FF">14</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиДІ = </span><span style="color:#79C0FF">15</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиДАБО = </span><span style="color:#79C0FF">16</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиВАБО = </span><span style="color:#79C0FF">17</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиДНЕ = </span><span style="color:#79C0FF">18</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЯк = </span><span style="color:#79C0FF">20</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиОтриматиАдресуЕлемента = </span><span style="color:#79C0FF">21</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиВидобутиЗначення = </span><span style="color:#79C0FF">22</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЗапис = </span><span style="color:#79C0FF">23</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиПрочт = </span><span style="color:#79C0FF">24</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиВернт = </span><span style="color:#79C0FF">25</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхДод = </span><span style="color:#79C0FF">26</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхВід = </span><span style="color:#79C0FF">27</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхМнж = </span><span style="color:#79C0FF">28</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЗнДіл = </span><span style="color:#79C0FF">29</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхДіл = </span><span style="color:#79C0FF">30</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЗнОст = </span><span style="color:#79C0FF">31</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхОст = </span><span style="color:#79C0FF">32</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхРівн = </span><span style="color:#79C0FF">33</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхНеРівн = </span><span style="color:#79C0FF">34</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЗнБілш = </span><span style="color:#79C0FF">35</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхБілш = </span><span style="color:#79C0FF">36</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЗнМенш = </span><span style="color:#79C0FF">37</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхМенш = </span><span style="color:#79C0FF">38</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЗнБілшРівн = </span><span style="color:#79C0FF">39</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхБілшРівн = </span><span style="color:#79C0FF">40</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЗнМеншРівн = </span><span style="color:#79C0FF">41</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхМеншРівн = </span><span style="color:#79C0FF">42</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиАрфЗсунПрав = </span><span style="color:#79C0FF">43</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиВиконати = </span><span style="color:#79C0FF">100</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиСтрб = </span><span style="color:#79C0FF">101</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиСтрбЯкщо = </span><span style="color:#79C0FF">102</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиОтриматиАдресуВластивості = </span><span style="color:#79C0FF">103</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЗріз = </span><span style="color:#79C0FF">200</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// трунк</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиНлРзш = </span><span style="color:#79C0FF">201</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// зекст</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЗнРзш = </span><span style="color:#79C0FF">202</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// секст</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхЗріз = </span><span style="color:#79C0FF">203</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// фптрунк</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхРзш = </span><span style="color:#79C0FF">204</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// фпекст</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхВБз = </span><span style="color:#79C0FF">205</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// фптууі</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиРхВЗн = </span><span style="color:#79C0FF">206</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// фптусі</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиБзВРх = </span><span style="color:#79C0FF">207</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// уітуфп</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЗнВРх = </span><span style="color:#79C0FF">208</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// сітуфп</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиАдрВЦл = </span><span style="color:#79C0FF">209</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// птртуінт</span></span>
+<span class="line"><span style="color:#FF7B72">  стала</span><span style="color:#E6EDF3"> ВидВказівкиЦлВАдр = </span><span style="color:#79C0FF">210</span><span style="color:#E6EDF3">; </span><span style="color:#8B949E">// інттуптр</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніОдинарноїВказівки {</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніДвійноїВказівки {</span></span>
+<span class="line"><span style="color:#E6EDF3">    ліво: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    право: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніВказівкиВиконати {</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    аргументи: **Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніВказівкиВиділити {</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніВказівкиЯк {</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніВказівкиОтриматиАдресуЕлемента {</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    позиція: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніВказівкиОтриматиАдресуВластивості {</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    позиція: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніВказівкиВидобутиЗначення {</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    позиція: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніВказівкиЗаписати {</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    куди: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніВказівкиПрочитати {</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    звідки: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніВказівкиВернути {</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніВказівкиСтрибнути {</span></span>
+<span class="line"><span style="color:#E6EDF3">    куди: *Крок;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніВказівкиСтрибнутиЯкщо {</span></span>
+<span class="line"><span style="color:#E6EDF3">    умова: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    куди: *Крок;</span></span>
+<span class="line"><span style="color:#E6EDF3">    інакше_куди: *Крок;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніВказівкиЗначенняІТип {</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніЗначенняВказівка {</span></span>
+<span class="line"><span style="color:#E6EDF3">    крок: *Крок;</span></span>
+<span class="line"><span style="color:#E6EDF3">    вид: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: ДаніОдинарноїВказівки</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніДвійноїВказівки</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніВказівкиВиконати</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніВказівкиВиділити</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніВказівкиЯк</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніВказівкиОтриматиАдресуЕлемента</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніВказівкиОтриматиАдресуВластивості</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніВказівкиВидобутиЗначення</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніВказівкиЗаписати</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніВказівкиПрочитати</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніВказівкиВернути</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніВказівкиСтрибнути</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніВказівкиСтрибнутиЯкщо</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніВказівкиЗначенняІТип;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніЗначенняГлобальна {</span></span>
+<span class="line"><span style="color:#E6EDF3">    видимість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    назва: *Назва;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніЗначенняГлобальнаКонстантаДаних {</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: *</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніЗначенняОбʼєкт {</span></span>
+<span class="line"><span style="color:#E6EDF3">    кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    аргументи: **Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніЗначенняАргумент {</span></span>
+<span class="line"><span style="color:#E6EDF3">    позиція: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    інструкція: *Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ЗначенняАргументів {</span></span>
+<span class="line"><span style="color:#E6EDF3">    розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: **Значення;</span></span>
+<span class="line"><span style="color:#E6EDF3">    вмісткість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> ДаніЗначенняІнструкція {</span></span>
+<span class="line"><span style="color:#E6EDF3">    модуль: *Модуль;</span></span>
+<span class="line"><span style="color:#E6EDF3">    длл_сторедж_клас: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    видимість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    назва: *Назва;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    кроки: Кроки;</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення_аргументів: ЗначенняАргументів;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Значення {</span></span>
+<span class="line"><span style="color:#E6EDF3">    модуль: *Модуль;</span></span>
+<span class="line"><span style="color:#E6EDF3">    вид: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані: </span><span style="color:#79C0FF">логічне</span></span>
+<span class="line"><span style="color:#E6EDF3">        | </span><span style="color:#79C0FF">п8</span></span>
+<span class="line"><span style="color:#E6EDF3">        | </span><span style="color:#79C0FF">п16</span></span>
+<span class="line"><span style="color:#E6EDF3">        | </span><span style="color:#79C0FF">п32</span></span>
+<span class="line"><span style="color:#E6EDF3">        | </span><span style="color:#79C0FF">п64</span></span>
+<span class="line"><span style="color:#E6EDF3">        | </span><span style="color:#79C0FF">ц8</span></span>
+<span class="line"><span style="color:#E6EDF3">        | </span><span style="color:#79C0FF">ц16</span></span>
+<span class="line"><span style="color:#E6EDF3">        | </span><span style="color:#79C0FF">ц32</span></span>
+<span class="line"><span style="color:#E6EDF3">        | </span><span style="color:#79C0FF">ц64</span></span>
+<span class="line"><span style="color:#E6EDF3">        | </span><span style="color:#79C0FF">р32</span></span>
+<span class="line"><span style="color:#E6EDF3">        | </span><span style="color:#79C0FF">р64</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніЗначенняВказівка</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніЗначенняГлобальна</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніЗначенняГлобальнаКонстантаДаних</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніЗначенняОбʼєкт</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніЗначенняІнструкція</span></span>
+<span class="line"><span style="color:#E6EDF3">        | ДаніЗначенняАргумент;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані_компіляції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    кількість_використань: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> використати(я: *Я) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      я.кількість_використань += </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    внутрішня</span><span style="color:#FF7B72"> дія</span><span style="color:#E6EDF3"> використавши(я: *Я) -> *Я {</span></span>
+<span class="line"><span style="color:#E6EDF3">      я.використати();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">      вернути</span><span style="color:#E6EDF3"> я;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  структура</span><span style="color:#E6EDF3"> Крок {</span></span>
+<span class="line"><span style="color:#E6EDF3">    інструкція: *Інструкція;</span></span>
+<span class="line"><span style="color:#E6EDF3">    назва: *Назва;</span></span>
+<span class="line"><span style="color:#E6EDF3">    вказівки: Вказівки;</span></span>
+<span class="line"><span style="color:#E6EDF3">    дані_компіляції: </span><span style="color:#79C0FF">адреса</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    перекладено_повністю: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> покласти_параметр(</span></span>
+<span class="line"><span style="color:#E6EDF3">    модуль: *Модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">    параметри: *Параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">    параметр: Параметр</span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_модуль(</span></span>
+<span class="line"><span style="color:#E6EDF3">    сн: *СховищеНазв::Сховище,</span></span>
+<span class="line"><span style="color:#E6EDF3">    назва: *Назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">    платформа: </span><span style="color:#79C0FF">природне</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> *Модуль;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_інструкцію(</span></span>
+<span class="line"><span style="color:#E6EDF3">    модуль: *Модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">    длл_сторедж_клас: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    видимість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    назва: *Назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">    параметри: Параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_результату: *Тип</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> *Інструкція;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_тип_інструкції(</span></span>
+<span class="line"><span style="color:#E6EDF3">    інструкція: *Інструкція</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> *Тип;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // параметри НЕ буде клоновано</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_тип_інструкції(</span></span>
+<span class="line"><span style="color:#E6EDF3">    модуль: *Модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">    параметри: Параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип_результату: *Тип</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> *Тип;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_значення_аргумента_інструкції(</span></span>
+<span class="line"><span style="color:#E6EDF3">    інструкція: *Інструкція,</span></span>
+<span class="line"><span style="color:#E6EDF3">    позиція: </span><span style="color:#79C0FF">природне</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_крок(</span></span>
+<span class="line"><span style="color:#E6EDF3">    інструкція: *Інструкція,</span></span>
+<span class="line"><span style="color:#E6EDF3">    назва: *Назва</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> *Крок;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> перевірити_чи_крок_закінчується_стрибком(</span></span>
+<span class="line"><span style="color:#E6EDF3">    крок: *Крок</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_структуру(</span></span>
+<span class="line"><span style="color:#E6EDF3">    модуль: *Модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">    назва: *Назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">    параметри: Параметри,</span></span>
+<span class="line"><span style="color:#E6EDF3">    пакована: </span><span style="color:#79C0FF">логічне</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> *Тип;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // параметри НЕ буде клоновано</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> заповнити_параметри_структури(</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">    параметри: Параметри</span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // аргументи НЕ буде клоновано</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> виконати_дію(</span></span>
+<span class="line"><span style="color:#E6EDF3">    крок: *Крок,</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип,</span></span>
+<span class="line"><span style="color:#E6EDF3">    значення: *Значення,</span></span>
+<span class="line"><span style="color:#E6EDF3">    кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    аргументи: **Значення</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_розмір_типу_для_виділення(</span></span>
+<span class="line"><span style="color:#E6EDF3">    модуль: *Модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_глобальну(</span></span>
+<span class="line"><span style="color:#E6EDF3">    модуль: *Модуль,</span></span>
+<span class="line"><span style="color:#E6EDF3">    назва: *Назва,</span></span>
+<span class="line"><span style="color:#E6EDF3">    видимість: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    тип: *Тип</span></span>
+<span class="line"><span style="color:#E6EDF3">  ) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_значення_пусто(модуль: *Модуль) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_тип_ніщо(модуль: *Модуль) -> *Тип;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_тип_адреса(модуль: *Модуль) -> *Тип;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_тип_логічне(модуль: *Модуль) -> *Тип;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_тип_ц8(модуль: *Модуль) -> *Тип;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_тип_ц16(модуль: *Модуль) -> *Тип;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_тип_ц32(модуль: *Модуль) -> *Тип;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_тип_ц64(модуль: *Модуль) -> *Тип;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_тип_р32(модуль: *Модуль) -> *Тип;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> отримати_тип_р64(модуль: *Модуль) -> *Тип;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_логічне(модуль: *Модуль, значення: </span><span style="color:#79C0FF">логічне</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_знакове_ц8(модуль: *Модуль, значення: </span><span style="color:#79C0FF">ц8</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_знакове_ц16(модуль: *Модуль, значення: </span><span style="color:#79C0FF">ц16</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_знакове_ц32(модуль: *Модуль, значення: </span><span style="color:#79C0FF">ц32</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_знакове_ц64(модуль: *Модуль, значення: </span><span style="color:#79C0FF">ц64</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_беззнакове_ц8(модуль: *Модуль, значення: </span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_беззнакове_ц16(модуль: *Модуль, значення: </span><span style="color:#79C0FF">п16</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_беззнакове_ц32(модуль: *Модуль, значення: </span><span style="color:#79C0FF">п32</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_беззнакове_ц64(модуль: *Модуль, значення: </span><span style="color:#79C0FF">п64</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_р32(модуль: *Модуль, значення: </span><span style="color:#79C0FF">р32</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_р64(модуль: *Модуль, значення: </span><span style="color:#79C0FF">р64</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_константу_даних(модуль: *Модуль, розмір: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, дані: *</span><span style="color:#79C0FF">п8</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_обʼєкт(модуль: *Модуль, тип: *Тип, кількість_аргументів: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">, аргументи: **Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> створити_пусте_значення(модуль: *Модуль, тип: *Тип) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_Виділ(крок: *Крок, тип: *Тип) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_Дод(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхДод(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_Від(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхВід(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_Мнж(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхМнж(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_БзДіл(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ЗнДіл(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхДіл(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_БзОст(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ЗнОст(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхОст(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_Рівн(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхРівн(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_НеРівн(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхНеРівн(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_БзБілш(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ЗнБілш(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхБілш(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_БзМенш(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ЗнМенш(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхМенш(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_БзБілшРівн(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ЗнБілшРівн(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхБілшРівн(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_БзМеншРівн(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ЗнМеншРівн(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхМеншРівн(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ЗсунЛів(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ЛогЗсунПрав(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_АрфЗсунПрав(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ДІ(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ДАБО(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ВАБО(крок: *Крок, ліво: *Значення, право: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ДНЕ(крок: *Крок, значення: *Значення) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_Зріз(крок: *Крок, значення: *Значення, очікуваний_тип: *Тип) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_НлРзш(крок: *Крок, значення: *Значення, очікуваний_тип: *Тип) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ЗнРзш(крок: *Крок, значення: *Значення, очікуваний_тип: *Тип) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхЗріз(крок: *Крок, значення: *Значення, очікуваний_тип: *Тип) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхРзш(крок: *Крок, значення: *Значення, очікуваний_тип: *Тип) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхВБз(крок: *Крок, значення: *Значення, очікуваний_тип: *Тип) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_РхВЗн(крок: *Крок, значення: *Значення, очікуваний_тип: *Тип) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_БзВРх(крок: *Крок, значення: *Значення, очікуваний_тип: *Тип) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ЗнВРх(крок: *Крок, значення: *Значення, очікуваний_тип: *Тип) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_АдрВЦл(крок: *Крок, значення: *Значення, очікуваний_тип: *Тип) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ЦлВАдр(крок: *Крок, значення: *Значення) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_Як(крок: *Крок, значення: *Значення, тип: *Тип) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ОтриматиАдресуЕлемента(крок: *Крок, тип: *Тип, значення: *Значення, позиція: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ОтриматиАдресуВластивості(крок: *Крок, тип: *Тип, значення: *Значення, позиція: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ВидобутиЗначення(крок: *Крок, тип: *Тип, значення: *Значення, позиція: </span><span style="color:#79C0FF">природне</span><span style="color:#E6EDF3">) -> *Значення;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_Стрб(крок: *Крок, куди: *Крок) -> *Стрибок;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> змінити_крок_стрибка(стрибок: *Стрибок, куди: *Крок);</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_СтрбЯкщо(крок: *Крок, значення: *Значення, якщо_так: *Крок, якщо_ні: *Крок) -> *Стрибок;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_Запис(крок: *Крок, значення: *Значення, куди: *Значення);</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_Прочт(крок: *Крок, тип: *Тип, звідки: *Значення) -> *Значення;</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_Вернт(крок: *Крок);</span></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> вказівка_ВернтЗнач(крок: *Крок, значення: *Значення);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  дія</span><span style="color:#E6EDF3"> знищити_модуль(модуль: *Модуль);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span></code></pre>
+</body>
+</html>
